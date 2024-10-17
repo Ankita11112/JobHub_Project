@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import AppRouter from './app/source/routes/AppRouter'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div class="text-gray-700 text-4xl">Hello World!</div>
+      <AppRouter/>
     </>
   )
 }
