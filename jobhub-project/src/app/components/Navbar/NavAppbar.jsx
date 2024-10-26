@@ -10,9 +10,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import jobhublogo from '../../assets/Images/logo.png';
-import { green } from '@mui/material/colors';
 
-const pages = ['Home', 'About', 'Services', 'Contact Us' ];
+const pages = ['Home', 'About', 'Services', 'Contact Us'];
 
 function NavAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -28,7 +27,7 @@ function NavAppBar() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl" sx={{
-          // boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', 
+        // boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', 
         bgcolor: 'background.paper',
         borderBottom: "1px solid #dadada"
       }}>
@@ -42,10 +41,10 @@ function NavAppBar() {
               display: { xs: 'none', md: 'flex' },
               width: 120,
               height: 'auto',
-              mr: 2,
+              mr: -2,
+              ml: 14,
             }}
           />
-          
 
           {/* Mobile menu icon */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -55,7 +54,10 @@ function NavAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="black"
+              sx={{
+                ml: 2,
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -98,38 +100,51 @@ function NavAppBar() {
           />
 
           {/* Menu items for larger screens - Positioned to the right */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+          <Box sx={{
+            flexGrow: 1,
+             display: { xs: 'none', md: 'flex' }, 
+             justifyContent: 'center',
+             ml:10
+          }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 0, color: 'black', display: 'block', padding: '30px', ":hover": { color: '#34a853' } }}
+                sx={{ my: 0, color: 'black', display: 'block', padding: '20px', ":hover": { color: '#34a853' } }}
               >
                 {page}
                 {/* <Button variant='contained'>buhghf</Button> */}
               </Button>
             ))}
-            
-            <Button onClick={handleCloseNavMenu} sx={{
-              my: 4, color: 'black', display: 'block', margin: '30px', padding: '10px 30px', border: '1px solid #34A853', '&:hover': {
+          </Box>
+          <Box sx={{
+           display: { xs: 'none', md: 'flex' },
+           justifyContent: "center",
+           mr: 14
+          }}>
+          <Button onClick={handleCloseNavMenu} sx={{
+              my: 4, color: 'black', display: 'block', margin: '30px', padding: '10px 20px', border: '1px solid #34A853', '&:hover': {
                 backgroundColor: '#34A853',
                 color: 'white'
-             }}}>  
-                find a job
+              }
+            }}>
+             Hire Now
             </Button>
-            <Button onClick={handleCloseNavMenu} sx={{my:4, color: 'black', display: 'block', margin: '30px', padding: '10px 30px', border: '1px solid #34a853',  '&:hover': {
-              backgroundColor: '#34a853',
-              color: 'white'
-        }}}>
-               hire now
+            <Button onClick={handleCloseNavMenu} sx={{
+              my: 4, color: 'black', display: 'block', margin: '30px', padding: '10px 30px', border: '1px solid #34a853', '&:hover': {
+                backgroundColor: '#34a853',
+                color: 'white'
+              }
+            }}>
+             Admin
             </Button>
           </Box>
-          
+
         </Toolbar>
       </Container>
     </AppBar>
 
-    
+
   );
 }
 
