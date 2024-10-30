@@ -32,9 +32,8 @@ const ChoiceSection = () => {
                 }}>
                     <Grid2 item xs={12} sx={{ position: "relative" }}>
                         <Typography variant='h3' component='h2' align="center" sx={{
-                            fontSize: {
-                                xs: "35px", md: "45px",
-                                '&::after': {
+                            fontSize: {xs: "35px", md: "45px"},
+                            '&::after': {
                                     content: '""',
                                     display: "block",
                                     width: '100%',
@@ -46,19 +45,18 @@ const ChoiceSection = () => {
                                     bottom: '-30px',
                                     left: 0,
                                 },
-                            }
                         }}>
                             Why We Choose <span style={{ color: "green" }}>Jobhub</span>
                         </Typography>
                     </Grid2>
                 </Grid2>
 
-                <Grid2 container spacing={{ xs: 3, md: 35 }} sx={{
+                <Grid2 container spacing={{ xs: 3, lg: 20 }} sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     pb: 10,
-                    flexDirection: {xs: "column-reverse", md: "row"}
+                    flexDirection: {xs: "column-reverse", sm: "column-reverse", md: "row", lg: "row"}
                 }}>
                     <Grid2 item xs={12} md={7} sx={{
                          display: "flex",
@@ -80,7 +78,7 @@ const ChoiceSection = () => {
                     ))}
                     </Grid2>
                     <Grid2 item xs={12} md={5}>
-                    <img src={img8}  width="280px" height="280x" alt="Mobile View" />
+                    <img src={img8}  width="300px" height="200x" alt="Mobile View" />
                     </Grid2>
                 </Grid2>
             </Box>
