@@ -27,7 +27,7 @@ const FormComponent = () => {
   const handleSubmit = async(event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/form", {
+      const response = await axios.post("https://jobhub-project-backend.onrender.com/api/v1/form", {
         firstname,
         lastname,email, dob, number, qualification, gender, role, address, experience, resume
       },{
