@@ -37,7 +37,7 @@ const Home = () => {
     {
         id: 4,
         question: "Are there any charges for applying for a job?",
-        answer: "Yes, there are charges for applying for a job due to GST payments, which are the same for everyone.",
+        answer: "No, applying for a job on the Job Hub Portal is completely free for all users.",
       },
       {
         id: 5,
