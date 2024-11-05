@@ -1,36 +1,43 @@
-import { Box, Grid, TextField, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Grid2, TextField, Typography } from '@mui/material';
+import React from 'react';
 import ButtonComponent from '../ButtonComponent/ButtonComponent.jsx';
 
-const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, buttonTitle2, onButtonClick1, onButtonClick2, imgSrc }) => {
-
+const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, buttonTitle2, onButtonClick1, onButtonClick2, imgSrc, containerSection }) => {
   return (
     <>
       <Box sx={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundRepeat: "no-repeat",
-        backgroundPosition: { xs: "center", sm: "center", md: "-500px 0px" },
+        backgroundPosition: "100%",
         backgroundSize: "cover",
         width: '100%',
-        py: { xs: 4, sm: 8 },
+        py: { xs: 4, sm: 2 },
         height: "auto",
-        display: "flex",
-        justifyContent: "center",
-        pl: { md: 8 }
       }}>
-        <Grid container sx={{
-          width: "88%",
+        <Grid2 container 
+        sx={{
+          width: "80%",  
+          margin: "auto",
           display: "flex",
-          justifyContent: "center",
-        }} columnSpacing={4}>
-          <Grid item xs={12} md={6}>
-            <Box sx={{
-              mt: 5
-            }}>
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexDirection: { xs: "column", md: "row" }, 
+        }}
+        >
+          
+          {/* Content Section */}
+          <Grid2 item xs={12} md={6} sx={{
+              width: {xs: "none", sm:"none", md: "50%"},
+              pt: 5,
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              flexDirection: "column",
+          }}>
               <Typography
                 variant="h1"
                 sx={{
-                  width: "100%",
+                  width: {sm: "80%", md: "100%"},
                   fontWeight: "bold",
                   fontFamily: "Roboto, sans-serif",
                   textAlign: { xs: "center", md: "left" },
@@ -41,7 +48,8 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "18px",
+                  width: "100%",
+                  fontSize: "19px",
                   fontFamily: '"Roboto", sans-serif',
                   fontWeight: "bold",
                   textAlign: { xs: "center", md: "left" },
@@ -52,46 +60,54 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
                 {subText}
               </Typography>
               <Box
-                sx={{ width: "100%", display: "flex", flexGrow: 1, justifyContent: { xs: "center", md: "left" } }}
-                className="pt-[50px]"
+                sx={{ width: "100%", display: "flex", justifyContent: { xs: "center", md: "flex-start"}, pt: "50px" }}
               >
                 <ButtonComponent title={buttonTitle1} onClick={onButtonClick1} />
               </Box>
 
-              <Grid container sx={{
-                width: "100%",
-                pt: 10
-              }}>
-                <Grid item xs={12} sm={8} sx={{
-                  maxWidth: '400px',
-                  width: { xs: "100%", sm: "auto" },
-                  pt: { xs: 0, sm: 3 }
+              {containerSection && (
+                <Grid2 container sx={{
+                  width: "100%",
+                  pt: {xs: 8, sm: 8, md: 4},
+                  mb: {xs: 8, sm: 8}
                 }}>
-                  <TextField
-                    variant="outlined"
-                    placeholder="Search Job"
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12} sm={4} sx={{
-                  pt: { xs: 2, md: 3 },
-                  pl: { sm: 2, md: 2 },
-                  alignContent: { xs: "center", md: "left" }
-                }}>
-                  <ButtonComponent title={buttonTitle2} onClick={onButtonClick2} />
-                </Grid>
-              </Grid>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6} sx={{
-            display: { xs: "none", sm: "none", md: "block" },
+                  <Grid2 item xs={12} sm={8} sx={{
+                    width: { xs: "100%", md : "50%" },
+                    pt: { xs: 0, sm: 4, md: 6 }
+                  }}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Search Job"
+                      fullWidth
+                    />
+                  </Grid2>
+                  <Grid2 item xs={12} sm={4} sx={{
+                    width: { xs: "100%", md : "100%", lg : "40%" },
+                    pt: { xs: 4, sm: 4, md: 6 },
+                    pl: { sm: 2 },
+                    display: "flex",
+                    justifyContent: { xs: "center", md: "flex-start" },
+                  }}>
+                    <ButtonComponent title={buttonTitle2} onClick={onButtonClick2} />
+                  </Grid2>
+                </Grid2>
+              )}
+          </Grid2>
+
+          {/* Image Section */}
+          <Grid2 item xs={12} md={6} sx={{
+            width: {xs: "none", sm:"none", md: "50%"},
+            display: {xs: "none", sm: "none", md: "flex", lg: "flex"},
+            justifyContent: { xs: "center", md: "flex-end" },
+            mt: { xs: 4, md: 0 },
           }}>
-            <img src={imgSrc} width="90%" height="auto" alt="HeaderImage" />
-          </Grid>
-        </Grid>
+            <img src={imgSrc} style={{ width: "100%", height: "auto", }} alt="HeaderImage" />
+          </Grid2>
+        </Grid2>
       </Box>
     </>
-  )
-}
+  );
+};
 
 export default HeaderPage;
+

@@ -1,6 +1,7 @@
 import { Box, styled } from '@mui/material';
 import React from 'react'
 import NavAppBar from '../Navbar/NavAppbar';
+import Footer from './Footer';
 
 const Page = styled(Box)(({ theme }) => ({
     position: "relative",
@@ -38,6 +39,7 @@ const PageComponent = ({children}) => {
           }}>
         <NavAppBar/>
         {children}
+        <Footer/>
         </Box>
     </>
   )

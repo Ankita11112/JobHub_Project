@@ -7,7 +7,6 @@ import axios from "axios"
 
 const FormComponent = () => {
   const [isMounted, setIsMounted] = useState(false);
-
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");

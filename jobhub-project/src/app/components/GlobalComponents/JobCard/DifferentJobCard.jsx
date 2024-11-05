@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import React from 'react';
 
-const DifferentJobCard = ({ jobTypes, title, image, width = '180px', height = '180px', backgroundColor = '#f0f0f0', boxShadow, border = '1px dashed green' }) => {
+const DifferentJobCard = ({ jobTypes, title, onClick, image, width = '180px', height = '180px', backgroundColor = '#f0f0f0', boxShadow, border = '1px dashed green' }) => {
   return (
     <>
       <Card
@@ -16,6 +16,7 @@ const DifferentJobCard = ({ jobTypes, title, image, width = '180px', height = '1
           alignItems: 'center',
           border,
         }}
+        onClick = {onClick}
       >
         <CardContent
           sx={{

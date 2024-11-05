@@ -2,27 +2,31 @@ import React, { useState } from 'react';
 import PageComponent from '../../../components/PageComponent/PageComponent';
 import HeaderPage from '../../../components/GlobalComponents/HeaderPage/HeaderPage';
 import bgImage from '../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../assets/Images/HeaderImage.png';
+import HeaderImage from '../../../assets/Images/HeaderImage2.png';
 import JobCards from '../../../components/PageComponent/JobCards';
 import JobDetails from '../../../components/PageComponent/JobDetails/JobDetails';
-import PopularJobs from '../../../components/PageComponent/PopularJobs';
+import PopularJobs from '../../../components/PageComponent/PopularJobs/PopularJobs';
 import ResumeSection from '../../../components/PageComponent/ResumeSection';
 import PartnerSection from '../../../components/PageComponent/PartnerSection';
 import ChoiceSection from '../../../components/PageComponent/ChoiceSection';
 import Testimonial from '../../../components/PageComponent/Testimonial';
 import FormComponent from '../../../components/PageComponent/FormComponent';
-import { useNavigate } from 'react-router-dom';
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
 import Footer from '../../../components/PageComponent/Footer';
 
 const Home = () => {
-  const navigate = useNavigate();
+  const handleScrollView = () => {
+    const section = document.getElementById("popularSection");
+    if (section) {
+      popularSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 
   const faqItems = [
     {
       id: 1,
       question: "What type of jobs are available on Jobhub?",
-      answer: "MyJobee is a professional and only blue-collar centric job search app in India that connects job seekers in the blue collar segment with the respective employers. It helps blue collars get the type of job they are trained for, by connecting them with respective HR departments of businesses and vice-versa.",
+      answer: "JobHub is a specialized job search app in India focused exclusively on the blue-collar workforce, linking job seekers directly with employers in this sector. It enables blue-collar workers to find roles suited to their skills by connecting them with company HR departments, facilitating a two-way connection between workers and businesses.",
     },
     {
       id: 2,
@@ -35,15 +39,15 @@ const Home = () => {
       answer: "Yes, Job Hub offers a variety of remote job opportunities across multiple industries for flexible work options.s",
     },
     {
-        id: 4,
-        question: "Are there any charges for applying for a job?",
-        answer: "No, applying for a job on the Job Hub Portal is completely free for all users.",
-      },
-      {
-        id: 5,
-        question: "How do I update my resume or profile in information?",
-        answer: "To update your resume, navigate to the 'Build Resume' section and select a resume template to edit your information accordingly.",
-      },
+      id: 4,
+      question: "Are there any charges for applying for a job?",
+      answer: "No, applying for a job on the Job Hub Portal is completely free for all users.",
+    },
+    {
+      id: 5,
+      question: "How do I update my resume or profile in information?",
+      answer: "To update your resume, navigate to the 'Build Resume' section and select a resume template to edit your information accordingly.",
+    },
   ];
 
   return (
@@ -58,21 +62,21 @@ const Home = () => {
           subText="Your dream job is just a click away"
           buttonTitle1="Find a Job"
           buttonTitle2="Search"
-          onButtonClick1={() => navigate("/registration")}
+          onButtonClick1={handleScrollView}
           onButtonClick2={() => alert("Search clicked!")}
           imgSrc={HeaderImage}
+          containerSection
         />
         <JobCards />
-        <JobDetails/>
-        <PopularJobs/>
-        <ResumeSection/>
-        <PartnerSection/>
-        <ChoiceSection/>
-        <Testimonial/>
+        <JobDetails />
+        <PopularJobs id="popularSection" />
+        <ResumeSection />
+        <PartnerSection />
+        <ChoiceSection />
+        <Testimonial />
         <GlobalFaq
-            faqItems={faqItems}
+          faqItems={faqItems}
         />
-        <Footer/>
       </PageComponent>
     </>
   )

@@ -37,7 +37,8 @@ export default function Footer() {
   };
 
   return (
-    <Box
+    <>
+      <Box
       sx={{
         backgroundColor: "#2F3E2F",
         color: "white",
@@ -155,6 +156,7 @@ export default function Footer() {
         icon={<CheckCircleIcon color="success" />}
       /> */}
     </Box>
+    </>
   );
 }
 
