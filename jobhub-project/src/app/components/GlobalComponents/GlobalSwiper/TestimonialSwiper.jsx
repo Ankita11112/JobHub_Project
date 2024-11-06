@@ -15,7 +15,7 @@ const TestimonialSwiper = () => {
             src={TestimonialImg}
             alt="Testimonial"
             sx={{
-              height: { xs: '240px', sm: '350px', md: '400px' },
+              height: { xs: '240px', sm: '450px', md: '500px' },
               width: { xs: '300px', sm: '350px', md: '400px' },
               borderRadius: 2,
             }}

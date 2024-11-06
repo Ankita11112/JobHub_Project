@@ -65,7 +65,7 @@ const ChoiceSection = () => {
                          alignItems: "left",
                     }}>
                     {iconItems.map((item, index) => (
-                        <Grid2 container sx={{ mt: 4 }} key={index}>
+                        <Grid2 container spacing={{xs: 0, md: 2}} sx={{ mt: 4 }} key={index}>
                             <Grid2 item xs={2} md={2}>
                                 <img src={item.icon} height="30px" width="30px" alt={`icon-${index + 1}`} />
                             </Grid2>

@@ -5,7 +5,7 @@ import TestimonialSwiper from '../GlobalComponents/GlobalSwiper/TestimonialSwipe
 const Testimonial = () => {
   return (
     <>
-        <Box sx={{ pt: {xs: 14, md: 5}, width: '80%', mx: 'auto' }}>
+        <Box sx={{ pt: {xs: 14, md: 4}, width: '80%', mx: 'auto' }}>
         <Grid2 container sx={{
                     display: "flex",
                     justifyContent: "center",

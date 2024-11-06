@@ -19,6 +19,10 @@ export default function GlobalFaq({ faqItems, id }) {
   };
 
   return (
+    <>
+      <Box sx={{
+        pt: {xs: 14, md: 4},
+      }}>
     <Container
       id={id}
       sx={{
@@ -40,19 +44,23 @@ export default function GlobalFaq({ faqItems, id }) {
             }}>
              Frequently asked <span style={{color: "green"}}>questions</span>
             </Typography>
-      <Box sx={{ width: "100%" }}>
-        {faqItems.map((item) => (
+         <Box sx={{ width: "100%" }}>
+         {faqItems.map((item) => (
           <Accordion
             key={item.id}
             expanded={expanded === item.id}
             onChange={handleChange(item.id)}
+            sx={{
+              my: 2,
+              py: 1,
+            }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls={`${item.id}d-content`}
               id={`${item.id}d-header`}
             >
-              <Typography component="h3" variant="subtitle2">
+              <Typography component="h2" variant="subtitle2" sx={{fontSize:"18px"}}>
                 {item.question}
               </Typography>
             </AccordionSummary>
@@ -61,6 +69,8 @@ export default function GlobalFaq({ faqItems, id }) {
         ))}
       </Box>
     </Container>
+      </Box>
+    </>
   );
 }
 

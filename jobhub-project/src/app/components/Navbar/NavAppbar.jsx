@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import jobhublogo from '../../assets/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
+import ButtonComponent from '../GlobalComponents/ButtonComponent/ButtonComponent';
 
 const pages = [
   { label: 'Home', path: '/' },
@@ -101,7 +102,6 @@ function NavAppBar() {
               display: { xs: 'flex', md: 'none' },
               width: 120,
               height: 'auto',
-              mr: 2,
             }}
             onClick={() => handleNavigate('/')}
           />
@@ -110,7 +110,7 @@ function NavAppBar() {
             flexGrow: 1,
             display: { xs: 'none', md: 'flex' },
             justifyContent: 'center',
-            ml: 11
+            mx: 6
           }}>
             {pages.map((page) => (
               <Button
@@ -126,24 +126,53 @@ function NavAppBar() {
           <Box sx={{
             display: { xs: 'none', md: 'flex' },
             justifyContent: "center",
-            mr: 14
+            mr: 19
           }}>
-            <Button onClick={handleCloseNavMenu} sx={{
-              my: 4, color: 'black', display: 'block', margin: '30px', padding: '10px 20px', border: '1px solid #34A853', '&:hover': {
-                backgroundColor: '#34A853',
-                color: 'white'
-              }
-            }}>
-             Login
-            </Button>
-            <Button onClick={handleCloseNavMenu} sx={{
-              my: 4, color: 'black', display: 'block', margin: '30px', padding: '10px 30px', border: '1px solid #34a853', '&:hover': {
-                backgroundColor: '#34a853',
-                color: 'white'
-              }
-            }}>
-              Admin
-            </Button>
+            <ButtonComponent
+              title="Login"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 4,
+                px: {lg: 6},
+                color: 'black',
+                display: 'block',
+                py: 2,
+                border: '1px solid #34A853',
+                background: 'linear-gradient(45deg, #34A853, white)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                '&:hover': {
+                  backgroundColor: '#34A853',
+                  color: 'white',
+                  boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
+                },
+                '&:active': {
+                  transform: 'scale(0.95)',
+                },
+              }}
+            />
+            <ButtonComponent
+              title="Admin"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 4,
+                px: {lg: 6},
+                color: 'black',
+                display: 'block', 
+                py:2,
+                border: '1px solid #34A853',
+                background: 'linear-gradient(45deg, #34A853, white)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                ml: {xs: 0, sm: 0, md: 3, lg: 3},
+                '&:hover': {
+                  backgroundColor: '#34A853',
+                  color: 'white',
+                  boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
+                },
+                '&:active': {
+                  transform: 'scale(0.95)',
+                },
+              }}
+            />
           </Box>
         </Toolbar>
       </Container>
