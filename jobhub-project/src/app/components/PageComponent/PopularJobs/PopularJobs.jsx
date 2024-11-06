@@ -23,20 +23,20 @@ import { useNavigate } from 'react-router-dom';
 const PopularJobs = ({ id }) => {
   const navigate = useNavigate();
   const jobTypes = [
-    { image: job13, title: 'Telecaller', onClick: () => navigate('/telecaller') },
+    { image: job1, title: 'Telecaller', onClick: () => navigate('/telecaller') },
     { image: job2, title: 'Document Verification', onClick: () => navigate('/documentverification') },
     { image: job3, title: 'Data Entry', onClick: () => navigate('/dataentry')},
-    { image: job5, title: 'Web Designer', onClick: () => navigate('/webdesigner') },
-    { image: job6, title: 'Graphic Designer', onClick: () => navigate('/graphicdesigner') },
-    { image: job10, title: 'Web Developer', onClick: () => navigate('/webdeveloper') },
+    { image: job4, title: 'Web Designer', onClick: () => navigate('/webdesigner') },
+    { image: job5, title: 'Graphic Designer', onClick: () => navigate('/graphicdesigner') },
+    { image: job6, title: 'Web Developer', onClick: () => navigate('/webdeveloper') },
     { image: job7, title: 'Construction', onClick: () => navigate('/construction') },
-    { image: job11, title: 'Front Office', onClick: () => navigate('/frontoffice') },
-    { image: job12, title: 'Backend Office', onClick: () => navigate('/backoffice') },
-    { image: job14, title: 'House Keeping', onClick: () => navigate('/housekeeping') },
-    { image: job8, title: 'Delivery', onClick: () => navigate('/delivery') },
-    { image: job1, title: 'Security Guard', onClick: () => navigate('/securityguard') },
-    { image: job4, title: 'Hotel Staff', onClick: () => navigate('/hotelstaff') },
-    { image: job9, title: 'Ware House Staff', onClick: () => navigate('/warehousestaff') },
+    { image: job8, title: 'Front Office', onClick: () => navigate('/frontoffice') },
+    { image: job9, title: 'Backend Office', onClick: () => navigate('/backoffice') },
+    { image: job10, title: 'House Keeping', onClick: () => navigate('/housekeeping') },
+    { image: job11, title: 'Delivery', onClick: () => navigate('/delivery') },
+    { image: job12, title: 'Security Guard', onClick: () => navigate('/securityguard') },
+    { image: job13, title: 'Hotel Staff', onClick: () => navigate('/hotelstaff') },
+    { image: job14, title: 'Ware House Staff', onClick: () => navigate('/warehousestaff') },
     { image: job15, title: 'Factory Workers', onClick: () => navigate('/factory') },
   ];
 

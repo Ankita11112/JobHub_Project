@@ -30,6 +30,7 @@ const DifferentJobCard = ({ jobTypes, title, onClick, image, width = '180px', he
           <Typography variant='body1' sx={{
             fontSize: '17px',
             fontWeight: 'bold',
+            textAlign: "center",
             pt: 1,
           }}>{jobTypes.title}</Typography>
         </CardContent>

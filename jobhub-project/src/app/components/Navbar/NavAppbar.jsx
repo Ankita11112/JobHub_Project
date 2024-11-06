@@ -10,11 +10,18 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import jobhublogo from '../../assets/Images/logo.png';
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['Home', 'About', 'Services', 'Contact Us'];
+const pages = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Contact Us', path: '/contact' }
+];
 
 function NavAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -24,15 +31,18 @@ function NavAppBar() {
     setAnchorElNav(null);
   };
 
+  const handleNavigate = (path) => {
+    navigate(path);
+    handleCloseNavMenu();
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl" sx={{
-        // boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', 
         bgcolor: 'background.paper',
         borderBottom: "1px solid #dadada"
       }}>
         <Toolbar disableGutters>
-          {/* Image for large screens */}
           <Box
             component="img"
             src={jobhublogo}
@@ -44,9 +54,9 @@ function NavAppBar() {
               mr: -2,
               ml: 14,
             }}
+            onClick={() => handleNavigate('/')}
           />
 
-          {/* Mobile menu icon */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -55,9 +65,7 @@ function NavAppBar() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="black"
-              sx={{
-                ml: 2,
-              }}
+              sx={{ ml: 2 }}
             >
               <MenuIcon />
             </IconButton>
@@ -78,14 +86,13 @@ function NavAppBar() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.label} onClick={() => handleNavigate(page.path)}>
+                  <Typography textAlign="center">{page.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          {/* Image for mobile screens */}
           <Box
             component="img"
             src={jobhublogo}
@@ -95,40 +102,39 @@ function NavAppBar() {
               width: 120,
               height: 'auto',
               mr: 2,
-
             }}
+            onClick={() => handleNavigate('/')}
           />
 
-          {/* Menu items for larger screens - Positioned to the right */}
           <Box sx={{
             flexGrow: 1,
-             display: { xs: 'none', md: 'flex' }, 
-             justifyContent: 'center',
-             ml:10
+            display: { xs: 'none', md: 'flex' },
+            justifyContent: 'center',
+            ml: 11
           }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.label}
+                onClick={() => handleNavigate(page.path)}
                 sx={{ my: 0, color: 'black', display: 'block', padding: '20px', ":hover": { color: '#34a853' } }}
               >
-                {page}
-                {/* <Button variant='contained'>buhghf</Button> */}
+                {page.label}
               </Button>
             ))}
           </Box>
+
           <Box sx={{
-           display: { xs: 'none', md: 'flex' },
-           justifyContent: "center",
-           mr: 14
+            display: { xs: 'none', md: 'flex' },
+            justifyContent: "center",
+            mr: 14
           }}>
-          <Button onClick={handleCloseNavMenu} sx={{
+            <Button onClick={handleCloseNavMenu} sx={{
               my: 4, color: 'black', display: 'block', margin: '30px', padding: '10px 20px', border: '1px solid #34A853', '&:hover': {
                 backgroundColor: '#34A853',
                 color: 'white'
               }
             }}>
-             Hire Now
+             Login
             </Button>
             <Button onClick={handleCloseNavMenu} sx={{
               my: 4, color: 'black', display: 'block', margin: '30px', padding: '10px 30px', border: '1px solid #34a853', '&:hover': {
@@ -136,15 +142,12 @@ function NavAppBar() {
                 color: 'white'
               }
             }}>
-             Admin
+              Admin
             </Button>
           </Box>
-
         </Toolbar>
       </Container>
     </AppBar>
-
-
   );
 }
 
