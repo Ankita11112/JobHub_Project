@@ -57,15 +57,15 @@ const Home = () => {
           backgroundImage={bgImage}
           headerText=
           {<>
-            Find Your Career With <span style={{ color: "green" }}> JOBHUB</span>
+            Find Your Career With <span style={{ color: "green" }}>JOBHUB</span>
           </>}
           subText="Your dream job is just a click away"
           buttonTitle1="Find a Job"
-          buttonTitle2="Search"
+          buttonTitle2="Hire Now"
           onButtonClick1={handleScrollView}
-          onButtonClick2={() => alert("Search clicked!")}
+          onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
-          containerSection
+          button2
         />
         <JobCards />
         <JobDetails />
