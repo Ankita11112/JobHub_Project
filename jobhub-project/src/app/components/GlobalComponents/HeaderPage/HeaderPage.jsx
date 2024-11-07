@@ -2,7 +2,7 @@ import { Box, Grid2, TextField, Typography } from '@mui/material';
 import React from 'react';
 import ButtonComponent from '../ButtonComponent/ButtonComponent.jsx';
 
-const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, buttonTitle2, onButtonClick1, onButtonClick2, imgSrc, button2}) => {
+const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, buttonTitle2, onButtonClick1, onButtonClick2, imgSrc, button2, style}) => {
   return (
     <>
       <Box sx={{
@@ -11,7 +11,7 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
         backgroundPosition: "100%",
         backgroundSize: "cover",
         width: '100%',
-        py: { xs: 4, sm: 2 },
+        py: { xs: 5, sm: 3 },
         height: "auto",
       }}>
         <Grid2 container 
@@ -98,33 +98,6 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
                 />)}
               </Box>
 
-              {/* {containerSection && (
-                <Grid2 container sx={{
-                  width: "100%",
-                  pt: {xs: 8, sm: 8, md: 4},
-                  mb: {xs: 8, sm: 8}
-                }}>
-                  <Grid2 item xs={12} sm={8} sx={{
-                    width: { xs: "100%", md : "50%" },
-                    pt: { xs: 0, sm: 4, md: 6 }
-                  }}>
-                    <TextField
-                      variant="outlined"
-                      placeholder="Search Job"
-                      fullWidth
-                    />
-                  </Grid2>
-                  <Grid2 item xs={12} sm={4} sx={{
-                    width: { xs: "100%", md : "100%", lg : "40%" },
-                    pt: { xs: 4, sm: 4, md: 6 },
-                    pl: { sm: 2 },
-                    display: "flex",
-                    justifyContent: { xs: "center", md: "flex-start" },
-                  }}>
-                    <ButtonComponent title={buttonTitle2} onClick={onButtonClick2} />
-                  </Grid2>
-                </Grid2>
-              )} */}
           </Grid2>
 
           {/* Image Section */}
@@ -134,7 +107,7 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
             justifyContent: { xs: "center", md: "flex-end" },
             mt: { xs: 4, md: 0 },
           }}>
-            <img src={imgSrc} style={{ width: "100%", height: "auto", }} alt="HeaderImage" />
+            <img src={imgSrc} style={style} alt="HeaderImage" />
           </Grid2>
         </Grid2>
       </Box>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PageComponent from '../../../components/PageComponent/PageComponent';
 import HeaderPage from '../../../components/GlobalComponents/HeaderPage/HeaderPage';
 import bgImage from '../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../assets/Images/HeaderImage2.png';
+import HeaderImage from '../../../assets/Images/headerImages/HeaderImage2.png';
 import JobCards from '../../../components/PageComponent/JobCards';
 import JobDetails from '../../../components/PageComponent/JobDetails/JobDetails';
 import PopularJobs from '../../../components/PageComponent/PopularJobs/PopularJobs';
@@ -65,6 +65,10 @@ const Home = () => {
           onButtonClick1={handleScrollView}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
+          style= {{
+            width: "95%", 
+            height: "auto", 
+          }}
           button2
         />
         <JobCards />
