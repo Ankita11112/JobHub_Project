@@ -40,7 +40,7 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
                   fontWeight: "bold",
                   fontFamily: "Roboto, sans-serif",
                   textAlign: { xs: "center", md: "left" },
-                  fontSize: { xs: "40px", sm: "50px", md: "60px" },
+                  fontSize: { xs: "40px", sm: "50px", md: "55px" },
                 }}
               >
                 {headerText}

@@ -1,9 +1,12 @@
 import React from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage3.png';
+import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage02.png';
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import CategoriesSection from './Components/CategoriesSection';
+import JobDetails from '../../../JobDetails/JobDetails';
+import BusinessServices from './Components/BusinessServices';
+import JobhubTelecaller from './Components/JobhubTelecaller';
 
 const TelecallerJob = () => {
   return (
@@ -28,6 +31,9 @@ const TelecallerJob = () => {
           }}
         />
       <CategoriesSection/>
+      <JobDetails/>
+      <BusinessServices/>
+      <JobhubTelecaller/>
       </PageComponent>
     </>
   )
