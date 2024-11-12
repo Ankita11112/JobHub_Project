@@ -7,8 +7,10 @@ import CategoriesSection from './Components/CategoriesSection';
 import JobDetails from '../../../JobDetails/JobDetails';
 import BusinessServices from './Components/BusinessServices';
 import JobhubTelecaller from './Components/JobhubTelecaller';
+import { useNavigate } from 'react-router-dom';
 
 const TelecallerJob = () => {
+  const navigate = useNavigate();
   return (
     <>
       <PageComponent>
@@ -22,7 +24,7 @@ const TelecallerJob = () => {
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
-          onButtonClick1={() => alert("I am clicked!")}
+          onButtonClick1={() => navigate('/registration')}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style= {{

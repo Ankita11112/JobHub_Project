@@ -20,26 +20,34 @@ const ResumeSection = () => {
   ];
   return (
     <>
-      <Box id = "resumeSwiper" sx={{ pt: {xs: 14, md: 10}, width: '80%', mx: 'auto' }}>
+      <Box id="resumeSwiper" sx={{ pt: { xs: 14, md: 10 }, width: '80%', mx: 'auto' }}>
         <Grid2 container sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-           pb : {xs: 4}
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          pb: { xs: 4 }
         }}>
-            <Grid2 item xs={12}>
+          <Grid2 item xs={12}>
             <Typography variant="h3" component="h2" align="center" sx={{
-              fontSize: {xs: "35px", md: "45px",
-              backgroundImage: `url(${ResumeBg})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
+              fontSize: {
+                xs: "35px", md: "45px",
+                backgroundImage: `url(${ResumeBg})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
               }
             }}>
-            Build <span style={{color: "green"}}>Your Resume</span> In Two Minutes
+              Build <span style={{ color: "green" }}>Your Resume</span> In Two Minutes
             </Typography>
-            </Grid2>
-        </Grid2>       
-         <GlobalSwiper resumeItems = {resumeItems}/>
+          </Grid2>
+        </Grid2>
+        <GlobalSwiper
+          content={resumeItems}
+          sx={{
+            width: { xs: "300px", md: "250px" },
+            height: { xs: "380px", md: "360px" },
+          }}
+          addImg
+        />
       </Box>
     </>
   )

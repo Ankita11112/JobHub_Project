@@ -1,9 +1,13 @@
 import React from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage03.png';
+import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage04.png';
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
-// import JobDetails from '../../../JobDetails/JobDetails';
+import DocCategories from './Components/DocCategories';
+import JobDetails from '../../../JobDetails/JobDetails';
+import EnsuringTrust from './Components/EnsuringTrust';
+import DocVerifyServices from './Components/DocVerifyServices';
+import WhyDocVerify from './Components/WhyDocVerify';
 
 const DocVerifyJob = () => {
   return (
@@ -18,7 +22,6 @@ const DocVerifyJob = () => {
           subText="Ensure accuracy and trust with our efficient document verification services."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
-          // onButtonClick1={handleScrollView}
           onButtonClick1={() => alert("I am clicked!")}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
@@ -27,7 +30,11 @@ const DocVerifyJob = () => {
             height: "auto", 
           }}
         />
-      {/* <JobDetails/> */}
+        <DocCategories/>
+      <JobDetails/>
+      <EnsuringTrust/>
+      <DocVerifyServices/>
+      <WhyDocVerify/>
       </PageComponent>
     </>
   )

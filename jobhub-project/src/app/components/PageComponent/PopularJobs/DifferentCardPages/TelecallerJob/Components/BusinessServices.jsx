@@ -23,7 +23,7 @@ const BusinessServices = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "100%",
         backgroundSize: "cover",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: {xs:"none", sm: "none", md: "fixed", lg: "fixed"},
         zIndex: -1,
         filter: "blur(4px)", 
       }} />

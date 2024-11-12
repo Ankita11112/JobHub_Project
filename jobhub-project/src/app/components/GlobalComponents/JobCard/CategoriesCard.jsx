@@ -49,6 +49,7 @@ const CategoriesCard = ({
               fontWeight: 'bold',
               textAlign: 'center',
               pt: 1,
+              mx: 2
             }}
           >
             {category.title}
