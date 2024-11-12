@@ -30,7 +30,7 @@ const WhyDocVerify = () => {
   return (
     <>
       <Box sx={{
-        my: { xs: 4, md: 8 },
+        my: { xs: 4, md: 10 },
         width: "100%",
         // mx: "auto",
         backgroundImage: { xs: "none", sm: "none", md: `url(${DocBg})` },
