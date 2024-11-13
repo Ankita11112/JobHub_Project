@@ -8,8 +8,10 @@ import JobDetails from '../../../JobDetails/JobDetails';
 import EnsuringTrust from './Components/EnsuringTrust';
 import DocVerifyServices from './Components/DocVerifyServices';
 import WhyDocVerify from './Components/WhyDocVerify';
+import { useNavigate } from 'react-router-dom';
 
 const DocVerifyJob = () => {
+  const navigate = useNavigate();
   return (
     <>
       <PageComponent>
@@ -22,7 +24,7 @@ const DocVerifyJob = () => {
           subText="Ensure accuracy and trust with our efficient document verification services."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
-          onButtonClick1={() => alert("I am clicked!")}
+          onButtonClick1={() => navigate("/registration")}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style= {{

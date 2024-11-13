@@ -26,7 +26,10 @@ const GlobalSwiper = ({ content, sx, addImg, Box: showBox, alt }) => {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     }}
-                    pagination={true}
+                    pagination={{
+                        clickable: true,
+                        el: '.swiper-pagination', // Targeting the custom pagination Box below
+                    }}
                     modules={[Autoplay, Navigation, Pagination]}
                     breakpoints={{
                         320: {
@@ -91,6 +94,9 @@ const GlobalSwiper = ({ content, sx, addImg, Box: showBox, alt }) => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                {/* Custom Pagination and Navigation Buttons */}
+                <Box className="swiper-pagination" sx={{ margin: 2, display: {xs: "none", md: "block"} }}></Box>
                 <Box className="swiper-button-prev"></Box>
                 <Box className="swiper-button-next"></Box>
             </Grid2>
@@ -99,4 +105,3 @@ const GlobalSwiper = ({ content, sx, addImg, Box: showBox, alt }) => {
 };
 
 export default GlobalSwiper;
-

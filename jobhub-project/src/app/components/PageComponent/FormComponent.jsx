@@ -1,9 +1,6 @@
-import React from 'react';
-import { Box, TextField, Button, Typography, Select, MenuItem, Fade } from '@mui/material';
-import Grid2 from '@mui/material/Grid2';
-import Input from '@mui/material/Input';
-import { useState } from 'react';
-import axios from "axios"
+import React, { useState, useEffect } from 'react';
+import { Box, TextField, Button, Typography, Select, MenuItem, Fade, Input, Grid2 } from '@mui/material';
+import axios from "axios";
 
 const FormComponent = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,20 +16,20 @@ const FormComponent = () => {
   const [experience, setExperience] = useState("");
   const [resume, setResume] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post("https://jobhub-project-backend.onrender.com/api/v1/form", {
         firstname,
-        lastname,email, dob, number, qualification, gender, role, address, experience, resume
-      },{
+        lastname, email, dob, number, qualification, gender, role, address, experience, resume
+      }, {
         headers: { "Content-Type": "multipart/form-data" },
-      })
-      alert("Submitted!!")
+      });
+      alert("Submitted!!");
     } catch (error) {
       console.error(error);
     }
@@ -42,37 +39,37 @@ const FormComponent = () => {
     <Box
       sx={{
         width: '100vw',
-        height: '100vh',
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         background: 'linear-gradient(to bottom, #4caf50, #ffffff)',
         overflow: 'auto',
+        py: 4,
       }}
     >
       <Fade in={isMounted} timeout={1000}>
         <Box
           sx={{
             maxWidth: 800,
-            width: '90%',
+            width: '100%',
             padding: 4,
             boxShadow: 6,
-            borderRadius: 3,
+            borderRadius: 2,
             background: 'rgba(255, 255, 255, 0.9)',
             backdropFilter: 'blur(10px)',
-            transform: isMounted ? 'translateY(0)' : 'translateY(50px)',
-            transition: 'transform 1s ease',
+            textAlign: 'center',
           }}
         >
-          <Typography variant="h5" component="h1" align="center" gutterBottom fontWeight="bold">
+          <Typography variant="h5" component="h1" gutterBottom fontWeight="bold">
             Candidate Registration Form
           </Typography>
-          <Typography variant="body1" align="center" mb={3}>
+          <Typography variant="body2" mb={4}>
             Kindly complete the registration form below to apply. Your opportunity awaits!
           </Typography>
           <form onSubmit={handleSubmit}>
-            <Grid2 container spacing={2}>
-              <Grid2 xs={12} sm={6}>
+            <Grid2 container spacing={2}> {/* Changed to Grid2 */}
+              <Grid2 item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="First Name"
@@ -82,7 +79,7 @@ const FormComponent = () => {
                   onChange={(e) => setFirstname(e.target.value)}
                 />
               </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Last Name"
@@ -92,7 +89,7 @@ const FormComponent = () => {
                   onChange={(e) => setLastname(e.target.value)}
                 />
               </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Mobile"
@@ -102,7 +99,7 @@ const FormComponent = () => {
                   onChange={(e) => setNumber(e.target.value)}
                 />
               </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Email"
@@ -113,7 +110,7 @@ const FormComponent = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="D.O.B"
@@ -124,7 +121,7 @@ const FormComponent = () => {
                   onChange={(e) => setDob(e.target.value)}
                 />
               </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Qualification"
@@ -134,14 +131,14 @@ const FormComponent = () => {
                   onChange={(e) => setQualification(e.target.value)}
                 />
               </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12} sm={6}>
                 <Select
                   fullWidth
-                  label="Gender"
                   displayEmpty
                   variant="outlined"
-                  required
+                  value={gender}
                   onChange={(e) => setGender(e.target.value)}
+                  required
                 >
                   <MenuItem value="" disabled>Select Gender</MenuItem>
                   <MenuItem value="Male">Male</MenuItem>
@@ -149,14 +146,14 @@ const FormComponent = () => {
                   <MenuItem value="Other">Other</MenuItem>
                 </Select>
               </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12} sm={6}>
                 <Select
                   fullWidth
-                  label="Profile"
                   displayEmpty
                   variant="outlined"
-                  required
+                  value={role}
                   onChange={(e) => setRole(e.target.value)}
+                  required
                 >
                   <MenuItem value="" disabled>Select Profile</MenuItem>
                   <MenuItem value="Developer">Developer</MenuItem>
@@ -165,7 +162,7 @@ const FormComponent = () => {
                   <MenuItem value="Other">Other</MenuItem>
                 </Select>
               </Grid2>
-              <Grid2 xs={12}>
+              <Grid2 item xs={12}>
                 <TextField
                   fullWidth
                   label="Address"
@@ -177,17 +174,7 @@ const FormComponent = () => {
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </Grid2>
-              <Grid2 xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Experience"
-                  variant="outlined"
-                  placeholder="Enter Your Experience"
-                  required
-                  onChange={(e) => setExperience(e.target.value)}
-                />
-              </Grid2>
-              <Grid2 xs={12} sm={6}>
+              <Grid2 item xs={12}>
                 <Typography variant="body2" gutterBottom>
                   Upload Resume
                 </Typography>
@@ -198,7 +185,7 @@ const FormComponent = () => {
                   onChange={(e) => setResume(e.target.files[0])}
                 />
               </Grid2>
-              <Grid2 xs={12}>
+              <Grid2 item xs={12}>
                 <Button
                   fullWidth
                   type="submit"
