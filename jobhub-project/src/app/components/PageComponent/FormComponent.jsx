@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Box, TextField, Button, Typography, Select, MenuItem, Fade, Input, Grid2 } from '@mui/material';
+import { Box, TextField, Button, Typography, Select, MenuItem, Fade, Input, Grid, Container } from '@mui/material';
 import axios from "axios";
+
 
 const FormComponent = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -38,27 +39,22 @@ const FormComponent = () => {
   return (
     <Box
       sx={{
-        width: '100vw',
+       
         minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         background: 'linear-gradient(to bottom, #4caf50, #ffffff)',
         overflow: 'auto',
-        py: 4,
+        padding: '20px 0',
       }}
     >
-      <Fade in={isMounted} timeout={1000}>
-        <Box
+      <Container>
+         <Fade in={isMounted} timeout={1000}>
+        <Box mb={5}
           sx={{
-            maxWidth: 800,
-            width: '100%',
-            padding: 4,
-            boxShadow: 6,
-            borderRadius: 2,
-            background: 'rgba(255, 255, 255, 0.9)',
-            backdropFilter: 'blur(10px)',
-            textAlign: 'center',
+           boxShadow: '0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)',
+                        borderRadius: "10px",
+                        backgroundColor: "white",
+            padding: '30px',
+                        textAlign: 'center',
           }}
         >
           <Typography variant="h5" component="h1" gutterBottom fontWeight="bold">
@@ -68,8 +64,8 @@ const FormComponent = () => {
             Kindly complete the registration form below to apply. Your opportunity awaits!
           </Typography>
           <form onSubmit={handleSubmit}>
-            <Grid2 container spacing={2}> {/* Changed to Grid2 */}
-              <Grid2 item xs={12} sm={6}>
+            <Grid container spacing={3}> 
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="First Name"
@@ -78,8 +74,8 @@ const FormComponent = () => {
                   required
                   onChange={(e) => setFirstname(e.target.value)}
                 />
-              </Grid2>
-              <Grid2 item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Last Name"
@@ -88,8 +84,8 @@ const FormComponent = () => {
                   required
                   onChange={(e) => setLastname(e.target.value)}
                 />
-              </Grid2>
-              <Grid2 item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Mobile"
@@ -98,8 +94,8 @@ const FormComponent = () => {
                   required
                   onChange={(e) => setNumber(e.target.value)}
                 />
-              </Grid2>
-              <Grid2 item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Email"
@@ -109,8 +105,8 @@ const FormComponent = () => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </Grid2>
-              <Grid2 item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="D.O.B"
@@ -120,8 +116,8 @@ const FormComponent = () => {
                   required
                   onChange={(e) => setDob(e.target.value)}
                 />
-              </Grid2>
-              <Grid2 item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   label="Qualification"
@@ -130,8 +126,8 @@ const FormComponent = () => {
                   required
                   onChange={(e) => setQualification(e.target.value)}
                 />
-              </Grid2>
-              <Grid2 item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <Select
                   fullWidth
                   displayEmpty
@@ -145,8 +141,8 @@ const FormComponent = () => {
                   <MenuItem value="Female">Female</MenuItem>
                   <MenuItem value="Other">Other</MenuItem>
                 </Select>
-              </Grid2>
-              <Grid2 item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <Select
                   fullWidth
                   displayEmpty
@@ -161,8 +157,35 @@ const FormComponent = () => {
                   <MenuItem value="Manager">Manager</MenuItem>
                   <MenuItem value="Other">Other</MenuItem>
                 </Select>
-              </Grid2>
-              <Grid2 item xs={12}>
+                </Grid>
+                 <Grid item xs={12} sm={6}>
+                <Typography variant="body2" gutterBottom>
+                  Upload Resume
+                </Typography>
+                <Input
+                  type="file"
+                  fullWidth
+                  inputProps={{ accept: '.pdf,.doc,.docx' }}
+                  onChange={(e) => setResume(e.target.files[0])}
+                />
+                </Grid>
+                   <Grid item xs={12} sm={6}>
+                <Select
+                  fullWidth
+                  displayEmpty
+                  variant="outlined"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  required
+                >
+                  <MenuItem value="" disabled>Select Location</MenuItem>
+                  <MenuItem value="Male">Mohali</MenuItem>
+                  <MenuItem value="Female">Chandigarh</MenuItem>
+                  <MenuItem value="Other">Panchkula</MenuItem>
+                  <MenuItem value="Other">Panchkula</MenuItem>
+                </Select>
+              </Grid>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   label="Address"
@@ -173,33 +196,26 @@ const FormComponent = () => {
                   required
                   onChange={(e) => setAddress(e.target.value)}
                 />
-              </Grid2>
-              <Grid2 item xs={12}>
-                <Typography variant="body2" gutterBottom>
-                  Upload Resume
-                </Typography>
-                <Input
-                  type="file"
-                  fullWidth
-                  inputProps={{ accept: '.pdf,.doc,.docx' }}
-                  onChange={(e) => setResume(e.target.files[0])}
-                />
-              </Grid2>
-              <Grid2 item xs={12}>
+              </Grid>
+             
+                
+                
+              <Grid item xs={12}>
                 <Button
-                  fullWidth
+           
                   type="submit"
                   variant="contained"
                   color="success"
-                  sx={{ mt: 2, fontWeight: 'bold', fontSize: '1.1rem' }}
+                  sx={{ mt: 2, fontWeight: 'bold', fontSize: '1.1rem', padding: '15px 60px 15px 60px' }}
                 >
                   Submit
                 </Button>
-              </Grid2>
-            </Grid2>
+              </Grid>
+            </Grid>
           </form>
         </Box>
       </Fade>
+     </Container>
     </Box>
   );
 };
