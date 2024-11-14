@@ -17,6 +17,7 @@ import SecurityJob from '../../components/PageComponent/PopularJobs/DifferentCar
 import HotelStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/HotelStaffJob/HotelStaffJob'
 import WarehouseStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/WarehouseStaffJob/WarehouseStaffJob'
 import FactoryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/FactoryJob/FactoryJob'
+import EmployeeForm from '../../components/PageComponent/EmployeerForm'
 
 const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
         routes={{
             "/" : <Home/>,
             "/registration" : <FormComponent/>,
+            // "/registration" : <EmployeeForm/>,
              '/telecaller' : <TelecallerJob/>,
              '/documentverification' : <DocVerifyJob/>,
              '/dataentry': <DataEntryJob/>,
@@ -46,4 +48,4 @@ const AppRouter = () => {
   )
 }
 
-export default AppRouter
+export default AppRouter;
