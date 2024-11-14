@@ -24,7 +24,7 @@ const EmployeeForm = () => {
                     <Typography className="pt-3" variant="h6">
                     Kindly complete the registration form to find talented condidate</Typography>
                     <form>
-                          <Grid2  spacing={2}>
+              <Grid2  spacing={2}>
               <Grid2 xs={12} sm={6} marginTop={3}>
                 <TextField
                   style={{ width: '95%' }}
