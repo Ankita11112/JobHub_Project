@@ -91,7 +91,7 @@ const EmployeeForm = () => {
           name="role"
           label="Role"
         >
-          <MenuItem value="admin">Web Desginer</MenuItem>
+          <MenuItem value="admin">Web Designer</MenuItem>
           <MenuItem value="editor">Web Developer</MenuItem>
           <MenuItem value="viewer">Data Entry</MenuItem>
           <MenuItem value="admin">Document Verification</MenuItem>
