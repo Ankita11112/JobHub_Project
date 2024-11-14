@@ -13,8 +13,10 @@ import Testimonial from '../../../components/PageComponent/Testimonial';
 import FormComponent from '../../../components/PageComponent/FormComponent';
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
 import Footer from '../../../components/PageComponent/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
   const handleScrollView = () => {
     const section = document.getElementById("popularSection");
     if (section) {
@@ -63,7 +65,7 @@ const Home = () => {
           buttonTitle1="Find a Job"
           buttonTitle2="Hire Now"
           onButtonClick1={handleScrollView}
-          onButtonClick2={() => alert("Hire Now clicked!")}
+          onButtonClick2={() => navigate('/employeeRegistration')}
           imgSrc={HeaderImage}
           style= {{
             width: "95%", 
