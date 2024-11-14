@@ -130,7 +130,7 @@ const EmployeeForm = () => {
                                     fullWidth
                                     label="Job Timing"
                                     variant="outlined"
-                                    placeholder="Ex:- 9:30AM to 6:30PM"
+                                  placeholder="Ex:- 9:30AM to 6:30PM"
                                     required
                                 />
                             </Grid>
