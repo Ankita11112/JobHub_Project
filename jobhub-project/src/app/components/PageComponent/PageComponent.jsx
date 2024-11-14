@@ -45,4 +45,4 @@ const PageComponent = ({children}) => {
   )
 }
 
-export default PageComponent
+export default PageComponent;

@@ -31,7 +31,7 @@ const PopularJobs = ({ id }) => {
     { image: job6, title: 'Web Developer', onClick: () => navigate('/webdeveloper') },
     { image: job7, title: 'Construction', onClick: () => navigate('/construction') },
     { image: job8, title: 'Front Office', onClick: () => navigate('/frontoffice') },
-    { image: job9, title: 'Backend Office', onClick: () => navigate('/backoffice') },
+    { image: job9, title: 'Back Office', onClick: () => navigate('/backoffice') },
     { image: job10, title: 'House Keeping', onClick: () => navigate('/housekeeping') },
     { image: job11, title: 'Delivery', onClick: () => navigate('/delivery') },
     { image: job12, title: 'Security Guard', onClick: () => navigate('/securityguard') },
