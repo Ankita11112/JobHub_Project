@@ -1,10 +1,11 @@
 import React from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage02.png';
+import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage06.png';
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
+import WebDesignCategories from './Components/WebDesignCategories';
 
 const WebDesignerJob = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const WebDesignerJob = () => {
           {<>
             Web <span style={{ color: "green" }}>Designer</span>
           </>}
-          subText="Friendly telecaller providing customer support, handling inquiries, and boosting client satisfaction."
+          subText="Creative web designer crafting user-friendly, visually appealing, and responsive websites."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
@@ -29,6 +30,7 @@ const WebDesignerJob = () => {
             height: "auto", 
           }}
         />
+        <WebDesignCategories/>
       <JobDetails/>
       </PageComponent>
     </>
