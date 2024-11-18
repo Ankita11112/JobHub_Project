@@ -6,6 +6,7 @@ import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import WebDesignCategories from './Components/WebDesignCategories';
+import WebDesignCard from './Components/WebDesignCard';
 
 const WebDesignerJob = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const WebDesignerJob = () => {
         />
         <WebDesignCategories/>
       <JobDetails/>
+        <WebDesignCard/>
       </PageComponent>
     </>
   )
