@@ -25,7 +25,10 @@ const WebDesignCard = () => {
           <Typography
             variant="h3"
             component="h2"
-            sx={{ textAlign: 'center', fontSize: { xs: '35px', md: '45px' } }}
+            sx={{
+              textAlign: 'center',
+              fontSize: { xs: '35px', md: '45px'},
+            }}
           >
             Key Roles in Modern <span style={{ color: 'green' }}>Web Design</span>
           </Typography>
@@ -48,19 +51,21 @@ const WebDesignCard = () => {
         </Grid2>
       </Grid2>
 
-      <Grid2 container spacing={5} sx={{ width: '80%' }}>
+      <Grid2 container spacing={5} sx={{ width: '80%', mb: 9, }}>
         <Grid2
           item
           xs={12}
           sm={8}
           md={4}
           sx={{
-            width: { sm: '100%', md: '30%' }, borderRadius: "5px",
+            width: { sm: '100%', md: '30%' },
+            borderRadius: "5px",
+            boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
             border:
               "8px solid green",
             position: 'relative',
             '&:hover .hiddenImg': {
-              transform: {md: 'translateX(-100px)'},
+              transform: { md: 'translateX(-100px)' },
             },
           }}
         >
@@ -122,14 +127,15 @@ const WebDesignCard = () => {
           sm={8}
           md={4}
           sx={{
-            width: { sm: '100%', md: '30%' }, 
-            top: {md: "2rem"},
+            width: { sm: '100%', md: '30%' },
+            top: { md: "2rem" },
+            boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
             borderRadius: "5px",
             border:
               "8px solid green",
             position: 'relative',
             '&:hover .hiddenImg': {
-              transform: {md: 'translate(-45px, -40px)'},
+              transform: { md: 'translate(-45px, -40px)' },
             },
           }}
         >
@@ -165,7 +171,7 @@ const WebDesignCard = () => {
             </CardContent>
           </Card>
           <Box
-           sx={{
+            sx={{
               position: 'absolute',
               top: '90%',
               left: "-10px",
@@ -191,14 +197,15 @@ const WebDesignCard = () => {
           sm={8}
           md={4}
           sx={{
-            width: { sm: '100%', md: '30%' }, 
-            top: {md: "4rem"},
+            width: { sm: '100%', md: '30%' },
+            top: { md: "4rem" },
+            boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
             borderRadius: "5px",
             border:
               "8px solid green",
             position: 'relative',
             '&:hover .hiddenImg': {
-              transform: {md: 'translateY(-155px)'},
+              transform: { md: 'translateY(-155px)' },
             },
           }}
         >
@@ -234,10 +241,10 @@ const WebDesignCard = () => {
             </CardContent>
           </Card>
           <Box
-           sx={{
+            sx={{
               position: 'absolute',
               top: '0%',
-              left: {md: '55%'},
+              left: { md: '55%' },
               transform: 'translateY(50%)',
               width: '150px',
               height: '150px',
