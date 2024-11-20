@@ -6,6 +6,8 @@ import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage';
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import DataCategories from './Components/DataCategories';
+import JobDescription from './Components/JobDescription';
+import DataEntryTypes from './Components/DataEntryTypes';
 
 const DataEntryJob = () => {
   const navigate = useNavigate();
@@ -32,11 +34,11 @@ const DataEntryJob = () => {
         />
       <DataCategories/>
       <JobDetails/>
-      {/* <BusinessServices/>
-      <JobhubTelecaller/> */}
+      <JobDescription/>
+      <DataEntryTypes/>
       </PageComponent>
     </>
   )
 }
 
-export default DataEntryJob
+export default DataEntryJob;
