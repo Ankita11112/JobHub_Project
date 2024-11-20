@@ -18,13 +18,15 @@ import HotelStaffJob from '../../components/PageComponent/PopularJobs/DifferentC
 import WarehouseStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/WarehouseStaffJob/WarehouseStaffJob'
 import FactoryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/FactoryJob/FactoryJob'
 import EmployeeForm from '../../components/PageComponent/EmployeerForm'
+import Contact from '../Pages/Contact/Contact'
 
 const AppRouter = () => {
   return (
     <>
     <RouteMaker
         routes={{
-            "/" : <Home/>,
+          "/": <Home />,
+          "/contact": <Contact/>,
           "/registration": <FormComponent />,
             "/employeeRegistration": <EmployeeForm/>,
              '/telecaller' : <TelecallerJob/>,

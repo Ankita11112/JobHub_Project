@@ -2,7 +2,6 @@ import React from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
 import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage06.png';
-import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage06.png';
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';

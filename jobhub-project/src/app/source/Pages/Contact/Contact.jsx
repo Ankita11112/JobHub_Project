@@ -50,7 +50,7 @@ const Contact = () => {
                         Contact Us <span style={{ color: "green" }}>Page</span>
                     </>}
                     subText="Let’s Get in Touch – We’re Committed to Providing You with the Best Support Possible."
-                    buttonTitle1="Find a Job"
+                    buttonTitle1="Scroll Down"
                     imgSrc={ContactHeaderImage}
                     style={{
                         width: "95%",
