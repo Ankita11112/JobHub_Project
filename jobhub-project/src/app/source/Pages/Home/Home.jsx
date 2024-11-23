@@ -10,9 +10,9 @@ import ResumeSection from '../../../components/PageComponent/ResumeSection';
 import PartnerSection from '../../../components/PageComponent/PartnerSection';
 import ChoiceSection from '../../../components/PageComponent/ChoiceSection';
 import Testimonial from '../../../components/PageComponent/Testimonial';
-import FormComponent from '../../../components/PageComponent/FormComponent';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
-import Footer from '../../../components/PageComponent/Footer';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -65,11 +65,11 @@ const Home = () => {
           buttonTitle1="Find a Job"
           buttonTitle2="Hire Now"
           onButtonClick1={handleScrollView}
-          onButtonClick2={() => navigate('/employeeRegistration')}
+          onButtonClick2={() => navigate('/verification')}
           imgSrc={HeaderImage}
-          style= {{
-            width: "95%", 
-            height: "auto", 
+          style={{
+            width: "95%",
+            height: "auto",
           }}
           button2
         />
@@ -84,6 +84,19 @@ const Home = () => {
           faqItems={faqItems}
         />
       </PageComponent>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        // transition= {Bounce}
+/>
     </>
   )
 }

@@ -18,6 +18,8 @@ import HotelStaffJob from '../../components/PageComponent/PopularJobs/DifferentC
 import WarehouseStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/WarehouseStaffJob/WarehouseStaffJob'
 import FactoryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/FactoryJob/FactoryJob'
 import EmployeeForm from '../../components/PageComponent/EmployeerForm'
+import ContactVerify from '../Pages/PhoneVerification/ContactVerify/ContactVerify.jsx'
+import OtpPage from '../Pages/PhoneVerification/OTPpage/OtpPage'
 import Contact from '../Pages/Contact/Contact'
 
 const AppRouter = () => {
@@ -25,8 +27,10 @@ const AppRouter = () => {
     <>
     <RouteMaker
         routes={{
-          "/": <Home />,
+          "/*": <Home />,
           "/contact": <Contact/>,
+            "/verification": <ContactVerify/>,
+            "/otpcode": <OtpPage/>,
           "/registration": <FormComponent />,
             "/employeeRegistration": <EmployeeForm/>,
              '/telecaller' : <TelecallerJob/>,

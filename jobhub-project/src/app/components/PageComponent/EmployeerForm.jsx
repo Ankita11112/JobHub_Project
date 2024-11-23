@@ -76,6 +76,15 @@ const EmployeeForm = () => {
                                     </Select>
                                 </FormControl>
                             </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    fullWidth
+                                    label="From where you heard about this"
+                                    variant="outlined"
+                                    placeholder="Enter Your Company Name"
+                                    required
+                                />
+                            </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
@@ -86,60 +95,11 @@ const EmployeeForm = () => {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                <FormControl fullWidth variant="outlined" required>
-                                    <InputLabel>Profile</InputLabel>
-                                    <Select
-                                        label="Profile"
-                                    >
-                                        <MenuItem value="Web Designer">Web Designer</MenuItem>
-                                        <MenuItem value="Web Developer">Web Developer</MenuItem>
-                                        <MenuItem value="Data Entry">Data Entry</MenuItem>
-                                        <MenuItem value="Document Verification">Document Verification</MenuItem>
-                                        <MenuItem value="Telecaller">Telecaller</MenuItem>
-                                        <MenuItem value="Receptionist">Receptionist</MenuItem>
-                                        <MenuItem value="Other">Other</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
                                     label="Mode Of Interview"
                                     variant="outlined"
                                     placeholder="Online/Offline"
-                                    required
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <FormControl fullWidth variant="outlined" required>
-                                    <InputLabel>Experience</InputLabel>
-                                    <Select
-                                        label="Experience"
-                                    >
-                                        <MenuItem value="0-1 Years">0-1 Years</MenuItem>
-                                        <MenuItem value="1-2 Years">1-2 Years</MenuItem>
-                                        <MenuItem value="2-3 Years">2-3 Years</MenuItem>
-                                        <MenuItem value="3-4 Years">3-4 Years</MenuItem>
-                                        <MenuItem value="4-5 Years">4-5 Years</MenuItem>
-                                        <MenuItem value="Other">Other</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    fullWidth
-                                    label="Job Timing"
-                                    variant="outlined"
-                                  placeholder="Ex:- 9:30AM to 6:30PM"
-                                    required
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    fullWidth
-                                    label="Employment Type"
-                                    variant="outlined"
-                                    placeholder="Part-Time/Full-Time"
                                     required
                                 />
                             </Grid>

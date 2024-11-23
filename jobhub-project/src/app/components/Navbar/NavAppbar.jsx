@@ -133,7 +133,7 @@ function NavAppBar() {
               onClick={handleCloseNavMenu}
               sx={{
                 my: 4,
-                px: {lg: 6},
+                px: {lg: 5},
                 color: 'black',
                 display: 'block',
                 py: 2,
@@ -150,7 +150,7 @@ function NavAppBar() {
                 },
               }}
             />
-            <ButtonComponent
+            {/* <ButtonComponent
               title="Admin"
               onClick={handleCloseNavMenu}
               sx={{
@@ -172,7 +172,7 @@ function NavAppBar() {
                   transform: 'scale(0.95)',
                 },
               }}
-            />
+            /> */}
           </Box>
         </Toolbar>
       </Container>
