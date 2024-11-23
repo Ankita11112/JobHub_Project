@@ -17,10 +17,11 @@ import SecurityJob from '../../components/PageComponent/PopularJobs/DifferentCar
 import HotelStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/HotelStaffJob/HotelStaffJob'
 import WarehouseStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/WarehouseStaffJob/WarehouseStaffJob'
 import FactoryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/FactoryJob/FactoryJob'
-import EmployeeForm from '../../components/PageComponent/EmployeerForm'
+import EmployeeForm from '../Pages/EmployerPage/EmployeerForm.jsx'
 import ContactVerify from '../Pages/PhoneVerification/ContactVerify/ContactVerify.jsx'
-import OtpPage from '../Pages/PhoneVerification/OTPpage/OtpPage'
 import Contact from '../Pages/Contact/Contact'
+import EmployerDashboard from '../Pages/EmployerPage/EmployerDashboard/EmployerDashboard.jsx'
+import JobPostForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm.jsx'
 
 const AppRouter = () => {
   return (
@@ -29,10 +30,10 @@ const AppRouter = () => {
         routes={{
           "/*": <Home />,
           "/contact": <Contact/>,
+          "/jobpost": <JobPostForm/>,
             "/verification": <ContactVerify/>,
-            "/otpcode": <OtpPage/>,
-          "/registration": <FormComponent />,
-            "/employeeRegistration": <EmployeeForm/>,
+            "/registration": <FormComponent />,
+            "/employeregistration": <EmployeeForm/>,
              '/telecaller' : <TelecallerJob/>,
              '/documentverification' : <DocVerifyJob/>,
              '/dataentry': <DataEntryJob/>,
@@ -47,7 +48,8 @@ const AppRouter = () => {
              '/securityguard' : <SecurityJob/>,
              '/hotelstaff' : <HotelStaffJob/>,
              '/warehousestaff' : <WarehouseStaffJob/>,
-             '/factory' : <FactoryJob/>
+             '/factory' : <FactoryJob/>,
+             '/employerdashboard': <EmployerDashboard/>,
         }}
     />
     </>

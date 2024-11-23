@@ -150,29 +150,6 @@ function NavAppBar() {
                 },
               }}
             />
-            {/* <ButtonComponent
-              title="Admin"
-              onClick={handleCloseNavMenu}
-              sx={{
-                my: 4,
-                px: {lg: 6},
-                color: 'black',
-                display: 'block', 
-                py:2,
-                border: '1px solid #34A853',
-                background: 'linear-gradient(45deg, #34A853, white)',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                ml: {xs: 0, sm: 0, md: 3, lg: 3},
-                '&:hover': {
-                  backgroundColor: '#34A853',
-                  color: 'white',
-                  boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
-                },
-                '&:active': {
-                  transform: 'scale(0.95)',
-                },
-              }}
-            /> */}
           </Box>
         </Toolbar>
       </Container>

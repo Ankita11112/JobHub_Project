@@ -10,8 +10,6 @@ import ResumeSection from '../../../components/PageComponent/ResumeSection';
 import PartnerSection from '../../../components/PageComponent/PartnerSection';
 import ChoiceSection from '../../../components/PageComponent/ChoiceSection';
 import Testimonial from '../../../components/PageComponent/Testimonial';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
 import { useNavigate } from 'react-router-dom';
 
@@ -84,19 +82,6 @@ const Home = () => {
           faqItems={faqItems}
         />
       </PageComponent>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        // transition= {Bounce}
-/>
     </>
   )
 }

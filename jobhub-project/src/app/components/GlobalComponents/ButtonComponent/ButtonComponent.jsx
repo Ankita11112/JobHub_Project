@@ -1,15 +1,17 @@
 import { Button } from '@mui/material'
 import React from 'react'
+import SearchIcon from '@mui/icons-material/Search';
 
-const ButtonComponent = ({title, onClick, sx}) => {
+const ButtonComponent = ({title, onClick, sx, search}) => {
   return (
     <>
-    <Button
+    <Button       
+            
                   variant="contained"
                   sx={sx}
                   onClick = {onClick}
                 >
-                 {title}
+                {search && (<SearchIcon />)} {title}
     </Button>
     </>
   )
