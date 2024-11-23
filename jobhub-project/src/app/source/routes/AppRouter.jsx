@@ -17,18 +17,23 @@ import SecurityJob from '../../components/PageComponent/PopularJobs/DifferentCar
 import HotelStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/HotelStaffJob/HotelStaffJob'
 import WarehouseStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/WarehouseStaffJob/WarehouseStaffJob'
 import FactoryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/FactoryJob/FactoryJob'
-import EmployeeForm from '../../components/PageComponent/EmployeerForm'
+import EmployeeForm from '../Pages/EmployerPage/EmployeerForm.jsx'
+import ContactVerify from '../Pages/PhoneVerification/ContactVerify/ContactVerify.jsx'
 import Contact from '../Pages/Contact/Contact'
+import EmployerDashboard from '../Pages/EmployerPage/EmployerDashboard/EmployerDashboard.jsx'
+import JobPostForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm.jsx'
 
 const AppRouter = () => {
   return (
     <>
     <RouteMaker
         routes={{
-          "/": <Home />,
+          "/*": <Home />,
           "/contact": <Contact/>,
-          "/registration": <FormComponent />,
-            "/employeeRegistration": <EmployeeForm/>,
+          "/jobpost": <JobPostForm/>,
+            "/verification": <ContactVerify/>,
+            "/registration": <FormComponent />,
+            "/employeregistration": <EmployeeForm/>,
              '/telecaller' : <TelecallerJob/>,
              '/documentverification' : <DocVerifyJob/>,
              '/dataentry': <DataEntryJob/>,
@@ -43,7 +48,8 @@ const AppRouter = () => {
              '/securityguard' : <SecurityJob/>,
              '/hotelstaff' : <HotelStaffJob/>,
              '/warehousestaff' : <WarehouseStaffJob/>,
-             '/factory' : <FactoryJob/>
+             '/factory' : <FactoryJob/>,
+             '/employerdashboard': <EmployerDashboard/>,
         }}
     />
     </>
