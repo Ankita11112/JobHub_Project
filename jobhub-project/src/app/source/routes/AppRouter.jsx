@@ -22,6 +22,8 @@ import ContactVerify from '../Pages/PhoneVerification/ContactVerify/ContactVerif
 import Contact from '../Pages/Contact/Contact'
 import EmployerDashboard from '../Pages/EmployerPage/EmployerDashboard/EmployerDashboard.jsx'
 import JobPostForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm.jsx'
+import JobDetailsForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm/JobDetailsForm.jsx'
+import FullJobDetails from '../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/FullJobDetails.jsx'
 
 const AppRouter = () => {
   return (
@@ -30,7 +32,8 @@ const AppRouter = () => {
         routes={{
           "/*": <Home />,
           "/contact": <Contact/>,
-          "/jobpost": <JobPostForm/>,
+          "/jobpostdetailsform" : <JobDetailsForm/>,
+          "/jobpostdetails": <FullJobDetails/>,
             "/verification": <ContactVerify/>,
             "/registration": <FormComponent />,
             "/employeregistration": <EmployeeForm/>,

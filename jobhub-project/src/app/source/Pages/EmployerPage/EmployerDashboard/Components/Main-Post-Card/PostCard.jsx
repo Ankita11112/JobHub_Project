@@ -3,6 +3,7 @@ import { Box, Card, CardContent, Typography } from '@mui/material';
 import ButtonComponent from '../../../../../../components/GlobalComponents/ButtonComponent/ButtonComponent';
 import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
+import JobPostCard from './JobPostCard';
 
 const PostCard = () => {
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ const PostCard = () => {
               }}>
               <ButtonComponent
                   title="Add Post"
-                  onClick={() => navigate("/jobpost")}
+                  onClick={() => navigate("/jobpostdetailsform")}
                   sx={{
                     my: 3,
                     px: { lg: 4 },
@@ -69,12 +70,10 @@ const PostCard = () => {
               </Box>
                 <Card sx={{
                   width: "100%",
-                  height: '100vh',
+                  height: 'auto',
                   boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
                 }}>
-                  <CardContent>
-                    <Typography>Oops😢 Still no any type of Post</Typography>
-                  </CardContent>
+                 <JobPostCard/>
                 </Card>
               </Grid>
             </Grid>
