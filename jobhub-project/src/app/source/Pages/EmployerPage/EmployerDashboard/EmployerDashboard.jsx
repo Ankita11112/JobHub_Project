@@ -7,6 +7,7 @@ import { DashboardSidebar } from './Components/DashboardSidebar/DashboardSidebar
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PostCard from './Components/Main-Post-Card/PostCard';
+import JobPostCard from './Components/Main-Post-Card/JobPostCard';
 
 const EmployerDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -50,7 +51,7 @@ const EmployerDashboard = () => {
             }}
           >
             <DashboardNav />
-            <PostCard/>
+            <JobPostCard/>
           </Grid>
         </Grid>
 

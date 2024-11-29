@@ -1,44 +1,30 @@
 import React from 'react'
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import { Box,} from '@mui/material';
 import ButtonComponent from '../../../../../../components/GlobalComponents/ButtonComponent/ButtonComponent';
-import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
-import JobPostCard from './JobPostCard';
 
 const PostCard = () => {
     const navigate = useNavigate();
   return (
     <>
-         <Grid container sx={{
-                displa: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center"
-              }}>
-              <Grid item size={11}>
-
-              <Box sx={{
+        <Box sx={{
                 display:"flex",
                 justifyContent: "flex-end",
                 width : "100%",
+                mt: 2
               }}>
               <ButtonComponent
                   title="Add Post"
                   onClick={() => navigate("/jobpostdetailsform")}
                   sx={{
-                    my: 3,
+                    // my: 3,
                     px: { lg: 4 },
-                    color: 'black',
+                    color: 'white',
                     display: 'block',
                     py: 1,
                     border: '1px solid #34A853',
-                    background: 'linear-gradient(45deg, #34A853, white)',
+                    background: "green",
                     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                    '&:hover': {
-                      backgroundColor: '#34A853',
-                      color: 'white',
-                      boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
-                    },
                     '&:active': {
                       transform: 'scale(0.95)',
                     },
@@ -48,35 +34,21 @@ const PostCard = () => {
                   title="Delete Post"
                   onClick={() => alert("Delete Me😐")}
                   sx={{
-                    my: 3,
-                    ml: {lg: 2},
+                    // my: 3,
+                    mx: {xs: 2, lg: 2},
                     px: { lg: 2 },
-                    color: 'black',
+                    color: 'white',
                     display: 'block',
                     py: 1,
                     border: '1px solid #34A853',
-                    background: 'linear-gradient(45deg, #34A853, white)',
+                    background: "green",
                     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                    '&:hover': {
-                      backgroundColor: '#34A853',
-                      color: 'white',
-                      boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
-                    },
                     '&:active': {
                       transform: 'scale(0.95)',
                     },
                   }}
                 />
-              </Box>
-                <Card sx={{
-                  width: "100%",
-                  height: 'auto',
-                  boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
-                }}>
-                 <JobPostCard/>
-                </Card>
-              </Grid>
-            </Grid>
+          </Box>
     </>
   )
 }

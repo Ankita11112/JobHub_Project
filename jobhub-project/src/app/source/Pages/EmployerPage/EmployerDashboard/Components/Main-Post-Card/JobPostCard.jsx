@@ -114,7 +114,6 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   Card,
-  CardContent,
   Typography,
   Chip,
   IconButton,
@@ -124,6 +123,7 @@ import Grid from "@mui/material/Grid2";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
+import PostCard from "./PostCard";
 
 const JobPostCard = () => {
   const [jobPosts, setJobPosts] = useState([]);
@@ -142,15 +142,17 @@ const JobPostCard = () => {
   }, []);
 
   return (
+    <>
+    <Box>
+     <PostCard/>
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        gap: 2,
+        gap: 1,
         padding: 3,
-        backgroundColor: "#f9f9f9",
+        // backgroundColor: "#f9f9f9",
         minHeight: "100vh",
       }}
     >
@@ -162,16 +164,19 @@ const JobPostCard = () => {
           No job postings available. Please create a new job post.
         </Typography>
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {jobPosts.map((post, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
                 sx={{
                   borderRadius: "10px",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-                  padding: 2,
+                  p: 2,
                   backgroundColor: "#fff",
                   position: "relative",
+                  minWidth: "350px",
+                  maxWidth: "400px",
+                  width: "250px"
                 }}
               >
                 <Box
@@ -197,21 +202,16 @@ const JobPostCard = () => {
                 </Typography>
                 
                 {/* Role, Benefits, Job Description */}
-                <Typography variant="body2" color="textSecondary" mt={2}>
+                {/* <Typography variant="body2" color="textSecondary" mt={2}>
                   <strong>Role:</strong> {post.jobDetails.jobRole}
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2" color="textSecondary">
                   <strong>Benefits:</strong>{" "}
                   {post.jobDetails.benefits.length > 0
                     ? post.jobDetails.benefits.join(", ")
                     : "None"}
                 </Typography>
-                <Typography variant="body2" mt={2} sx={{ lineHeight: 1.5 }}>
-                  <strong>Description:</strong> {post.jobDetails.jobDescription}
-                </Typography>
-
-                {/* Tags */}
-                <Box
+                {/* <Box
                   sx={{
                     display: "flex",
                     gap: 1,
@@ -222,10 +222,10 @@ const JobPostCard = () => {
                   {post.jobDetails.tags?.map((tag, i) => (
                     <Chip key={i} label={tag} size="small" />
                   ))}
-                </Box>
+                </Box> */}
 
                 {/* Posted Date and Favorite Button */}
-                <Box
+                {/* <Box
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -239,14 +239,189 @@ const JobPostCard = () => {
                   <IconButton>
                     <FavoriteBorderIcon />
                   </IconButton>
-                </Box>
+                </Box> */}
 
                 {/* View Details Button */}
                 <Button
                   variant="contained"
-                  color="primary"
                   fullWidth
-                  sx={{ mt: 2 }}
+                  sx={{ mt: 1, background: "green" }}
+                  onClick={() => navigate("/jobpostdetails")}
+                >
+                  View Details
+                </Button>
+              </Card>
+            </Grid>
+          ))}
+          {jobPosts.map((post, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card
+                  sx={{
+                  borderRadius: "10px",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                  padding: 2,
+                  backgroundColor: "#fff",
+                  position: "relative",
+                  minWidth: "350px",
+                  maxWidth: "400px",
+                  width: "250px"
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: 2,
+                  }}
+                >
+                  <Typography variant="h6">{post.jobDetails.jobTitle}</Typography>
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                </Box>
+
+                {/* Job Post Details */}
+                <Typography variant="subtitle2" color="textSecondary">
+                  {post.jobDetails.company} - {post.jobDetails.jobLocation}
+                </Typography>
+                <Typography variant="subtitle2" color="textSecondary" mt={1}>
+                  {post.jobDetails.jobType} • ₹{post.jobDetails.salary}
+                </Typography>
+                
+                {/* Role, Benefits, Job Description */}
+                {/* <Typography variant="body2" color="textSecondary" mt={2}>
+                  <strong>Role:</strong> {post.jobDetails.jobRole}
+                </Typography> */}
+                <Typography variant="body2" color="textSecondary">
+                  <strong>Benefits:</strong>{" "}
+                  {post.jobDetails.benefits.length > 0
+                    ? post.jobDetails.benefits.join(", ")
+                    : "None"}
+                </Typography>
+                {/* <Box
+                  sx={{
+                    display: "flex",
+                    gap: 1,
+                    flexWrap: "wrap",
+                    marginTop: 2,
+                  }}
+                >
+                  {post.jobDetails.tags?.map((tag, i) => (
+                    <Chip key={i} label={tag} size="small" />
+                  ))}
+                </Box> */}
+
+                {/* Posted Date and Favorite Button */}
+                {/* <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginTop: 2,
+                  }}
+                >
+                  <Typography variant="caption" color="textSecondary">
+                    Posted on: {post.jobDetails.postedDate}
+                  </Typography>
+                  <IconButton>
+                    <FavoriteBorderIcon />
+                  </IconButton>
+                </Box> */}
+
+                {/* View Details Button */}
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{ mt: 1, background: "green" }}
+                  onClick={() => navigate("/jobpostdetails")}
+                >
+                  View Details
+                </Button>
+              </Card>
+            </Grid>
+          ))}
+          {jobPosts.map((post, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Card
+                  sx={{
+                  borderRadius: "10px",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                  padding: 2,
+                  backgroundColor: "#fff",
+                  position: "relative",
+                  minWidth: "350px",
+                  maxWidth: "400px",
+                  width: "250px"
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: 2,
+                  }}
+                >
+                  <Typography variant="h6">{post.jobDetails.jobTitle}</Typography>
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                </Box>
+
+                {/* Job Post Details */}
+                <Typography variant="subtitle2" color="textSecondary">
+                  {post.jobDetails.company} - {post.jobDetails.jobLocation}
+                </Typography>
+                <Typography variant="subtitle2" color="textSecondary" mt={1}>
+                  {post.jobDetails.jobType} • ₹{post.jobDetails.salary}
+                </Typography>
+                
+                {/* Role, Benefits, Job Description */}
+                {/* <Typography variant="body2" color="textSecondary" mt={2}>
+                  <strong>Role:</strong> {post.jobDetails.jobRole}
+                </Typography> */}
+                <Typography variant="body2" color="textSecondary">
+                  <strong>Benefits:</strong>{" "}
+                  {post.jobDetails.benefits.length > 0
+                    ? post.jobDetails.benefits.join(", ")
+                    : "None"}
+                </Typography>
+                {/* <Box
+                  sx={{
+                    display: "flex",
+                    gap: 1,
+                    flexWrap: "wrap",
+                    marginTop: 2,
+                  }}
+                >
+                  {post.jobDetails.tags?.map((tag, i) => (
+                    <Chip key={i} label={tag} size="small" />
+                  ))}
+                </Box> */}
+
+                {/* Posted Date and Favorite Button */}
+                {/* <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginTop: 2,
+                  }}
+                >
+                  <Typography variant="caption" color="textSecondary">
+                    Posted on: {post.jobDetails.postedDate}
+                  </Typography>
+                  <IconButton>
+                    <FavoriteBorderIcon />
+                  </IconButton>
+                </Box> */}
+
+                {/* View Details Button */}
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{ mt: 1, background: "green" }}
                   onClick={() => navigate("/jobpostdetails")}
                 >
                   View Details
@@ -257,6 +432,8 @@ const JobPostCard = () => {
         </Grid>
       )}
     </Box>
+    </Box>
+    </>
   );
 };
 

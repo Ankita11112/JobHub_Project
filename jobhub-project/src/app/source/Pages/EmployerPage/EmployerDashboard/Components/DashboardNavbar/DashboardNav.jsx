@@ -91,8 +91,7 @@ const DashboardNav = () => {
               display: 'block',
               border: '1px solid #34A853',
               py: 1,
-              background: 'linear-gradient(45deg, #006400, #90ee90)',
-              color: 'black',
+              background: "green",
               transition: 'transform 0.2s ease, box-shadow 0.2s ease',
               '&:hover': {
                 color: 'white',
@@ -164,8 +163,9 @@ const DashboardNav = () => {
               </IconButton>
             </MenuItem>
           </Card>
-        )}
+       )}
       </Box>
+      {/* <PostCard/> */}
     </>
   );
 };
