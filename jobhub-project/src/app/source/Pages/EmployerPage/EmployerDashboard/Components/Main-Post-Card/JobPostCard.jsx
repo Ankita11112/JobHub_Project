@@ -149,14 +149,16 @@ const JobPostCard = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "left",
         gap: 1,
-        padding: 3,
+        p: 3,
         // backgroundColor: "#f9f9f9",
         minHeight: "100vh",
       }}
     >
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" sx={{
+        alignSelf: "center"
+      }} gutterBottom>
         Job Postings
       </Typography>
       {jobPosts.length === 0 ? (
@@ -171,12 +173,12 @@ const JobPostCard = () => {
                 sx={{
                   borderRadius: "10px",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-                  p: 2,
+                  p: 4,
                   backgroundColor: "#fff",
                   position: "relative",
-                  minWidth: "350px",
-                  maxWidth: "400px",
-                  width: "250px"
+                  // minWidth: "350px",
+                  // maxWidth: "400px",
+                  width: "350px"
                 }}
               >
                 <Box
@@ -259,12 +261,12 @@ const JobPostCard = () => {
                   sx={{
                   borderRadius: "10px",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-                  padding: 2,
+                  p: 4,
                   backgroundColor: "#fff",
                   position: "relative",
-                  minWidth: "350px",
-                  maxWidth: "400px",
-                  width: "250px"
+                  // minWidth: "350px",
+                  // maxWidth: "400px",
+                  width: "350px"
                 }}
               >
                 <Box
@@ -347,12 +349,12 @@ const JobPostCard = () => {
                   sx={{
                   borderRadius: "10px",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-                  padding: 2,
+                  padding: 4,
                   backgroundColor: "#fff",
                   position: "relative",
-                  minWidth: "350px",
-                  maxWidth: "400px",
-                  width: "250px"
+                  // minWidth: "350px",
+                  // maxWidth: "400px",
+                  width: "350px"
                 }}
               >
                 <Box

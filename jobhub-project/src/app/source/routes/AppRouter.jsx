@@ -21,7 +21,7 @@ import EmployeeForm from '../Pages/EmployerPage/EmployeerForm.jsx'
 import ContactVerify from '../Pages/PhoneVerification/ContactVerify/ContactVerify.jsx'
 import Contact from '../Pages/Contact/Contact'
 import EmployerDashboard from '../Pages/EmployerPage/EmployerDashboard/EmployerDashboard.jsx'
-import JobPostForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm.jsx'
+// import JobPostForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm.jsx'
 import JobDetailsForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm/JobDetailsForm.jsx'
 import FullJobDetails from '../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/FullJobDetails.jsx'
 
