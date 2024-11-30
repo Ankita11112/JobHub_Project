@@ -1,12 +1,10 @@
 import { Box, Button, Card, CardContent, Typography } from '@mui/material';
-import ButtonComponent from '../../../../components/GlobalComponents/ButtonComponent/ButtonComponent';
 import Grid from '@mui/material/Grid2';
 import React, { useState } from 'react';
 import DashboardNav from './Components/DashboardNavbar/DashboardNav';
 import { DashboardSidebar } from './Components/DashboardSidebar/DashboardSidebar';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import PostCard from './Components/Main-Post-Card/PostCard';
 import JobPostCard from './Components/Main-Post-Card/JobPostCard';
 
 const EmployerDashboard = () => {

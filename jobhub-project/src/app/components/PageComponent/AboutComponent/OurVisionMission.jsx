@@ -27,7 +27,7 @@ const MissionVisionSection = () => {
           {/* Mission Card */}
           <Card sx={{ marginBottom: 2, boxShadow: 3}}>
             <CardContent>
-              <Typography variant="h5" gutterBottom color="primary">
+              <Typography variant="h4" gutterBottom sx={{color: "green"}}>
                 Our Mission
               </Typography>
               <Typography variant="body1">
@@ -41,7 +41,7 @@ that enhances career growth, bridges the gap between talent and opportunity, and
           {/* Vision Card */}
           <Card sx={{ boxShadow: 3 }}>
             <CardContent>
-              <Typography variant="h5" gutterBottom color="primary">
+              <Typography variant="h4" gutterBottom sx={{color: "green"}}>
                 Our Vision
               </Typography>
               <Typography variant="body1">

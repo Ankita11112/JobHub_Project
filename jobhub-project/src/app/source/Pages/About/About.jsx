@@ -17,7 +17,7 @@ const About = () => {
                         About Us <span style={{color: "green"}}>Page</span>
                     </>}
                     subText="Your trusted partner in job search and recruitment. At, we help job seekers find their dream jobs and assist employers in discovering top talent across industries."
-                    buttonTitle1="Apply Now"
+                    buttonTitle1="Scroll Down"
                     imgSrc={AboutHeaderImage}
                     style={{
                         width: "75%",

@@ -134,20 +134,12 @@ function NavAppBar() {
               sx={{
                 my: 4,
                 px: {lg: 5},
-                color: 'black',
                 display: 'block',
                 py: 2,
                 border: '1px solid #34A853',
-                background: 'linear-gradient(45deg, #34A853, white)',
+                background: 'green',
+                color: "#fff",
                 transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                '&:hover': {
-                  backgroundColor: '#34A853',
-                  color: 'white',
-                  boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
-                },
-                '&:active': {
-                  transform: 'scale(0.95)',
-                },
               }}
             />
           </Box>

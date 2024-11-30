@@ -24,6 +24,7 @@ import EmployerDashboard from '../Pages/EmployerPage/EmployerDashboard/EmployerD
 // import JobPostForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm.jsx'
 import JobDetailsForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm/JobDetailsForm.jsx'
 import FullJobDetails from '../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/FullJobDetails.jsx'
+import About from '../Pages/About/About.jsx'
 
 const AppRouter = () => {
   return (
@@ -31,6 +32,7 @@ const AppRouter = () => {
     <RouteMaker
         routes={{
           "/*": <Home />,
+          "/about": <About/>,
           "/contact": <Contact/>,
           "/jobpostdetailsform" : <JobDetailsForm/>,
           "/jobpostdetails": <FullJobDetails/>,
