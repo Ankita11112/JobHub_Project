@@ -21,42 +21,46 @@ import EmployeeForm from '../Pages/EmployerPage/EmployeerForm.jsx'
 import ContactVerify from '../Pages/PhoneVerification/ContactVerify/ContactVerify.jsx'
 import Contact from '../Pages/Contact/Contact'
 import EmployerDashboard from '../Pages/EmployerPage/EmployerDashboard/EmployerDashboard.jsx'
-// import JobPostForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm.jsx'
 import JobDetailsForm from '../Pages/EmployerPage/EmployerDashboard/JobPostForm/JobDetailsForm.jsx'
 import FullJobDetails from '../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/FullJobDetails.jsx'
 import About from '../Pages/About/About.jsx'
 
+import LogInPage from '../Pages/Admin/SigninUpPage/SignIn/LogIn.jsx'
+import SignUpPage from '../Pages/Admin/SigninUpPage/SignUp/SignUpPage.jsx'
+
 const AppRouter = () => {
   return (
     <>
-    <RouteMaker
+      <RouteMaker
         routes={{
           "/*": <Home />,
-          "/about": <About/>,
-          "/contact": <Contact/>,
-          "/jobpostdetailsform" : <JobDetailsForm/>,
-          "/jobpostdetails": <FullJobDetails/>,
-            "/verification": <ContactVerify/>,
-            "/registration": <FormComponent />,
-            "/employeregistration": <EmployeeForm/>,
-             '/telecaller' : <TelecallerJob/>,
-             '/documentverification' : <DocVerifyJob/>,
-             '/dataentry': <DataEntryJob/>,
-             '/webdesigner': <WebDesignerJob/>,
-             '/graphicdesigner': <GraphicDesignerJob/>,
-             '/webdeveloper' : <WebDeveloperJob/>,
-             '/construction' : <ConstructionJob/>,
-             '/frontoffice' : <FrontOfficeJob/>,
-             '/backoffice' : <BackOfficeJob/>,
-             '/housekeeping' : <HouseKeepingJob/>,
-             '/delivery' : <DeliveryJob/>,
-             '/securityguard' : <SecurityJob/>,
-             '/hotelstaff' : <HotelStaffJob/>,
-             '/warehousestaff' : <WarehouseStaffJob/>,
-             '/factory' : <FactoryJob/>,
-             '/employerdashboard': <EmployerDashboard/>,
+          "/about": <About />,
+          "/contact": <Contact />,
+          "/LogIn": <LogInPage />,
+          "/SignUp": <SignUpPage />,
+          "/jobpostdetailsform": <JobDetailsForm />,
+          "/jobpostdetails": <FullJobDetails />,
+          "/verification": <ContactVerify />,
+          "/registration": <FormComponent />,
+          "/employeregistration": <EmployeeForm />,
+          '/telecaller': <TelecallerJob />,
+          '/documentverification': <DocVerifyJob />,
+          '/dataentry': <DataEntryJob />,
+          '/webdesigner': <WebDesignerJob />,
+          '/graphicdesigner': <GraphicDesignerJob />,
+          '/webdeveloper': <WebDeveloperJob />,
+          '/construction': <ConstructionJob />,
+          '/frontoffice': <FrontOfficeJob />,
+          '/backoffice': <BackOfficeJob />,
+          '/housekeeping': <HouseKeepingJob />,
+          '/delivery': <DeliveryJob />,
+          '/securityguard': <SecurityJob />,
+          '/hotelstaff': <HotelStaffJob />,
+          '/warehousestaff': <WarehouseStaffJob />,
+          '/factory': <FactoryJob />,
+          '/employerdashboard': <EmployerDashboard />,
         }}
-    />
+      />
     </>
   )
 }
