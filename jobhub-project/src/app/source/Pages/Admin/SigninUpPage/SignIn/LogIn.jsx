@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Paper, TextField, Button, Typography, Link, FormControlLabel, Checkbox, IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Box, Paper, TextField, Button, Typography, FormControlLabel, Checkbox, IconButton } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 import BG from '../../../../../assets/Images/SignPage/SignInBG.jpg';
 import HomeIcon from '@mui/icons-material/Home';
 import { toast } from 'react-toastify';
@@ -67,6 +67,12 @@ const LogIn = () => {
     // }else{
     //   toast.error('Invalid credentials');
     // }
+    if (Object.keys(formErrors).length === 0) {
+      toast.success('Form submitted successfully!');
+      setTimeout(() => {
+        navigate("/")
+      }, 5000);
+    }
   };
 
   return (
@@ -148,7 +154,7 @@ const LogIn = () => {
             </Button>
           </form>
           <Typography style={signup}>
-            Don't have an account? <Link href="/SignUp">Sign Up</Link>
+            Don't have an account? <Link to="/signup">Sign Up</Link>
           </Typography>
         </Paper>
       </Box>
