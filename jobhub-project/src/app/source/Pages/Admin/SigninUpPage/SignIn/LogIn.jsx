@@ -50,28 +50,25 @@ const LogIn = () => {
   // Handle form submission and validation
   const handleSubmit = (e) => {
     e.preventDefault();
-    // let formErrors = {};
+    let formErrors = {};
 
-    // // Validate username
-    // if (!formValues.username) formErrors.username = 'Username is required';
+    // Validate username
+    if (!formValues.username) formErrors.username = 'Username is required';
 
-    // // Validate password
-    // if (!formValues.password) formErrors.password = 'Password is required';
-    // else if (formValues.password.length < 6) formErrors.password = 'Password must be at least 6 characters';
+    // Validate password
+    if (!formValues.password) formErrors.password = 'Password is required';
+    else if (formValues.password.length < 6) formErrors.password = 'Password must be at least 6 characters';
 
-    // setErrors(formErrors);
+    setErrors(formErrors);
 
-    // // If no errors, submit the form
-    // if (Object.keys(formErrors).length === 0) {
-    //    toast.success('Login successful');
-    // }else{
-    //   toast.error('Invalid credentials');
-    // }
+    // If no errors, submit the form
     if (Object.keys(formErrors).length === 0) {
       toast.success('Form submitted successfully!');
       setTimeout(() => {
-        navigate("/")
+        navigate("/admin")
       }, 5000);
+    }else{
+      toast.error('Invalid credentials');
     }
   };
 
