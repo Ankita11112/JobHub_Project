@@ -3,12 +3,12 @@ import { ToastContainer, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-
   return (
     <>
-      <AppRouter/>
+      <AppRouter />
+
       <ToastContainer
-        position="top-center"
+        position='top-center'
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -17,11 +17,11 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
-        transition= {Bounce}
-/>
+        theme='dark'
+        transition={Bounce}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
