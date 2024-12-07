@@ -4,37 +4,31 @@ import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import DataBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
-import image1 from '../../../../../../assets/Images/HousekeepingImages/second.png'
+import image1 from '../../../../../../assets/Images/DeliveryImages/second.png'
 
-const Housekeepingsecondsection = () => {
+const DeliverySeconddesc = () => {
   const items = [
+    {
+      icon: tickImg,
+      description:
+        '<strong>Definition :</strong> Goods/service will always be delivered on Time Delivery to elaborate that will always deliver in the exact time it was supposed to be delivered and it is also a reflection of the reliability and management of logistical activities.',
+    },
 
+    {
+      icon: tickImg,
+      description:
+        '<strong>Customer Satisfaction:</strong> Timely delivery builds trust and customer satisfaction because a customer will have an expectation or a smooth operation, so by delivering in time the delivery supports that expectation or smooth operation, or at least customer experience',
+    },
 
-
     {
       icon: tickImg,
       description:
-        'Remove dirt and dust from windows, mirrors, glasses and other similar surfaces in order to give new and neat look to all areas.',
+        '<strong>Business Impact :</strong> Some examples of such delivery schedules are guaranteed delivery schedules, which relieve penalties or delays, a better image for the company through better customer service, increased repeat business and clients loyalty.',
     },
     {
       icon: tickImg,
       description:
-        'When it comes to lifestyle cleanliness should be practiced in bathroom, kitchen, and other utilities to foster health and order of business or living.',
-    },
-    {
-      icon: tickImg,
-      description:
-        'When it comes to lifestyle cleanliness should be practiced in bathroom, kitchen, and other utilities to foster health and order of business or living.',
-    },
-    {
-      icon: tickImg,
-      description:
-        'When it comes to lifestyle cleanliness should be practiced in bathroom, kitchen, and other utilities to foster health and order of business or living.',
-    },
-    {
-      icon: tickImg,
-      description:
-        'Throw away garbage and recycles pleasantly, ensure any rubbish bin is clean and free from bad smell as well as ensuring vases are free from contamination in common or individual areas.',
+        '<strong>Operational Efficiency:</strong> It simplifies supply chain operation free of inefficiencies like technologies are introduced to achieve on time delivery, effective coordination, optimized routes and real time tracking.',
     },
 
   ];
@@ -115,8 +109,8 @@ const Housekeepingsecondsection = () => {
             alt="Graphic Design"
             sx={{
               width: '90%',
-              maxWidth: '370px',
-              maxHeight: '370px',
+              maxWidth: '470px',
+              maxHeight: '470px',
               objectFit: 'cover',
             }}
           />
@@ -128,4 +122,4 @@ const Housekeepingsecondsection = () => {
   );
 };
 
-export default Housekeepingsecondsection;
+export default DeliverySeconddesc;
