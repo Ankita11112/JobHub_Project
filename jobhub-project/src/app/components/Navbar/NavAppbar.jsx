@@ -17,7 +17,7 @@ const pages = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Services', path: '/services' },
-  { label: 'Contact Us', path: '/contact' }
+  { label: 'Contact Us', path: '/contact' },
 ];
 
 function NavAppBar() {
@@ -36,6 +36,11 @@ function NavAppBar() {
     navigate(path);
     handleCloseNavMenu();
   };
+
+  const handleLogin = () => {
+    handleCloseNavMenu();
+    navigate('/LogIn')
+  }
 
   return (
     <AppBar position="static">
@@ -130,10 +135,10 @@ function NavAppBar() {
           }}>
             <ButtonComponent
               title="Login"
-              onClick={handleCloseNavMenu}
+              onClick={handleLogin}
               sx={{
                 my: 4,
-                px: {lg: 5},
+                px: { lg: 5 },
                 display: 'block',
                 py: 2,
                 border: '1px solid #34A853',

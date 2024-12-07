@@ -26,6 +26,8 @@ import FullJobDetails from '../Pages/EmployerPage/EmployerDashboard/Components/M
 import About from '../Pages/About/About.jsx';
 import EmployerProfile from '../Pages/EmployerPage/EmployerDashboard/Components/EmployerProfile/EmployerProfile.jsx';
 import JobPostCard from '../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/JobPostCard.jsx';
+import LogInPage from '../Pages/Admin/SigninUpPage/SignIn/LogIn.jsx'
+import SignUpPage from '../Pages/Admin/SigninUpPage/SignUp/SignUpPage.jsx'
 
 const AppRouter = () => {
   return (

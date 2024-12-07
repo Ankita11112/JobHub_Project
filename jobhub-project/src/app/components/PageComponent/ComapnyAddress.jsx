@@ -61,8 +61,8 @@ const CompanyAddress = () => {
             border: "2px solid green",
             padding: { xs: "20px", md: "30px" },
             borderRadius: "10px",
-            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.2)",
-          }}
+            boxShadow: "4px 4px 10px rgba(0, 0,0, 0.2)",
+          } }
         />
       ),
       title: "Email",
