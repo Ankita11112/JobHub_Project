@@ -11,6 +11,7 @@ import {
   FormControl,
   Stepper,
   Step,
+  Chip,
   StepLabel,
   Checkbox,
   ListItemText,
@@ -18,6 +19,9 @@ import {
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const steps = [
   "Job Details",
@@ -36,6 +40,7 @@ const JobDetailsForm = () => {
       workType: "",
       salary: "",
       benefits: [],
+      postDate: "",
       jobLocation: "",
     },
     candidatesInterviewer: {
@@ -46,7 +51,6 @@ const JobDetailsForm = () => {
       age: "",
       jobDescription: "",
       interviewMethod: "",
-      address: "",
       communicationPreferences: "",
     },
   });
@@ -63,11 +67,8 @@ const JobDetailsForm = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    if (activeStep < steps.length - 1) {
-      setActiveStep((prevStep) => prevStep + 1);
-    } else {
-      handleSubmit();
-    }
+    if (!validateFormData()) return;
+    setActiveStep((prevStep) => prevStep + 1);
   };
 
   const handleBack = () => {
@@ -82,18 +83,22 @@ const JobDetailsForm = () => {
     localStorage.setItem("formData", JSON.stringify([formData]));  
     toast.success("Form Submitted Successfully!");
     setTimeout(() => {
-      navigate("/employerdashboard");
+      navigate("/employerdashboard/");
     }, 6000);
   };
 
-  const handleEdit = () => {
-    setActiveStep(0);
-  };
-
   const validateFormData = () => {
-    const { jobDetails } = formData;
-    if (!jobDetails.company || !jobDetails.jobTitle) {
-      toast.error("Please fill all required fields in Job Details!");
+    const { jobDetails, candidatesInterviewer } = formData;
+    const requiredFields =
+      activeStep === 0
+        ? ["company", "jobTitle", "jobType", "workType"]
+        : ["minimumEducation", "englishLevelRequired"];
+    const isValid = requiredFields.every((field) =>
+      activeStep === 0 ? jobDetails[field] : candidatesInterviewer[field]
+    );
+
+    if (!isValid) {
+      toast.error("Please fill all required fields!");
       return false;
     }
     return true;
@@ -119,17 +124,59 @@ const JobDetailsForm = () => {
     />
   );
 
-  const renderSelectField = (label, section, field, options) => (
+  // Inside the JobDetailsForm component
+const renderDatePicker = (label, section, field, required = false) => (
+  <LocalizationProvider dateAdapter={AdapterDayjs}>
+     <DatePicker
+      label={label}
+      value={formData[section][field] ? dayjs(formData[section][field]) : null} 
+      onChange={(e) =>
+        handleChange(
+          section,
+          field,
+          e.target.value// Format to ISO string or clear
+        )
+      }
+      renderInput={(params) => (
+        <TextField
+          fullWidth
+          required={required}
+          {...params}
+          helperText={required ? "Required" : ""}
+        />
+      )}
+    />
+    {/* <DatePicker/> */}
+  </LocalizationProvider>
+);
+
+  const renderSelectField = (label, section, field, options , isMultiple = false) => (
     <FormControl fullWidth required>
       <InputLabel>{label}</InputLabel>
       <Select
         value={formData[section][field]}
         label={label}
+        multiple={isMultiple}
         onChange={(e) => handleChange(section, field, e.target.value)}
+        renderValue={(selected) => (
+          isMultiple ? (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+              {selected.map((value, index) => (
+                <Chip key={index} label={value} />
+              ))}
+            </Box>) : selected    
+          )}
       >
         {options.map((option) => (
           <MenuItem key={option} value={option}>
-            {option}
+          {isMultiple ? (
+              <>
+                <Checkbox checked={formData[section][field].includes(option)} />
+                <ListItemText primary={option} />
+              </>
+            ) : (
+              option
+            )}
           </MenuItem>
         ))}
       </Select>
@@ -150,67 +197,66 @@ const JobDetailsForm = () => {
               {renderSelectField("Job Type", "jobDetails", "jobType", [
                 "Part-Time",
                 "Full-Time",
+                "Part-Time / Full-Time"
               ])}
               {renderSelectField("Work Type", "jobDetails", "workType", [
                 "Work-From-Office",
                 "Work-From-Home",
+                "Work-From-Office / Work-From-Home",
               ])}
-            </Box>
+            </Box>  
+            {renderDatePicker("Post Date", "jobDetails", "postDate")}
+
+            <Box sx={{ display: "flex", gap: "20px" }}>
+            {renderSelectField("Benefits", "jobDetails", "benefits", benefitsOptions, true)}
             {renderTextField("Salary", "jobDetails", "salary", true)}
-            <FormControl fullWidth>
-              <InputLabel>Benefits</InputLabel>
-              <Select
-                multiple
-                label="Benefits"
-                value={formData.jobDetails.benefits}
-                onChange={(e) =>
-                  handleChange("jobDetails", "benefits", e.target.value)
-                }
-                renderValue={(selected) => selected.join(", ")}
-              >
-                {benefitsOptions.map((benefit) => (
-                  <MenuItem key={benefit} value={benefit}>
-                    <Checkbox
-                      checked={formData.jobDetails.benefits.includes(benefit)}
-                    />
-                    <ListItemText primary={benefit} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            </Box>
             {renderTextField("Job Location", "jobDetails", "jobLocation", true)}
           </>
         );
       case 1:
         return (
-          <>
-            {renderTextField("Minimum Education", "candidatesInterviewer", "minimumEducation", true)}
-            {renderTextField("English Level Required", "candidatesInterviewer", "englishLevelRequired", true)}
-            {renderTextField("Total Experience Required", "candidatesInterviewer", "totalExperienceRequired", true)}
+           <>
+            {renderSelectField("Minimum Education", "candidatesInterviewer", "minimumEducation", [
+              "10th Pass", "12th Pass", "Graduate", "Post Graduate", "Diploma Holder"
+            ])}
+            <Box sx={{ display: "flex", gap: "20px" }}>
+            {renderSelectField("English Level Required", "candidatesInterviewer", "englishLevelRequired", [
+              "No English",
+              "Basic English",
+              "Good English",
+              "Advanced English",
+            ])}
+            {renderSelectField("Total Experience Required", "candidatesInterviewer", "totalExperienceRequired", [
+              "Any",
+              "Experienced Only",
+              "Freshers Only"
+            ])}
+            </Box>
+            <Box sx={{ display: "flex", gap: "20px" }}>
             {renderSelectField("Gender", "candidatesInterviewer", "gender", [
               "Male",
               "Female",
               "Any",
             ])}
             {renderTextField("Age", "candidatesInterviewer", "age", true)}
-            {renderTextField("Job Description", "candidatesInterviewer", "jobDescription", false, true, 4)}
+            </Box>
+            {renderSelectField(
+              "Communication Preferences",
+              "candidatesInterviewer",
+              "communicationPreferences",
+              ["WhatsApp Only", "Direct Call", "Email", "SMS"]
+              )}
+
             {renderSelectField("Interview Method", "candidatesInterviewer", "interviewMethod", [
               "In-Person",
               "Virtual",
             ])}
-            {renderTextField("Address", "candidatesInterviewer", "address")}
-            {renderTextField(
-              "Communication Preferences",
-              "candidatesInterviewer",
-              "communicationPreferences",
-              false,
-              true,
-              2
-            )}
-          </>
+            {renderTextField("Job Description", "candidatesInterviewer", "jobDescription", false, true, 4)}
+           </>
         );
       case 2:
-        return <ReviewPage formData={formData} handleEdit={handleEdit} handleSubmit={handleSubmit} />;
+        return <ReviewPage formData={formData} handleSubmit={handleSubmit} />;
       default:
         return <Typography>Unknown Step</Typography>;
     }
@@ -219,7 +265,6 @@ const JobDetailsForm = () => {
   return (
     <Box
       sx={{
-        background: "linear-gradient(to bottom, #4caf50, #ffffff)",
         minHeight: "100vh",
         padding: "20px",
         display: "flex",
@@ -293,7 +338,7 @@ const JobDetailsForm = () => {
   );
 };
 
-const ReviewPage = ({ formData, handleEdit, handleSubmit }) => {
+const ReviewPage = ({ formData, handleSubmit }) => {
   const sectionAnimation = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -341,15 +386,8 @@ const ReviewPage = ({ formData, handleEdit, handleSubmit }) => {
           </Typography>
         ))}
       </Box>
-      <Box display="flex" justifyContent="space-between" mt={3}>
-        <Button variant="contained" sx={{
-          background: "radial-gradient(circle, rgba(46,138,69,1) 0%, rgba(79,170,92,1) 95%)",
-          color: "white",
-          px: 3
-        }} onClick={handleEdit}>
-          Edit
-        </Button>
-        <Button variant="contained" sx={{
+      <Box mt={3}>
+         <Button variant="contained" sx={{
           background: "radial-gradient(circle, rgba(46,138,69,1) 0%, rgba(79,170,92,1) 95%)",
           color: "white",
           px: 3

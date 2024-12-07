@@ -73,7 +73,7 @@ export const DashboardSidebar = () => {
                   },
                 }}
               >
-                <ListItemIcon sx={{ color: active === item.name ? '#fff' : '#000' }}>
+                <ListItemIcon sx={{ color: active === item.name ? '#fff' : 'green' }}>
                   {item.icon}
                 </ListItemIcon>
                 <ListItemText primary={item.name} />

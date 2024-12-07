@@ -31,7 +31,7 @@ const DashboardNav = () => {
     alignItems: 'center',
     justifyContent: 'space-between',
     background:
-      'linear-gradient(90deg, rgba(240, 244, 247, 0.8) 0%, rgba(144, 238, 144, 0.5) 100%)',
+      'linear-gradient(90deg, rgba(240, 244, 247, 1) 0%, rgba(144, 238, 144, 1) 100%)',
     padding: '10px 20px',
   };
 
@@ -115,7 +115,7 @@ const DashboardNav = () => {
             </IconButton>
           </MenuItem>
           <MenuItem>
-            <IconButton size="large" aria-label="account options" color="inherit">
+            <IconButton size="large" aria-label="account options" color="inherit" onClick={() => navigate("/employerdashboard/employerprofile")}>
               <AccountCircle />
             </IconButton>
           </MenuItem>
@@ -158,8 +158,8 @@ const DashboardNav = () => {
               </IconButton>
             </MenuItem>
             <MenuItem>
-              <IconButton size="large" aria-label="account options" color="inherit">
-                <AccountCircle />
+              <IconButton size="large" aria-label="account options" color="inherit" onClick={() => navigate("/employerdashboard/employerprofile")}>
+                <AccountCircle/>
               </IconButton>
             </MenuItem>
           </Card>

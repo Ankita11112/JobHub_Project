@@ -5,7 +5,7 @@ import DashboardNav from './Components/DashboardNavbar/DashboardNav';
 import { DashboardSidebar } from './Components/DashboardSidebar/DashboardSidebar';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import JobPostCard from './Components/Main-Post-Card/JobPostCard';
+import { Outlet } from 'react-router-dom';
 
 const EmployerDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -17,6 +17,7 @@ const EmployerDashboard = () => {
           height: "100vh",
           width: "100%",
           overflowY: "scroll",
+          background: "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
           overflowX: "hidden",
           position: "relative", // Ensures toggle button stays positioned correctly
         }}
@@ -49,7 +50,7 @@ const EmployerDashboard = () => {
             }}
           >
             <DashboardNav />
-            <JobPostCard/>
+           <Outlet/>
           </Grid>
         </Grid>
 

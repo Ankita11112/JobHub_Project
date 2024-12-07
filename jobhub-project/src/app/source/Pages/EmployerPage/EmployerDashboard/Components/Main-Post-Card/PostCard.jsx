@@ -3,7 +3,7 @@ import { Box,} from '@mui/material';
 import ButtonComponent from '../../../../../../components/GlobalComponents/ButtonComponent/ButtonComponent';
 import { useNavigate } from 'react-router-dom';
 
-const PostCard = () => {
+const PostCard = ({onClick}) => {
     const navigate = useNavigate();
   return (
     <>
@@ -15,7 +15,7 @@ const PostCard = () => {
               }}>
               <ButtonComponent
                   title="Add Post"
-                  onClick={() => navigate("/jobpostdetailsform")}
+                  onClick={() => navigate("/employerdashboard/jobpostdetailsform")}
                   sx={{
                     // my: 3,
                     px: { lg: 4 },
@@ -32,7 +32,7 @@ const PostCard = () => {
               />
               <ButtonComponent
                   title="Delete Post"
-                  onClick={() => alert("Delete Me😐")}
+                  onClick={onClick}
                   sx={{
                     // my: 3,
                     mx: {xs: 2, lg: 2},
