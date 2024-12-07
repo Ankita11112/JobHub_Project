@@ -1,17 +1,14 @@
 import React from 'react';
 import { Box, Card, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
+
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import DataBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
-import image1 from '../../../../../../assets/Images/ConstructionImages/construction meeting .png';
+
 import last from '../../../../../../assets/Images/FrontOfficeImages/second.gif';
 
 const FrontGif = () => {
   const items = [
-
-
-
     {
       icon: tickImg,
       description:
@@ -101,23 +98,23 @@ const FrontGif = () => {
             justifyContent: 'center',
           }}
         >
-         <Card sx={{
-          background: "linear-gradient(to bottom, #ffffff, #4caf50)",
-          p: 9
-         }}>
-          <Box
-            component="img"
-            src={last}
-            alt="Graphic Design"
-            sx={{
-              width: '100%',
-              maxWidth: '500px', // Adjusted size
-              maxHeight: '500px',
-              borderRadius: 2,
-              // marginTop: '30px',
-              transform: 'scale(1.3)', 
-            }}/>
-            </Card>
+          <Card sx={{
+            background: "linear-gradient(to bottom, #ffffff, #4caf50)",
+            p: 9
+          }}>
+            <Box
+              component="img"
+              src={last}
+              alt="Graphic Design"
+              sx={{
+                width: '100%',
+                maxWidth: '500px', // Adjusted size
+                maxHeight: '500px',
+                borderRadius: 2,
+                // marginTop: '30px',
+                transform: 'scale(1.3)',
+              }} />
+          </Card>
 
 
 
