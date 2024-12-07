@@ -34,7 +34,7 @@ const GraphicColor = () => {
         flexDirection: 'column',
         backgroundImage: { xs: 'none', md: `url(${DataBg})` },
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: '100% 170px',
+        backgroundPosition: 'center',
         backgroundSize: 'cover',
         alignItems: 'center',
         px: { xs: 2, md: 8 },
@@ -45,7 +45,7 @@ const GraphicColor = () => {
         container
         spacing={4}
         justifyContent='center'
-        alignItems='flex-start' 
+        alignItems='flex-start'
         sx={{
           flexDirection: { xs: 'column', md: 'row' },
         }}
@@ -93,7 +93,7 @@ const GraphicColor = () => {
           size={{ xs: 12, md: 6 }}
           sx={{
             display: 'flex',
-            justifyContent: 'center', 
+            justifyContent: 'center',
           }}
         >
           <Box
@@ -101,8 +101,8 @@ const GraphicColor = () => {
             src={image1}
             alt='Graphic Design'
             sx={{
-              width: '90%', 
-              maxWidth: '300px', 
+              width: '90%',
+              maxWidth: '300px',
               maxHeight: '350px',
               objectFit: 'cover',
               borderRadius: 2,
