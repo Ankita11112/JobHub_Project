@@ -41,7 +41,7 @@ const BackOfficeSecondsection = () => {
         flexDirection: 'column',
         backgroundImage: { xs: 'none', md: `url(${DataBg})` },
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: '100% 170px',
+        backgroundPosition: 'center',
         backgroundSize: 'cover',
         alignItems: 'center',
         px: { xs: 2, md: 8 },
