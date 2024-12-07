@@ -1,6 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-// import NotFoundPage404 from './NotFoundPage404';
+import { Routes, Route, Outlet } from "react-router-dom";
 
 export const RouteMaker = (props) => {
   const { routes } = props;
@@ -8,32 +7,30 @@ export const RouteMaker = (props) => {
   return (
     <Routes>
       {Object.keys(routes).map((key) => {
-        const ComponentOrChildren = routes[key];
+        const routeConfig = routes[key];
 
-        // Check if the route has children (indicated by the presence of a 'default' component)
-        if (ComponentOrChildren.default) {
-          const routesChildren = ComponentOrChildren;
-          const routePath = key; // You can adjust this logic if needed
-
+        if (typeof routeConfig === "object" && routeConfig.children) {
+          // Handle parent routes with children
           return (
-            <Route key={key} path={routePath} element={routesChildren.default}>
-              {Object.keys(routesChildren)
-                .filter((k) => k !== "default")
-                .map((childKey) => (
-                  <Route
-                    key={childKey}
-                    path={childKey}
-                    element={routesChildren[childKey]}
-                  />
-                ))}
+            <Route
+              key={key}
+              path={key}
+              element={routeConfig.element || <Outlet />}
+            >
+               {routeConfig.children.map((child, index) => (
+                <Route
+                  key={index}
+                  path={child.path}
+                  element={child.element}
+                />
+              ))}
             </Route>
           );
         }
 
         // Handle simple routes without children
-        return <Route key={key} path={key} element={ComponentOrChildren} />;
+        return <Route key={key} path={key} element={routeConfig} />;
       })}
-
     </Routes>
   );
 };
