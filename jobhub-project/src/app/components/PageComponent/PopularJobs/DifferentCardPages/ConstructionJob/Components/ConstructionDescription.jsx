@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import DataBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
-
 import image1 from '../../../../../../assets/Images/ConstructionImages/Planning & Design .png';
 
 const ConstructionDescription = () => {
