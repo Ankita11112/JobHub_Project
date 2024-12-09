@@ -36,8 +36,6 @@ const AppRouter = () => {
         routes={{
           "/*": <Home />,
           "/about": <About />,
-        //  "/jobpostdetailsform": <JobDetailsForm />,
-        //  "/jobpostdetails": <FullJobDetails />,
           "/contact": <Contact />,
           "/login" : <LogInPage/>,
           "/signup" : <SignUpPage/>,

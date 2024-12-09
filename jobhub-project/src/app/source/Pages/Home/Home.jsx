@@ -11,7 +11,7 @@ import PartnerSection from '../../../components/PageComponent/PartnerSection';
 import ChoiceSection from '../../../components/PageComponent/ChoiceSection';
 import Testimonial from '../../../components/PageComponent/Testimonial';
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -81,6 +81,7 @@ const Home = () => {
         <GlobalFaq
           faqItems={faqItems}
         />
+        <Outlet/>
       </PageComponent>
     </>
   )
