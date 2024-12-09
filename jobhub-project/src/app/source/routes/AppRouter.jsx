@@ -39,6 +39,8 @@ const AppRouter = () => {
         //  "/jobpostdetailsform": <JobDetailsForm />,
         //  "/jobpostdetails": <FullJobDetails />,
           "/contact": <Contact />,
+          "/login" : <LogInPage/>,
+          "/signup" : <SignUpPage/>,
           "/verification": <ContactVerify />,
           "/registration": <FormComponent />,
           "/employeregistration": <EmployeeForm />,
