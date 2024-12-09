@@ -32,8 +32,8 @@ const HouseKeepingJob = () => {
             height: "auto",
           }}
         />
-        <JobDetails />
         <HouseKeepingCat />
+        <JobDetails />
         <HouseKeepingFirstSection />
         <Housekeepingsecondsection />
 
