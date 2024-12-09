@@ -39,7 +39,7 @@ function NavAppBar() {
 
   const handleLogin = () => {
     handleCloseNavMenu();
-    navigate('/LogIn')
+    navigate('/login')
   }
 
   return (
