@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
@@ -13,7 +13,6 @@ const Secfirstdesc = () => {
       description:
         '<strong>Surveillance and Monitoring:</strong>  They protect life on patrol areas, monitor CCTVs and alarms; and detect security breach.',
     },
-
     {
       icon: tickImg,
       description:
@@ -29,16 +28,14 @@ const Secfirstdesc = () => {
       description:
         '<strong>Property Protection:</strong> It will help limit theft and damage as well as check up on locks and windows and secure your assets.',
     },
-
-
   ];
+
   return (
     <Box
       sx={{
         width: '100%',
         mx: 'auto',
         my: 8,
-
         display: 'flex',
         flexDirection: 'column',
         backgroundImage: { xs: 'none', md: `url(${DataBg})` },
@@ -50,6 +47,7 @@ const Secfirstdesc = () => {
       }}
     >
       {/* Title Section */}
+
       <Grid
         container
         justifyContent='center'
@@ -81,102 +79,105 @@ const Secfirstdesc = () => {
           >
             Security Guard
           </Typography>
-          <Typography
-            variant='h5'
-            component='h2'
-            sx={{
+          <Container>
+            <Typography
+              variant='h5'
+              component='h2'
+              sx={{
 
-              mb: 4,
-              fontSize: { xs: '14px', md: '20px' },
-              textAlign: 'center',
-            }}
-          >
-            The duty of a security guard is to safely and securely guard premises and property, and protect people. Their purpose is to keep them secured to secure an unauthorized
-            access, monitors their activities as well as minimizes the emergencies.
+                mb: 4,
+                fontSize: { xs: '14px', md: '20px' },
+                textAlign: 'center',
+              }}
+            >
+              The duty of a security guard is to safely and securely guard premises and property, and protect people. Their purpose is to keep them secured to secure an unauthorized
+              access, monitors their activities as well as minimizes the emergencies.
 
-          </Typography>
+            </Typography>
+          </Container>
         </Grid>
       </Grid>
+      <Container>
 
-      {/* Image and Content Section */}
-      <Grid
-        container
-        spacing={2}
-        justifyContent='center'
-        sx={{
-          flexDirection: { xs: 'column', md: 'row' },
-        }}
-      >
-        {/* Image Section (Left side on md screens and above) */}
+        {/* Image and Content Section */}
         <Grid
-          item
-          size={{ xs: 12, md: 6 }}
+          container
+          spacing={2}
+          justifyContent='center'
           sx={{
-            display: { xs: 'block', md: 'block' },
+            flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-          <Box
+          {/* Image Section (Left side on md screens and above) */}
+          <Grid
+            item
+            size={{ xs: 12, md: 6 }}
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%'
-
+              display: { xs: 'block', md: 'block' },
             }}
           >
             <Box
-              component="img"
-              src={image1}
-              alt="Graphic Design"
               sx={{
-                width: '90%',
-                maxWidth: '370px',
-                maxHeight: '370px',
-                objectFit: 'cover',
-                borderRadius: 2,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%'
               }}
-            />
-          </Box>
-
-        </Grid>
-
-
-        {/* Content Section (Right side on md screens and above) */}
-        <Grid item size={{ xs: 12, md: 6 }}>
-          <Typography
-            variant='h4'
-            component='h2'
-            sx={{
-              fontWeight: '500',
-              mb: 4,
-              fontSize: { xs: '28px', md: '32px' },
-            }}
-          >
-            Key Responsibilities:
-          </Typography>
-          {items.map((item, index) => (
-            <Box
-              key={index}
-              sx={{ display: 'flex', mb: 4 }}
             >
               <Box
                 component="img"
-                src={item.icon}
-                alt={`Icon ${index}`}
-                sx={{ height: '30px', width: '30px', mr: 2 }}
-              />
-              <Typography
-                variant="body1"
+                src={image1}
+                alt="Graphic Design"
                 sx={{
-                  fontSize: { xs: '14px', md: '16px' },
+                  width: '90%',
+                  maxWidth: '430px',
+                  maxHeight: '370px',
+                  objectFit: 'cover',
+                  borderRadius: 2,
                 }}
-                dangerouslySetInnerHTML={{ __html: item.description }} // bold text
               />
             </Box>
-          ))}
-        </Grid>
 
-      </Grid>
+          </Grid>
+
+
+          {/* Content Section (Right side on md screens and above) */}
+          <Grid item size={{ xs: 12, md: 6 }}>
+            <Typography
+              variant='h4'
+              component='h2'
+              sx={{
+                fontWeight: '500',
+                mb: 4,
+                fontSize: { xs: '28px', md: '32px' },
+              }}
+            >
+              Key Responsibilities:
+            </Typography>
+            {items.map((item, index) => (
+              <Box
+                key={index}
+                sx={{ display: 'flex', mb: 4 }}
+              >
+                <Box
+                  component="img"
+                  src={item.icon}
+                  alt={`Icon ${index}`}
+                  sx={{ height: '30px', width: '30px', mr: 2 }}
+                />
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: { xs: '14px', md: '16px' },
+                  }}
+                  dangerouslySetInnerHTML={{ __html: item.description }} // bold text
+                />
+              </Box>
+            ))}
+
+          </Grid>
+        </Grid>
+      </Container>
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
@@ -48,65 +48,67 @@ const BackOfficeSecondsection = () => {
       }}
     >
       {/* Image and Content Section */}
-      <Grid
-        container
-        spacing={4}
-        justifyContent='center'
-        alignItems='flex-start'
-        sx={{
-          flexDirection: { xs: 'column', md: 'row' },
-        }}
-      >
-        {/* Content Section (Left side on md screens and above) */}
-        <Grid item size={{ xs: 12, md: 6 }}>
-
-
-          {items.map((item, index) => (
-            <Box
-              key={index}
-              sx={{ display: 'flex', mb: 3 }} // Reduced margin for closer spacing
-            >
-              <Box
-                component='img'
-                src={item.icon}
-                alt={`Icon ${index}`}
-                sx={{ height: '30px', width: '30px', mr: 2 }}
-              />
-
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: '14px', md: '16px' },
-                }}
-                dangerouslySetInnerHTML={{ __html: item.description }}   // bold text
-              />
-            </Box>
-          ))}
-        </Grid>
-
-        {/* Image Section (Right side on md screens and above) */}
+      <Container>
         <Grid
-          item
-          size={{ xs: 12, md: 6 }}
+          container
+          spacing={4}
+          justifyContent='center'
+          alignItems='flex-start'
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
+            flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-          <Box
-            component='img'
-            src={image1}
-            alt='Graphic Design'
+          {/* Content Section (Left side on md screens and above) */}
+          <Grid item size={{ xs: 12, md: 6 }}>
+
+
+            {items.map((item, index) => (
+              <Box
+                key={index}
+                sx={{ display: 'flex', mb: 3 }} // Reduced margin for closer spacing
+              >
+                <Box
+                  component='img'
+                  src={item.icon}
+                  alt={`Icon ${index}`}
+                  sx={{ height: '30px', width: '30px', mr: 2 }}
+                />
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: { xs: '14px', md: '16px' },
+                  }}
+                  dangerouslySetInnerHTML={{ __html: item.description }}   // bold text
+                />
+              </Box>
+            ))}
+          </Grid>
+
+          {/* Image Section (Right side on md screens and above) */}
+          <Grid
+            item
+            size={{ xs: 12, md: 6 }}
             sx={{
-              width: '90%',
-              maxWidth: '400px',
-              maxHeight: '350px',
-              objectFit: 'cover',
-              borderRadius: 2,
+              display: 'flex',
+              justifyContent: 'center',
             }}
-          />
+          >
+            <Box
+              component='img'
+              src={image1}
+              alt='Graphic Design'
+              sx={{
+                width: '90%',
+                maxWidth: '400px',
+                maxHeight: '350px',
+                objectFit: 'cover',
+                borderRadius: 2,
+              }}
+            />
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Card, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
@@ -43,83 +43,86 @@ const FrontGif = () => {
       }}
     >
       {/* Image and Content Section */}
-      <Grid
-        container
-        spacing={4}
-        justifyContent='center'
-        alignItems='flex-start'
-        sx={{
-          flexDirection: { xs: 'column', md: 'row' },
-        }}
-      >
-        {/* Heading and Content Section (Left side on md screens and above) */}
-        <Grid item size={{ xs: 12, md: 6 }}>
-          <Typography
-            variant='h4'
-            component='h2'
-            sx={{
-              fontWeight: 'bold',
-              mb: 4,
-              fontSize: { xs: '28px', md: '32px' },
-            }}
-          >
-            Customer Service:
-          </Typography>
-
-          {items.map((item, index) => (
-            <Box
-              key={index}
-              sx={{ display: 'flex', alignItems: 'center', mb: 3 }} // Reduced margin for closer spacing
-            >
-              <Box
-                component='img'
-                src={item.icon}
-                alt={`Icon ${index}`}
-                sx={{ height: '30px', width: '30px', mr: 2 }}
-              />
-              <Typography
-                variant='body1'
-                sx={{
-                  fontSize: { xs: '14px', md: '16px' },
-                }}
-              >
-                {item.description}
-              </Typography>
-            </Box>
-          ))}
-        </Grid>
-
-        {/* Image Section (Right side on md screens and above) */}
+      <Container>
         <Grid
-          item
-          size={{ xs: 12, md: 6 }}
+          container
+          spacing={4}
+          justifyContent='center'
+          alignItems='flex-start'
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
+            flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-          <Card sx={{
-            background: "linear-gradient(to bottom, #ffffff, #4caf50)",
-            p: 9
-          }}>
-            <Box
-              component="img"
-              src={last}
-              alt="Graphic Design"
+          {/* Heading and Content Section (Left side on md screens and above) */}
+          <Grid item size={{ xs: 12, md: 6 }}>
+            <Typography
+              variant='h4'
+              component='h2'
               sx={{
-                width: '100%',
-                maxWidth: '500px', // Adjusted size
-                maxHeight: '500px',
-                borderRadius: 2,
-                // marginTop: '30px',
-                transform: 'scale(1.3)',
-              }} />
-          </Card>
+                fontWeight: 'bold',
+                mb: 4,
+                fontSize: { xs: '28px', md: '32px' },
+              }}
+            >
+              Customer Service:
+            </Typography>
+
+            {items.map((item, index) => (
+              <Box
+                key={index}
+                sx={{ display: 'flex', alignItems: 'center', mb: 3 }} // Reduced margin for closer spacing
+              >
+                <Box
+                  component='img'
+                  src={item.icon}
+                  alt={`Icon ${index}`}
+                  sx={{ height: '30px', width: '30px', mr: 2 }}
+                />
+                <Typography
+                  variant='body1'
+                  sx={{
+                    fontSize: { xs: '14px', md: '16px' },
+                  }}
+                >
+                  {item.description}
+                </Typography>
+              </Box>
+            ))}
+          </Grid>
+
+          {/* Image Section (Right side on md screens and above) */}
+          <Grid
+            item
+            size={{ xs: 12, md: 6 }}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Card sx={{
+              background: "linear-gradient(to bottom, #ffffff, #4caf50)",
+              p: 9
+            }}>
+              <Box
+                component="img"
+                src={last}
+                alt="Graphic Design"
+                sx={{
+                  width: '100%',
+                  maxWidth: '500px', // Adjusted size
+                  maxHeight: '500px',
+                  borderRadius: 2,
+                  // marginTop: '30px',
+                  transform: 'scale(1.3)',
+                }} />
+            </Card>
 
 
 
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
+
     </Box>
   );
 };

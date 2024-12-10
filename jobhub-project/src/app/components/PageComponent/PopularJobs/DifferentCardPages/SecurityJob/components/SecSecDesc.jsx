@@ -79,7 +79,7 @@ const SecSecDesc = () => {
               sx={{
                 display: 'flex', mb: 3,
 
-              }} // Reduced margin for closer spacing
+              }}
             >
               <Box
                 component='img'
@@ -114,7 +114,7 @@ const SecSecDesc = () => {
             alt="Graphic Design"
             sx={{
               width: '90%',
-              maxWidth: '370px',
+              maxWidth: '390px',
               maxHeight: '370px',
               objectFit: 'cover',
             }}

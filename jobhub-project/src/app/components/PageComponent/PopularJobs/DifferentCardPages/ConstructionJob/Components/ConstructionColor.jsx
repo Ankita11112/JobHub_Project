@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
@@ -49,18 +49,19 @@ const ConstructionColor = () => {
       }}
     >
       {/* Image and Content Section */}
-      <Grid
-        container
-        spacing={4}
-        justifyContent='center'
-        alignItems='flex-start'
-        sx={{
-          flexDirection: { xs: 'column', md: 'row' },
-        }}
-      >
-        {/* Heading and Content Section (Left side on md screens and above) */}
-        <Grid item size={{ xs: 12, md: 6 }}>
-          {/* <Typography
+      <Container>
+        <Grid
+          container
+          spacing={4}
+          justifyContent='center'
+          alignItems='flex-start'
+          sx={{
+            flexDirection: { xs: 'column', md: 'row' },
+          }}
+        >
+          {/* Heading and Content Section (Left side on md screens and above) */}
+          <Grid item size={{ xs: 12, md: 6 }}>
+            {/* <Typography
             variant='h4'
             component='h2'
             sx={{
@@ -72,52 +73,53 @@ const ConstructionColor = () => {
             Color Theory and Consumer Behavior
           </Typography> */}
 
-          {items.map((item, index) => (
-            <Box
-              key={index}
-              sx={{ display: 'flex', alignItems: 'center', mb: 3 }} // Reduced margin for closer spacing
-            >
+            {items.map((item, index) => (
               <Box
-                component='img'
-                src={item.icon}
-                alt={`Icon ${index}`}
-                sx={{ height: '30px', width: '30px', mr: 2 }}
-              />
-              <Typography
-                variant='body1'
-                sx={{
-                  fontSize: { xs: '14px', md: '16px' },
-                }}
+                key={index}
+                sx={{ display: 'flex', alignItems: 'center', mb: 3 }} // Reduced margin for closer spacing
               >
-                {item.description}
-              </Typography>
-            </Box>
-          ))}
-        </Grid>
+                <Box
+                  component='img'
+                  src={item.icon}
+                  alt={`Icon ${index}`}
+                  sx={{ height: '30px', width: '30px', mr: 2 }}
+                />
+                <Typography
+                  variant='body1'
+                  sx={{
+                    fontSize: { xs: '14px', md: '16px' },
+                  }}
+                >
+                  {item.description}
+                </Typography>
+              </Box>
+            ))}
+          </Grid>
 
-        {/* Image Section (Right side on md screens and above) */}
-        <Grid
-          item
-          size={{ xs: 12, md: 6 }}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Box
-            component='img'
-            src={image1}
-            alt='Graphic Design'
+          {/* Image Section (Right side on md screens and above) */}
+          <Grid
+            item
+            size={{ xs: 12, md: 6 }}
             sx={{
-              width: '90%',
-              maxWidth: '400px',
-              maxHeight: '350px',
-              objectFit: 'cover',
-              borderRadius: 2,
+              display: 'flex',
+              justifyContent: 'center',
             }}
-          />
+          >
+            <Box
+              component='img'
+              src={image1}
+              alt='Graphic Design'
+              sx={{
+                width: '90%',
+                maxWidth: '400px',
+                maxHeight: '350px',
+                objectFit: 'cover',
+                borderRadius: 2,
+              }}
+            />
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </Box>
   );
 };
