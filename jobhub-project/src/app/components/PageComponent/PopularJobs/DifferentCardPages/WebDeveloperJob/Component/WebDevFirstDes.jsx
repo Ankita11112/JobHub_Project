@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import DataBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 
@@ -37,8 +36,6 @@ const WebDevFirstDes = () => {
                 variant="h3"
                 component="h2"
                 sx={{
-
-
                   fontWeight: 'bold',
                   fontSize: { xs: '35px', md: '45px' },
                   position: 'relative',
