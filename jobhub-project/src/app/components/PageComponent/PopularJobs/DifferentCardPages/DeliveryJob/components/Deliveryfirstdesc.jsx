@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
@@ -81,100 +81,104 @@ const Deliveryfirstdesc = () => {
           >
             Delivery
           </Typography>
-          <Typography
-            variant='h5'
-            component='h2'
-            sx={{
+          <Container>
+            <Typography
+              variant='h5'
+              component='h2'
+              sx={{
 
-              mb: 4,
-              fontSize: { xs: '14px', md: '20px' },
-              textAlign: 'center',
-            }}
-          >
-            Delivery entails the proper and appropriate transfer of products or services to specified recipients at required intervals. They include meeting set program work deadlines, confirming orders,
-            delivering high calibre customer relations, implementing safety measures and requirements, and documentation regarding their operations.
-          </Typography>
+                mb: 4,
+                fontSize: { xs: '14px', md: '20px' },
+                textAlign: 'center',
+              }}
+            >
+              Delivery entails the proper and appropriate transfer of products or services to specified recipients at required intervals. They include meeting set program work deadlines, confirming orders,
+              delivering high calibre customer relations, implementing safety measures and requirements, and documentation regarding their operations.
+            </Typography>
+          </Container>
         </Grid>
       </Grid>
 
       {/* Image and Content Section */}
-      <Grid
-        container
-        spacing={2}
-        justifyContent='center'
-        sx={{
-          flexDirection: { xs: 'column', md: 'row' },
-        }}
-      >
-        {/* Image Section (Left side on md screens and above) */}
+      <Container>
         <Grid
-          item
-          size={{ xs: 12, md: 6 }}
+          container
+          spacing={2}
+          justifyContent='center'
           sx={{
-            display: { xs: 'block', md: 'block' },
+            flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-          <Box
+          {/* Image Section (Left side on md screens and above) */}
+          <Grid
+            item
+            size={{ xs: 12, md: 6 }}
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%'
-
+              display: { xs: 'block', md: 'block' },
             }}
           >
             <Box
-              component="img"
-              src={image1}
-              alt="Graphic Design"
               sx={{
-                width: '90%',
-                maxWidth: '470px',
-                maxHeight: '470px',
-                objectFit: 'cover',
-                borderRadius: 2,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%'
+
               }}
-            />
-          </Box>
-
-        </Grid>
-
-        {/* Content Section (Right side on md screens and above) */}
-        <Grid item size={{ xs: 12, md: 6 }}>
-          <Typography
-            variant='h4'
-            component='h2'
-            sx={{
-              fontWeight: '500',
-              mb: 4,
-              fontSize: { xs: '28px', md: '32px' },
-            }}
-          >
-            Roles and Responsibilities
-          </Typography>
-          {items.map((item, index) => (
-            <Box
-              key={index}
-              sx={{ display: 'flex', mb: 4 }}
             >
               <Box
                 component="img"
-                src={item.icon}
-                alt={`Icon ${index}`}
-                sx={{ height: '30px', width: '30px', mr: 2 }}
-              />
-              <Typography
-                variant="body1"
+                src={image1}
+                alt="Graphic Design"
                 sx={{
-                  fontSize: { xs: '14px', md: '16px' },
+                  width: '90%',
+                  maxWidth: '470px',
+                  maxHeight: '470px',
+                  objectFit: 'cover',
+                  borderRadius: 2,
                 }}
-                dangerouslySetInnerHTML={{ __html: item.description }} // bold text
               />
             </Box>
-          ))}
-        </Grid>
 
-      </Grid>
+          </Grid>
+
+          {/* Content Section (Right side on md screens and above) */}
+          <Grid item size={{ xs: 12, md: 6 }}>
+            <Typography
+              variant='h4'
+              component='h2'
+              sx={{
+                fontWeight: '500',
+                mb: 4,
+                fontSize: { xs: '28px', md: '32px' },
+              }}
+            >
+              Roles and Responsibilities
+            </Typography>
+            {items.map((item, index) => (
+              <Box
+                key={index}
+                sx={{ display: 'flex', mb: 4 }}
+              >
+                <Box
+                  component="img"
+                  src={item.icon}
+                  alt={`Icon ${index}`}
+                  sx={{ height: '30px', width: '30px', mr: 2 }}
+                />
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: { xs: '14px', md: '16px' },
+                  }}
+                  dangerouslySetInnerHTML={{ __html: item.description }} // bold text
+                />
+              </Box>
+            ))}
+          </Grid>
+
+        </Grid>
+      </Container>
     </Box>
   );
 };

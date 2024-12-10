@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
@@ -81,23 +81,25 @@ const HouseKeepingFirstSection = () => {
           >
             House Keeping
           </Typography>
-          <Typography
-            variant='h5'
-            component='h2'
-            sx={{
+          <Container>
+            <Typography
+              variant='h5'
+              component='h2'
+              sx={{
 
-              mb: 4,
-              fontSize: { xs: '14px', md: '20px' },
-              textAlign: 'center',
-            }}
-          >
-            The act of cleaning and tidying up and other chores associated with living spaces, working environments or any environment but a natural one. Housekeepers have many sweep
-            and clean responsibilities and other repair and maintenance tasks.
+                mb: 4,
+                fontSize: { xs: '14px', md: '20px' },
+                textAlign: 'center',
+              }}
+            >
+              The act of cleaning and tidying up and other chores associated with living spaces, working environments or any environment but a natural one. Housekeepers have many sweep
+              and clean responsibilities and other repair and maintenance tasks.
 
-          </Typography>
+            </Typography>
+          </Container>
         </Grid>
       </Grid>
-
+<Container>
       {/* Image and Content Section */}
       <Grid
         container
@@ -177,6 +179,7 @@ const HouseKeepingFirstSection = () => {
         </Grid>
 
       </Grid>
+      </Container>
     </Box>
   );
 };
