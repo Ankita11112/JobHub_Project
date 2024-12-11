@@ -20,7 +20,7 @@ const AutoTypingCode = ({ code }) => {
     let index = 0;
     let isTyping = true;
     const typingSpeed = 100;
-    const pauseDuration = 3000;
+    const pauseDuration = 4000;
 
     const interval = setInterval(() => {
       if (isTyping) {
@@ -122,7 +122,7 @@ app.listen(PORT, () => {
   return (
     <Box
       sx={{
-        margin: '3% auto',
+        margin: '1% 3%',
       }}
     >
       <Box
@@ -130,10 +130,10 @@ app.listen(PORT, () => {
           border: '5px solid black',
           borderRadius: '7px',
           borderBottom: '20px solid black',
-          height: '74vh',
-          width: { xs: '100%', sm: '890px' }, // Responsive width
+          height: "60vh",
+          width: { xs: '100%', sm: '690px' }, // Responsive width
           minWidth: '300px',
-          margin: '0 auto',
+          margin: 'auto',
           background: 'linear-gradient(to bottom, #7bff7b, #7d0404)',
           position: 'relative',
           display: 'flex',
@@ -145,7 +145,7 @@ app.listen(PORT, () => {
           <Swiper
             navigation={true}
             pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
+            autoplay={{ delay: 16000 }}
             modules={[Navigation, Pagination, Autoplay]}
             className='mySwiper'
             style={{ width: '100%', height: '100%' }}
@@ -171,7 +171,7 @@ app.listen(PORT, () => {
                     <Grid item>
                       <Card
                         sx={{
-                          maxWidth: { xs: '200px', sm: '200px', md: '450px' },
+                          maxWidth: { xs: '200px', sm: '250px', md: '450px' },
                           height: 'auto',
                           background: 'black',
                           padding: 2,
@@ -184,10 +184,10 @@ app.listen(PORT, () => {
                     {/* Image Section */}
                     <Box
                       sx={{
-                        display: { xs: 'none', sm: 'flex' }, // Hide on mobile, show on tablet and larger
+                        display: { xs: 'none', sm: 'flex' }, 
                         justifyContent: 'center',
                         alignItems: 'center',
-                        maxWidth: { sm: '300px', md: '300px' }, // Size for larger screens
+                        maxWidth: { sm: '200px', md: '200px' }, 
                         height: 'auto',
                       }}
                     >
@@ -205,8 +205,8 @@ app.listen(PORT, () => {
                         }
                         alt={snippet.language}
                         style={{
-                          width: '100%', // Fit within parent Box
-                          height: 'auto', // Maintain aspect ratio
+                          width: '100%', 
+                          height: 'auto', 
                         }}
                       />
                     </Box>
@@ -234,9 +234,9 @@ app.listen(PORT, () => {
       <Box
         sx={{
           backgroundColor: 'black',
-          height: '1.3vh',
-          borderTop: '0.2px solid white',
-          width: { xs: ' 100%', sm: '890px' }, // Responsive width for footer
+          height: '2vh',
+          borderTop: '1px solid purple',
+          width: { xs: ' 200px', sm: '490px', md: '56%'}, // Responsive width for footer
           margin: '0 auto',
           mb: 10,
         }}
