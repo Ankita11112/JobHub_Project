@@ -12,6 +12,7 @@ const HouseKeepingCat = () => {
     { title: 'Dusting' },
     { title: 'Residential cleaning' },
   ];
+
   return (
     <>
       <Box

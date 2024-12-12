@@ -24,7 +24,7 @@ const DataEntryTypes = () => {
         },
         {
             icon: tickImg,
-            description:"Numeric Data Input: This includes inputting the numerical data related to finance as well as other numbers.",
+            description: "Numeric Data Input: This includes inputting the numerical data related to finance as well as other numbers.",
         },
         {
             icon: tickImg,
@@ -35,53 +35,52 @@ const DataEntryTypes = () => {
             description: "Data Entry Online : Digital document comprises data entry. Image data input: Data is extracted from images.",
         },
     ]
-  return (
-    <>
-        <Box
-            sx={{
-                width: '100%',
-                mx: 'auto',
-                my: 4,
-                display: 'grid',
-                placeItems: 'center',
-                backgroundImage: { xs: "none", sm: "none", md: `url(${DataBg})` },
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "100% 170px",
-                backgroundSize: "cover",
-            }}
-        >
-        
-            <Grid2 container justifyContent="center" alignItems="center" sx={{ pt: { xs: 6 }, pb: 4 }}>
-                <Grid2 item xs={12} sx={{ position: 'relative', textAlign: 'center' }}>
-                    <Typography
-                        variant="h3"
-                        component="h2"
-                        sx={{
-                            fontSize: { xs: '30px', md: '45px' },
-                            position: 'relative',
-                            '&::after': {
-                                content: '""',
-                                display: 'block',
-                                width: '100%',
-                                height: '40px',
-                                backgroundImage: `url(${DaTypeBg})`,
-                                backgroundRepeat: 'no-repeat',
-                                backgroundSize: 'cover',
-                                position: 'absolute',
-                                bottom: '-30px',
-                                left: 0,
-                            },
-                        }}
-                    >
-                        Data Entry <span style={{ color: 'green' }}>Types</span>
-                    </Typography>
-                </Grid2>
-            </Grid2>
+    return (
+        <>
+            <Box
+                sx={{
+                    width: '100%',
+                    mx: 'auto',
+                    my: 4,
+                    display: 'grid',
+                    placeItems: 'center',
+                    backgroundImage: { xs: "none", sm: "none", md: `url(${DataBg})` },
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "100% 170px",
+                    backgroundSize: "cover",
+                }}
+            >
 
-            <GlobalGrid2Section content={contentItems} Box reverse= {true}/>
+                <Grid2 container justifyContent="center" alignItems="center" sx={{ pt: { xs: 6 }, pb: 4 }}>
+                    <Grid2 item xs={12} sx={{ position: 'relative', textAlign: 'center' }}>
+                        <Typography
+                            variant="h3"
+                            component="h2"
+                            sx={{
+                                fontSize: { xs: '30px', md: '45px' },
+                                position: 'relative',
+                                '&::after': {
+                                    content: '""',
+                                    display: 'block',
+                                    width: '100%',
+                                    height: '40px',
+                                    backgroundImage: `url(${DaTypeBg})`,
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundSize: 'cover',
+                                    position: 'absolute',
+                                    bottom: '-30px',
+                                    left: 0,
+                                },
+                            }}
+                        >
+                            Data Entry <span style={{ color: 'green' }}>Types</span>
+                        </Typography>
+                    </Grid2>
+                </Grid2>
+                <GlobalGrid2Section content={contentItems} Box reverse={true} />
             </Box>
-    </>
-  );
+        </>
+    );
 }
 
 export default DataEntryTypes;
