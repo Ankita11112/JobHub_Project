@@ -66,7 +66,7 @@ const GlobaljobCard2 = ({ content, title, subtitle, mainImage, mainImageStyle })
                         justifyContent: "center",
                         alignContent: 'center',
                         objectFit: 'cover',
-                        mt: 6
+                        
                     }}>
                         <img
                             src={mainImage}
