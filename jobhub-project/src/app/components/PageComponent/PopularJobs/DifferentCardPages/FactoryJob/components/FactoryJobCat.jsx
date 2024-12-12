@@ -5,7 +5,7 @@ import TeleBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 import CategoriesCard from '../../../../../GlobalComponents/JobCard/CategoriesCard';
 
 const FactoryJobCat = () => {
-  const category = [
+  const category = [   
     { title: 'Production worker' },
     { title: 'Machine operator' },
     { title: 'CNC operator' },
