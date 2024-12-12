@@ -44,7 +44,7 @@ const EmployerProfile = () => {
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
-    setIsEditing(null); // Reset field-specific editing when toggling the mode.
+    setIsEditing(null); 
   };
 
   const profileFields = [
@@ -59,20 +59,22 @@ const EmployerProfile = () => {
     <Box
       sx={{
         p: 4,
-        minHeight: "100vh",
+        minHeight: "80vh",
+        overflow: "hidden"
       }}
     >
       <Card
         sx={{
-          m: 4,
+          m: 1,
           p: 4,
           boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
           backgroundImage: `url(${PhoneVBg})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
+          height: "70vh",
           borderRadius: "16px",
-          overflow: "hidden",
+          overflowY: "scroll", 
         }}
       >
         <Grid container spacing={4}>

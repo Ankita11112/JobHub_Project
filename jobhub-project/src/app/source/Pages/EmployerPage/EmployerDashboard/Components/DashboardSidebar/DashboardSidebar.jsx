@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
-import { Box, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Box, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Modal, Typography, Card, CardContent } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
 import WorkIcon from '@mui/icons-material/Work';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import SettingsIcon from '@mui/icons-material/Settings';
+import PowerSettingsNewRoundedIcon from '@mui/icons-material/PowerSettingsNewRounded';
+import ReduceCapacityRoundedIcon from '@mui/icons-material/ReduceCapacityRounded';
 import jobhublogo from '../../../../../../assets/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
+import WorkOutlineRoundedIcon from '@mui/icons-material/WorkOutlineRounded';
 
 export const DashboardSidebar = () => {
   const [active, setActive] = useState("Dashboards");
   const navigate = useNavigate();
 
-  const handleNavigation = (menu) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
+  const handleExit = () => {
+    // Log out logic, e.g., clearing user session, cookies, or tokens
+    console.log("User logged out");
+    navigate("/verification"); 
+  };
+
+  const handleNavigation = (menu, path) => {
     setActive(menu);
-    console.log(`${menu} clicked`);
-    navigate("/");
+    navigate(path);
   };
 
   const menuItems = [
-    { name: "Dashboard", icon: <DashboardIcon /> },
-    { name: "Candidate", icon: <PeopleIcon /> },
-    { name: "All Jobs", icon: <WorkIcon /> },
-    { name: "Interviews", icon: <CalendarTodayIcon /> },
-    { name: "Analytics", icon: <BarChartIcon /> },
-    { name: "Settings", icon: <SettingsIcon /> },
+    { name: 'Dashboard', icon: <DashboardIcon />, path: '/employerdashboard/' },
+    { name: 'Create New Job', icon: <WorkOutlineRoundedIcon />, path: '/employerdashboard/jobpostdetailsform' },
+    { name: 'My Jobs', icon: <WorkIcon />, path: '/employerdashboard/my-jobs' },
+    { name: 'Selected Candidates', icon: <ReduceCapacityRoundedIcon />, path: '/employerdashboard/selected-candidates' },
   ];
 
   return (
@@ -63,7 +70,7 @@ export const DashboardSidebar = () => {
           {menuItems.map((item) => (
             <ListItem key={item.name} disablePadding>
               <ListItemButton
-                onClick={() => handleNavigation(item.name)}
+                onClick={() => handleNavigation(item.name, item.path)}
                 sx={{
                   backgroundColor: active === item.name ? '#4caf50' : 'transparent',
                   color: active === item.name ? '#fff' : '#000',
@@ -81,6 +88,55 @@ export const DashboardSidebar = () => {
             </ListItem>
           ))}
         </List>
+        <Button variant="contained" fullWidth color="error" sx={{px: 2}} onClick={handleOpen}>
+        <PowerSettingsNewRoundedIcon sx={{mr: 1}} /> Logout  
+      </Button>
+         
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Overlay effect
+          }}
+        >
+          <Card
+            sx={{
+              maxWidth: 400,
+              width: '100%',
+              backgroundColor: 'white',
+              borderRadius: '8px',
+              boxShadow: 3,
+              textAlign: 'center',
+              padding: '20px',
+            }}
+          >
+            <CardContent>
+              <Typography variant="h6" sx={{ marginBottom: '20px' }}>
+                Are you sure you want to logout?
+              </Typography>
+              <Button
+                variant="contained"
+                color="success"
+                sx={{ marginRight: '10px' }}
+                onClick={handleExit}
+              >
+                Exit
+              </Button>
+              <Button
+                variant="outlined"
+                color="error"
+                onClick={handleClose}
+              >
+                Cancel
+              </Button>
+            </CardContent>
+          </Card>
+        </Box>
+      </Modal>
+
       </Box>
     </Box>
   );

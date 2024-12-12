@@ -24,8 +24,7 @@ const WebDeveloperJob = () => {
           subText="Skilled in creating responsive, user-friendly websites using front-end and back-end technologies."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
-          // onButtonClick1={handleScrollView}
-          onButtonClick1={() => navigate('/registration')}
+          onButtonClick1={() => navigate('/candidatedashboard')}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style={{
