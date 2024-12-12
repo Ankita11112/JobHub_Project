@@ -1,13 +1,13 @@
 import { Box, Button } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import React, { useState } from 'react';
-import DashboardNav from './Components/DashboardNavbar/DashboardNav';
-import { DashboardSidebar } from './Components/DashboardSidebar/DashboardSidebar';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Outlet } from 'react-router-dom';
+import { AdminDashboardSidebar } from './Components/AdminDashboardSidebar/AdminDashboardSidebar';
+import AdminDashboardNav from './Components/AdminDashboardNavbar/AdminDashboardNav';
 
-const EmployerDashboard = () => {
+const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
@@ -33,7 +33,7 @@ const EmployerDashboard = () => {
                 transition: "width 0.3s ease",
               }}
             >
-              <DashboardSidebar
+              <AdminDashboardSidebar
                 isSidebarOpen={isSidebarOpen}
                 toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
               />
@@ -49,7 +49,7 @@ const EmployerDashboard = () => {
               transition: "width 0.3s ease",
             }}
           >
-            <DashboardNav />
+            <AdminDashboardNav />
            <Outlet/>
           </Grid>
         </Grid>
@@ -84,4 +84,4 @@ const EmployerDashboard = () => {
   );
 };
 
-export default EmployerDashboard;
+export default AdminDashboard;

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Box, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Modal, Typography, Card, CardContent } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import WorkIcon from '@mui/icons-material/Work';
+import BadgeIcon from '@mui/icons-material/Badge';
 import PowerSettingsNewRoundedIcon from '@mui/icons-material/PowerSettingsNewRounded';
 import ReduceCapacityRoundedIcon from '@mui/icons-material/ReduceCapacityRounded';
 import jobhublogo from '../../../../../../assets/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
-import WorkOutlineRoundedIcon from '@mui/icons-material/WorkOutlineRounded';
+import SummarizeIcon from '@mui/icons-material/Summarize';
 
-export const DashboardSidebar = () => {
+export const AdminDashboardSidebar = () => {
   const [active, setActive] = useState("Dashboards");
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ export const DashboardSidebar = () => {
   const handleExit = () => {
     // Log out logic, e.g., clearing user session, cookies, or tokens
     console.log("User logged out");
-    navigate("/verification"); 
+    navigate("/login"); 
   };
 
   const handleNavigation = (menu, path) => {
@@ -29,11 +30,12 @@ export const DashboardSidebar = () => {
   };
 
   const menuItems = [
-    { name: 'Dashboard', icon: <DashboardIcon />, path: '/employerdashboard/' },
-    { name: 'Create New Job', icon: <WorkOutlineRoundedIcon />, path: '/employerdashboard/jobpostdetailsform' },
-    { name: 'My Jobs', icon: <WorkIcon />, path: '/employerdashboard/my-jobs' },
-    { name: 'Selected Candidates', icon: <ReduceCapacityRoundedIcon />, path: '/employerdashboard/selected-candidates' },
-  ];
+    { name: 'Admin Dashboard', icon: <DashboardIcon />, path: '/admin/' },
+    { name: 'Employer Insights', icon: <BadgeIcon />, path: '/admin/employer-insights' },
+    { name: 'Job Listings', icon: <SummarizeIcon />, path: '/admin/job-listings' },
+    { name: 'Shortlisted Talent', icon: <ReduceCapacityRoundedIcon />, path: '/admin/shortlisted-talent' },
+];
+
 
   return (
     <Box

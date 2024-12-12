@@ -18,7 +18,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import ProfileImg from "../../../../../../assets/Images/profileImg.jpg";
 import PhoneVBg from "../../../../../../assets/Images/bgImages/PhoneVBg.png";
 
-const EmployerProfile = () => {
+const AdminProfile = () => {
   const [profileData, setProfileData] = useState({
     fullName: "John Doe",
     companyName: "ABC Pvt. Ltd.",
@@ -220,6 +220,6 @@ const EmployerProfile = () => {
   );
 };
 
-export default EmployerProfile;
+export default AdminProfile;
 
 

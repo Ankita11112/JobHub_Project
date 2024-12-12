@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteMaker } from '../../components/routes/routes';
 import Home from '../Pages/Home/Home';
-import FormComponent from '../../components/PageComponent/FormComponent';
+import FormComponent from '../Pages/CandidatePage/FormComponent.jsx';
 import TelecallerJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/TelecallerJob/TelecallerJob';
 import DocVerifyJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/DocVerifyJob/DocVerifyJob';
 import DataEntryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/DataEntryJob/DataEntryJob';
@@ -26,8 +26,23 @@ import FullJobDetails from '../Pages/EmployerPage/EmployerDashboard/Components/M
 import About from '../Pages/About/About.jsx';
 import EmployerProfile from '../Pages/EmployerPage/EmployerDashboard/Components/EmployerProfile/EmployerProfile.jsx';
 import JobPostCard from '../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/JobPostCard.jsx';
-import LogInPage from '../Pages/Admin/SigninUpPage/SignIn/LogIn.jsx'
-import SignUpPage from '../Pages/Admin/SigninUpPage/SignUp/SignUpPage.jsx'
+import LogInPage from '../Pages/AdminPage/SigninUpPage/SignIn/LogIn.jsx'
+import SignUpPage from '../Pages/AdminPage/SigninUpPage/SignUp/SignUpPage.jsx'
+import CandidateDashboard from '../Pages/CandidatePage/CandidateDashboard.jsx';
+import CandidateSignIn from '../Pages/CandidatePage/SignInUpPage/CandidateSignIn.jsx';
+import CandidateSignUp from '../Pages/CandidatePage/SignInUpPage/CandidateSignUp.jsx';
+import CandidateJobPostCard from '../Pages/CandidatePage/Components/Candidate-Job-Card/CandidateJobPostCard.jsx';
+// import CandidateProfile from '../Pages/CandidatePage/Components/CandidateProfile/CandidateProfile.jsx';
+import CandidateFullJobDetails from '../Pages/CandidatePage/Components/Candidate-Job-Card/CandidateFullJobDetails.jsx';
+import MyJobs from '../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/MyJobs.jsx';
+import SelectedCandidates from '../Pages/EmployerPage/EmployerDashboard/Components/SelectedCandidates/SelectedCandidates.jsx';
+import AdminDashboard from '../Pages/AdminPage/AdminDashboard/AdminDashboard.jsx';
+import AdminProfile from '../Pages/AdminPage/AdminDashboard/Components/AdminProfile/AdminProfile.jsx';
+import EmployerInsights from '../Pages/AdminPage/AdminDashboard/Components/EmployerInsights/EmployerInsights.jsx';
+import JobListings from '../Pages/AdminPage/AdminDashboard/Components/JobListings/JobListings.jsx';
+import ShortlistedTalent from '../Pages/AdminPage/AdminDashboard/Components/ShortlistedTalent/ShortlistedTalent.jsx';
+import AdminLandingPage from '../Pages/AdminPage/AdminDashboard/Components/AdminLandingPage/AdminLandingPage.jsx';
+import AdminDetailsForm from '../Pages/AdminPage/AdminDetailsForm';
 
 const AppRouter = () => {
   return (
@@ -37,10 +52,12 @@ const AppRouter = () => {
           "/*": <Home />,
           "/about": <About />,
           "/contact": <Contact />,
+          "/candidatelogin": <CandidateSignIn/>,
+          "/candidatesignup" : <CandidateSignUp/>,
           "/login" : <LogInPage/>,
           "/signup" : <SignUpPage/>,
           "/verification": <ContactVerify />,
-          "/registration": <FormComponent />,
+          "/admin-registration-form": <AdminDetailsForm/>,
           "/employeregistration": <EmployeeForm />,
           "/telecaller": <TelecallerJob />,
           "/documentverification": <DocVerifyJob />,
@@ -67,6 +84,36 @@ const AppRouter = () => {
               element: <JobDetailsForm /> },
               {path: "jobpostdetails",
                 element: <FullJobDetails /> },
+              {path:"my-jobs", element:<MyJobs />},
+              {path:"selected-candidates", element:<SelectedCandidates />},
+            ],
+          },
+          "/candidatedashboard": {
+            element: <CandidateDashboard />,
+            children: [
+              // {path: "", 
+              {path: "/candidatedashboard/",
+              element: <CandidateJobPostCard />,
+              children: [
+                {path: "candidatejobpostdetails",
+                  element: <CandidateFullJobDetails/> 
+                },
+              ]
+              },
+              {path: "registration",
+                element: <FormComponent /> },
+            ],
+          },
+          "/admin": {
+            element: <AdminDashboard/>,
+            children: [
+              {path: "/admin/", element: <AdminLandingPage />},
+              { path: "adminprofile", element: <AdminProfile /> },
+              {path: "employer-insights",
+              element: <EmployerInsights /> },
+              {path: "job-listings",
+                element: <JobListings /> },
+              {path:"shortlisted-talent", element:<ShortlistedTalent />},
             ],
           },
         }}
