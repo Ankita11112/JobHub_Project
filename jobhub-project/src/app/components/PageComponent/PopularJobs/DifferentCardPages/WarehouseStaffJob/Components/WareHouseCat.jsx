@@ -4,15 +4,14 @@ import React from 'react';
 import TeleBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 import CategoriesCard from '../../../../../GlobalComponents/JobCard/CategoriesCard';
 
-const HouseKeepingCat = () => {
+const WareHouseCat = () => {
   const category = [
-    { title: 'Cleaning' },
-    { title: 'Mopping' },
-    { title: 'Laundry' },
-    { title: 'Dusting' },
-    { title: 'Residential cleaning' },
+    { title: 'Warehouse Manager' },
+    { title: 'Shipping and receiving Clerk' },
+    { title: 'Stocker' },
+    { title: 'Warehouse Worker' },
+    { title: 'Logistics Manager' },
   ];
-
   return (
     <>
       <Box
@@ -96,4 +95,4 @@ const HouseKeepingCat = () => {
   );
 };
 
-export default HouseKeepingCat;
+export default WareHouseCat;

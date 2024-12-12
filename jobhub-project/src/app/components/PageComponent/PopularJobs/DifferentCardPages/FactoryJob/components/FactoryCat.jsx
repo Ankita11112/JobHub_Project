@@ -1,18 +1,16 @@
-
 import { Box, Grid2, Typography } from '@mui/material';
 import React from 'react';
 import TeleBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 import CategoriesCard from '../../../../../GlobalComponents/JobCard/CategoriesCard';
 
-const HouseKeepingCat = () => {
+const FactoryCat = () => {
   const category = [
-    { title: 'Cleaning' },
-    { title: 'Mopping' },
-    { title: 'Laundry' },
-    { title: 'Dusting' },
-    { title: 'Residential cleaning' },
+    { title: 'Production worker ' },
+    { title: 'Machine operator' },
+    { title: 'CNC operator' },
+    { title: 'Quality control technician' },
+    { title: 'Inventory control specialist' },
   ];
-
   return (
     <>
       <Box
@@ -96,4 +94,4 @@ const HouseKeepingCat = () => {
   );
 };
 
-export default HouseKeepingCat;
+export default FactoryCat;

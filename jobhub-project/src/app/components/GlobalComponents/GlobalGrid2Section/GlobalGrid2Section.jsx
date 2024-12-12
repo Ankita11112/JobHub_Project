@@ -3,7 +3,7 @@ import { Box, Grid2, Typography } from '@mui/material'
 import DocVerify from '../../../assets/Images/DataEntryImages/DiscriptionImg.png';
 import DocType from '../../../assets/Images/DataEntryImages/DaTypeImage.png';
 
-const GlobalGrid2Section = ({reverse = false, content, Img1, Box: Img2}) => {
+const GlobalGrid2Section = ({ reverse = false, content, Img1, Box: Img2 }) => {
     return (
         <>
             <Grid2
@@ -18,20 +18,20 @@ const GlobalGrid2Section = ({reverse = false, content, Img1, Box: Img2}) => {
                         width: { xs: "100%", sm: "100%", md: "40%" },
                         py: 2,
                     }}>
-                    {Img1 && 
-                    <Box
-                    component="img"
-                        src={DocVerify}
-                        alt="Document Verification"
-                        sx={{
-                            width: '100%',
-                            maxWidth: '100%',
-                            height: '100%',
-                        }}
-                    />
+                    {Img1 &&
+                        <Box
+                            component="img"
+                            src={DocVerify}
+                            alt="Document Verification"
+                            sx={{
+                                width: '100%',
+                                maxWidth: '100%',
+                                height: '100%',
+                            }}
+                        />
                     }
                     {Img2 &&
-                        <Box 
+                        <Box
                             component="img"
                             src={DocType}
                             alt='Document Verification'
