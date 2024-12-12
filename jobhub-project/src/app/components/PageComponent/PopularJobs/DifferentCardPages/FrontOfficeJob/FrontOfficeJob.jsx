@@ -31,8 +31,6 @@ const FrontOfficeJob = () => {
     background: 'linear-gradient(to bottom, #ffffff05, #35a335)',
     borderRadius: "2%"
   };
-
-
   return (
     <>
       <PageComponent>
