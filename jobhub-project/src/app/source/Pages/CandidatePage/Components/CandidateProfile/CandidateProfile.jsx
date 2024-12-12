@@ -15,15 +15,12 @@ import MoneyIcon from "@mui/icons-material/Money";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import SaveIcon from "@mui/icons-material/Save";
-import ProfileImg from "../../../../../../assets/Images/profileImg.jpg";
-import PhoneVBg from "../../../../../../assets/Images/bgImages/PhoneVBg.png";
+import ProfileImg from "../../../../../assets/Images/profileImg.jpg";
+import PhoneVBg from "../../../../../assets/Images/bgImages/PhoneVBg.png";
 
-const EmployerProfile = () => {
+const CandidateProfile = () => {
   const [profileData, setProfileData] = useState({
     fullName: "John Doe",
-    companyName: "ABC Pvt. Ltd.",
-    companyGST: "GST123456",
-    phone: "+1 123-456-7890",
     email: "john.doe@example.com",
   });
 
@@ -44,14 +41,11 @@ const EmployerProfile = () => {
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
-    setIsEditing(null); 
+    setIsEditing(null); // Reset field-specific editing when toggling the mode.
   };
 
   const profileFields = [
     { label: "Full Name", key: "fullName", icon: <AccountCircle /> },
-    { label: "Company Name", key: "companyName", icon: <BusinessIcon /> },
-    { label: "Company GST", key: "companyGST", icon: <MoneyIcon /> },
-    { label: "Phone", key: "phone", icon: <ContactPhoneIcon /> },
     { label: "Email", key: "email", icon: <EmailIcon /> },
   ];
 
@@ -59,22 +53,20 @@ const EmployerProfile = () => {
     <Box
       sx={{
         p: 4,
-        minHeight: "80vh",
-        overflow: "hidden"
+        minHeight: "100vh",
       }}
     >
       <Card
         sx={{
-          m: 1,
+          m: 4,
           p: 4,
           boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
           backgroundImage: `url(${PhoneVBg})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          height: "70vh",
           borderRadius: "16px",
-          overflowY: "scroll", 
+          overflow: "hidden",
         }}
       >
         <Grid container spacing={4}>
@@ -115,7 +107,7 @@ const EmployerProfile = () => {
               textTransform: "uppercase",
               letterSpacing: "0.5px",
             }}>
-              Employer Profile
+              Candidate Profile
             </Typography>
           </Grid>
           <Grid item size={{ xs: 12, md: 12 }}>
@@ -140,7 +132,7 @@ const EmployerProfile = () => {
                   alignItems: "center",
                 }}
               >
-                Employer Details
+                Candidate Details
                 <IconButton
                   sx={{ ml: 1, cursor: "pointer" }}
                   onClick={toggleEditMode}
@@ -220,6 +212,6 @@ const EmployerProfile = () => {
   );
 };
 
-export default EmployerProfile;
+export default CandidateProfile;
 
 

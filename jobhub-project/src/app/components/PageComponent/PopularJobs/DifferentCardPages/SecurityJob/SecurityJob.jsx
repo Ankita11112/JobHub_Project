@@ -39,7 +39,7 @@ const SecurityJob = () => {
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
-          onButtonClick1={() => navigate('/registration')}
+          onButtonClick1={() => navigate('/candidatedashboard')}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style={{

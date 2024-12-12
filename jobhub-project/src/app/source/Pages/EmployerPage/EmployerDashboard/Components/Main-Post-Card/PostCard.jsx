@@ -14,7 +14,7 @@ const PostCard = ({onClick}) => {
                 mt: 2
               }}>
               <ButtonComponent
-                  title="Add Post"
+                  title="Create a New Job Post"
                   onClick={() => navigate("/employerdashboard/jobpostdetailsform")}
                   sx={{
                     // my: 3,
@@ -31,7 +31,7 @@ const PostCard = ({onClick}) => {
                   }}
               />
               <ButtonComponent
-                  title="Delete Post"
+                  title="Delete Job"
                   onClick={onClick}
                   sx={{
                     // my: 3,

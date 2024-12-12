@@ -102,6 +102,7 @@ const EmployeeForm = () => {
                         />
                         <TextField
                             fullWidth
+                            disabled
                             label="Mobile"
                             variant="outlined"
                             placeholder="Enter Mobile Number"
@@ -151,6 +152,11 @@ const EmployeeForm = () => {
                         value={source}
                         onChange={(e) => setSource(e.target.value)}
                     />
+                    <Box textAlign="center">
+                      <Typography required variant="h6" sx={{fontSize: "14px",color: "green"}}>
+                      *Kindly ensure all fields are filled out accurately, as this form can only be submitted once. Your attention to detail is highly appreciated.
+                    </Typography>
+                    </Box>
                     <Box textAlign="center">
                         <Button
                             type="submit"

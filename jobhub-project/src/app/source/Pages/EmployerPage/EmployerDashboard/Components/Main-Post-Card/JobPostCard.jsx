@@ -21,6 +21,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import { useNavigate } from "react-router-dom";
 import PostCard from "./PostCard";
+import Gif2 from "../../../../../../assets/Images/Gif2.gif"
 
 const JobPostCard = () => {
   const [jobPosts, setJobPosts] = useState([]);
@@ -79,9 +80,25 @@ const JobPostCard = () => {
           Job Postings
         </Typography>
         {jobPosts.length === 0 ? (
-          <Typography variant="h6" color="textSecondary" align="center">
-            No job postings available. Please create a new job post.
-          </Typography>
+          <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      textAlign="center"
+      p={3}
+    >
+      {/* Adding an animated GIF */}
+      <img 
+        src={Gif2}
+        alt="Waving Girl" 
+        style={{ width: '150px', marginBottom: '1rem', borderRadius: '10px' }} 
+      />
+      <Typography variant="h6" color="textSecondary" mb={3}>
+        Hello, Mr. Maneesh! There are currently no job postings available. <br />
+        Don’t worry! You can add new job opportunities with just a click.
+      </Typography>
+    </Box>
         ) : (
           <>
             {toggleMode && (

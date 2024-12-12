@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Button, Typography, FormControlLabel, Checkbox, IconButton } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import BG from '../../../../../assets/Images/SignPage/SignInBG.jpg';
+import BG from '../../../../assets/Images/SignPage/SignInBG.jpg';
 import HomeIcon from '@mui/icons-material/Home';
 import { toast } from 'react-toastify';
 
-const LogIn = () => {
+const CandidateSignIn = () => {
   const paperStyle = {
     padding: '40px 30px',
     width: 350,
@@ -65,7 +65,7 @@ const LogIn = () => {
     if (Object.keys(formErrors).length === 0) {
       toast.success('Form submitted successfully!');
       setTimeout(() => {
-        navigate("/admin")
+        navigate("/candidatedashboard")
       }, 5000);
     }else{
       toast.error('Invalid credentials');
@@ -151,7 +151,7 @@ const LogIn = () => {
             </Button>
           </form>
           <Typography style={signup}>
-            Don't have an account? <Link to="/signup">Sign Up</Link>
+            Don't have an account? <Link to="/candidatesignup">Sign Up</Link>
           </Typography>
         </Paper>
       </Box>
@@ -159,5 +159,5 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default CandidateSignIn;
 

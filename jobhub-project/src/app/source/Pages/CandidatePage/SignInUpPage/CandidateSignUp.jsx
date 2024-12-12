@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Button, FormControlLabel, Checkbox, Typography, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import BG from '../../../../../assets/Images/SignPage/SignInBG.jpg';
+import BG from '../../../../assets/Images/SignPage/SignInBG.jpg';
 import HomeIcon from '@mui/icons-material/Home';
 import { toast } from 'react-toastify';
 
-const SignUpPage = () => {
+const CandidateSignUp = () => {
   const paperStyle = {
     padding: '30px 20px',
     width: 350,
@@ -74,7 +74,7 @@ const SignUpPage = () => {
     if (Object.keys(formErrors).length === 0) {
       toast.success('Form submitted successfully!');
       setTimeout(() => {
-        navigate("/login")
+        navigate("/candidatelogin")
       }, 5000);
     }
   };
@@ -193,4 +193,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default CandidateSignUp;
