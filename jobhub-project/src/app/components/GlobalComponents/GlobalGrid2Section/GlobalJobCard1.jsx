@@ -62,7 +62,7 @@ const Destwo = ({ content, title, subtitle, mainImage, mainImageStyle }) => {
             {/* Main Image Section */}
             <Grid2 item xs={12} md={6} sx={{
               
-              width: { xs: "100%", sm: "100%", md: "50%" },
+               width: { xs: "100%", sm: "100%", md: "50%" },
               display: "flex",
               justifyContent: "center",
               alignContent: 'center',
