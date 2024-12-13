@@ -20,8 +20,8 @@ const FrontOfficeJob = () => {
 
   const imgoneStyle = {
 
-    // maxHeight: '83%',
-    maxWidth: '65%',
+    // maxHeight: '60%',
+    maxWidth: '60%',
 
   }
   const imgtwoStyle = {
