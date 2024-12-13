@@ -83,11 +83,7 @@ const FactoryJob = () => {
                 description:
                   '<strong> Safety Compliance:</strong> Comply to policies and standard precautions to prevent the risk factors and keep a clean work environment.',
               },
-              // {
-              //   icon: tickImg,
-              //   description:
-              //     '<strong>Maintenance:</strong>  Maintain basic upkeep on the equipment and report any problems that need attention for correct repair.',
-              // },
+            
 
 
 
