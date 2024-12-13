@@ -21,13 +21,12 @@ const FrontOfficeJob = () => {
   const imgoneStyle = {
 
     // maxHeight: '83%',
-    // maxWidth: '80%',
+    maxWidth: '65%',
 
   }
   const imgtwoStyle = {
-    // marginTop: '30px',
-    // maxHeight: '100%',
-    // maxWidth: 'auto',
+
+    maxHeight: '90%',
     background: 'linear-gradient(to bottom, #ffffff05, #35a335)',
     borderRadius: "2%"
   };
