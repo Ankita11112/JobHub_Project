@@ -95,9 +95,8 @@ const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle 
                 style={{
                   maxWidth: '100%',
                   height: 'auto',
-              
-              
                   ...mainImageStyle, // Apply passed style here
+
                 }}
                 alt="Main"
               />
