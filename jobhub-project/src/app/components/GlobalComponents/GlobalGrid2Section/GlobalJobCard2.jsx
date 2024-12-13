@@ -7,7 +7,7 @@ const GlobaljobCard2 = ({ content, title, subtitle, mainImage, mainImageStyle })
     return (
         <>
             <Box sx={{
-                my: { xs: 4, md: 10 },
+                my: { xs: 4, md: 10 } ,
                 width: "100%",
                 backgroundImage: `url(${DataBg})`,
                 backgroundRepeat: 'no-repeat',
