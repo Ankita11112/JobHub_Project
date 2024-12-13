@@ -20,7 +20,7 @@ const FrontOfficeJob = () => {
 
   const imgoneStyle = {
 
-    // maxHeight: '60%',
+    
     maxWidth: '60%',
 
   }
@@ -58,7 +58,7 @@ const FrontOfficeJob = () => {
         {/* First Desc */}
         <GlobalJobCard1
           title={"Front Office"}
-          subtitle={"A Receptionist is responsible for the first contact an organization has with its visitors and customersand ensures that the organization’s image, whether breached or formal, is maintained. Front deskstaff has an explicit function to perform in order to maintain proper spiraling and serve as the first line of touch points."} content={
+          subtitle={"A Receptionist is responsible for the first contact an organization has with its visitors and customersand ensures that the organizations image, whether breached or formal, is maintained. Front deskstaff has an explicit function to perform in order to maintain proper spiraling and serve as the first line of touch points."} content={
             [
               {
                 icon: tickImg,
@@ -79,7 +79,7 @@ const FrontOfficeJob = () => {
               {
                 icon: tickImg,
                 description:
-                  'Share details about the company’s profile, services, and any applicable privacy and security policies.',
+                  'Share details about the companys profile, services, and any applicable privacy and security policies.',
               },
 
 
