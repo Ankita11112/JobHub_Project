@@ -13,11 +13,9 @@ import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 
 const GraphicDesignerJob = () => {
-  // const imgTwoStyle = {
-  //   marginTop: '20px',
-  //   height: '90%',
-
-  // }
+  const imgTwoStyle = {
+   // marginTop: '30%',
+  }
   // const imgoneStyle = {
   //   marginTop: '50px',
   //   maxWidth: '80%',
@@ -103,7 +101,7 @@ const GraphicDesignerJob = () => {
 
             ]
           } title={"Color Theory and Consumer Behavior"} mainImage={SecImg} 
-          //mainImageStyle={imgTwoStyle}
+          mainImageStyle={imgTwoStyle}
 
         />
 
