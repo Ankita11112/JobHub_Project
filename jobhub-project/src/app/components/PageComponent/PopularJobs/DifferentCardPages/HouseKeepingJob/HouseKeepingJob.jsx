@@ -6,8 +6,8 @@ import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import HouseKeepingCat from './components/HouseKeepingCat';
-import FirImg from '../../../../../assets/Images/HousekeepingImages/first1.png';
-import SecImg from '../../../../../assets/Images/HousekeepingImages/Second2.png';
+import firImg from '../../../../../assets/Images/HousekeepingImages/first1.png';
+import secImg from '../../../../../assets/Images/HousekeepingImages/Second2.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCard1 from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobaljobCard2 from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
@@ -82,11 +82,11 @@ const HouseKeepingJob = () => {
               {
                 icon: tickImg,
                 description:
-                  '<strong>Maintenance Reporting :</strong>Report and/or bring any damages which need to be repaired to the management’s attention.Check whether all the appliances anutilities are working or not.',
+                  '<strong>Maintenance Reporting :</strong>Report and/or bring any damages which need to be repaired to the managements attention.Check whether all the appliances anutilities are working or not.',
               },
 
 
-            ]} mainImage={FirImg} mainImageStyle={imgoneStyle}
+            ]} mainImage={firImg} mainImageStyle={imgoneStyle}
 
         />
 
@@ -123,7 +123,7 @@ const HouseKeepingJob = () => {
 
 
             ]
-          } title={""} mainImage={SecImg} mainImageStyle={imgtwoStyle}
+          } title={""} mainImage={secImg} mainImageStyle={imgtwoStyle}
         >
 
         </GlobaljobCard2>
