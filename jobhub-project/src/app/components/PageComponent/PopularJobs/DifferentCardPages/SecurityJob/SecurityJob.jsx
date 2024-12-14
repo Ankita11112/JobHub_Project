@@ -52,35 +52,35 @@ const SecurityJob = () => {
         {/* First Desc */}
         <GlobalJobCardOne
           title={"Security Guard"}
-          subtitle={"The duty of a security guard is to safely and securely guard premises and property, and protect people. Their purpose is to keep them secured to secure an unauthorizedaccess, monitors their activities as well as minimizes the emergencies.  "}
+          subtitle={" "}
           content={
 
             [
               {
                 icon: tickImg,
                 description:
-                  '<strong> Surveillance and Monitoring:</strong>',
+                  '',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Access Control:</strong> ',
+                  ' ',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Emergency Response:</strong> ',
+                  '',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong>Property Protection:</strong>',
+                  '',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Documentation and Enforcement:</strong> ',
+                  '',
               },
 
 
@@ -96,32 +96,32 @@ const SecurityJob = () => {
               {
                 icon: tickImg,
                 description:
-                  '<strong>Protection Measures:</strong> ',
+                  '',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong> Core Activities:</strong> ',
+                  '',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong> Prevention & Deterrence: </strong>',
+                  '',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong>Physical Security: </strong>',
+                  '',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Digital Security:</strong>',
+                  '',
               },
-          
+
 
 
             ]
