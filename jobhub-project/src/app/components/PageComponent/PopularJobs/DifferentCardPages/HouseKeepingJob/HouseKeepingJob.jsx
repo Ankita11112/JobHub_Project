@@ -6,8 +6,8 @@ import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import HouseKeepingCat from './components/HouseKeepingCat';
-import firImg from '../../../../../assets/Images/HousekeepingImages/first1.png';
-import secImg from '../../../../../assets/Images/HousekeepingImages/Second2.png';
+import firImg from '../../../../../assets/Images/HousekeepingImages/firstimg.png';
+import secImg from '../../../../../assets/Images/HousekeepingImages/Secondimg.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobaljobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
