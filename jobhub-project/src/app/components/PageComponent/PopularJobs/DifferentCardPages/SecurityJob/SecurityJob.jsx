@@ -51,7 +51,7 @@ const SecurityJob = () => {
 
         {/* First Desc */}
         <GlobalJobCardOne
-          title={"Security Guard"}
+          title={""}
           subtitle={" "}
           content={
 
