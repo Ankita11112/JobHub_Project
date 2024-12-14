@@ -21,7 +21,7 @@ const FactoryJob = () => {
     maxHeight: '80%'
   }
   const imagetwostyle = {
-     maxHeight: '80%'
+    maxHeight: '80%'
   }
   return (
     <>
@@ -82,7 +82,7 @@ const FactoryJob = () => {
                 description:
                   '<strong>Safety Compliance : </strong>Comply to policies and standard precautions to prevent the risk factors and keep a clean work environment. ',
               },
-           
+
 
 
             ]} mainImage={FirImg}
