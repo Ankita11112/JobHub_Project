@@ -11,8 +11,8 @@ import SecCat from './components/SecCat';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
-import firImg from '../../../../../assets/Images/HotelImages/First1.png';
-import secImg from '../../../../../assets/Images/HotelImages/Second1.png';
+import firImg from '../../../../../assets/Images/HotelImages/first.png';
+import secImg from '../../../../../assets/Images/HotelImages/second.png';
 
 
 
