@@ -6,11 +6,25 @@ import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import SecCat from './components/SecCat';
-import Secfirstdesc from './components/Secfirstdesc';
-import SecSecDesc from './components/SecSecDesc';
+
+import FirImg from '../../../../../assets/Images/GuardImages/First.png';
+import SecImg from '../../../../../assets/Images/GuardImages/Second.png';
+import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
+import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
+import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
+
 
 const SecurityJob = () => {
   const navigate = useNavigate();
+  
+  const imgoneStyle = {
+    maxHeight: '80%'
+
+ }
+ const imagetwostyle = {
+    maxHeight: '75%'
+ }
+ 
   return (
     <>
       <PageComponent>
@@ -33,8 +47,93 @@ const SecurityJob = () => {
           }}
         />  <SecCat />
         <JobDetails />
-        <Secfirstdesc />
-        <SecSecDesc />
+
+        {/* First Desc */}
+        <GlobalJobCardOne
+          title={"Security Guard"}
+          subtitle={"The duty of a security guard is to safely and securely guard premises and property, and protect people. Their purpose is to keep them secured to secure an unauthorizedaccess, monitors their activities as well as minimizes the emergencies.                                                                                    "}
+          content={
+
+            [
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Surveillance and Monitoring:</strong> They protect life on patrol areas, monitor CCTVs and alarms; and detect security breach.',
+              },
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Access Control: </strong> Revising to, Identify occupying own to b justify, maintain visitors and vehicle records and restrain unauthorized accession and protection.',
+              },
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Emergency Response: </strong>Alerts to alarms, and assists evacuations or medical situations, when required for service to emergency.',
+              },
+
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Property Protection: </strong> It will help limit theft and damage as well as check up on locks and windows and secure your assets.',
+              },
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Documentation and Enforcement:</strong> Work includes logging daily activities, preparing incident reports, being in charge, dealing with disputes calmly and ensuring strict compliance of security protocols.',
+              },
+
+
+
+            ]} mainImage={FirImg} mainImageStyle={imgoneStyle}
+        />
+
+
+        {/* Second Desc */}
+        <GlobalJobCardTwo
+          content={
+
+            [
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Protection Measures:</strong>  Minimize or avoid the risks caused by incidents to affect people, assets, and environments.',
+              },
+
+              {
+                icon: tickImg,
+                description:
+                  '<strong> Core Activities:</strong> Complement the physical security risks through surveillance, access control and crises risks.',
+              },
+
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Prevention & Deterrence:</strong>  Maintain secure and prevent the criminal act to guarantee security.',
+              },
+
+              {
+                icon: tickImg,
+                description:
+                  '<strong>Physical Security: </strong> Slows or halts human aggressiveness on people, property, and events.',
+              },
+              {
+                icon: tickImg,
+                description:
+                  '<strong> Digital Security:</strong> A technology that protect networks, systems, and software against cyber threats.',
+              },
+
+
+            ]
+          } title={""} mainImage={SecImg} mainImageStyle={imagetwostyle}
+        />
+
+
+
+
+
+
+
+
       </PageComponent>
     </>
   )

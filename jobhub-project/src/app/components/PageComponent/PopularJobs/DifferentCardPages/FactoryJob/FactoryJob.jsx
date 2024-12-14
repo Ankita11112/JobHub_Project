@@ -32,7 +32,7 @@ const FactoryJob = () => {
           {<>
             Factory <span style={{ color: "green" }}>Workers</span>
           </>}
-          subText="Friendly telecaller providing customer support, handling inquiries, and boosting client satisfaction."
+          subText="Efficient factory worker experienced in operating machinery, meeting production goals, and maintaining safety standards."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
