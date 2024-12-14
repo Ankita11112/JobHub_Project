@@ -5,9 +5,11 @@ import HeaderImage from '../../../../../assets/Images/HousekeepingImages/header.
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
+
 import HouseKeepingCat from './components/HouseKeepingCat';
+
 import firImg from '../../../../../assets/Images/HousekeepingImages/firstimg.png';
-import secImg from '../../../../../assets/Images/HousekeepingImages/Second2.png';
+import secImg from '../../../../../assets/Images/HousekeepingImages/secondimg.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobaljobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
@@ -19,14 +21,10 @@ const HouseKeepingJob = () => {
 
 
   const imgoneStyle = {
-
     maxHeight: '85%',
-
   }
   const imgtwoStyle = {
-
     maxHeight: '80%',
-
   }
 
 
