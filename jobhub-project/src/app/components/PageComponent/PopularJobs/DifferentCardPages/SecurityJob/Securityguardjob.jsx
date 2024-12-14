@@ -12,7 +12,7 @@ import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/Gl
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import firImg from '../../../../../assets/Images/GuardImages/First.jpeg'
-import secImg from '../../../../../assets/Images/GuardImages/Second.png'
+import secImg from '../../../../../assets/Images/GuardImages/Second.jpeg'
 
 
 
