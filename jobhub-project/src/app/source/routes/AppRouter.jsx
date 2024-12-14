@@ -13,7 +13,6 @@ import FrontOfficeJob from '../../components/PageComponent/PopularJobs/Different
 import BackOfficeJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/BackOfficeJob/BackOfficeJob';
 import HouseKeepingJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/HouseKeepingJob/HouseKeepingJob';
 import DeliveryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/DeliveryJob/DeliveryJob';
-import SecurityJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/SecurityJob/SecurityJob';
 import HotelStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/HotelStaffJob/HotelStaffJob';
 import WarehouseStaffJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/WarehouseStaffJob/WarehouseStaffJob';
 import FactoryJob from '../../components/PageComponent/PopularJobs/DifferentCardPages/FactoryJob/FactoryJob';
@@ -43,6 +42,7 @@ import JobListings from '../Pages/AdminPage/AdminDashboard/Components/JobListing
 import ShortlistedTalent from '../Pages/AdminPage/AdminDashboard/Components/ShortlistedTalent/ShortlistedTalent.jsx';
 import AdminLandingPage from '../Pages/AdminPage/AdminDashboard/Components/AdminLandingPage/AdminLandingPage.jsx';
 import AdminDetailsForm from '../Pages/AdminPage/AdminDetailsForm';
+import Securityguardjob from '../../components/PageComponent/PopularJobs/DifferentCardPages/SecurityJob/Securityguardjob.jsx';
 
 const AppRouter = () => {
   return (
@@ -52,12 +52,12 @@ const AppRouter = () => {
           "/*": <Home />,
           "/about": <About />,
           "/contact": <Contact />,
-          "/candidatelogin": <CandidateSignIn/>,
-          "/candidatesignup" : <CandidateSignUp/>,
-          "/login" : <LogInPage/>,
-          "/signup" : <SignUpPage/>,
+          "/candidatelogin": <CandidateSignIn />,
+          "/candidatesignup": <CandidateSignUp />,
+          "/login": <LogInPage />,
+          "/signup": <SignUpPage />,
           "/verification": <ContactVerify />,
-          "/admin-registration-form": <AdminDetailsForm/>,
+          "/admin-registration-form": <AdminDetailsForm />,
           "/employeregistration": <EmployeeForm />,
           "/telecaller": <TelecallerJob />,
           "/documentverification": <DocVerifyJob />,
@@ -70,7 +70,8 @@ const AppRouter = () => {
           "/backoffice": <BackOfficeJob />,
           "/housekeeping": <HouseKeepingJob />,
           "/delivery": <DeliveryJob />,
-          "/securityguard": <SecurityJob />,
+
+          "/securityguard": <Securityguardjob />,
           "/hotelstaff": <HotelStaffJob />,
           "/warehousestaff": <WarehouseStaffJob />,
           "/factory": <FactoryJob />,
@@ -78,42 +79,54 @@ const AppRouter = () => {
           "/employerdashboard": {
             element: <EmployerDashboard />,
             children: [
-              {path: "/employerdashboard/", element: <JobPostCard />},
+              { path: "/employerdashboard/", element: <JobPostCard /> },
               { path: "employerprofile", element: <EmployerProfile /> },
-              {path: "jobpostdetailsform",
-              element: <JobDetailsForm /> },
-              {path: "jobpostdetails",
-                element: <FullJobDetails /> },
-              {path:"my-jobs", element:<MyJobs />},
-              {path:"selected-candidates", element:<SelectedCandidates />},
+              {
+                path: "jobpostdetailsform",
+                element: <JobDetailsForm />
+              },
+              {
+                path: "jobpostdetails",
+                element: <FullJobDetails />
+              },
+              { path: "my-jobs", element: <MyJobs /> },
+              { path: "selected-candidates", element: <SelectedCandidates /> },
             ],
           },
           "/candidatedashboard": {
             element: <CandidateDashboard />,
             children: [
               // {path: "", 
-              {path: "/candidatedashboard/",
-              element: <CandidateJobPostCard />,
-              children: [
-                {path: "candidatejobpostdetails",
-                  element: <CandidateFullJobDetails/> 
-                },
-              ]
+              {
+                path: "/candidatedashboard/",
+                element: <CandidateJobPostCard />,
+                children: [
+                  {
+                    path: "candidatejobpostdetails",
+                    element: <CandidateFullJobDetails />
+                  },
+                ]
               },
-              {path: "registration",
-                element: <FormComponent /> },
+              {
+                path: "registration",
+                element: <FormComponent />
+              },
             ],
           },
           "/admin": {
-            element: <AdminDashboard/>,
+            element: <AdminDashboard />,
             children: [
-              {path: "/admin/", element: <AdminLandingPage />},
+              { path: "/admin/", element: <AdminLandingPage /> },
               { path: "adminprofile", element: <AdminProfile /> },
-              {path: "employer-insights",
-              element: <EmployerInsights /> },
-              {path: "job-listings",
-                element: <JobListings /> },
-              {path:"shortlisted-talent", element:<ShortlistedTalent />},
+              {
+                path: "employer-insights",
+                element: <EmployerInsights />
+              },
+              {
+                path: "job-listings",
+                element: <JobListings />
+              },
+              { path: "shortlisted-talent", element: <ShortlistedTalent /> },
             ],
           },
         }}
