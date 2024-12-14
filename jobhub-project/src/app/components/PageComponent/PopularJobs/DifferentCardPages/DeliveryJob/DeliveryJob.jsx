@@ -6,7 +6,6 @@ import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import DeliveryCat from './components/DeliveryCat';
-
 import firImg from '../../../../../assets/Images/DeliveryImages/First.png';
 import secImg from '../../../../../assets/Images/DeliveryImages/second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
