@@ -7,8 +7,8 @@ import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import SecCat from './components/SecCat';
 
-import FirImg from '../../../../../assets/Images/GuardImages/first.png';
-import SecImg from '../../../../../assets/Images/GuardImages/Second.png';
+import FirImg from '../../../../../assets/Images/HotelImages/First.png';
+import SecImg from '../../../../../assets/Images/HotelImages/Second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
