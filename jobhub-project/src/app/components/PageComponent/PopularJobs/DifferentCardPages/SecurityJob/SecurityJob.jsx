@@ -59,28 +59,28 @@ const SecurityJob = () => {
               {
                 icon: tickImg,
                 description:
-                  '<strong> Surveillance and Monitoring:</strong> They protect life on patrol areas, monitor CCTVs and alarms; and detect security breach.',
+                  '<strong> Surveillance and Monitoring:</strong>',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Access Control:</strong> Revising to, Identify occupying own to b justify, maintain visitors and vehicle records and restrain unauthorized accession and protection.',
+                  '<strong>Access Control:</strong> ',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Emergency Response:</strong> Alerts to alarms, and assists evacuations or medical situations, when required for service to emergency.',
+                  '<strong>Emergency Response:</strong> ',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong>Property Protection:</strong> It will help limit theft and damage as well as check up on locks and windows and secure your assets.',
+                  '<strong>Property Protection:</strong>',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Documentation and Enforcement:</strong> Work includes logging daily activities, preparing incident reports, being in charge., dealing with disputes calmly and ensuring strict compliance of security protocols.',
+                  '<strong>Documentation and Enforcement:</strong> ',
               },
 
 
@@ -96,30 +96,30 @@ const SecurityJob = () => {
               {
                 icon: tickImg,
                 description:
-                  '<strong>Protection Measures:</strong>  Minimize or avoid the risks caused by incidents to affect people, assets, and environments.',
+                  '<strong>Protection Measures:</strong> ',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong> Core Activities:</strong>  Complement the physical security risks through surveillance, access control and crises risks.',
+                  '<strong> Core Activities:</strong> ',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong> Prevention & Deterrence: </strong>Maintain secure and prevent the criminal act to guarantee security.',
+                  '<strong> Prevention & Deterrence: </strong>',
               },
 
               {
                 icon: tickImg,
                 description:
-                  '<strong>Physical Security: </strong>  Slows or halts human aggressiveness on people, property, and events..',
+                  '<strong>Physical Security: </strong>',
               },
               {
                 icon: tickImg,
                 description:
-                  '<strong>Digital Security:</strong> A technology that protect networks, systems, and software against cyber threats..',
+                  '<strong>Digital Security:</strong>',
               },
           
 
