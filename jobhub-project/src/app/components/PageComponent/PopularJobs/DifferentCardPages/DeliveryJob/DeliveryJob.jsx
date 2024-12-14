@@ -7,8 +7,8 @@ import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import DeliveryCat from './components/DeliveryCat';
 
-import FirImg from '../../../../../assets/Images/DeliveryImages/First.png';
-import SecImg from '../../../../../assets/Images/DeliveryImages/second.png';
+import firImg from '../../../../../assets/Images/DeliveryImages/First.png';
+import secImg from '../../../../../assets/Images/DeliveryImages/second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
@@ -18,11 +18,8 @@ import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/Gl
 
 
 const DeliveryJob = () => {
+
   const navigate = useNavigate();
-
-
-  
-
 
   return (
     <>
@@ -78,9 +75,9 @@ const DeliveryJob = () => {
               },
 
 
-            ]} mainImage={FirImg}
+            ]} mainImage={firImg}
 
-        
+
         />
 
         {/* Second Desc */}
@@ -114,7 +111,7 @@ const DeliveryJob = () => {
 
 
             ]
-          } title={""} mainImage={SecImg} 
+          } title={""} mainImage={secImg}
         />
 
 
