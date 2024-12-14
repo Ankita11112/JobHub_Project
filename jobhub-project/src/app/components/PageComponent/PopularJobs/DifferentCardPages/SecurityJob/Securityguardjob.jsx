@@ -2,7 +2,7 @@
 import React from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../../../assets/Images/GuardImages/header.png';
+import HeaderImage from '../../../../../assets/Images/SecuirtyguardImages/header.png';
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
@@ -11,8 +11,8 @@ import SecCat from './components/SecCat';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
-import firImg from '../../../../../assets/Images/GuardImages/First.jpeg'
-import secImg from '../../../../../assets/Images/GuardImages/Second.jpeg'
+import firImg from '../../../../../assets/Images/SecuirtyguardImages/first.png'
+import secImg from '../../../../../assets/Images/SecuirtyguardImages/Second.png'
 
 
 
