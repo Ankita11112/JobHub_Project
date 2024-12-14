@@ -127,7 +127,7 @@ const HouseKeepingJob = () => {
           } mainImage={secImg} mainImageStyle={imgtwoStyle}
         >
 
-        </GlobaljobCard2>
+        </GlobaljobCardTwo>
 
 
       </PageComponent>
