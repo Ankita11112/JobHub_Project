@@ -9,8 +9,8 @@ import HouseKeepingCat from './components/HouseKeepingCat';
 import firImg from '../../../../../assets/Images/HousekeepingImages/first1.png';
 import secImg from '../../../../../assets/Images/HousekeepingImages/Second2.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
-import GlobalJobCard1 from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
-import GlobaljobCard2 from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
+import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
+import GlobaljobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
 
 
 const HouseKeepingJob = () => {
@@ -53,8 +53,9 @@ const HouseKeepingJob = () => {
         />
         <HouseKeepingCat />
         <JobDetails />
+
         {/* First Desc */}
-        <GlobalJobCard1
+        <GlobalJobCardOne
           title={"House Keeping"}
           subtitle={"The act of cleaning and tidying up and other chores associated with living spaces, working environments or any environment but a natural one. Housekeepers have many sweep and clean responsibilities and other repair and maintenance tasks. "} content={
             [
@@ -91,7 +92,7 @@ const HouseKeepingJob = () => {
         />
 
         {/* Second Desc */}
-        <GlobaljobCard2
+        <GlobaljobCardTwo
           content={
 
             [
@@ -123,7 +124,7 @@ const HouseKeepingJob = () => {
 
 
             ]
-          } title={""} mainImage={secImg} mainImageStyle={imgtwoStyle}
+          } mainImage={secImg} mainImageStyle={imgtwoStyle}
         >
 
         </GlobaljobCard2>
