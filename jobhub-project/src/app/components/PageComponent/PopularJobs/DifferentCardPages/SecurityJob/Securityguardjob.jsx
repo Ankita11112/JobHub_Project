@@ -2,20 +2,16 @@
 import React from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../../../assets/Images/HotelImages/header1.png';
+import HeaderImage from '../../../../../assets/Images/secuirtyGuard/header2.png';
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import SecCat from './components/SecCat';
-
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
-import firImg from '../../../../../assets/Images/HotelImages/first.png';
-import secImg from '../../../../../assets/Images/HotelImages/second.png';
-
-
-
+import firImg from '../../../../../assets/Images/secuirtyGuard/first1.png';
+import secImg from '../../../../../assets/Images/secuirtyGuard/second3.png';
 
 export default function Securityguardjob() {
 
