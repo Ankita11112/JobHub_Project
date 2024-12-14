@@ -6,7 +6,6 @@ import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import HouseKeepingCat from './components/HouseKeepingCat';
-
 import FirImg from '../../../../../assets/Images/HousekeepingImages/first.png';
 import SecImg from '../../../../../assets/Images/HousekeepingImages/Second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
