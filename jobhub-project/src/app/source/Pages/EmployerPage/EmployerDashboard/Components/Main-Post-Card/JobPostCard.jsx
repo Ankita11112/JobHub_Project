@@ -75,7 +75,7 @@ const JobPostCard = () => {
   return (
     <>
       <PostCard onClick={handleToggleDeleteMode} />
-      <Box sx={{ p: 3, minHeight: "100vh" }}>
+      <Box sx={{ p: 3, minHeight: "auto" }}>
         <Typography variant="h4" align="center" gutterBottom>
           Job Postings
         </Typography>

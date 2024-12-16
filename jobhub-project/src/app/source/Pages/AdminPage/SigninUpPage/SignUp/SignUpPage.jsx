@@ -117,7 +117,7 @@ const SignUpPage = () => {
               textAlign="center"
               gutterBottom
             >
-              Sign Up
+             Admin Sign Up
             </Typography>
             <Typography
               variant="body2"

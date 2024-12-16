@@ -15,15 +15,15 @@ const AdminDashboard = () => {
       <Box
         sx={{
           height: "100vh",
-          width: "100%",
           overflowY: "scroll",
+          width: "100%",
           background: "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
           overflowX: "hidden",
           position: "relative", // Ensures toggle button stays positioned correctly
         }}
       >
         {/* Sidebar and Navbar Grid */}
-        <Grid container sx={{ height: "100%" }}>
+        <Grid container sx={{ height: "100%", }}>
           {/* Sidebar */}
           {isSidebarOpen && (
             <Grid
@@ -33,10 +33,10 @@ const AdminDashboard = () => {
                 transition: "width 0.3s ease",
               }}
             >
-              <AdminDashboardSidebar
+          `    <AdminDashboardSidebar
                 isSidebarOpen={isSidebarOpen}
                 toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-              />
+              />`
             </Grid>
           )}
 
