@@ -16,7 +16,7 @@ import ButtonComponent from '../GlobalComponents/ButtonComponent/ButtonComponent
 const pages = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
+  // { label: 'Services', path: '/services' },
   { label: 'Contact Us', path: '/contact' },
 ];
 
@@ -44,7 +44,7 @@ function NavAppBar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl" sx={{
+      <Container maxWidth="100%" sx={{
         bgcolor: 'background.paper',
         borderBottom: "1px solid #dadada"
       }}>
@@ -121,7 +121,26 @@ function NavAppBar() {
               <Button
                 key={page.label}
                 onClick={() => handleNavigate(page.path)}
-                sx={{ my: 0, color: 'black', display: 'block', padding: '20px', ":hover": { color: '#34a853' } }}
+                sx={{ my: 0, color: 'black', display: 'block', margin: '0 20px',  position: 'relative',
+  color: 'black',
+  padding: '10px',
+  display: 'block',
+  '&:hover': {
+    color: '#34a853',
+  },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: 0,
+    height: '2px',
+    backgroundColor: '#34a853',
+    transition: 'width 0.5s ease-in-out',
+  },
+  '&:hover::after': {
+    width: '100%',
+  }, }}
               >
                 {page.label}
               </Button>
