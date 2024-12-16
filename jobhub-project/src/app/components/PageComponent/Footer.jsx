@@ -106,8 +106,8 @@ export default function Footer() {
             </Typography>
             <Stack direction="row" spacing={2}>
               <AnimatedIcon icon={<LinkedInIcon />} />
-              <AnimatedIcon icon={<TwitterIcon />} />
-              <AnimatedIcon icon={<YouTubeIcon />} />
+              {/* <AnimatedIcon icon={<TwitterIcon />} />
+              <AnimatedIcon icon={<YouTubeIcon />} /> */}
               <AnimatedIcon icon={<FacebookIcon />} />
               <AnimatedIcon icon={<InstagramIcon />} />
             </Stack>
