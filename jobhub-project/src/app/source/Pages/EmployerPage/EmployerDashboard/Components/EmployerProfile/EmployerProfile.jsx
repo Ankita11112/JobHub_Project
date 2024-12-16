@@ -6,29 +6,18 @@ import {
   Typography,
   IconButton,
   TextField,
+  Avatar,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import EditIcon from "@mui/icons-material/Edit";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import BusinessIcon from "@mui/icons-material/Business";
-import MoneyIcon from "@mui/icons-material/Money";
-import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
-import EmailIcon from "@mui/icons-material/Email";
 import SaveIcon from "@mui/icons-material/Save";
-import ProfileImg from "../../../../../../assets/Images/profileImg.jpg";
 import PhoneVBg from "../../../../../../assets/Images/bgImages/PhoneVBg.png";
 
-const EmployerProfile = () => {
-  const [profileData, setProfileData] = useState({
-    fullName: "John Doe",
-    companyName: "ABC Pvt. Ltd.",
-    companyGST: "GST123456",
-    phone: "+1 123-456-7890",
-    email: "john.doe@example.com",
-  });
-
+const EmployerProfile = ({ data, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(null); // Tracks which field is being edited.
   const [editMode, setEditMode] = useState(false); // Tracks whether editing mode is enabled.
+  const [profileData, setProfileData] = useState({ ...data });
 
   const handleEditClick = (field) => {
     setIsEditing(field);
@@ -36,31 +25,26 @@ const EmployerProfile = () => {
 
   const handleSaveClick = () => {
     setIsEditing(null);
-  };
-
-  const handleChange = (field, value) => {
-    setProfileData({ ...profileData, [field]: value });
+    if (onUpdate) {
+      onUpdate(isEditing, profileData[isEditing]);
+    }
   };
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
-    setIsEditing(null); 
+    setIsEditing(null);
   };
 
-  const profileFields = [
-    { label: "Full Name", key: "fullName", icon: <AccountCircle /> },
-    { label: "Company Name", key: "companyName", icon: <BusinessIcon /> },
-    { label: "Company GST", key: "companyGST", icon: <MoneyIcon /> },
-    { label: "Phone", key: "phone", icon: <ContactPhoneIcon /> },
-    { label: "Email", key: "email", icon: <EmailIcon /> },
-  ];
+  const handleChange = (field, value) => {
+    setProfileData((prevData) => ({ ...prevData, [field]: value }));
+  };
 
   return (
     <Box
       sx={{
         p: 4,
         minHeight: "80vh",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
     >
       <Card
@@ -74,51 +58,52 @@ const EmployerProfile = () => {
           backgroundSize: "cover",
           height: "70vh",
           borderRadius: "16px",
-          overflowY: "scroll", 
+          overflowY: "scroll",
         }}
       >
         <Grid container spacing={4}>
           <Grid
             item
-            size={{ xs: 12, md: 12 }}
+            xs={12}
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              mx:"auto" 
             }}
           >
-            <Box
-              component="img"
-              src={ProfileImg}
+            <Avatar
+              src={data.profileImg}
               alt="Profile"
               sx={{
-                width: "160px",
-                height: "160px",
-                border: "5px solid #4caf50",
-                borderRadius: "50%",
-                mb: 2,
-                transition: "transform 0.3s",
-                "&:hover": {
-                  transform: "scale(1.1)",
-                },
+                width: 150,
+                height: 150,
+                mb: 3,
+                mx: "auto",
+                border: "3px solid green",
               }}
             />
-            <Typography variant="h5" fontWeight="bolder" sx={{
-              color: "#e0e0e0",
-              backgroundColor: "green",
-              px: 2,
-              py: 1,
-              borderRadius: "8px",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.4)",
-              textAlign: "center",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-            }}>
+            <Typography
+              variant="h5"
+              fontWeight="bolder"
+              sx={{
+                color: "#e0e0e0",
+                backgroundColor: "green",
+                px: 2,
+                py: 1,
+                borderRadius: "8px",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.4)",
+                textAlign: "center",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+              }}
+            >
               Employer Profile
             </Typography>
           </Grid>
-          <Grid item size={{ xs: 12, md: 12 }}>
+
+          <Grid item size={12}>
             <Card
               sx={{
                 p: 4,
@@ -148,9 +133,9 @@ const EmployerProfile = () => {
                   <EditIcon sx={{ color: "green" }} />
                 </IconButton>
               </Typography>
-              {profileFields.map((field, index) => (
+              {Object.entries(profileData).map(([field, value]) => (
                 <Box
-                  key={index}
+                  key={field}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -160,40 +145,31 @@ const EmployerProfile = () => {
                     pb: 1,
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    {React.cloneElement(field.icon, {
-                      sx: { color: "#4caf50", mr: 2 },
-                    })}
-                    {isEditing === field.key ? (
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <AccountCircle sx={{ color: "#4caf50", mr: 2 }} />
+                    {isEditing === field ? (
                       <TextField
-                        value={profileData[field.key]}
-                        label={field.label}
-                        onChange={(e) => handleChange(field.key, e.target.value)}
+                        value={value}
+                        label={field}
+                        onChange={(e) => handleChange(field, e.target.value)}
                         fullWidth
                         variant="filled"
                         size="small"
                       />
                     ) : (
                       <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                        {profileData[field.key]}
+                        {value || "Not Provided"}
                       </Typography>
                     )}
                   </Box>
-                  {editMode && ( // Show the edit icons only when `editMode` is true.
+                  {editMode && (
                     <IconButton
                       onClick={() =>
-                        isEditing === field.key
-                          ? handleSaveClick()
-                          : handleEditClick(field.key)
+                        isEditing === field ? handleSaveClick() : handleEditClick(field)
                       }
                       sx={{ color: "#4caf50" }}
                     >
-                      {isEditing === field.key ? <SaveIcon /> : <EditIcon />}
+                      {isEditing === field ? <SaveIcon /> : <EditIcon />}
                     </IconButton>
                   )}
                 </Box>
@@ -221,5 +197,3 @@ const EmployerProfile = () => {
 };
 
 export default EmployerProfile;
-
-
