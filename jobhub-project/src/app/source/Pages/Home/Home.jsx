@@ -9,7 +9,7 @@ import PopularJobs from '../../../components/PageComponent/PopularJobs/PopularJo
 import ResumeSection from '../../../components/PageComponent/ResumeSection';
 import PartnerSection from '../../../components/PageComponent/PartnerSection';
 import ChoiceSection from '../../../components/PageComponent/ChoiceSection';
-import Testimonial from '../../../components/PageComponent/Testimonial';
+import Testimonial from '../../../components/PageComponent/Testimonial/Testimonial';
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
 import { Outlet, useNavigate } from 'react-router-dom';
 

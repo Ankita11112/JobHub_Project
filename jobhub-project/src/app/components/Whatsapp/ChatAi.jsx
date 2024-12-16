@@ -8,8 +8,8 @@ import {
   Button,
   keyframes,
 } from '@mui/material';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import CloseIcon from '@mui/icons-material/Close';
+import WhatsAppIcon from '../../assets/Images/Whatsapp.gif';
 
 // Keyframe for the popup/landing effect
 const popupAnimation = keyframes`
@@ -18,15 +18,9 @@ const popupAnimation = keyframes`
   100% { transform: scale(1); opacity: 1; }
 `;
 
-const pulseAnimation = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-`;
-
 const ChatAi = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [content, setContent] = useState('Hi there! How can I help you?'); 
+  const [content, setContent] = useState('Hi there! How can I help you?');
 
   const handleOpenChat = () => {
     setIsOpen(true);
@@ -40,8 +34,8 @@ const ChatAi = () => {
     <Box
       sx={{
         position: 'fixed',
-        bottom: 16,
-        right: 30,
+        bottom: 20,
+        right: 35,
         zIndex: 1300,
         display: 'flex',
         flexDirection: 'column',
@@ -53,7 +47,7 @@ const ChatAi = () => {
         <Card
           sx={{
             position: 'absolute',
-            bottom: 80, 
+            bottom: 80,
             right: 0,
             width: 300,
             boxShadow: 3,
@@ -71,7 +65,7 @@ const ChatAi = () => {
               }}
             >
               <Typography variant='h6' fontWeight='bold'>
-                Find a Right Job 
+                Find a Right Job
               </Typography>
               <IconButton onClick={handleCloseChat}>
                 <CloseIcon />
@@ -105,7 +99,7 @@ const ChatAi = () => {
         onClick={handleOpenChat}
         sx={{
           borderRadius: '50%',
-          backgroundColor: 'transparent',
+          // backgroundColor: 'transparent',
           animation: `${popupAnimation} 0.8s ease-out`,
           transition: 'transform 0.5s ease',
           '&:hover': {
@@ -114,13 +108,13 @@ const ChatAi = () => {
           },
         }}
       >
-        <WhatsAppIcon
-          sx={{
-            color: 'white',
-            backgroundColor: '#17980E',
-            borderRadius: 1,
-            fontSize: 50,
-            animation: `${pulseAnimation} 5s infinite`,
+        <img
+          src={WhatsAppIcon} // Use the GIF file path here
+          alt="WhatsApp"
+          style={{
+            width: 70,
+            height: 70,
+            borderRadius: '50%',
           }}
         />
       </IconButton>

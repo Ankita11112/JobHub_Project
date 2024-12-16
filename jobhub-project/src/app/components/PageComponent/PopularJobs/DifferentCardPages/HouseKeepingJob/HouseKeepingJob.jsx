@@ -26,8 +26,6 @@ const HouseKeepingJob = () => {
   const imgtwoStyle = {
     maxHeight: '80%',
   }
-
-
   return (
     <>
       <PageComponent>
