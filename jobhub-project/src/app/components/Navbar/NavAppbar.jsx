@@ -124,7 +124,7 @@ function NavAppBar() {
                 sx={{ my: 0, color: 'black', display: 'block', margin: '0 20px',  position: 'relative',
   color: 'black',
   padding: '10px',
-  display: 'block',
+ 
   '&:hover': {
     color: '#34a853',
   },

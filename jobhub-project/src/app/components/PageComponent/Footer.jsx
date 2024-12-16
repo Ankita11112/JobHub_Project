@@ -105,11 +105,11 @@ export default function Footer() {
               Follow Us
             </Typography>
             <Stack direction="row" spacing={2}>
-              <AnimatedIcon icon={<LinkedInIcon />} />
-              <AnimatedIcon icon={<TwitterIcon />} />
-              <AnimatedIcon icon={<YouTubeIcon />} />
-              <AnimatedIcon icon={<FacebookIcon />} />
-              <AnimatedIcon icon={<InstagramIcon />} />
+              <a href="https://www.linkedin.com/company/v-recruit-ers/posts/?feedView=all" target="_blank"><AnimatedIcon icon={<LinkedInIcon />} /></a>
+              {/* <AnimatedIcon icon={<TwitterIcon />} />
+              <AnimatedIcon icon={<YouTubeIcon />} /> */}
+              <a href="https://www.facebook.com/profile.php?id=61562070471655&mibextid=ZbWKwL" target="_blank"><AnimatedIcon icon={<FacebookIcon />} /></a>
+              <a href="https://www.instagram.com/vrecruiters12/" target="_blank"><AnimatedIcon icon={<InstagramIcon />} /></a>
             </Stack>
 
             <form onSubmit={handleSubscribe}>
@@ -189,7 +189,7 @@ const InteractiveLink = ({ text, to, href }) => (
 
 
 // Animated Icon Component
-const AnimatedIcon = ({ icon }) => (
+const AnimatedIcon = ({ icon, href }) => (
   <IconButton
     sx={{
       transition: "transform 0.3s, color 0.3s",
