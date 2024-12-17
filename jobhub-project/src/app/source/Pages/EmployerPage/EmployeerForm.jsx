@@ -115,10 +115,10 @@
 //                             onChange={handleImageUpload}
 //                         />
 //                     </Button>
-//                     {data.profileImg  && (
+//                     {profileImg  && (
 //                         <Box textAlign="center" mt={2}>
 //                             <img
-//                                 src={data.profileImg }
+//                                 src={profileImg }
 //                                 alt="Uploaded Preview"
 //                                 style={{
 //                                     width: "150px",
@@ -268,7 +268,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const EmployeeForm = ({ data, onUpdate }) => {
-  const [profileImg, setProfileImg] = useState(data.profileImg || "");
+  const [profileImg, setProfileImg] = useState( "");
   const navigate = useNavigate();
 
   const handleInputChange = (field, value) => {
@@ -364,10 +364,10 @@ const EmployeeForm = ({ data, onUpdate }) => {
               onChange={handleImageUpload}
             />
           </Button>
-          {data.profileImg && (
+          {profileImg && (
             <Box textAlign="center" mt={2}>
               <img
-                src={data.profileImg}
+                src={profileImg}
                 alt="Uploaded Preview"
                 style={{
                   width: "150px",
@@ -384,7 +384,7 @@ const EmployeeForm = ({ data, onUpdate }) => {
             variant="outlined"
             placeholder="Enter Your Company Name"
             required
-            value={data.companyName}
+            value={data?.companyName || ""}
             onChange={(e) => handleInputChange("companyName", e.target.value)}
           />
           <Box sx={{ display: "flex", gap: "20px" }}>
@@ -394,7 +394,7 @@ const EmployeeForm = ({ data, onUpdate }) => {
               variant="outlined"
               placeholder="Enter Your Name"
               required
-              value={data.fullName}
+              value={data?.fullName || ""}
               onChange={(e) => handleInputChange("fullName", e.target.value)}
             />
             <TextField
@@ -404,7 +404,7 @@ const EmployeeForm = ({ data, onUpdate }) => {
               variant="outlined"
               placeholder="Enter Mobile Number"
               required
-              value={data.mobile}
+              value={data?.mobile || ""}
               onChange={(e) => handleInputChange("mobile", e.target.value)}
             />
           </Box>
@@ -415,13 +415,13 @@ const EmployeeForm = ({ data, onUpdate }) => {
               variant="outlined"
               placeholder="Enter Your Email"
               required
-              value={data.email}
+              value={data?.email || ""}
               onChange={(e) => handleInputChange("email", e.target.value)}
             />
             <FormControl fullWidth>
               <InputLabel>Gender</InputLabel>
               <Select
-                value={data.gender}
+                value={data?.gender || ""}
                 onChange={(e) => handleInputChange("gender", e.target.value)}
                 label="Gender"
                 required
@@ -436,7 +436,7 @@ const EmployeeForm = ({ data, onUpdate }) => {
             <FormControl fullWidth>
               <InputLabel>Country</InputLabel>
               <Select
-                value={data.country}
+                value={data?.country || ""}
                 onChange={(e) => handleInputChange("country", e.target.value)}
                 label="Country"
                 required
@@ -453,7 +453,7 @@ const EmployeeForm = ({ data, onUpdate }) => {
               variant="outlined"
               placeholder="Enter City"
               required
-              value={data.city}
+              value={data?.city || ""}
               onChange={(e) => handleInputChange("city", e.target.value)}
             />
           </Box>
@@ -462,7 +462,7 @@ const EmployeeForm = ({ data, onUpdate }) => {
             label="GST Number"
             variant="outlined"
             placeholder="Enter GST Number"
-            value={data.gstNumber}
+            value={data?.gstNumber || ""}
             onChange={(e) => handleInputChange("gstNumber", e.target.value)}
           />
           <TextField
@@ -471,7 +471,7 @@ const EmployeeForm = ({ data, onUpdate }) => {
             variant="outlined"
             placeholder="Enter Source"
             required
-            value={data.source}
+            value={data?.source || ""}
             onChange={(e) => handleInputChange("source", e.target.value)}
           />
           <Box textAlign="center">
