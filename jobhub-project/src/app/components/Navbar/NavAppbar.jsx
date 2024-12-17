@@ -121,26 +121,28 @@ function NavAppBar() {
               <Button
                 key={page.label}
                 onClick={() => handleNavigate(page.path)}
-                sx={{ my: 0, color: 'black', display: 'block', margin: '0 20px',  position: 'relative',
-  color: 'black',
-  padding: '10px',
- 
-  '&:hover': {
-    color: '#34a853',
-  },
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    width: 0,
-    height: '2px',
-    backgroundColor: '#34a853',
-    transition: 'width 0.5s ease-in-out',
-  },
-  '&:hover::after': {
-    width: '100%',
-  }, }}
+                sx={{
+                  my: 0, color: 'black', display: 'block', margin: '0 20px', position: 'relative',
+
+                  padding: '10px',
+
+                  '&:hover': {
+                    color: '#34a853',
+                  },
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: 0,
+                    height: '2px',
+                    backgroundColor: '#34a853',
+                    transition: 'width 0.5s ease-in-out',
+                  },
+                  '&:hover::after': {
+                    width: '100%',
+                  },
+                }}
               >
                 {page.label}
               </Button>

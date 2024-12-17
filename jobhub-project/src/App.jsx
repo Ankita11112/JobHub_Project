@@ -7,7 +7,8 @@ function App() {
   return (
     <>
       <AppRouter />
-      <ChatAi/>
+      <ChatAi />
+      
       <ToastContainer
         position='top-center'
         autoClose={5000}

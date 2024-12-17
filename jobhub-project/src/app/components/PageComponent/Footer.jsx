@@ -79,8 +79,8 @@ export default function Footer() {
               <Typography variant="h6" gutterBottom>
                 Support
               </Typography>
-              <InteractiveLink text="Privacy Policy" to="#" />
-              <InteractiveLink text="Terms and Conditions" to="#" />
+              <InteractiveLink text="Privacy Policy" to="/Privacypolicy" />
+              <InteractiveLink text="Terms and Conditions" to="/Termsandconditions" />
             </Stack>
 
             <Stack spacing={2} sx={{ textAlign: { xs: "center", md: "left" } }}>

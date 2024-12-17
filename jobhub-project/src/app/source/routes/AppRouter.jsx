@@ -2,6 +2,8 @@ import React from 'react';
 import { Suspense, lazy } from "react";
 import Loading from '../../components/Loading/Loading.jsx';
 import { RouteMaker } from '../../components/routes/routes';
+import Termsconditions from '../../components/PageComponent/TermsComponent/Terms&conditions.jsx';
+import Privacypolicy from '../../components/PageComponent/TermsComponent/Privacypolicy.jsx';
 
 const Home = lazy(() => import('../Pages/Home/Home'));
 const About = lazy(() => import('../Pages/About/About.jsx'));
@@ -78,6 +80,8 @@ const AppRouter = () => {
             "/hotelstaff": <HotelStaffJob />,
             "/warehousestaff": <WarehouseStaffJob />,
             "/factory": <FactoryJob />,
+            "/Termsandconditions": <Termsconditions />,
+            "/Privacypolicy": <Privacypolicy />,
             // Employer Dashboard with nested routes
             "/employerdashboard": {
               element: <EmployerDashboard />,
@@ -99,7 +103,7 @@ const AppRouter = () => {
             "/candidatedashboard": {
               element: <CandidateDashboard />,
               children: [
-                // {path: "", 
+                // {path: "",
                 {
                   path: "/candidatedashboard/",
                   element: <CandidateJobPostCard />,
@@ -135,7 +139,7 @@ const AppRouter = () => {
           }}
 
         />
-      </Suspense>
+      </Suspense >
     </>
   );
 };
