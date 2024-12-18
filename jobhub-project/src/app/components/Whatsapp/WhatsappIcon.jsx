@@ -21,8 +21,8 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -42,7 +42,7 @@ const StyledWrapper = styled.div`
   }
 
   .sign svg {
-    width: 40px;
+    width: 25px;
   }
 
   .sign svg path {
@@ -54,7 +54,7 @@ const StyledWrapper = styled.div`
     width: 0%;
     opacity: 0;
     color: white;
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: 600;
     transition-duration: 0.3s;
   }
