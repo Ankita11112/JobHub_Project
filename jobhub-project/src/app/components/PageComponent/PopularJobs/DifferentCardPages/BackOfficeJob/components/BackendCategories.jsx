@@ -1,9 +1,20 @@
-import { Box, Grid2, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { Box, Typography } from '@mui/material';
+import Grid2 from '@mui/material/Grid2';
 import TeleBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 import CategoriesCard from '../../../../../GlobalComponents/JobCard/CategoriesCard';
 
 const BackendCategories = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+
+    });
+  }, []);
+
   const category = [
     { title: 'Back Office Operations' },
     { title: 'Office Administration' },
@@ -11,6 +22,7 @@ const BackendCategories = () => {
     { title: 'Accounting' },
     { title: 'SAP Products' },
   ];
+
   return (
     <>
       <Box
@@ -28,6 +40,7 @@ const BackendCategories = () => {
             width: '100%',
           }}
         >
+          {/* Title Section */}
           <Grid2
             container
             sx={{
@@ -39,10 +52,10 @@ const BackendCategories = () => {
               px: 5,
             }}
           >
-            <Grid2 item xs={12} md={12}>
+            <Grid2 item xs={12} md={12} data-aos="fade-down">
               <Typography
-                variant='h3'
-                component='h2'
+                variant="h3"
+                component="h2"
                 sx={{
                   textAlign: 'center',
                   fontSize: { xs: '35px', md: '45px' },
@@ -53,6 +66,8 @@ const BackendCategories = () => {
               </Typography>
             </Grid2>
           </Grid2>
+
+          {/* Categories Section */}
           <Grid2
             container
             sx={{
@@ -83,6 +98,8 @@ const BackendCategories = () => {
                   alignItems: 'center',
                   mt: { xs: 5, sm: 5, md: 'index >= 5 ? 5 : 0' },
                 }}
+                data-aos="fade-up"
+                data-aos-delay={index * 200}
               >
                 <CategoriesCard category={item} />
               </Grid2>
@@ -95,3 +112,4 @@ const BackendCategories = () => {
 };
 
 export default BackendCategories;
+
