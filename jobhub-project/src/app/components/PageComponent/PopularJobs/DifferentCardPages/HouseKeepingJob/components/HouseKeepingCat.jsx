@@ -3,7 +3,8 @@ import { Box, Grid2, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import TeleBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 import CategoriesCard from '../../../../../GlobalComponents/JobCard/CategoriesCard';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const HouseKeepingCat = () => {
 
