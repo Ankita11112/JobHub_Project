@@ -19,9 +19,13 @@ import twilio from "twilio";
 const client = twilio(accountSid, authToken);
 
 export const otpSender = async (otp, mobileNumber) => {
-  await client.messages.create({
-    body: `${otp} is your otp for JobHub verification. It will expire in 5 minutes`,
-    to: mobileNumber,
-    from: process.env.myNumber,
-  });
+  try {
+    await client.messages.create({
+      body: `${otp} is your otp for JobHub verification. It will expire in 5 minutes`,
+      to: mobileNumber,
+      from: process.env.myNumber,
+    });
+  } catch (error) {
+    console.log("Something went wrong while sending otp", error)
+  }
 };
