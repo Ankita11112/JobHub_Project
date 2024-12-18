@@ -77,7 +77,7 @@ const EmployerProfile = () => {
           p: 3,
           boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
           borderRadius: 3,
-          maxHeight: "72vh",
+          maxHeight: "71vh",
           overflowY: "auto", // Interactive Scroll
           scrollbarWidth: "thin",
         }}
