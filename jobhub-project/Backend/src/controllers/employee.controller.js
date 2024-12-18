@@ -25,7 +25,7 @@ export const otpGenerateSystem = async (req, res) => {
         message: "Phone number is required",
       });
     }
-    
+
     const otpGenerator = Math.floor(Math.random() * 1000000);
 
     const isOtpExits = await Otp.findOne({ otp: otpGenerator });
@@ -39,7 +39,7 @@ export const otpGenerateSystem = async (req, res) => {
       otp: otpGenerator,
     });
 
-    await otpSender(otpGenerator, mobileNumber);
+    await otpSender(otpGenerator, { mobileNumber: "+91" + mobileNumber });
 
     return res.status(200).json({
       message: "Otp successfully genrated!",
@@ -48,6 +48,7 @@ export const otpGenerateSystem = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       message: "Something went wrong while generating otp",
+      error,
     });
   }
 };
@@ -67,6 +68,27 @@ export const checkOtp = async (req, res) => {
     } else if (otp !== isOtpPresent[0].otp) {
       return res.status(403).json({
         message: "Otp is not correct",
+      });
+    }
+
+    const alreadyExists = await Employee.findOne({
+      mobileNumber,
+    });
+
+    if (alreadyExists) {
+      // Generate Token
+      const { accessToken } = await generateAccessToken(alreadyExists._id);
+
+      const options = {
+        httpOnly: true,
+        secure: true,
+      };
+
+      return res.status(200).cookie("accessToken", accessToken, options).json({
+        sucess: true,
+        message: "Login Successfully !",
+        employee: alreadyExists,
+        accessToken,
       });
     }
 
@@ -105,25 +127,6 @@ export const employeeAccount = async (req, res) => {
     ) {
       res.status(400).json({
         message: "Required all fields",
-      });
-    }
-
-    const alreadyExists = await Employee.findOne({
-      mobileNumber,
-    });
-
-    if (alreadyExists) {
-      // Generate Token
-      const { accessToken } = await generateAccessToken(alreadyExists._id);
-
-      const options = {
-        httpOnly: true,
-        secure: true,
-      };
-
-      return res.status(200).cookie("accessToken", accessToken, options).json({
-        message: "Login Successfully !",
-        employee: alreadyExists,
       });
     }
 
