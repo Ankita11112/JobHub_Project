@@ -1,4 +1,5 @@
-const BASE_URL = import.meta.env.BASE_URL;
+// const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = "http://localhost:3000/api/v1";
 
 export const employee = {
   SEND_OTP: BASE_URL + "/employees/otp-send",
