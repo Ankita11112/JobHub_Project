@@ -14,6 +14,7 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
 
 
   return (
+
     <>
       <Box sx={{
         backgroundImage: `url(${backgroundImage})`,
@@ -78,7 +79,7 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
             <Box
               sx={{ width: "100%", display: "flex", flexDirection: { xs: "column", md: "row" }, justifyContent: { xs: "center", md: "flex-start" }, pt: "14%", }}
             >
-              <div data-aos="fade-right" >
+              <div data-aos="zoom-in" >
                 <ButtonComponent
                   title={buttonTitle1}
                   onClick={onButtonClick1}
@@ -96,7 +97,7 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
                   }}
                 /></div>
               {button2 && (
-                <div data-aos="fade-left">
+                <div data-aos="zoom-in">
                   <ButtonComponent
                     title={buttonTitle2}
                     onClick={onButtonClick2}

@@ -72,7 +72,7 @@ const Home = () => {
           headerText={
             <>
 
-              Find Your Career With{' '}
+              Find Your Career With
               <span style={{ color: 'green' }}>JOBHUB</span>
 
             </>
