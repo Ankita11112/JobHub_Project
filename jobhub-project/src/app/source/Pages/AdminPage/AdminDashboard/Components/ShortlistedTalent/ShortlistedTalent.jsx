@@ -37,9 +37,8 @@ setGridData(updatedData);
       <DataGrid
         {...data}
         loading={loading}
-        slots={{ toolbar: GridToolbar }}
         rowHeight={40}
-        slots={{ toolbar: GridToolbar }}
+        slots={{ toolbar: GridToolbar }}   
         checkboxSelection
         disableRowSelectionOnClick
         // rows={gridData} 

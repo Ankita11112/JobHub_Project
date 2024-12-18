@@ -40,7 +40,6 @@ setGridData(updatedData);
         slots={{ toolbar: GridToolbar }}
         rowHeight={40}
         checkboxSelection
-         slots={{ toolbar: GridToolbar }}
         disableRowSelectionOnClick
         // rows={gridData} 
         // columns={columns} 
