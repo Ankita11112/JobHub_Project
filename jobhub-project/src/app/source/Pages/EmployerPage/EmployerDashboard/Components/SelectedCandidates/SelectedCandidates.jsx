@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
 import { Typography } from '@mui/material';
 
@@ -37,6 +37,7 @@ setGridData(updatedData);
       <DataGrid
         {...data}
         loading={loading}
+        slots={{ toolbar: GridToolbar }}
         rowHeight={40}
         checkboxSelection
         disableRowSelectionOnClick

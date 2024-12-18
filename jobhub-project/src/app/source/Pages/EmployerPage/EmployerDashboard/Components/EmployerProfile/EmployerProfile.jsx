@@ -5,192 +5,180 @@ import {
   Card,
   Typography,
   IconButton,
-  TextField,
   Avatar,
+  InputBase,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
 import EditIcon from "@mui/icons-material/Edit";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import SaveIcon from "@mui/icons-material/Save";
-import PhoneVBg from "../../../../../../assets/Images/bgImages/PhoneVBg.png";
 
-const EmployerProfile = ({ data, onUpdate }) => {
-  const [isEditing, setIsEditing] = useState(null); // Tracks which field is being edited.
-  const [editMode, setEditMode] = useState(false); // Tracks whether editing mode is enabled.
-  const [profileData, setProfileData] = useState({ ...data });
-
-  const handleEditClick = (field) => {
-    setIsEditing(field);
+const EmployerProfile = () => {
+  const initialData = {
+    profileImg: "",
+    companyName: "Company Name",
+    fullName: "John Doe",
+    mobile: "1234567890",
+    email: "john.doe@example.com",
+    gender: "Male",
+    country: "Country",
+    city: "City",
+    source: "Referral",
+    gstNumber: "22AAAAA0000A1Z5",
   };
 
-  const handleSaveClick = () => {
-    setIsEditing(null);
-    if (onUpdate) {
-      onUpdate(isEditing, profileData[isEditing]);
-    }
-  };
+  const [profileData, setProfileData] = useState(() => {
+    const savedData = localStorage.getItem("employerFormData");
+    return savedData ? JSON.parse(savedData) : initialData;
+  });
 
-  const toggleEditMode = () => {
-    setEditMode(!editMode);
-    setIsEditing(null);
-  };
+  const [editingField, setEditingField] = useState(null);
+  const [showEdit, setShowEdit] = useState(false);
 
+  // Update field data
   const handleChange = (field, value) => {
     setProfileData((prevData) => ({ ...prevData, [field]: value }));
+  };
+
+  // Save data on blur
+  const handleBlur = () => {
+    setEditingField(null);
+    localStorage.setItem("employerFormData", JSON.stringify(profileData));
+  };
+
+  // Handle image upload
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setProfileData((prevData) => ({
+          ...prevData,
+          profileImg: event.target.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
     <Box
       sx={{
         p: 4,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(to bottom, #4caf50, #ffffff)",
         minHeight: "80vh",
-        overflow: "hidden",
+        overflowY: "hidden",
       }}
     >
       <Card
         sx={{
-          m: 1,
-          p: 4,
-          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-          backgroundImage: `url(${PhoneVBg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          height: "70vh",
-          borderRadius: "16px",
-          overflowY: "scroll",
+          width: "100%",
+          maxWidth: 600,
+          p: 3,
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+          borderRadius: 3,
+          maxHeight: "71vh",
+          overflowY: "auto", // Interactive Scroll
+          scrollbarWidth: "thin",
         }}
       >
-        <Grid container spacing={4}>
-          <Grid
-            item
-            xs={12}
+        {/* Avatar Section */}
+        <Box textAlign="center" mb={3}>
+          <Avatar
+            src={profileData.profileImg}
+            alt="Profile"
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              mx:"auto" 
+              width: 120,
+              height: 120,
+              mx: "auto",
+              mb: 2,
+              border: "3px solid #4caf50",
             }}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            id="image-upload"
+            style={{ display: "none" }}
+            onChange={handleImageUpload}
+          />
+          <label htmlFor="image-upload">
+            <Button
+              variant="contained"
+              component="span"
+              sx={{
+                backgroundColor: "#4caf50",
+                "&:hover": { backgroundColor: "#388e3c" },
+              }}
+            >
+              Upload Image
+            </Button>
+          </label>
+          <Box
+            sx={{
+              cursor: "pointer",
+              mt: 2,
+              color: "gray",
+            }}
+            onClick={() => setShowEdit(!showEdit)} // Toggle Edit Visibility
           >
-            <Avatar
-              src={data.profileImg}
-              alt="Profile"
-              sx={{
-                width: 150,
-                height: 150,
-                mb: 3,
-                mx: "auto",
-                border: "3px solid green",
-              }}
-            />
-            <Typography
-              variant="h5"
-              fontWeight="bolder"
-              sx={{
-                color: "#e0e0e0",
-                backgroundColor: "green",
-                px: 2,
-                py: 1,
-                borderRadius: "8px",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.4)",
-                textAlign: "center",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-              }}
-            >
-              Employer Profile
-            </Typography>
-          </Grid>
+            <Typography variant="body2">Click to Edit Fields</Typography>
+          </Box>
+        </Box>
 
-          <Grid item size={12}>
-            <Card
-              sx={{
-                p: 4,
-                backgroundColor: "rgba(255, 255, 255, 0.9)",
-                backdropFilter: "blur(10px)",
-                borderRadius: "16px",
-                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Typography
-                variant="h4"
+        {/* Profile Fields */}
+        {Object.entries(profileData).map(
+          ([key, value]) =>
+            key !== "profileImg" && (
+              <Box
+                key={key}
                 sx={{
-                  mb: 3,
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  color: "green",
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "space-between",
                   alignItems: "center",
+                  mb: 2,
+                  p: 1,
+                  borderBottom: "1px solid #ddd",
                 }}
               >
-                Employer Details
-                <IconButton
-                  sx={{ ml: 1, cursor: "pointer" }}
-                  onClick={toggleEditMode}
+                <Typography
+                  sx={{ fontWeight: "bold", textTransform: "capitalize" }}
                 >
-                  <EditIcon sx={{ color: "green" }} />
-                </IconButton>
-              </Typography>
-              {Object.entries(profileData).map(([field, value]) => (
-                <Box
-                  key={field}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    mb: 2,
-                    borderBottom: "1px solid #e0e0e0",
-                    pb: 1,
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <AccountCircle sx={{ color: "#4caf50", mr: 2 }} />
-                    {isEditing === field ? (
-                      <TextField
-                        value={value}
-                        label={field}
-                        onChange={(e) => handleChange(field, e.target.value)}
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                      />
-                    ) : (
-                      <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                        {value || "Not Provided"}
-                      </Typography>
+                  {key.replace(/([A-Z])/g, " $1").trim()}
+                </Typography>
+                {editingField === key ? (
+                  <InputBase
+                    value={value}
+                    onChange={(e) => handleChange(key, e.target.value)}
+                    onBlur={handleBlur}
+                    autoFocus
+                    sx={{
+                      ml: 2,
+                      border: "1px solid #ccc",
+                      px: 1,
+                      borderRadius: "4px",
+                    }}
+                  />
+                ) : (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setEditingField(key)}
+                  >
+                    <Typography>{value}</Typography>
+                    {showEdit && (
+                      <IconButton size="small">
+                        <EditIcon fontSize="small" />
+                      </IconButton>
                     )}
                   </Box>
-                  {editMode && (
-                    <IconButton
-                      onClick={() =>
-                        isEditing === field ? handleSaveClick() : handleEditClick(field)
-                      }
-                      sx={{ color: "#4caf50" }}
-                    >
-                      {isEditing === field ? <SaveIcon /> : <EditIcon />}
-                    </IconButton>
-                  )}
-                </Box>
-              ))}
-              {editMode && (
-                <Button
-                  variant="contained"
-                  fullWidth
-                  onClick={toggleEditMode}
-                  sx={{
-                    mt: 2,
-                    backgroundColor: "#4caf50",
-                    "&:hover": { backgroundColor: "#43a047" },
-                  }}
-                >
-                  Save All Changes
-                </Button>
-              )}
-            </Card>
-          </Grid>
-        </Grid>
+                )}
+              </Box>
+            )
+        )}
       </Card>
     </Box>
   );
