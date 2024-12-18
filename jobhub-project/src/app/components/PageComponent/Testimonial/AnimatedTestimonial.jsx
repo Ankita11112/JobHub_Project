@@ -1,7 +1,9 @@
 import React from "react";
 import { AnimatedTestimonials } from './Testimoniallogic';
 
+
 export function AnimatedTestimonialsDemo() {
+
   const testimonials = [
     {
       quote:
@@ -41,7 +43,7 @@ export function AnimatedTestimonialsDemo() {
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-8" >
       <AnimatedTestimonials testimonials={testimonials} />
     </div>
   );

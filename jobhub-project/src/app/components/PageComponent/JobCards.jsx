@@ -1,5 +1,5 @@
 import { Box, Grid2, Typography } from '@mui/material';
-import React from 'react';
+import { React, useEffect } from 'react';
 import JobCard from '../GlobalComponents/JobCard/JobCard';
 import search from '../../assets/Images/jobCardIcons/Search.png';
 import salary from '../../assets/Images/jobCardIcons/salary.png';
@@ -7,7 +7,16 @@ import frame from '../../assets/Images/jobCardIcons/Frame.png';
 import quickApply from '../../assets/Images/jobCardIcons/quickApply.png';
 import cardBg from '../../assets/Images/bgImages/cardBg.png';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
 const JobCards = () => {
+
+    useEffect(() => {
+        AOS.init();
+    }, []);
+
     return (
         <>
             <Box sx={{
@@ -30,14 +39,18 @@ const JobCards = () => {
                         px: 5
                     }}>
                         <Grid2 item xs={12} md={12}>
-                            <Typography variant="h3" component="h2" sx={{
-                                textAlign: "center",
-                                 fontSize: {xs: "35px", md: "45px"}
-                            }}>
+                            <Typography
+                                data-aos="fade-up"
+                                data-aos-anchor-placement="top-bottom"
+                                variant="h3" component="h2" sx={{
+                                    textAlign: "center",
+                                    fontSize: { xs: "35px", md: "45px" }
+                                }}>
                                 How <span style={{ color: "green" }}>JOBHUB</span> Works For You
                             </Typography>
                         </Grid2>
                     </Grid2>
+                    
                     <Grid2 container spacing={8} sx={{
                         display: 'flex',
                         justifyContent: 'center',

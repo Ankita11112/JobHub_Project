@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import Grid2 from '@mui/material/Grid2';
-import React from 'react';
+import React, { useEffect } from 'react';
 import job1 from "../../../assets/Images/PopularJobs/job1.png";
 import job2 from "../../../assets/Images/PopularJobs/job2.png";
 import job3 from "../../../assets/Images/PopularJobs/job3.png";
@@ -20,12 +20,20 @@ import DifferentJobCard from '../../GlobalComponents/JobCard/DifferentJobCard';
 import PopularJobsBg from "../../../assets/Images/bgImages/PartnersBg.png";
 import { useNavigate } from 'react-router-dom';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const PopularJobs = ({ id }) => {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const navigate = useNavigate();
   const jobTypes = [
     { image: job1, title: 'Telecaller', onClick: () => navigate('/telecaller') },
     { image: job2, title: 'Document Verification', onClick: () => navigate('/documentverification') },
-    { image: job3, title: 'Data Entry', onClick: () => navigate('/dataentry')},
+    { image: job3, title: 'Data Entry', onClick: () => navigate('/dataentry') },
     { image: job4, title: 'Web Designer', onClick: () => navigate('/webdesigner') },
     { image: job5, title: 'Graphic Designer', onClick: () => navigate('/graphicdesigner') },
     { image: job6, title: 'Web Developer', onClick: () => navigate('/webdeveloper') },
@@ -53,11 +61,13 @@ const PopularJobs = ({ id }) => {
           }}
         >
           <Grid2 item xs={12}>
-            <Typography variant="h3" component="h2" align="center" sx={{
-              fontSize: { xs: "35px", md: "45px" },
-              backgroundImage: `url(${PopularJobsBg})`,
-              backgroundSize: "cover",
-            }}>
+            <Typography
+              data-aos="fade-up"
+              variant="h3" component="h2" align="center" sx={{
+                fontSize: { xs: "35px", md: "45px" },
+                backgroundImage: `url(${PopularJobsBg})`,
+                backgroundSize: "cover",
+              }}>
               Popular <span style={{ color: 'green' }}>Jobs</span>
             </Typography>
           </Grid2>
@@ -74,6 +84,7 @@ const PopularJobs = ({ id }) => {
         >
           {jobTypes.slice(0, 15).map((item, index) => (
             <Grid2
+              data-aos="zoom-out" data-aos-duration="3000"
               item
               key={index}
               xs={12}

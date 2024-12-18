@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Suspense, lazy } from "react";
 import Loading from '../../components/Loading/Loading.jsx';
 import { RouteMaker } from '../../components/routes/routes';
@@ -60,14 +60,14 @@ const AppRouter = () => {
     city: "",
     source: "",
     gstNumber: "",
-};
+  };
 
-const [employerData, setEmployerData] = useState(initialEmployerData);
+  const [employerData, setEmployerData] = useState(initialEmployerData);
 
-    // Handler to update employer data
-    const updateEmployerData = (field, value) => {
-        setEmployerData((prevData) => ({ ...prevData, [field]: value }));
-    };
+  // Handler to update employer data
+  const updateEmployerData = (field, value) => {
+    setEmployerData((prevData) => ({ ...prevData, [field]: value }));
+  };
 
   return (
     <>

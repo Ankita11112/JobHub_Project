@@ -1,7 +1,16 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { Box, Card, CardContent, Typography, IconButton } from '@mui/material';
 
-const JobCard = ({Icon , title}) => {
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+const JobCard = ({ Icon, title }) => {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       <Box
@@ -17,7 +26,8 @@ const JobCard = ({Icon , title}) => {
         }}
       >
         {/* White Card on Top */}
-        <Card
+        <Card data-aos="zoom-in-right"
+          data-aos-duration="1000"
           sx={{
             width: '80%',
             height: '70%',
@@ -43,8 +53,8 @@ const JobCard = ({Icon , title}) => {
             <IconButton>
               {Icon}
             </IconButton>
-            <Typography variant="h6" sx={{ fontWeight: 'bold', textAlign: 'center'}}>
-            {title}
+            <Typography variant="h6" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
+              {title}
             </Typography>
           </CardContent>
         </Card>
