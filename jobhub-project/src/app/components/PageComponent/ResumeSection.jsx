@@ -1,5 +1,5 @@
 import { Box, Grid2, Typography } from '@mui/material';
-import React from 'react';
+import React ,{useEffect} from 'react';
 import GlobalSwiper from '../GlobalComponents/GlobalSwiper/GlobalSwiper';
 import ResumeBg from '../../assets/Images/bgImages/PartnersBg.png';
 import Resume1 from "../../assets/Images/ResumeImages/Resume1.png";
@@ -9,7 +9,15 @@ import Resume4 from "../../assets/Images/ResumeImages/Resume4.png";
 import Resume5 from "../../assets/Images/ResumeImages/Resume5.png";
 import Resume6 from "../../assets/Images/ResumeImages/Resume6.png";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const ResumeSection = () => {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const resumeItems = [
     { image: Resume1 },
     { image: Resume2 },
@@ -28,14 +36,16 @@ const ResumeSection = () => {
           pb: { xs: 4 }
         }}>
           <Grid2 item xs={12}>
-            <Typography variant="h3" component="h2" align="center" sx={{
-              fontSize: {
-                xs: "35px", md: "45px",
-                backgroundImage: `url(${ResumeBg})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }
-            }}>
+            <Typography
+              data-aos="fade-up"
+              variant="h3" component="h2" align="center" sx={{
+                fontSize: {
+                  xs: "35px", md: "45px",
+                  backgroundImage: `url(${ResumeBg})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                }
+              }}>
               Build <span style={{ color: "green" }}>Your Resume</span> In Two Minutes
             </Typography>
           </Grid2>

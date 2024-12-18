@@ -9,13 +9,21 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PropTypes from "prop-types";
 import FaqsBg from '../../../assets/Images/bgImages/PartnersBg.png';
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function GlobalFaq({ faqItems, id }) {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
+
   };
 
   return (
@@ -36,6 +44,7 @@ export default function GlobalFaq({ faqItems, id }) {
           }}
         >
           <Typography variant="h3" component="h2" align="center"
+            data-aos="fade-up"
             sx={{
               fontSize: {
                 xs: "35px", md: "45px",
@@ -49,6 +58,7 @@ export default function GlobalFaq({ faqItems, id }) {
           <Box sx={{ width: "100%" }}>
             {faqItems.map((item) => (
               <Accordion
+             
                 key={item.id}
                 expanded={expanded === item.id}
                 onChange={handleChange(item.id)}
@@ -58,11 +68,14 @@ export default function GlobalFaq({ faqItems, id }) {
                 }}
               >
                 <AccordionSummary
+                 
+                  
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={`${item.id}d-content`}
                   id={`${item.id}d-header`}
                 >
-                  <Typography component="h2" variant="subtitle2" sx={{ fontSize: "18px" }}>
+                  <Typography
+                   data-aos="fade-left" component="h2" variant="subtitle2" sx={{ fontSize: "18px" }}>
                     {item.question}
                   </Typography>
                 </AccordionSummary>

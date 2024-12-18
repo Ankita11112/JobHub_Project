@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const [active, setActive] = useState(0);
 
   const handleNext = () => {
@@ -29,54 +36,54 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
       <div className="relative grid grid-cols-1 md:grid-cols-2 xs:gap-30 md:gap-20 lg:gap-[23%]">
         {/* Left: Testimonial Image Section */}
         <div>
-        <div className="relative h-[20rem] w-full">
-  <AnimatePresence>
-    {testimonials.map((testimonial, index) => (
-      <motion.div
-        key={`testimonial-${index}`} // Unique key fix
-        initial={{
-          opacity: 0,
-          scale: 0.9,
-          z: -100,
-          rotate: randomRotateY(),
-        }}
-        animate={{
-          opacity: isActive(index) ? 1 : 0.7,
-          scale: isActive(index) ? 1 : 0.95,
-          z: isActive(index) ? 0 : -100,
-          rotate: isActive(index) ? 0 : randomRotateY(),
-          zIndex: isActive(index) ? 999 : testimonials.length - index,
-          y: isActive(index) ? [0, -80, 0] : 0,
-        }}
-        exit={{
-          opacity: 0,
-          scale: 0.9,
-          z: 100,
-          rotate: randomRotateY(),
-        }}
-        transition={{
-          duration: 0.4,
-          ease: "easeInOut",
-        }}
-        className="absolute inset-0 origin-bottom"
-      >
-        <img
-          src={testimonial.src}
-          alt={testimonial.name}
-          draggable={false}
-          className="rounded-3xl object-cover object-center w-full h-full 
+          <div className="relative h-[20rem] w-full" data-aos="flip-left" data-aos-duration='3000'>
+            <AnimatePresence>
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={`testimonial-${index}`} // Unique key fix
+                  initial={{
+                    opacity: 0,
+                    scale: 0.9,
+                    z: -100,
+                    rotate: randomRotateY(),
+                  }}
+                  animate={{
+                    opacity: isActive(index) ? 1 : 0.7,
+                    scale: isActive(index) ? 1 : 0.95,
+                    z: isActive(index) ? 0 : -100,
+                    rotate: isActive(index) ? 0 : randomRotateY(),
+                    zIndex: isActive(index) ? 999 : testimonials.length - index,
+                    y: isActive(index) ? [0, -80, 0] : 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.9,
+                    z: 100,
+                    rotate: randomRotateY(),
+                  }}
+                  transition={{
+                    duration: 0.4,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute inset-0 origin-bottom"
+                >
+                  <img
+                    src={testimonial.src}
+                    alt={testimonial.name}
+                    draggable={false}
+                    className="rounded-3xl object-cover object-center w-full h-full 
                      xs:h-[20rem] xs:rounded-lg
                      lg:h-[28rem] lg:rounded-3xl"
-        />
-      </motion.div>
-    ))}
-  </AnimatePresence>
-</div>
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
 
         </div>
 
         {/* Right: Testimonial Content Section */}
-        <div className="flex flex-col justify-between py-4">
+        <div className="flex flex-col justify-between py-4"  data-aos="flip-right" data-aos-duration='3000'>
           <motion.div
             key={active} // Ensure re-render on active change
             initial={{
@@ -130,7 +137,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
           </motion.div>
 
           {/* Navigation Buttons */}
-          <div className="flex gap-4 pt-12 md:pt-0">
+          <div  data-aos="fade-up" className="flex gap-4 pt-12 md:pt-0">
             <button
               onClick={handlePrev}
               className="h-7 w-7 rounded-full bg-green-500  flex items-center justify-center group/button"

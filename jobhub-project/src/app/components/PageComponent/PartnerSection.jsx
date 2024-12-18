@@ -1,5 +1,6 @@
 import { Box, Grid2, Typography } from '@mui/material'
-import React from 'react'
+import React,{useEffect} from 'react'
+
 import PartnersBg from '../../assets/Images/bgImages/PartnersBg.png'
 import aeroPlazaLogo from "../../assets/Images/companies-list/aeroPlazaLogo.png";
 import floranceLogo from "../../assets/Images/companies-list/floranceEstateLogo.png";
@@ -19,8 +20,13 @@ import jungleWorksLogo from "../../assets/Images/companies-list/JungleworksLogo.
 import RBLLogo from "../../assets/Images/companies-list/RBLLogo.png";
 import RGLogo from "../../assets/Images/companies-list/RGGroupsLogo.png";
 import CompanySwiper from '../GlobalComponents/GlobalSwiper/CompanySwiper';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const PartnerSection = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const companyItems = [
     { image: aeroPlazaLogo },
     { image: floranceLogo },
@@ -54,7 +60,8 @@ const PartnerSection = () => {
               backgroundSize: "100%",
             }}>
                <Grid2 item xs={12}>
-                <Typography variant='h3' component= "h2" sx={{
+                <Typography
+                   data-aos="fade-up" variant='h3' component= "h2" sx={{
                 textAlign: "center",
                 pt: {xs: 0, md: 8},
                 fontSize: {xs: "35px", md: "45px"}
