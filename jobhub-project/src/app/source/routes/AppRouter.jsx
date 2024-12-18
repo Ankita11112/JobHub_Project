@@ -49,26 +49,7 @@ const FactoryJob = lazy(() => import('../../components/PageComponent/PopularJobs
 const Securityguardjob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/SecurityJob/Securityguardjob.jsx'));
 
 const AppRouter = () => {
-  const initialEmployerData = JSON.parse(localStorage.getItem("employerData")) || {
-    profileImg: "",
-    companyName: "",
-    fullName: "",
-    mobile: "",
-    email: "",
-    gender: "",
-    country: "",
-    city: "",
-    source: "",
-    gstNumber: "",
-  };
-
-  const [employerData, setEmployerData] = useState(initialEmployerData);
-
-  // Handler to update employer data
-  const updateEmployerData = (field, value) => {
-    setEmployerData((prevData) => ({ ...prevData, [field]: value }));
-  };
-
+  
   return (
     <>
       <Suspense fallback={<Loading />}>
