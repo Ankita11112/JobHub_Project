@@ -84,7 +84,7 @@ const PopularJobs = ({ id }) => {
         >
           {jobTypes.slice(0, 15).map((item, index) => (
             <Grid2
-              data-aos="zoom-out" data-aos-duration="3000"
+              data-aos="zoom-out" data-aos-duration="1000"
               item
               key={index}
               xs={12}

@@ -77,3 +77,5 @@ const PartnerSection = () => {
 }
 
 export default PartnerSection;
+
+

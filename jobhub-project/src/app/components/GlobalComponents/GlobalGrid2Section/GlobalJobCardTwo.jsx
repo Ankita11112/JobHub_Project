@@ -1,9 +1,17 @@
+
+
 import { Box, Grid2, Typography } from '@mui/material';
 import DataBg from '../../../assets/Images/bgImages/TeleBg.png';
+import React, { useEffect } from 'react';
 
-import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const GlobalJobCardTwo = ({ content, title, subtitle, mainImage, mainImageStyle }) => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); 
+  }, []);
+
   return (
     <>
       <Box
@@ -15,6 +23,7 @@ const GlobalJobCardTwo = ({ content, title, subtitle, mainImage, mainImageStyle 
           backgroundPosition: 'center',
           backgroundSize: 'cover',
         }}
+        data-aos="fade-up" 
       >
         <Grid2
           container
@@ -22,7 +31,7 @@ const GlobalJobCardTwo = ({ content, title, subtitle, mainImage, mainImageStyle 
             width: '80%',
             mx: 'auto',
             display: 'flex',
-            alignItems: 'stretch', // Ensures sections align in height
+            alignItems: 'stretch',
           }}
         >
           {/* Content Section */}
@@ -37,6 +46,7 @@ const GlobalJobCardTwo = ({ content, title, subtitle, mainImage, mainImageStyle 
               flexDirection: 'column',
               justifyContent: 'center',
             }}
+            data-aos="fade-right" 
           >
             <Grid2 container>
               <Grid2
@@ -63,7 +73,11 @@ const GlobalJobCardTwo = ({ content, title, subtitle, mainImage, mainImageStyle 
             </Grid2>
             <Grid2 container>
               {content.map((item, index) => (
-                <Grid2 item key={index}>
+                <Grid2
+                  item
+                  key={index}
+                  data-aos="fade-up" 
+                >
                   <Box
                     sx={{
                       display: 'flex',
@@ -102,13 +116,14 @@ const GlobalJobCardTwo = ({ content, title, subtitle, mainImage, mainImageStyle 
               alignItems: 'center',
               mt: { xs: 4, md: 6 },
             }}
+            data-aos="fade-left"
           >
             <img
               src={mainImage}
               style={{
                 maxWidth: '100%',
                 height: 'auto',
-                ...mainImageStyle, // Apply passed styles
+                ...mainImageStyle, 
               }}
               alt="Main"
             />
@@ -120,3 +135,4 @@ const GlobalJobCardTwo = ({ content, title, subtitle, mainImage, mainImageStyle 
 };
 
 export default GlobalJobCardTwo;
+

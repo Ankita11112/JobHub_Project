@@ -1,17 +1,27 @@
 import { Box, Grid2, Typography } from '@mui/material';
 import DataBg from '../../../assets/Images/bgImages/TeleBg.png';
 import DescriptionBg from '../../../assets/Images/bgImages/PartnersBg.png';
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle }) => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
+
     <>
       <Box
         sx={{
           my: { xs: 4, md: 10 },
           width: '100%',
         }}
+        data-aos="fade-up"
       >
+
         {/* Title Section */}
         <Box
           display="flex"
@@ -21,6 +31,7 @@ const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle 
             width: '80%',
             mx: 'auto',
           }}
+          data-aos="fade-down"
         >
           <Typography
             variant="h5"
@@ -73,6 +84,7 @@ const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle 
                 marginTop: 1,
                 fontSize: { xs: '13px', sm: '16px', md: '20px' },
               }}
+              data-aos="zoom-in"
             >
               {subtitle}
             </Typography>
@@ -89,15 +101,14 @@ const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle 
                 alignItems: 'center',
                 mt: { xs: 4, md: 6 },
               }}
+              data-aos="fade-right"
             >
               <img
                 src={mainImage}
                 style={{
                   maxWidth: '100%',
                   height: 'auto',
-              
-              
-                  ...mainImageStyle, // Apply passed style here
+                  ...mainImageStyle,
                 }}
                 alt="Main"
               />
@@ -112,6 +123,7 @@ const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle 
                 pt: 10,
                 width: { xs: '100%', sm: '100%', md: '50%' },
               }}
+              data-aos="fade-left"
             >
               <Grid2 container>
                 <Grid2
@@ -139,7 +151,11 @@ const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle 
 
               <Grid2 container>
                 {content.map((item, index) => (
-                  <Grid2 item key={index}>
+                  <Grid2
+                    item
+                    key={index}
+                    data-aos="fade-up"
+                  >
                     <Box
                       sx={{
                         display: 'flex',
@@ -173,3 +189,4 @@ const GlobalJobCardOne = ({ content, title, subtitle, mainImage, mainImageStyle 
 };
 
 export default GlobalJobCardOne;
+

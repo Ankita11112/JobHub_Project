@@ -58,7 +58,7 @@ export default function GlobalFaq({ faqItems, id }) {
           <Box sx={{ width: "100%" }}>
             {faqItems.map((item) => (
               <Accordion
-             
+
                 key={item.id}
                 expanded={expanded === item.id}
                 onChange={handleChange(item.id)}
@@ -68,14 +68,14 @@ export default function GlobalFaq({ faqItems, id }) {
                 }}
               >
                 <AccordionSummary
-                 
-                  
+
+
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={`${item.id}d-content`}
                   id={`${item.id}d-header`}
                 >
                   <Typography
-                   data-aos="fade-up" component="h2" variant="subtitle2" sx={{ fontSize: "18px" }}>
+                    data-aos="fade-up" component="h2" variant="subtitle2" sx={{ fontSize: "18px" }}>
                     {item.question}
                   </Typography>
                 </AccordionSummary>

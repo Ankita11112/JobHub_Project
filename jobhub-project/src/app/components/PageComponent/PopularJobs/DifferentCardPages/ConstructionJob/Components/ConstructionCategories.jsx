@@ -1,9 +1,20 @@
 import { Box, Grid2, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import TeleBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 import CategoriesCard from '../../../../../GlobalComponents/JobCard/CategoriesCard';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ConstructionCategories = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+
+    });
+  }, []);
+
+
   const category = [
     { title: 'Site Inspection ' },
     { title: 'Concrete Work' },
@@ -83,6 +94,8 @@ const ConstructionCategories = () => {
                   alignItems: 'center',
                   mt: { xs: 5, sm: 5, md: 'index >= 5 ? 5 : 0' },
                 }}
+                data-aos="fade-up"
+                data-aos-delay={index * 200}
               >
                 <CategoriesCard category={item} />
               </Grid2>
