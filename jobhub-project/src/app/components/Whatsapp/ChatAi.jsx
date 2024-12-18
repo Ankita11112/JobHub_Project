@@ -9,7 +9,7 @@ import {
   keyframes,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import WhatsAppIcon from '../../assets/Images/Whatsapp.gif';
+import WhatsappIcon from './WhatsappIcon'; 
 
 // Keyframe for the popup/landing effect
 const popupAnimation = keyframes`
@@ -99,24 +99,15 @@ const ChatAi = () => {
         onClick={handleOpenChat}
         sx={{
           borderRadius: '50%',
-          // backgroundColor: 'transparent',
+          padding: 0,
           animation: `${popupAnimation} 0.8s ease-out`,
           transition: 'transform 0.5s ease',
           '&:hover': {
             transform: 'scale(1.1)',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
           },
         }}
       >
-        <img
-          src={WhatsAppIcon} // Use the GIF file path here
-          alt="WhatsApp"
-          style={{
-            width: 70,
-            height: 70,
-            borderRadius: '50%',
-          }}
-        />
+        <WhatsappIcon />
       </IconButton>
     </Box>
   );

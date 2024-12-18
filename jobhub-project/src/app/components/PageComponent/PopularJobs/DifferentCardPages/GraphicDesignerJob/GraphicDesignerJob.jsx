@@ -11,11 +11,12 @@ import FirImg from '../../../../../assets/Images/GraphicImages/Graphicimg.png';
 import SecImg from '../../../../../assets/Images/GraphicImages/Color Theory.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
+import GraphicDesigningTools from './Components/GraphicTools';
 
 const GraphicDesignerJob = () => {
   const imgTwoStyle = {
-   // marginTop: '30%',
-  }
+    // marginTop: '30%',
+  };
   // const imgoneStyle = {
   //   marginTop: '50px',
   //   maxWidth: '80%',
@@ -47,8 +48,8 @@ const GraphicDesignerJob = () => {
         <GraphicCategories />
         <JobDetails />
         {/* First Desc */}
-        <GlobalJobCardOne content={
-          [
+        <GlobalJobCardOne
+          content={[
             {
               icon: tickImg,
               description:
@@ -65,52 +66,41 @@ const GraphicDesignerJob = () => {
               description:
                 'Real-life logo design experience helps brands achieve memorable identities,while consistent visuals across media enhance recognition and drivemarketing success.',
             },
-
-
-          ]} mainImage={FirImg}
-          title={"Graphic Design Insights  "}
-          subtitle={"A graphic designer is a creative professional who combines art and technology to communicate ideas visually. They develop designs for a wide range of media, including websites, advertisements, magazines, logos, and more. "}
+          ]}
+          mainImage={FirImg}
+          title={'Graphic Design Insights  '}
+          subtitle={
+            'A graphic designer is a creative professional who combines art and technology to communicate ideas visually. They develop designs for a wide range of media, including websites, advertisements, magazines, logos, and more. '
+          }
           //  mainImageStyle={imgoneStyle}
-
-
         />
 
         {/* Second Desc */}
         <GlobalJobCardTwo
-          content={
+          content={[
+            {
+              icon: tickImg,
+              description: 'Which color converts best?',
+            },
 
-            [
-              {
-                icon: tickImg,
-                description:
-                  'Which color converts best?',
-              },
-
-              {
-                icon: tickImg,
-                description:
-                  'However, colors do play an important role in determiningconsumer behavior and directly affect buying decisionsas well as brand perceptions.',
-              },
-              {
-                icon: tickImg,
-                description:
-                  'Color psychology would help designers understand more about the approach one should have in creating designs that are somehow more engaging, thereby relating both to functionality and aesthetic appeal.',
-              },
-
-
-
-            ]
-          } title={"Color Theory and Consumer Behavior"} mainImage={SecImg} 
+            {
+              icon: tickImg,
+              description:
+                'However, colors do play an important role in determiningconsumer behavior and directly affect buying decisionsas well as brand perceptions.',
+            },
+            {
+              icon: tickImg,
+              description:
+                'Color psychology would help designers understand more about the approach one should have in creating designs that are somehow more engaging, thereby relating both to functionality and aesthetic appeal.',
+            },
+          ]}
+          title={'Color Theory and Consumer Behavior'}
+          mainImage={SecImg}
           mainImageStyle={imgTwoStyle}
-
         />
 
-
-
-
-
+        <GraphicDesigningTools />
       </PageComponent>
-
     </>
   );
 };
