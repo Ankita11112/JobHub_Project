@@ -28,14 +28,14 @@ const StyledWrapper = styled.div`
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition-duration: 0.3s;
+    transition: all 0.3s ease-in-out;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
     background-color: #00d757;
   }
 
   .sign {
     width: 100%;
-    transition-duration: 0.3s;
+    transition: all 0.3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,37 +48,57 @@ const StyledWrapper = styled.div`
   .sign svg path {
     fill: white;
   }
+
   .text {
     position: absolute;
-    right: 0%;
-    width: 0%;
+    right: 0;
+    width: 0;
     opacity: 0;
     color: white;
     font-size: 0.7em;
     font-weight: 600;
-    transition-duration: 0.3s;
+    transition: all 0.3s ease-in-out;
   }
 
   .Btn:hover {
-    width: 150px;
+    width: 140px;
     border-radius: 40px;
-    transition-duration: 0.3s;
+    transition: all 0.3s ease-in-out;
   }
 
   .Btn:hover .sign {
     width: 30%;
-    transition-duration: 0.3s;
     padding-left: 10px;
   }
 
   .Btn:hover .text {
     opacity: 1;
     width: 70%;
-    transition-duration: 0.3s;
     padding-right: 10px;
   }
+
   .Btn:active {
-    transform: translate(2px, 2px);
+    transform: translate(1px, 1px);
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 480px) {
+    .Btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .Btn:hover {
+      width: 120px;
+    }
+
+    .sign svg {
+      width: 20px;
+    }
+
+    .text {
+      font-size: 0.6em;
+    }
   }
 `;
 
