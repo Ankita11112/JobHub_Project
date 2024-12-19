@@ -1,5 +1,5 @@
 import { Box, Grid2, Typography } from '@mui/material'
-import React,{useEffect} from 'react'
+import React from 'react'
 
 import PartnersBg from '../../assets/Images/bgImages/PartnersBg.png'
 import aeroPlazaLogo from "../../assets/Images/companies-list/aeroPlazaLogo.png";
@@ -20,13 +20,11 @@ import jungleWorksLogo from "../../assets/Images/companies-list/JungleworksLogo.
 import RBLLogo from "../../assets/Images/companies-list/RBLLogo.png";
 import RGLogo from "../../assets/Images/companies-list/RGGroupsLogo.png";
 import CompanySwiper from '../GlobalComponents/GlobalSwiper/CompanySwiper';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
+
 
 const PartnerSection = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+
   const companyItems = [
     { image: aeroPlazaLogo },
     { image: floranceLogo },
@@ -41,37 +39,42 @@ const PartnerSection = () => {
     { image: IvsLogo },
     { image: JDevelopersLogo },
     { image: eventLogo },
-    { image: futureITLogo },
-    // { image: jungleWorksLogo },
+    // { image: futureITLogo },
+    { image: jungleWorksLogo },
     { image: RBLLogo },
-    { image: RGLogo },
+    //{ image: RGLogo },
   ];
+
   return (
     <>
-        <Box sx={{width: '100%', mx: 'auto' }}>
-            <Grid2 container xs={12} sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              pt : {xs: 8, md: 3},
-              pb : {xs: 5, md: 3},
-              backgroundImage: {xs: "none",  md: `url(${PartnersBg})`},
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "100%",
-            }}>
-               <Grid2 item xs={12}>
-                <Typography
-                   data-aos="fade-up" variant='h3' component= "h2" sx={{
+      <Box sx={{ width: '100%', mx: 'auto' }}>
+        <Grid2 container xs={12} sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          pt: { xs: 8, md: 3 },
+          pb: { xs: 5, md: 3 },
+          backgroundImage: { xs: "none", md: `url(${PartnersBg})` },
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100%",
+        }}>
+          <Grid2 item xs={12}>
+            <Typography
+              data-aos="fade-up" variant='h3' component="h2" sx={{
                 textAlign: "center",
-                pt: {xs: 0, md: 8},
-                fontSize: {xs: "35px", md: "45px"}
-               }}>Our <span style={{
+                pt: { xs: 0, md: 8 },
+                fontSize: { xs: "35px", md: "45px" }
+              }}>Our <span style={{
                 color: "green"
-               }}>Partners</span></Typography>
-               </Grid2>
-            </Grid2>
-            <CompanySwiper companyItems ={companyItems} />
-        </Box>
+              }}>Partners</span></Typography>
+          </Grid2>
+        </Grid2>
+        <CompanySwiper companyItems={companyItems} />
+      </Box>
+
+
+
+
     </>
   )
 }

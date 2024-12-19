@@ -1,9 +1,16 @@
 import { Box, Grid2, Typography } from '@mui/material';
-import React from 'react';
+import React, {useEffect} from 'react';
 import TeleBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 import CategoriesCard from '../../../../../GlobalComponents/JobCard/CategoriesCard';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const CategoriesSection = () => {
+
+    useEffect(() => {
+        AOS.init();
+    }, []);
+
     const category = [
         { title: "Cold Calling Telecaller" },
         { title: "Lead Generation Telecaller" },
@@ -42,13 +49,13 @@ const CategoriesSection = () => {
                         </Grid2>
                     </Grid2>
                     <Grid2 container sx={{
-                         display: 'flex',
-                         justifyContent: { xs: 'center', md: 'space-between', lg: 'space-between' },
-                         alignItems: 'center',
-                         mb: 10,
-                         mx: "auto",
-                         px: 5,
-                         width: "80%",
+                        display: 'flex',
+                        justifyContent: { xs: 'center', md: 'space-between', lg: 'space-between' },
+                        alignItems: 'center',
+                        mb: 10,
+                        mx: "auto",
+                        px: 5,
+                        width: "80%",
                     }}>
                         {category.map((item, index) => (
                             <Grid2 item key={index} xs={12} sm={2} md={4} lg={2.4}
@@ -58,6 +65,9 @@ const CategoriesSection = () => {
                                     alignItems: 'center',
                                     mt: { xs: 5, sm: 5, md: "index >= 5 ? 5 : 0" },
                                 }}
+
+                                data-aos="fade-up"
+                                data-aos-delay={index * 200}
                             >
                                 <CategoriesCard category={item} />
                             </Grid2>

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Importing icons/images
 import AdobeXdIcon from '../../../../../../assets/Images/WebDesignImgs/Tools/AdobeXd.png';
@@ -21,6 +23,14 @@ const tools = [
 ];
 
 const WebDesigningTools = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: 'ease-in-out',
+      offset: 200, 
+    });
+  }, []);
+
   return (
     <Box sx={{ p: 2, textAlign: 'center' }}>
       <Typography variant='h4' gutterBottom>
@@ -40,6 +50,8 @@ const WebDesigningTools = () => {
               display: 'flex',
               justifyContent: 'center',
             }}
+            data-aos="fade-up"
+            data-aos-delay={index * 200}
           >
             <Card
               sx={{
@@ -63,9 +75,9 @@ const WebDesigningTools = () => {
                   src={tool.icon}
                   alt={tool.name}
                   style={{
-                    width: '60px', 
+                    width: '60px',
                     height: '60px',
-                    objectFit: 'contain', 
+                    objectFit: 'contain',
                     marginBottom: '10px',
                   }}
                 />

@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Grid2, Typography } from '@mui/material';
 import TelecallerBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const JobhubTelecaller = () => {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1200, 
+            easing: 'ease-in-out', 
+      
+        });
+    }, []);
+
     const benefits = [
         "JobHub provides a diverse range of Telecaller job opportunities across various industries and companies. Whether you’re interested in customer service, technical support, or sales, you can find suitable positions on the platform.",
         "JobHub ensures that all Telecaller job listings are verified, guaranteeing the authenticity and legitimacy of the opportunities available.",
@@ -27,7 +38,7 @@ const JobhubTelecaller = () => {
                 px: 5,
                 width: "100%",
             }}>
-                <Grid2 item xs={12} md={12}>
+                <Grid2 item xs={12} md={12} data-aos="fade-up">
                     <Typography variant="h3" component="h2" sx={{
                         textAlign: "center",
                         fontSize: { xs: "35px", md: "45px" },
@@ -35,10 +46,11 @@ const JobhubTelecaller = () => {
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                     }}>
-                        Why apply at JOBHUB for <span style={{ color: "green" }}> Telecaller</span>
+                        Why apply at JOBHUB for <span style={{ color: "green" }}>Telecaller</span>
                     </Typography>
                 </Grid2>
             </Grid2>
+
             <Grid2 container sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -58,6 +70,7 @@ const JobhubTelecaller = () => {
                                 fontSize: { xs: "15px", md: "17px" },
                                 pt: 2,
                             }}
+                            data-aos="fade-up"
                         >
                             {benefit}
                         </Typography>

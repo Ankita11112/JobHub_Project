@@ -1,10 +1,17 @@
-import { Box, Grid2, Typography } from '@mui/material'
-import React from 'react';
-import DocVerify from '../../../../../../assets/Images/DocVerifyImage/VerifyDocImg.png'
-import tickImg from '../../.././../../../assets/Images/DocVerifyImage/tickImg.png';
+import React ,{useEffect} from 'react';
+import { Box, Grid2, Typography } from '@mui/material';
+import DocVerify from '../../../../../../assets/Images/DocVerifyImage/VerifyDocImg.png';
+import tickImg from '../../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import DocBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const WhyDocVerify = () => {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const content = [
     {
       icon: tickImg,
@@ -26,39 +33,42 @@ const WhyDocVerify = () => {
       icon: tickImg,
       description: "When you apply in JobHub as a route to guaranteed jobs, you get a lot of choices, verified job listings, flexibility of applying, chances to advance in your career, and even high-paying competitive salary offers."
     },
-  ]
+  ];
+
   return (
     <>
       <Box sx={{
         my: { xs: 4, md: 10 },
         width: "100%",
-        // mx: "auto",
         backgroundImage: { xs: "none", sm: "none", md: `url(${DocBg})` },
         backgroundRepeat: "no-repeat",
         backgroundPosition: "100%",
         backgroundSize: "cover",
       }}>
+
         <Grid2 container sx={{
           width: "80%",
           mx: "auto"
         }}>
+
           <Grid2 item xs={12} md={6} sx={{
             pt: 10,
             width: { xs: "100%", sm: "100%", md: "50%" },
-          }}>
+          }} data-aos="fade-right">
             <Grid2 container>
               <Grid2 item xs={12} md={12} sx={{
                 textAlign: { xs: "center", sm: "center", md: "left" }
               }}>
-                <Typography variant="h4" component="h2">Why apply at JOBHUB fro Document Verification</Typography>
+                <Typography variant="h4" component="h2">Why apply at JOBHUB for Document Verification</Typography>
                 <Typography variant='body2' component='h5' sx={{
                   pt: 1
                 }}>Jobhub offers Document Verification jobs based on the fields of industries and companies.</Typography>
               </Grid2>
             </Grid2>
+
             <Grid2 container>
               {content.map((item, index) => (
-                <Grid2 item key={index}>
+                <Grid2 item key={index} data-aos="fade-up">
                   <Box sx={{
                     display: "flex",
                     alignItems: "center",
@@ -69,27 +79,30 @@ const WhyDocVerify = () => {
                     <Typography variant='body2' component='h5' sx={{
                       px: { xs: 3 },
                       fontSize: { xs: "12px", md: "15px" }
-                    }} >{item.description}</Typography>
+                    }}>
+                      {item.description}
+                    </Typography>
                   </Box>
                 </Grid2>
               ))}
             </Grid2>
           </Grid2>
+
           <Grid2 item xs={12} md={6} sx={{
             mt: 2,
             width: { xs: "100%", sm: "100%", md: "50%" },
-            // display: {xs: "block", sm: "block", md: "block", lg: "block" }
-          }}>
+          }} data-aos="fade-left">
             <img src={DocVerify} style={{
               width: "90%",
-              maxwidth: "80%",
-              height: "auto"
+              maxWidth: "80%",
+              height: "100%"
             }} alt="Document Verification" />
           </Grid2>
+
         </Grid2>
       </Box>
     </>
-  )
-}
+  );
+};
 
 export default WhyDocVerify;

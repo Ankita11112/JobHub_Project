@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 import { Box, Typography, Container } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import DescriptionBg from '../../../../../../assets/Images/bgImages/PartnersBg.png';
 import DataBg from '../../../../../../assets/Images/bgImages/TeleBg.png';
 
 const WebDevFirstDes = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1200 }); 
+  }, []);
+
   return (
     <>
       <Box
@@ -18,11 +24,9 @@ const WebDevFirstDes = () => {
           backgroundPosition: '100% 100px',
           backgroundSize: 'cover',
           alignItems: 'center',
-
           px: { xs: 2, md: 8 },
         }}
       >
-
         {/* Title Section */}
         <Container>
           <Grid
@@ -30,6 +34,7 @@ const WebDevFirstDes = () => {
             justifyContent="center"
             alignItems="center"
             sx={{ py: 2 }}
+            data-aos="fade-up" 
           >
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               <Typography
@@ -50,7 +55,7 @@ const WebDevFirstDes = () => {
                     position: 'absolute',
                     bottom: '-30px',
                     left: 0,
-                    mb: 5
+                    mb: 5,
                   },
                 }}
               >
@@ -64,12 +69,12 @@ const WebDevFirstDes = () => {
             <Typography
               variant="h5"
               component="h2"
+              data-aos="fade-right"
               sx={{
                 fontSize: { xs: '14px', md: '20px' },
                 textAlign: 'center',
                 marginBottom: 1,
                 px: 2,
-
               }}
             >
               A web developer is a professional responsible for building, maintaining, and improving websites and web applications. They use a variety of programming languages, tools, and frameworks to create the front-end (user-facing) and back-end (server-side) parts of a website. Depending on their specialization, a web developer may focus on one or both aspects of web development, or they may work as a full-stack developer, handling both front-end and back-end tasks.
@@ -78,6 +83,7 @@ const WebDevFirstDes = () => {
             <Typography
               variant="h3"
               component="h2"
+              data-aos="fade-left" // Add AOS animation
               sx={{
                 px: 2,
                 fontWeight: '600',
@@ -92,11 +98,12 @@ const WebDevFirstDes = () => {
             <Typography
               variant="h5"
               component="h2"
+              data-aos="zoom-in" 
               sx={{
                 mt: 3,
                 pb: 9,
                 fontSize: { xs: '14px', md: '20px' },
-                textAlign: 'center', // Centering the content text
+                textAlign: 'center',
               }}
             >
               Web developers translate website designs (often provided by UX/UI designers) into code using programming languages like HTML, CSS, and JavaScript.
