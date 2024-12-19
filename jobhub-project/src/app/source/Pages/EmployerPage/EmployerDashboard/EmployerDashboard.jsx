@@ -1,23 +1,28 @@
-import { Box, Button } from '@mui/material';
-import Grid from '@mui/material/Grid2';
-import React, { useState } from 'react';
-import DashboardNav from './Components/DashboardNavbar/DashboardNav';
-import { DashboardSidebar } from './Components/DashboardSidebar/DashboardSidebar';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Outlet } from 'react-router-dom';
+import { Box, Button } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import React, { useState } from "react";
+import DashboardNav from "./Components/DashboardNavbar/DashboardNav";
+import { DashboardSidebar } from "./Components/DashboardSidebar/DashboardSidebar";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Outlet } from "react-router-dom";
+import EmployeeForm from "../EmployeerForm";
 
 const EmployerDashboard = () => {
+  const token = localStorage.getItem("token");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  return (
+  return !token ? (
+    <EmployeeForm />
+  ) : (
     <>
       <Box
         sx={{
           height: "100vh",
           width: "100%",
           overflowY: "scroll",
-          background: "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
+          background:
+            "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
           overflowX: "hidden",
           position: "relative", // Ensures toggle button stays positioned correctly
         }}
@@ -50,7 +55,7 @@ const EmployerDashboard = () => {
             }}
           >
             <DashboardNav />
-           <Outlet/>
+            <Outlet />
           </Grid>
         </Grid>
 
@@ -70,14 +75,14 @@ const EmployerDashboard = () => {
             alignItems: "center",
             justifyContent: "center",
             transition: "left 0.3s ease",
-            '&:hover': {
-              backgroundColor: '#34A853',
-              color: 'white',
-              boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
+            "&:hover": {
+              backgroundColor: "#34A853",
+              color: "white",
+              boxShadow: "0px 4px 10px rgba(0, 128, 0, 0.3)",
             },
           }}
         >
-          {isSidebarOpen ? (<ArrowBackIosIcon />) : (<ArrowForwardIosIcon />)}
+          {isSidebarOpen ? <ArrowBackIosIcon /> : <ArrowForwardIosIcon />}
         </Button>
       </Box>
     </>

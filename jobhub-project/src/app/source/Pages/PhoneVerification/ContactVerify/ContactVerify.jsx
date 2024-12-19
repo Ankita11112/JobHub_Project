@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import PhoneVBg from "../../../../assets/Images/bgImages/PhoneVBg.png";
+import { checkOtp, sendOtp } from "../../../../service/operations/employeeApi";
 
 const ContactVerify = () => {
   const [openOtp, setOpenOtp] = useState(false);
@@ -20,8 +21,9 @@ const ContactVerify = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
-  const handleOpenOtp = () => {
+  const handleOpenOtp = async () => {
     if (phoneNumber.length === 10) {
+      const response = await sendOtp(phoneNumber);
       setOpenOtp(true);
     } else {
       toast.error("Please enter a valid 10-digit phone number.");
@@ -32,14 +34,15 @@ const ContactVerify = () => {
     setOpenOtp(false);
   };
 
-  const handleSubmit = () => {
-    const validPin = "4321";
-    if (otp === validPin) {
-      navigate("/employeregistration");
-      toast.success("OTP Verified!");
-    } else {
-      toast.error("Invalid OTP. Please try again.");
-    }
+  const handleSubmit = async () => {
+    const response = await checkOtp(otp, phoneNumber, navigate);
+    // const validPin = "4321";
+    // if (otp === validPin) {
+    //   navigate("/employeregistration");
+    //   toast.success("OTP Verified!");
+    // } else {
+    //   toast.error("Invalid OTP. Please try again.");
+    // }
   };
 
   return (
@@ -82,7 +85,8 @@ const ContactVerify = () => {
               sx={{
                 flex: 1,
                 padding: "100px",
-                background: "linear-gradient(178deg, rgba(1,148,11,1) 0%, rgba(93,198,112,1) 0%, rgba(58,179,74,1) 0%, rgba(87,196,106,1) 0%, rgba(8,152,19,1) 0%, rgba(81,191,99,1) 0%, rgba(59,180,75,1) 0%, rgba(93,199,113,1) 5%, rgba(88,196,107,1) 20%, rgba(116,210,138,1) 26%, rgba(100,202,120,1) 42%, rgba(100,202,121,1) 43%, rgba(120,213,142,1) 54%, rgba(134,220,158,1) 64%, rgba(118,211,140,1) 73%, rgba(93,199,113,1) 94%, rgba(200,255,230,1) 100%, rgba(81,192,99,1) 100%, rgba(87,196,106,1) 100%, rgba(111,207,132,1) 100%)",
+                background:
+                  "linear-gradient(178deg, rgba(1,148,11,1) 0%, rgba(93,198,112,1) 0%, rgba(58,179,74,1) 0%, rgba(87,196,106,1) 0%, rgba(8,152,19,1) 0%, rgba(81,191,99,1) 0%, rgba(59,180,75,1) 0%, rgba(93,199,113,1) 5%, rgba(88,196,107,1) 20%, rgba(116,210,138,1) 26%, rgba(100,202,120,1) 42%, rgba(100,202,121,1) 43%, rgba(120,213,142,1) 54%, rgba(134,220,158,1) 64%, rgba(118,211,140,1) 73%, rgba(93,199,113,1) 94%, rgba(200,255,230,1) 100%, rgba(81,192,99,1) 100%, rgba(87,196,106,1) 100%, rgba(111,207,132,1) 100%)",
                 color: "#fff",
                 display: "flex",
                 flexDirection: "column",
@@ -129,11 +133,7 @@ const ContactVerify = () => {
               <Typography variant="h4" fontWeight="bold" sx={{ mb: 1 }}>
                 Get Started
               </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                sx={{ mb: 5 }}
-              >
+              <Typography variant="body2" color="textSecondary" sx={{ mb: 5 }}>
                 Enter your details and verify to proceed.
               </Typography>
 
