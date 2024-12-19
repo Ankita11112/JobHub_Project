@@ -78,7 +78,7 @@ export default function Footer() {
             </Typography>
             <InteractiveLink text="About" to="/about" />
             <InteractiveLink text="Contact Us" to="/contact" />
-            <InteractiveLink text="Find A Job" href="/#popularSection" />
+            <InteractiveLink text="Find A Job" to="/#popularSection" />
             <InteractiveLink  text="Hire Now" to="/verification" />
           </Stack>
 
