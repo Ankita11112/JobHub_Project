@@ -6,12 +6,16 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Outlet } from 'react-router-dom';
 // import { CandidateDashboardSidebar } from './Components/CandidateDashboardSidebar/CandidateDashboardSidebar';
 import CandidateDashboardNav from './Components/CandidateDashboardNavbar/CandidateDashboardNav';
+import PageComponent from '../../../components/PageComponent/PageComponent'
+import NavAppBar from '../../../components/Navbar/NavAppbar';
 
 const CandidateDashboard = () => {
   // const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
     <>
+      <NavAppBar />
+
       <Box
         sx={{
           height: "100vh",
@@ -41,6 +45,7 @@ const CandidateDashboard = () => {
           )} */}
 
           {/* Navbar */}
+
           <Grid
             item
             sx={{
@@ -51,10 +56,12 @@ const CandidateDashboard = () => {
             }}
           >
             <CandidateDashboardNav />
-           <Outlet/>
+            <Outlet />
           </Grid>
+
         </Grid>
       </Box>
+
     </>
   );
 };
