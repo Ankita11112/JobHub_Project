@@ -23,8 +23,9 @@ const ContactVerify = () => {
 
   const handleOpenOtp = async () => {
     if (phoneNumber.length === 10) {
-      const response = await sendOtp(phoneNumber);
+      await sendOtp(phoneNumber);
       setOpenOtp(true);
+      toast.success("Otp send");
     } else {
       toast.error("Please enter a valid 10-digit phone number.");
     }
@@ -35,14 +36,8 @@ const ContactVerify = () => {
   };
 
   const handleSubmit = async () => {
-    const response = await checkOtp(otp, phoneNumber, navigate);
-    // const validPin = "4321";
-    // if (otp === validPin) {
-    //   navigate("/employeregistration");
-    //   toast.success("OTP Verified!");
-    // } else {
-    //   toast.error("Invalid OTP. Please try again.");
-    // }
+    await checkOtp(otp, phoneNumber, navigate);
+    localStorage.setItem("mobileNumber", phoneNumber);
   };
 
   return (
