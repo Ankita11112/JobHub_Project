@@ -1,7 +1,7 @@
 import React from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
-import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage02.png';
+import HeaderImage from '../../../../../assets/Images/FactoryWorkImages/header.png';
 import HeaderPage from '../../../../GlobalComponents/HeaderPage/HeaderPage'
 import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
