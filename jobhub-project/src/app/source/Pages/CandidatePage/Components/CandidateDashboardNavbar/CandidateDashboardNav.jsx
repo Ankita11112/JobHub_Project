@@ -69,7 +69,7 @@ const CandidateDashboardNav = () => {
               borderRadius: "10%",
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  borderColor: '#ccc', // No border initially
+                  borderColor: 'green', // No border initially
                 },
                 '&:hover fieldset': {
                   borderColor: '#34A853', // Add hover styling if needed

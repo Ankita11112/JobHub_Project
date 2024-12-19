@@ -13,15 +13,12 @@ import Testimonial from '../../../components/PageComponent/Testimonial/Testimoni
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
 import { Outlet, useNavigate } from 'react-router-dom';
 import ChatAi from '../../../../app/components/Whatsapp/ChatAi';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 
 const Home = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
+
 
   const handleScrollView = () => {
     const section = document.getElementById('popularSection');

@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Card, CardContent, Grid2, Typography } from '@mui/material';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS CSS
+
+// Importing images
 import WebDesignImg from '../../../../../../assets/Images/WebDesignImgs/frontendImg.png';
 import BrandContentImg from '../../../../../../assets/Images/WebDesignImgs/BrandContent.png';
 import UiUxDesignImg from '../../../../../../assets/Images/WebDesignImgs/UxDesign.png';
@@ -8,6 +12,13 @@ import webImg2 from '../../../../../../assets/Images/WebDesignImgs/webImg2.png';
 import webImg3 from '../../../../../../assets/Images/WebDesignImgs/webImg3.png';
 
 const WebDesignCard = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: 'ease-in-out', // Easing function
+      offset: 200, // Offset to trigger animation
+    });
+  }, []);
 
   const containerStyles = {
     display: 'flex',
@@ -27,7 +38,7 @@ const WebDesignCard = () => {
             component="h2"
             sx={{
               textAlign: 'center',
-              fontSize: { xs: '35px', md: '45px'},
+              fontSize: { xs: '35px', md: '45px' },
             }}
           >
             Key Roles in Modern <span style={{ color: 'green' }}>Web Design</span>
@@ -51,7 +62,7 @@ const WebDesignCard = () => {
         </Grid2>
       </Grid2>
 
-      <Grid2 container spacing={5} sx={{ width: '80%', mb: 9, }}>
+      <Grid2 container spacing={5} sx={{ width: '80%', mb: 9 }}>
         <Grid2
           item
           xs={12}
@@ -59,21 +70,23 @@ const WebDesignCard = () => {
           md={4}
           sx={{
             width: { sm: '100%', md: '30%' },
-            borderRadius: "5px",
-            boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
-            border:
-              "8px solid green",
+            borderRadius: '5px',
+            boxShadow:
+              'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
+            border: '8px solid green',
             position: 'relative',
             '&:hover .hiddenImg': {
               transform: { md: 'translateX(-100px)' },
             },
           }}
+          data-aos="fade-up" // AOS Animation
+          data-aos-delay="100" // Delay for animation
         >
           <Card sx={{ width: '100%', height: '450px' }}>
             <img
               src={WebDesignImg}
               style={{ width: '100%', height: '50%' }}
-              alt='illustration'
+              alt="illustration"
             />
             <CardContent sx={{ height: '100%' }}>
               <Typography
@@ -93,10 +106,11 @@ const WebDesignCard = () => {
                   textAlign: 'justify',
                   fontSize: { xs: '13px', md: '17px' },
                   pt: 2,
-                  pb: 3
+                  pb: 3,
                 }}
               >
-                A Front-End Designer combines design and coding skills to create visually appealing, responsive websites using HTML, CSS, and JavaScript.
+                A Front-End Designer combines design and coding skills to create visually
+                appealing, responsive websites using HTML, CSS, and JavaScript.
               </Typography>
             </CardContent>
           </Card>
@@ -116,7 +130,7 @@ const WebDesignCard = () => {
             <img
               src={webImg1}
               style={{ height: '100%', width: '100%' }}
-              alt='cartoon'
+              alt="cartoon"
             />
           </Box>
         </Grid2>
@@ -128,22 +142,24 @@ const WebDesignCard = () => {
           md={4}
           sx={{
             width: { sm: '100%', md: '30%' },
-            top: { md: "2rem" },
-            boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
-            borderRadius: "5px",
-            border:
-              "8px solid green",
+            top: { md: '2rem' },
+            boxShadow:
+              'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
+            borderRadius: '5px',
+            border: '8px solid green',
             position: 'relative',
             '&:hover .hiddenImg': {
               transform: { md: 'translate(-45px, -40px)' },
             },
           }}
+          data-aos="fade-up" // AOS Animation
+          data-aos-delay="200" // Delay for animation
         >
           <Card sx={{ width: '100%', height: '450px' }}>
             <img
               src={BrandContentImg}
               style={{ width: '100%', height: '50%' }}
-              alt='illustration'
+              alt="illustration"
             />
             <CardContent sx={{ height: '100%' }}>
               <Typography
@@ -163,10 +179,11 @@ const WebDesignCard = () => {
                   textAlign: 'justify',
                   fontSize: { xs: '13px', md: '17px' },
                   pt: 2,
-                  pb: 3
+                  pb: 3,
                 }}
               >
-                Creates cohesive visual identities, engaging content, and compelling brand stories that resonate and connect with people.
+                Creates cohesive visual identities, engaging content, and compelling brand
+                stories that resonate and connect with people.
               </Typography>
             </CardContent>
           </Card>
@@ -174,7 +191,7 @@ const WebDesignCard = () => {
             sx={{
               position: 'absolute',
               top: '90%',
-              left: "-10px",
+              left: '-10px',
               transform: 'translate(50%, -80%)',
               width: '150px',
               height: '150px',
@@ -186,7 +203,7 @@ const WebDesignCard = () => {
             <img
               src={webImg2}
               style={{ height: '100%', width: '100%' }}
-              alt='cartoon'
+              alt="cartoon"
             />
           </Box>
         </Grid2>
@@ -198,22 +215,24 @@ const WebDesignCard = () => {
           md={4}
           sx={{
             width: { sm: '100%', md: '30%' },
-            top: { md: "4rem" },
-            boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
-            borderRadius: "5px",
-            border:
-              "8px solid green",
+            top: { md: '4rem' },
+            boxShadow:
+              'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
+            borderRadius: '5px',
+            border: '8px solid green',
             position: 'relative',
             '&:hover .hiddenImg': {
               transform: { md: 'translateY(-155px)' },
             },
           }}
+          data-aos="fade-up" // AOS Animation
+          data-aos-delay="300" // Delay for animation
         >
           <Card sx={{ width: '100%', height: '450px' }}>
             <img
               src={UiUxDesignImg}
               style={{ width: '100%', height: '50%' }}
-              alt='illustration'
+              alt="illustration"
             />
             <CardContent sx={{ height: '100%' }}>
               <Typography
@@ -233,10 +252,11 @@ const WebDesignCard = () => {
                   textAlign: 'justify',
                   fontSize: { xs: '13px', md: '17px' },
                   pt: 2,
-                  pb: 3
+                  pb: 3,
                 }}
               >
-                Creates user-friendly, people-centered designs that simplify interactions and elevate the digital experience.
+                Creates user-friendly, people-centered designs that simplify interactions
+                and elevate the digital experience.
               </Typography>
             </CardContent>
           </Card>
@@ -256,7 +276,7 @@ const WebDesignCard = () => {
             <img
               src={webImg3}
               style={{ height: '100%', width: '100%' }}
-              alt='cartoon'
+              alt="cartoon"
             />
           </Box>
         </Grid2>

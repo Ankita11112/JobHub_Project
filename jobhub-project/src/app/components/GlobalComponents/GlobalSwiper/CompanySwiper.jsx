@@ -1,66 +1,65 @@
-import { Box} from '@mui/material';
-import Grid2 from '@mui/material/Grid2';
-import React from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import './GlobalSwiper.css';
+import React from "react";
+import styled from "styled-components";
 
 const CompanySwiper = ({ companyItems }) => {
+  const Container = styled.div`
+    .slider {
+      margin-top: 70px;
+      padding: 2em 0;
+      overflow: hidden;
+     
+      position: relative;
+      width: 100%; /* Full width container */
+    }
 
-    return (
-        <Grid2 container sx={{width: "100%", margin: "auto", height: "auto" }}>
-            <Grid2 item className="swiper-container" xs={12}>
-                    <Swiper
-                        spaceBetween={10}
-                        slidesPerView={9} 
-                        autoplay={{
-                            delay: 2000,
-                            disableOnInteraction: false,
-                        }}
-                        speed={1000}
-                        loop={true}
-                        // navigation={{
-                        //     nextEl: '.swiper-button-next',
-                        //     prevEl: '.swiper-button-prev',
-                        // }}
-                        modules={[Autoplay, Navigation, Pagination]}
-                        breakpoints={{
-                            320: {
-                                slidesPerView: 2,
-                                spaceBetween: 20,
-                            },
-                            480: {
-                                slidesPerView: 4,
-                                spaceBetween: 30,
-                            },
-                            640: {
-                                slidesPerView: 4,
-                                spaceBetween: 30,
-                            },
-                            1200: {
-                                slidesPerView: 9,
-                                spaceBetween: 40,
-                            },
-                        }}
-                        style={{
-                            margin: "8%",
-                        }}
-                    >
-                        {companyItems.map((item, index) => (
-                            <SwiperSlide key={index}>
-                                    <img src={item.image} height="150px" width="150px" alt="swiper-slide" />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                {/* <Box className="swiper-button-prev"></Box>
-                <Box className="swiper-button-next"></Box> */}
-            </Grid2>
-        </Grid2>
-    );
+    .slide-track {
+      display: flex;
+      gap: 2em;
+      animation: scroll 30s linear infinite;
+      width: calc(2 * ${companyItems.length} * 150px); /* Double the content for seamless loop */
+    }
+
+    .slide {
+      flex: 0 0 auto;
+      width: 150px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-${companyItems.length} * 150px));
+      }
+    }
+  `;
+
+ 
+  const duplicatedItems = [...companyItems, ...companyItems];
+
+  return (
+    <Container>
+      <div className="slider">
+        <div className="slide-track">
+          {duplicatedItems.map((item, index) => (
+            <div className="slide" key={index}>
+              <img src={item.image} alt={`Company logo ${index}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  );
 };
 
 export default CompanySwiper;
-
