@@ -12,24 +12,35 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import ContactVerify from "../PhoneVerification/ContactVerify/ContactVerify";
+import { registerEmployee } from "../../../service/operations/employeeApi";
+import EmployerDashboard from "./EmployerDashboard/EmployerDashboard";
 
 const EmployeeForm = () => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    return <EmployerDashboard />;
+  }
+  const mobileNumber = localStorage.getItem("mobileNumber");
   const navigate = useNavigate();
+
   const initialEmployerData = {
-    profileImg: "",
+    avatar: "",
     companyName: "",
     fullName: "",
-    mobile: "",
+    mobileNumber,
     email: "",
     gender: "",
     country: "",
     city: "",
-    source: "",
+    fromWhere: "",
     gstNumber: "",
   };
 
   const [employerData, setEmployerData] = useState(initialEmployerData);
   const [profileImg, setProfileImg] = useState("");
+  const [image, setImage] = useState("");
 
   // Handler to update employer data
   const updateEmployerData = (field, value) => {
@@ -37,33 +48,35 @@ const EmployeeForm = () => {
   };
 
   // Handle image upload
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
         const base64Image = reader.result;
         setProfileImg(base64Image); // Store base64 image data
-        updateEmployerData("profileImg", base64Image);
+        updateEmployerData("avatar", file);
+        setImage(file);
       };
       reader.readAsDataURL(file);
     }
   };
 
   // Handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Save form data to local storage
-    localStorage.setItem("employerFormData", JSON.stringify(employerData));
-
-    toast.success("Form Submitted and Saved Successfully!");
-    setTimeout(() => {
-      navigate("/employerdashboard");
-    }, 2000);
+    try {
+      await registerEmployee(employerData, navigate);
+      localStorage.removeItem("mobileNumber");
+      // navigate("/employerdashboard");
+    } catch (error) {
+      toast.error("Not Submit");
+    }
   };
 
-  return (
+  return !mobileNumber ? (
+    <ContactVerify />
+  ) : (
     <Box
       sx={{
         background: "linear-gradient(to bottom, #4caf50, #ffffff)",
@@ -113,7 +126,7 @@ const EmployeeForm = () => {
             />
           </Button>
           {profileImg && (
-            <Box textAlign="center" mt={2}>
+            <Box alignSelf="center" textAlign="center" mt={2}>
               <img
                 src={profileImg}
                 alt="Uploaded Preview"
@@ -151,8 +164,11 @@ const EmployeeForm = () => {
               variant="outlined"
               placeholder="Enter Mobile Number"
               required
-              value={employerData.mobile}
-              onChange={(e) => updateEmployerData("mobile", e.target.value)}
+              value={employerData.mobileNumber}
+              disabled
+              onChange={(e) =>
+                updateEmployerData("mobileNumber", e.target.value)
+              }
             />
           </Box>
           <Box sx={{ display: "flex", gap: "20px" }}>
@@ -218,14 +234,11 @@ const EmployeeForm = () => {
             variant="outlined"
             placeholder="Enter Source"
             required
-            value={employerData.source}
-            onChange={(e) => updateEmployerData("source", e.target.value)}
+            value={employerData.fromWhere}
+            onChange={(e) => updateEmployerData("fromWhere", e.target.value)}
           />
           <Box textAlign="center">
-            <Typography
-              variant="h6"
-              sx={{ fontSize: "14px", color: "green" }}
-            >
+            <Typography variant="h6" sx={{ fontSize: "14px", color: "green" }}>
               *Kindly ensure all fields are filled out accurately, as this form
               can only be submitted once. Your attention to detail is highly
               appreciated.
