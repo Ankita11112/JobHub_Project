@@ -13,6 +13,7 @@ import Testimonial from '../../../components/PageComponent/Testimonial/Testimoni
 import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
 import { Outlet, useNavigate } from 'react-router-dom';
 import ChatAi from '../../../../app/components/Whatsapp/ChatAi';
+import Resumeswiper from '../../../components/PageComponent/Resumeswiper';
 
 
 const Home = () => {
@@ -86,6 +87,7 @@ const Home = () => {
           }}
           button2
         />
+        <Resumeswiper /> 
         <JobCards />
         <JobDetails />
         <PopularJobs id="popularSection" />

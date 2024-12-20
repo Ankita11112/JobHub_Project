@@ -324,7 +324,7 @@ const CandidateDashboardNav = () => {
       </Box>
 
       {/* Mobile View */}
-      <Box sx={{ ...navStyles, display: { xs: 'flex', md: 'none' } }}>
+      {/* <Box sx={{ ...navStyles, display: { xs: 'flex', md: 'none' } }}>
         <Box
           component="img"
           src={jobhublogo}
@@ -337,7 +337,7 @@ const CandidateDashboardNav = () => {
           <MenuIcon />
         </IconButton>
 
-        {/* Dropdown Menu */}
+       
         {show && (
           <Card
             sx={{
@@ -365,7 +365,7 @@ const CandidateDashboardNav = () => {
             </MenuItem>
           </Card>
         )}
-      </Box>
+      </Box>  */}
     </>
   );
 };

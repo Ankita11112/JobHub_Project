@@ -151,7 +151,7 @@ const JobDetails = () => {
         spacing={5}
         sx={{
           width: "100%",
-          justifyContent: { xs: "center", md: "space-between", xl: "space-between" },
+          justifyContent: { xs: "center", md: "space-evenly", xl: "space-evenly" },
           alignItems: "center",
         }}
       >
