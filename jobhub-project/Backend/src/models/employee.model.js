@@ -8,6 +8,10 @@ const employeeSchema = new Schema(
       required: true,
       index: true,
     },
+    avatar: {
+      type: String,
+      required: true
+    },
     companyName: {
       type: String,
       required: true,
