@@ -14,8 +14,10 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import PhoneVBg from "../../../../assets/Images/bgImages/PhoneVBg.png";
 import { checkOtp, sendOtp } from "../../../../service/operations/employeeApi";
+import EmployerDashboard from "../../EmployerPage/EmployerDashboard/EmployerDashboard";
 
 const ContactVerify = () => {
+  const token = localStorage.getItem("accessToken");
   const [openOtp, setOpenOtp] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
@@ -37,10 +39,11 @@ const ContactVerify = () => {
 
   const handleSubmit = async () => {
     await checkOtp(otp, phoneNumber, navigate);
-    localStorage.setItem("mobileNumber", phoneNumber);
   };
 
-  return (
+  return token ? (
+    <EmployerDashboard />
+  ) : (
     <Box
       sx={{
         minHeight: "100vh",
