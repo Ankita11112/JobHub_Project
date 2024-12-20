@@ -2,6 +2,7 @@ import { Employee } from "../models/employee.model.js";
 import { Otp } from "../models/otp.model.js";
 import { otpSender } from "../utils/mobileVerification.utils.js";
 import { Job } from "../models/job.model.js";
+import { uploadOnCloudinary } from "../configs/cloudinary.js";
 
 const generateAccessToken = async (employeeId) => {
   try {
@@ -130,18 +131,28 @@ export const employeeAccount = async (req, res) => {
       });
     }
 
-    const newEmployee = await Employee.create(
-      {
-        companyName,
-        email,
-        fromWhere,
-        fullName,
-        gender,
-        gstNumber,
-        mobileNumber,
-      },
-      { new: true }
-    );
+    const avatarLocalPath = req.file.path;
+
+    if (!avatarLocalPath) {
+      return res.status(404).json({
+        message: "Image not found",
+      });
+    }
+
+    const avatar = await uploadOnCloudinary(avatarLocalPath);
+
+    const newEmployee = await Employee.create({
+      companyName,
+      email,
+      fromWhere,
+      fullName,
+      gender,
+      gstNumber,
+      mobileNumber,
+      avatar:
+        avatar.url ||
+        `https://api.dicebear.com/5.x/initials/svg?seed=${fullName}`,
+    });
 
     // Generate Token
     const { accessToken } = await generateAccessToken(newEmployee._id);
@@ -152,12 +163,15 @@ export const employeeAccount = async (req, res) => {
     };
 
     return res.status(200).cookie("accessToken", accessToken, options).json({
+      success: true,
       message: "Signup Successfully !",
       employee: newEmployee,
+      accessToken,
     });
   } catch (error) {
+    console.log(error)
     res.status(500).json({
-      message: "Someting went wrong while identification",
+      message: "Someting went wrong while registeration",
     });
   }
 };
