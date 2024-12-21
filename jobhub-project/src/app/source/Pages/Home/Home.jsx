@@ -92,7 +92,7 @@ const Home = () => {
         <JobDetails />
         <PopularJobs id="popularSection" />
         <ResumeSection />
-        <PartnerSection />
+        <PartnerSection />3
         <ChoiceSection />
         <Testimonial />
         <GlobalFaq faqItems={faqItems} />

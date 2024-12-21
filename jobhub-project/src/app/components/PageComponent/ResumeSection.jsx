@@ -14,6 +14,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const ResumeSection = () => {
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -65,7 +66,7 @@ const ResumeSection = () => {
             data-aos="fade-up"
             content={resumeItems.map((item, index) => ({
               ...item,
-             
+
             }))}
             sx={{
               width: { xs: "300px", md: "250px" },
@@ -75,6 +76,7 @@ const ResumeSection = () => {
           />
         </Box>
       </Box>
+      
     </>
   );
 };
