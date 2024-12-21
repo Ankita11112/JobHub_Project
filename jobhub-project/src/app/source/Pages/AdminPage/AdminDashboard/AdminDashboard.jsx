@@ -1,29 +1,34 @@
-import { Box, Button } from '@mui/material';
-import Grid from '@mui/material/Grid2';
-import React, { useState } from 'react';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Outlet } from 'react-router-dom';
-import { AdminDashboardSidebar } from './Components/AdminDashboardSidebar/AdminDashboardSidebar';
-import AdminDashboardNav from './Components/AdminDashboardNavbar/AdminDashboardNav';
+import { Box, Button } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import React, { useState } from "react";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Outlet } from "react-router-dom";
+import { AdminDashboardSidebar } from "./Components/AdminDashboardSidebar/AdminDashboardSidebar";
+import AdminDashboardNav from "./Components/AdminDashboardNavbar/AdminDashboardNav";
+import LogIn from "../SigninUpPage/SignIn/LogIn";
 
 const AdminDashboard = () => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  return (
+  return !token ? (
+    <LogIn />
+  ) : (
     <>
       <Box
         sx={{
           height: "100vh",
           overflowY: "scroll",
           width: "100%",
-          background: "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
+          background:
+            "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
           overflowX: "hidden",
           position: "relative", // Ensures toggle button stays positioned correctly
         }}
       >
         {/* Sidebar and Navbar Grid */}
-        <Grid container sx={{ height: "100%", }}>
+        <Grid container sx={{ height: "100%" }}>
           {/* Sidebar */}
           {isSidebarOpen && (
             <Grid
@@ -33,10 +38,12 @@ const AdminDashboard = () => {
                 transition: "width 0.3s ease",
               }}
             >
-          `    <AdminDashboardSidebar
+              `{" "}
+              <AdminDashboardSidebar
                 isSidebarOpen={isSidebarOpen}
                 toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-              />`
+              />
+              `
             </Grid>
           )}
 
@@ -50,7 +57,7 @@ const AdminDashboard = () => {
             }}
           >
             <AdminDashboardNav />
-           <Outlet/>
+            <Outlet />
           </Grid>
         </Grid>
 
@@ -70,14 +77,14 @@ const AdminDashboard = () => {
             alignItems: "center",
             justifyContent: "center",
             transition: "left 0.3s ease",
-            '&:hover': {
-              backgroundColor: '#34A853',
-              color: 'white',
-              boxShadow: '0px 4px 10px rgba(0, 128, 0, 0.3)',
+            "&:hover": {
+              backgroundColor: "#34A853",
+              color: "white",
+              boxShadow: "0px 4px 10px rgba(0, 128, 0, 0.3)",
             },
           }}
         >
-          {isSidebarOpen ? (<ArrowBackIosIcon />) : (<ArrowForwardIosIcon />)}
+          {isSidebarOpen ? <ArrowBackIosIcon /> : <ArrowForwardIosIcon />}
         </Button>
       </Box>
     </>
