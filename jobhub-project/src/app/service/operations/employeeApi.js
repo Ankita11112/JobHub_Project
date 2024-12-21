@@ -14,7 +14,7 @@ export const sendOtp = async (mobileNumber) => {
       console.log("No response from backend");
     }
   } catch (error) {
-    console.log("error while sending otp", error);
+    toast.error(error.response.data.message);
   }
 };
 
@@ -27,7 +27,7 @@ export const checkOtp = async (otp, mobileNumber, navigate) => {
 
     if (response.data.sucess) {
       console.log("aagya");
-      localStorage.setItem("token", response.data.accessToken);
+      localStorage.setItem("token", JSON.stringify(response.data.accessToken));
       localStorage.setItem("employee", JSON.stringify(response.data.employee));
       localStorage.removeItem("mobileNumber");
       toast.success(response.data.message);
@@ -37,7 +37,7 @@ export const checkOtp = async (otp, mobileNumber, navigate) => {
       navigate("/employeregistration");
     }
   } catch (error) {
-    console.error("error while checking the otp", error);
+    toast.error(error.response.data.message);
   }
 };
 
@@ -49,13 +49,42 @@ export const registerEmployee = async (employerData, navigate) => {
 
     if (response.data.success) {
       localStorage.setItem("employee", JSON.stringify(response.data.employee));
-      localStorage.setItem("token", response.data.accessToken);
+      localStorage.setItem("token", JSON.stringify(response.data.accessToken));
       toast.success(response.data.message);
       navigate("/employerdashboard");
     } else {
       navigate("/employeregistration");
     }
   } catch (error) {
-    toast.error("Something went wront integrate the register");
+    toast.error(error.response.data.message);
+  }
+};
+
+export const myJobs = async (token) => {
+  try {
+    const response = await apiConnector(
+      "GET",
+      MYJOBS,
+      {},
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+    toast.success(response.data.message);
+    return response.data.employee.jobs;
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
+
+export const updateProfile = async (token, data) => {
+  try {
+    const response = await apiConnector("PUT", EDIT_PROFILE, data, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    });
+    console.log(response.data);
+  } catch (error) {
+    toast.error(error.response.data.message);
   }
 };
