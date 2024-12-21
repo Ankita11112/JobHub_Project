@@ -28,9 +28,9 @@ export const allDataAboutEverything = async (req, res) => {
 
 export const loginSystem = async (req, res) => {
   try {
-    const { email, password, fullName } = req.body;
+    const { email, password, name } = req.body;
 
-    if (email === "" || password === "" || fullName === "") {
+    if (email === "" || password === "") {
       return res.status(400).json({
         message: "All fields required!",
       });
@@ -65,8 +65,10 @@ export const loginSystem = async (req, res) => {
       };
 
       return res.status(200).cookie("accessToken", accessToken, options).json({
+        success: true,
         message: "Login Successfully!",
         user: adminExists,
+        accessToken,
       });
     }
 
@@ -74,7 +76,7 @@ export const loginSystem = async (req, res) => {
 
     const newAdmin = await Admin.create({
       email,
-      fullName,
+      fullName: name,
       password: hashedPassword,
     });
 
@@ -96,8 +98,10 @@ export const loginSystem = async (req, res) => {
     };
 
     return res.status(200).cookie("accessToken", accessToken, options).json({
+      success: true,
       message: "New admin Created and login",
       user: newAdmin,
+      accessToken,
     });
   } catch (error) {
     return res.status(500).json({
