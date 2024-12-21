@@ -24,10 +24,12 @@ const EmployerProfile = () => {
     gstNumber: "22AAAAA0000A1Z5",
   };
 
-  const [profileData, setProfileData] = useState(() => {
-    const savedData = localStorage.getItem("employerFormData");
-    return savedData ? JSON.parse(savedData) : initialData;
-  });
+  // const [profileData, setProfileData] = useState(() => {
+  //   const savedData = localStorage.getItem("employerFormData");
+  //   return savedData ? JSON.parse(savedData) : initialData;
+  // });
+
+  const profileData = JSON.parse(localStorage.getItem("employee"))
 
   const [editingField, setEditingField] = useState(null);
   const [showEdit, setShowEdit] = useState(false);
@@ -85,7 +87,7 @@ const EmployerProfile = () => {
         {/* Avatar Section */}
         <Box textAlign="center" mb={3}>
           <Avatar
-            src={profileData.profileImg}
+            src={profileData.avatar}
             alt="Profile"
             sx={{
               width: 120,
