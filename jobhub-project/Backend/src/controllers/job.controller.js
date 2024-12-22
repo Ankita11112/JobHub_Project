@@ -4,46 +4,47 @@ import { Job } from "../models/job.model.js";
 export const createJob = async (req, res) => {
   try {
     const {
-      companyName,
+      company,
       jobTitle,
-      numberOfPosition,
+      positions,
       jobType,
       workType,
-      ExpireJob,
-      benefits,
       salary,
+      benefits,
       jobLocation,
-      education,
-      english,
-      experience,
+      postDate,
+    } = req.body.jobDetails;
+
+    const {
+      minimumEducation,
+      englishLevelRequired,
+      totalExperienceRequired,
       gender,
       age,
-      description,
-      interviewMode,
-      communication,
-    } = req.body;
+      jobDescription,
+      interviewMethod,
+      communicationPreferences,
+    } = req.body.candidatesInterviewer;
 
     const employeeId = req.user._id;
 
     if (
       [
-        companyName,
+        company,
         jobTitle,
-        // numberOfPosition,
         jobType,
         workType,
-        ExpireJob,
-        // benefits,
         salary,
         jobLocation,
-        education,
-        english,
-        experience,
+        postDate,
+        minimumEducation,
+        englishLevelRequired,
+        totalExperienceRequired,
         gender,
         age,
-        description,
-        interviewMode,
-        communication,
+        jobDescription,
+        interviewMethod,
+        communicationPreferences,
       ].some((data) => data?.trim() === "")
     ) {
       return res.status(400).json({
@@ -54,19 +55,19 @@ export const createJob = async (req, res) => {
     const newJob = await Job.create({
       age,
       benefits,
-      communication,
-      companyName,
-      description,
-      education,
-      english,
-      experience,
-      ExpireJob,
+      communication: communicationPreferences,
+      companyName: company,
+      description: jobDescription,
+      education: minimumEducation,
+      english: englishLevelRequired,
+      experience: totalExperienceRequired,
+      ExpireJob: postDate,
       gender,
-      interviewMode,
+      interviewMode: interviewMethod,
       jobLocation,
       jobTitle,
       jobType,
-      numberOfPosition,
+      numberOfPosition: positions,
       salary,
       workType,
     });
@@ -88,7 +89,6 @@ export const createJob = async (req, res) => {
       job: newJob,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       message: "Something went wrong while creating course",
     });
