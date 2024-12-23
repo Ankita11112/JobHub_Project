@@ -14,7 +14,6 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
 
 
   return (
-
     <>
       <Box sx={{
         backgroundImage: `url(${backgroundImage})`,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Paper,
@@ -8,31 +8,33 @@ import {
   FormControlLabel,
   Checkbox,
   IconButton,
-} from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
-import HomeIcon from '@mui/icons-material/Home';
-import { toast } from 'react-toastify';
-import BG from '../../../../../assets/Images/SignPage/SignInBG.jpg';
+} from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import { toast } from "react-toastify";
+import BG from "../../../../../assets/Images/SignPage/SignInBG.jpg";
+import { entrySystem } from "../../../../../service/operations/adminApi";
 
 const LogIn = () => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const navigate = useNavigate();
 
   // State for form fields and errors
-  const [formValues, setFormValues] = useState({ 
-    username: '',
-    password: '',
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
     rememberMe: false,
   });
 
   const [errors, setErrors] = useState({
-    username: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
-    if (name === 'rememberMe') {
+    if (name === "rememberMe") {
       setFormValues({ ...formValues, rememberMe: checked });
     } else {
       setFormValues({ ...formValues, [name]: value });
@@ -40,56 +42,57 @@ const LogIn = () => {
   };
 
   // Handle form submission and validation
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = {};
 
-    // Validate username
-    if (!formValues.username) formErrors.username = 'Username is required';
+    // Validate email
+    if (!formValues.email) formErrors.email = "email is required";
 
     // Validate password
     if (!formValues.password) {
-      formErrors.password = 'Password is required';
+      formErrors.password = "Password is required";
     } else if (formValues.password.length < 6) {
-      formErrors.password = 'Password must be at least 6 characters';
+      formErrors.password = "Password must be at least 6 characters";
     }
 
     setErrors(formErrors);
 
     // If no errors, submit the form
     if (Object.keys(formErrors).length === 0) {
-      toast.success('Form submitted successfully!');
-      setTimeout(() => navigate('/admin'), 3000);
+      await entrySystem(formValues, navigate);
     } else {
-      toast.error('Invalid credentials');
+      toast.error("Invalid credentials");
     }
   };
 
-  return (
+  return token ? (
+    <AdminDashboard />
+  ) : (
     <Box
       sx={{
-        minHeight: '100vh',
+        minHeight: "100vh",
         backgroundImage: `url(${BG})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         px: 2,
-        position: 'relative',
+        position: "relative",
       }}
     >
       {/* Home Button */}
       <IconButton
         sx={{
-          position: 'absolute',
+          position: "absolute",
           top: 20,
           left: 20,
-          backgroundColor: 'white',
-          color: 'green',
-          '&:hover': { color: 'white', backgroundColor: 'green' },
+          backgroundColor: "white",
+          color: "green",
+          "&:hover": { color: "white", backgroundColor: "green" },
         }}
-        onClick={() => navigate('/')}
+        onClick={() => navigate("/")}
       >
         <HomeIcon />
       </IconButton>
@@ -99,26 +102,31 @@ const LogIn = () => {
         sx={{
           p: 3,
           borderRadius: 2,
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+          backgroundColor: "rgba(255, 255, 255, 0.9)",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
           maxWidth: 400,
-          width: '100%',
+          width: "100%",
         }}
       >
         <Box align="center">
-          <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            textAlign="center"
+            gutterBottom
+          >
             Admin Log In
           </Typography>
         </Box>
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
-            label="Username"
-            name="username"
-            value={formValues.username}
+            label="email"
+            name="email"
+            value={formValues.email}
             onChange={handleChange}
-            error={!!errors.username}
-            helperText={errors.username}
+            error={!!errors.email}
+            helperText={errors.email}
             sx={{ mb: 2 }}
             required
           />
@@ -152,14 +160,19 @@ const LogIn = () => {
             fullWidth
             sx={{
               mt: 2,
-              backgroundColor: 'green',
-              '&:hover': { backgroundColor: 'darkgreen' },
+              backgroundColor: "green",
+              "&:hover": { backgroundColor: "darkgreen" },
             }}
           >
             Log in
           </Button>
         </form>
-        <Typography variant="body2" color="textSecondary" textAlign="center" sx={{ mt: 2 }}>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          textAlign="center"
+          sx={{ mt: 2 }}
+        >
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </Typography>
       </Paper>

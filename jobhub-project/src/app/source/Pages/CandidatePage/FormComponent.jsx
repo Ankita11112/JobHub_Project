@@ -210,6 +210,12 @@ const FormComponent = () => {
                 inputProps={{ accept: ".pdf,.doc,.docx" }}
                 onChange={(e) => setResume(e.target.files[0])}
               />
+              <a href="https://resume-creator.jobhub.world/" >
+                <Typography component="span">
+                  Need a resume? <span style={{ color: 'blue' }}>Create one now !</span>
+                </Typography>
+              </a>
+
             </Box>
             <Box sx={{ mb: 3 }}>
               <TextField
@@ -222,6 +228,7 @@ const FormComponent = () => {
                 required
                 onChange={(e) => setAddress(e.target.value)}
               />
+
             </Box>
             <Button
               type="submit"
@@ -239,8 +246,8 @@ const FormComponent = () => {
             </Button>
           </form>
         </Box>
-      </Fade>
-    </Box>
+      </Fade >
+    </Box >
   );
 };
 
