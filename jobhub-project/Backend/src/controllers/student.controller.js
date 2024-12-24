@@ -5,11 +5,12 @@ import { thanksEmailTemplate } from "../templates/thanks.template.js";
 
 export const applyForJob = async (req, res) => {
   try {
+    console.log(req.body);
     const {
-      firstName,
-      lastName,
+      firstname,
+      lastname,
       email,
-      mobileNumber,
+      number,
       dob,
       gender,
       qualification,
@@ -17,15 +18,15 @@ export const applyForJob = async (req, res) => {
       address,
       jobId,
     } = req.body;
-    
+
     const { filename } = req.file;
 
     if (
       [
-        firstName,
-        lastName,
+        firstname,
+        lastname,
         email,
-        mobileNumber,
+        number,
         dob,
         gender,
         qualification,
@@ -47,9 +48,9 @@ export const applyForJob = async (req, res) => {
     }
 
     const studentDataForJob = await Student.create({
-      firstName,
-      lastName,
-      mobileNumber,
+      firstName: firstname,
+      lastName: lastname,
+      mobileNumber: number,
       dob,
       gender,
       qualification,
@@ -60,7 +61,6 @@ export const applyForJob = async (req, res) => {
       email,
     });
 
-    console.log("aagya", jobId);
     const findJob = await Job.findByIdAndUpdate(jobId, {
       $push: {
         students: studentDataForJob._id,
@@ -77,8 +77,8 @@ export const applyForJob = async (req, res) => {
       email,
       "Thanks for apply",
       thanksEmailTemplate(
-        firstName,
-        lastName,
+        firstname,
+        lastname,
         findJob.companyName,
         findJob.jobTitle
       )
@@ -91,6 +91,21 @@ export const applyForJob = async (req, res) => {
     console.log(error);
     return res.status(500).json({
       message: "Something went wrong while applying job",
+    });
+  }
+};
+
+export const allJobsForStudents = async (req, res) => {
+  try {
+    const gettingAllJobs = await Job.find({});
+
+    return res.status(200).json({
+      message: "All Jobs fetched successfully",
+      jobs: gettingAllJobs,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong while getting all jobs",
     });
   }
 };
