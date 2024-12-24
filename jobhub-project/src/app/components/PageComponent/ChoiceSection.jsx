@@ -8,7 +8,7 @@ import img4 from '../../assets/Images/Why-Jobhub/img4.png';
 import img5 from '../../assets/Images/Why-Jobhub/img5.png';
 import img6 from '../../assets/Images/Why-Jobhub/img6.png';
 import img7 from '../../assets/Images/Why-Jobhub/img7.png';
-import img8 from '../../assets/Images/Why-Jobhub/MobileView.png';
+import img8 from '../../assets/Images/Why-Jobhub/MobileViewN.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
