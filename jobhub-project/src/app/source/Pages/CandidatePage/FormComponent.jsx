@@ -9,9 +9,10 @@ import {
   Fade,
   Input,
 } from "@mui/material";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { applyForJob } from "../../../service/operations/studentApi";
 const FormComponent = () => {
+  const jobId = localStorage.getItem("jobId");
+
   const [isMounted, setIsMounted] = useState(false);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -28,34 +29,20 @@ const FormComponent = () => {
     setIsMounted(true);
   }, []);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://jobhub-project-backend.onrender.com/api/v1/form",
-        {
-          firstname,
-          lastname,
-          email,
-          dob,
-          number,
-          qualification,
-          gender,
-          role,
-          address,
-          resume,
-        },
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-      toast.success("Submitted!!");
-      console.log(
-        "submitted"
-      )
-    } catch (error) {
-      toast.error(error, "error");
-    }
+  const handleSubmit = async () => {
+    await applyForJob({
+      firstname,
+      lastname,
+      email,
+      dob,
+      number,
+      qualification,
+      gender,
+      role,
+      address,
+      resume,
+      jobId,
+    });
   };
 
   return (
@@ -210,12 +197,12 @@ const FormComponent = () => {
                 inputProps={{ accept: ".pdf,.doc,.docx" }}
                 onChange={(e) => setResume(e.target.files[0])}
               />
-              <a href="https://resume-creator.jobhub.world/" >
+              <a href="https://resume-creator.jobhub.world/">
                 <Typography component="span">
-                  Need a resume? <span style={{ color: 'blue' }}>Create one now !</span>
+                  Need a resume?{" "}
+                  <span style={{ color: "blue" }}>Create one now !</span>
                 </Typography>
               </a>
-
             </Box>
             <Box sx={{ mb: 3 }}>
               <TextField
@@ -228,7 +215,6 @@ const FormComponent = () => {
                 required
                 onChange={(e) => setAddress(e.target.value)}
               />
-
             </Box>
             <Button
               type="submit"
@@ -246,8 +232,8 @@ const FormComponent = () => {
             </Button>
           </form>
         </Box>
-      </Fade >
-    </Box >
+      </Fade>
+    </Box>
   );
 };
 

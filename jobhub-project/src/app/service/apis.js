@@ -1,6 +1,5 @@
 const BASE_URL = "http://localhost:3000/api/v1";
 
-
 export const employee = {
   SEND_OTP: BASE_URL + "/employees/otp-send",
   CHECK_OTP: BASE_URL + "/employees/check-otp",
@@ -28,4 +27,5 @@ export const jobs = {
 
 export const students = {
   APPLY_JOB: BASE_URL + "/students/applyjob",
+  ALL_JOBS: BASE_URL + "/students/jobs",
 };
