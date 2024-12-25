@@ -1,8 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar, GridToolbarContainer } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
 import { Typography } from '@mui/material';
+import { IconButton } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
 
 export default function SelectedCandidates() {
   const { data, loading } = useDemoData({
@@ -23,7 +26,49 @@ export default function SelectedCandidates() {
 setGridData(updatedData);
   }
 
+  const handleFullScreenToggle = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      if (window.innerWidth < 768) {
+        screen.orientation
+          .lock("landscape")
+          .catch((err) => console.error("Orientation lock failed:", err));
+      }
+    } else {
+      document.exitFullscreen();
+      if (window.innerWidth < 768) {
+        screen.orientation.unlock();
+      }
+    }
+    // toggleFullScreen();
+  };
+
+  const CustomToolbar = () => {
+    return (
+      <GridToolbarContainer className="flex justify-between">
+        {/* <IconButton onClick={handleBackClick} sx={{ mb: 1 }}> */}
+        <IconButton sx={{ mb: 1 }}>
+          <ArrowBackIcon />
+        </IconButton>
+        <GridToolbar />
+        <div>
+          <button
+            className="text-[#1976d2] font-medium text-[14px] h-12 w-24 rounded-md text-md"
+            // onClick={onAddDataclick}
+          >
+            ADD DATA
+          </button>
+          {/* <IconButton onClick={handleFullScreenToggle}> */}
+          <IconButton onClick={handleFullScreenToggle}>
+            <FullscreenIcon />
+          </IconButton>
+        </div>
+      </GridToolbarContainer>
+    );
+  };
+
   return (
+    <>
     <Box sx={{ height: 520, width: '100%' }}>
     <Typography variant='h3' component='h3'
     sx={{
@@ -37,7 +82,7 @@ setGridData(updatedData);
       <DataGrid
         {...data}
         loading={loading}
-        slots={{ toolbar: GridToolbar }}
+         slots={{ toolbar: CustomToolbar }}
         rowHeight={40}
         checkboxSelection
         disableRowSelectionOnClick
@@ -46,5 +91,9 @@ setGridData(updatedData);
         pageSize={5}
       />
     </Box>
+    </>
   );
 }
+
+
+

@@ -2,19 +2,27 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, Divider, Card, CardContent } from "@mui/material";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import GroupIcon from "@mui/icons-material/Group";
+import { myJobs } from "../../../../../../service/operations/employeeApi";
 
 const FullJobDetails = () => {
-  const [jobData, setJobData] = useState(null);
+  const token = JSON.parse(localStorage.getItem("token"));
+  const employee = JSON.parse(localStorage.getItem("employee"));
+  const [jobPosts, setJobPosts] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const response = await myJobs(token);
+      setJobPosts(response);
+    } catch (error) {
+      console.error("Error fetching job posts:", error);
+    }
+  };
 
   useEffect(() => {
-    // Retrieve the data from localStorage
-    const storedData = localStorage.getItem("formData");
-    if (storedData) {
-      setJobData(JSON.parse(storedData)[0]); // Assuming the data is an array
-    }
+    fetchData();
   }, []);
 
-  if (!jobData) {
+  if (!jobPosts) {
     return (
       <Typography
         variant="h6"
@@ -26,10 +34,10 @@ const FullJobDetails = () => {
     );
   }
 
-  const { jobDetails, candidatesInterviewer } = jobData;
+  const { fullName, email, companyName, gender, jobs, mobileNumber, role } = jobPosts;
 
   return (
-<Box
+    <Box
       sx={{
         marginTop: "40px",
         paddingBottom: "40px",
@@ -61,52 +69,96 @@ const FullJobDetails = () => {
             Job Post Details
           </Typography>
 
-          {/* Job Details Section */}
           <Box sx={{ marginBottom: "30px" }}>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-              <WorkOutlineIcon sx={{  color: "#3db435", mr: 1 }} />
+              <WorkOutlineIcon sx={{ color: "#3db435", mr: 1 }} />
               <Typography
                 variant="h5"
-                sx={{  color: "#3db435",fontWeight: "bold" }}
+                sx={{ color: "#3db435", fontWeight: "bold" }}
               >
-                Job Details
+                Personal Details
               </Typography>
             </Box>
             <Divider sx={{ marginBottom: "10px" }} />
-            {Object.entries(jobDetails).map(([key, value]) => (
-              <Box key={key} sx={{ marginBottom: "10px" }}>
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                  {key.replace(/([A-Z])/g, " $1")}:
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {Array.isArray(value) ? value.join(", ") : value || "N/A"}
-                </Typography>
-              </Box>
-            ))}
+            <Box sx={{ marginBottom: "10px" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                Full Name:
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {employee.fullName || "N/A"}
+              </Typography>
+            </Box>
+            <Box sx={{ marginBottom: "10px" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                Email:
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {employee.email || "N/A"}
+              </Typography>
+            </Box>
+            <Box sx={{ marginBottom: "10px" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                Company Name:
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {employee.companyName || "N/A"}
+              </Typography>
+            </Box>
+            <Box sx={{ marginBottom: "10px" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                Gender:
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {employee.gender || "N/A"}
+              </Typography>
+            </Box>
+            <Box sx={{ marginBottom: "10px" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                Mobile Number:
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {employee.mobileNumber || "N/A"}
+              </Typography>
+            </Box>
+            <Box sx={{ marginBottom: "10px" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                Role:
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {employee.role || "N/A"}
+              </Typography>
+            </Box>
           </Box>
 
-          {/* Candidate & Interviewer Insights Section */}
           <Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-              <GroupIcon sx={{  color: "#3db435", mr: 1 }} />
+              <GroupIcon sx={{ color: "#3db435", mr: 1 }} />
               <Typography
                 variant="h5"
-                sx={{  color: "#3db435", fontWeight: "bold" }}
+                sx={{ color: "#3db435", fontWeight: "bold" }}
               >
-                Candidate & Interviewer Insights
+                Jobs
               </Typography>
             </Box>
             <Divider sx={{ marginBottom: "10px" }} />
-            {Object.entries(candidatesInterviewer).map(([key, value]) => (
-              <Box key={key} sx={{ marginBottom: "10px" }}>
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                  {key.replace(/([A-Z])/g, " $1")}:
-                </Typography>
+            <Box>
+              {jobs && jobs.length > 0 ? (
+                jobs.map((job, index) => (
+                  <Typography
+                    key={index}
+                    variant="body2"
+                    color="textSecondary"
+                    sx={{ marginBottom: "5px" }}
+                  >
+                    Job ID: {job}
+                  </Typography>
+                ))
+              ) : (
                 <Typography variant="body2" color="textSecondary">
-                  {value || "N/A"}
+                  No jobs available.
                 </Typography>
-              </Box>
-            ))}
+              )}
+            </Box>
           </Box>
         </CardContent>
       </Card>

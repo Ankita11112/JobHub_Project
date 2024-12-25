@@ -17,7 +17,7 @@ import { checkOtp, sendOtp } from "../../../../service/operations/employeeApi";
 import EmployerDashboard from "../../EmployerPage/EmployerDashboard/EmployerDashboard";
 
 const ContactVerify = () => {
-  const token = localStorage.getItem("token");
+  const token = JSON.parse(localStorage.getItem("token"));
   const [openOtp, setOpenOtp] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
