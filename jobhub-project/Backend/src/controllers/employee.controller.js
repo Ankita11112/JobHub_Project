@@ -41,6 +41,7 @@ export const otpGenerateSystem = async (req, res) => {
     });
 
     await otpSender(otpGenerator, { mobileNumber: "+91" + mobileNumber });
+    console.log(otpGenerator, "OTP Value")
 
     return res.status(200).json({
       message: "Otp successfully genrated!",
@@ -97,6 +98,7 @@ export const checkOtp = async (req, res) => {
       message: "Successfully Verified!",
     });
   } catch (error) {
+
     return res.status(500).json({
       message: "Something went wrong while checking otp",
     });
@@ -189,6 +191,7 @@ export const myJobs = async (req, res) => {
       employee: employeeData,
     });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({
       message:
         "Something went wrong while fetching the data of Jobs in Employee",

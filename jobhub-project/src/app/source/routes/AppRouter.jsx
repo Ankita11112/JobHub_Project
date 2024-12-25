@@ -4,7 +4,6 @@ import Loading from '../../components/Loading/Loading.jsx';
 import { RouteMaker } from '../../components/routes/routes';
 import Termsconditions from '../../components/PageComponent/TermsComponent/Terms&conditions.jsx';
 import Privacypolicy from '../../components/PageComponent/TermsComponent/Privacypolicy.jsx';
-
 const Home = lazy(() => import('../Pages/Home/Home'));
 const About = lazy(() => import('../Pages/About/About.jsx'));
 const Contact = lazy(() => import('../Pages/Contact/Contact'));
@@ -124,8 +123,14 @@ const AppRouter = () => {
             "/admin": {
               element: <AdminDashboard />,
               children: [
-                { path: "/admin/", element: <AdminLandingPage /> },
-                { path: "adminprofile", element: <AdminProfile /> },
+                { 
+                  path: "/admin/", 
+                  element: <AdminLandingPage /> 
+                },
+                { 
+                  path: "adminprofile", 
+                  element: <AdminProfile /> 
+                },
                 {
                   path: "employer-insights",
                   element: <EmployerInsights />
@@ -134,7 +139,10 @@ const AppRouter = () => {
                   path: "job-listings",
                   element: <JobListings />
                 },
-                { path: "shortlisted-talent", element: <ShortlistedTalent /> },
+                { 
+                  path: "shortlisted-talent", 
+                  element: <ShortlistedTalent /> 
+                },
               ],
             },
           }}

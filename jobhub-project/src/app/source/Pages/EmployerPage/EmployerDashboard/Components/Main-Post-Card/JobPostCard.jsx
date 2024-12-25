@@ -24,6 +24,7 @@ import PostCard from "./PostCard";
 import Gif2 from "../../../../../../assets/Images/Gif2.gif"
 
 const JobPostCard = () => {
+  const employee = JSON.parse(localStorage.getItem("employee"))
   const [jobPosts, setJobPosts] = useState([]);
   const navigate = useNavigate();
   const [toggleMode, setToggleMode] = useState(false);
@@ -81,24 +82,24 @@ const JobPostCard = () => {
         </Typography>
         {jobPosts.length === 0 ? (
           <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      textAlign="center"
-      p={3}
-    >
-      {/* Adding an animated GIF */}
-      <img 
-        src={Gif2}
-        alt="Waving Girl" 
-        style={{ width: '150px', marginBottom: '1rem', borderRadius: '10px' }} 
-      />
-      <Typography variant="h6" color="textSecondary" mb={3}>
-        Hello, Mr. Maneesh! There are currently no job postings available. <br />
-        Don’t worry! You can add new job opportunities with just a click.
-      </Typography>
-    </Box>
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+            p={3}
+          >
+            {/* Adding an animated GIF */}
+            <img
+              src={Gif2}
+              alt="Waving Girl"
+              style={{ width: '150px', marginBottom: '1rem', borderRadius: '10px' }}
+            />
+            <Typography variant="h6" color="textSecondary" mb={3}>
+              Hello, {employee.fullName}! There are currently no job postings available. <br />
+              Don’t worry! You can add new job opportunities with just a click.
+            </Typography>
+          </Box>
         ) : (
           <>
             {toggleMode && (
@@ -130,231 +131,6 @@ const JobPostCard = () => {
                         sx={{ position: "absolute", top: 8, left: 8 }}
                       />
                     )}
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        mb: 2,
-                      }}
-                    >
-                      <Typography variant="h6">{post.jobDetails.jobTitle}</Typography>
-                      <Dropdown>
-                        <MenuButton sx={{ border: "none" }}>
-                          <MoreVertOutlinedIcon />
-                        </MenuButton>
-                        <Menu>
-                          {contentItems.map((item, index) => (
-                            <MenuItem key={index}>
-                              <ListItemIcon>{item.Icon}</ListItemIcon>
-                              <ListItemText primary={item.title} />
-                            </MenuItem>
-                          ))}
-                        </Menu>
-                      </Dropdown>
-                    </Box>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {post.jobDetails.company} - {post.jobDetails.jobLocation}
-                    </Typography>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      <strong>Number of Positions:</strong> {post.jobDetails.positions}
-                    </Typography>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {post.jobDetails.jobType} • ₹{post.jobDetails.salary}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-                      <strong>Benefits:</strong>{" "}
-                      {post.jobDetails.benefits.length > 0
-                        ? post.jobDetails.benefits.join(", ")
-                        : "None"}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        mt: 2,
-                      }}
-                    >
-                      <Typography variant="caption" color="textSecondary">
-                        Posted on: {post.jobDetails.postDate || "N/A"}
-                      </Typography>
-                      <IconButton>
-                        <FavoriteBorderOutlinedIcon />
-                      </IconButton>
-                    </Box>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      sx={{ mt: 2, background: "green" }}
-                      onClick={() => navigate("/employerdashboard/jobpostdetails")}
-                    >
-                      View Details
-                    </Button>
-                  </Card>
-                </Grid>
-              ))}
-              {jobPosts.map((post, index) => (
-                <Grid key={index} size={{ xs: 12, sm: 6, md: 3 }}>
-                  <Card
-                    sx={{
-                      borderRadius: 2,
-                      boxShadow: 2,
-                      p: 3,
-                      position: "relative",
-                      backgroundColor: "#fff",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        mb: 2,
-                      }}
-                    >
-                      <Typography variant="h6">{post.jobDetails.jobTitle}</Typography>
-                      <Dropdown>
-                        <MenuButton sx={{ border: "none" }}>
-                          <MoreVertOutlinedIcon />
-                        </MenuButton>
-                        <Menu>
-                          {contentItems.map((item, index) => (
-                            <MenuItem key={index}>
-                              <ListItemIcon>{item.Icon}</ListItemIcon>
-                              <ListItemText primary={item.title} />
-                            </MenuItem>
-                          ))}
-                        </Menu>
-                      </Dropdown>
-                    </Box>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {post.jobDetails.company} - {post.jobDetails.jobLocation}
-                    </Typography>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      <strong>Number of Positions:</strong> {post.jobDetails.positions}
-                    </Typography>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {post.jobDetails.jobType} • ₹{post.jobDetails.salary}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-                      <strong>Benefits:</strong>{" "}
-                      {post.jobDetails.benefits.length > 0
-                        ? post.jobDetails.benefits.join(", ")
-                        : "None"}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        mt: 2,
-                      }}
-                    >
-                      <Typography variant="caption" color="textSecondary">
-                        Posted on: {post.jobDetails.postDate || "N/A"}
-                      </Typography>
-                      <IconButton>
-                        <FavoriteBorderOutlinedIcon />
-                      </IconButton>
-                    </Box>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      sx={{ mt: 2, background: "green" }}
-                      onClick={() => navigate("/employerdashboard/jobpostdetails")}
-                    >
-                      View Details
-                    </Button>
-                  </Card>
-                </Grid>
-              ))}
-              {jobPosts.map((post, index) => (
-                <Grid key={index} size={{ xs: 12, sm: 6, md: 3 }}>
-                  <Card
-                    sx={{
-                      borderRadius: 2,
-                      boxShadow: 2,
-                      p: 3,
-                      position: "relative",
-                      backgroundColor: "#fff",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        mb: 2,
-                      }}
-                    >
-                      <Typography variant="h6">{post.jobDetails.jobTitle}</Typography>
-                      <Dropdown>
-                        <MenuButton sx={{ border: "none" }}>
-                          <MoreVertOutlinedIcon />
-                        </MenuButton>
-                        <Menu>
-                          {contentItems.map((item, index) => (
-                            <MenuItem key={index}>
-                              <ListItemIcon>{item.Icon}</ListItemIcon>
-                              <ListItemText primary={item.title} />
-                            </MenuItem>
-                          ))}
-                        </Menu>
-                      </Dropdown>
-                    </Box>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {post.jobDetails.company} - {post.jobDetails.jobLocation}
-                    </Typography>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      <strong>Number of Positions:</strong> {post.jobDetails.positions}
-                    </Typography>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {post.jobDetails.jobType} • ₹{post.jobDetails.salary}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-                      <strong>Benefits:</strong>{" "}
-                      {post.jobDetails.benefits.length > 0
-                        ? post.jobDetails.benefits.join(", ")
-                        : "None"}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        mt: 2,
-                      }}
-                    >
-                      <Typography variant="caption" color="textSecondary">
-                        Posted on: {post.jobDetails.postDate || "N/A"}
-                      </Typography>
-                      <IconButton>
-                        <FavoriteBorderOutlinedIcon />
-                      </IconButton>
-                    </Box>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      sx={{ mt: 2, background: "green" }}
-                      onClick={() => navigate("/employerdashboard/jobpostdetails")}
-                    >
-                      View Details
-                    </Button>
-                  </Card>
-                </Grid>
-              ))}
-              {jobPosts.map((post, index) => (
-                <Grid key={index} size={{ xs: 12, sm: 6, md: 3 }}>
-                  <Card
-                    sx={{
-                      borderRadius: 2,
-                      boxShadow: 2,
-                      p: 3,
-                      position: "relative",
-                      backgroundColor: "#fff",
-                    }}
-                  >
                     <Box
                       sx={{
                         display: "flex",
