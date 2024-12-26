@@ -34,8 +34,8 @@ const FormComponent = () => {
   }, []);
 
   const handleSubmit = async () => {
-    try {
-      await applyForJob({
+    await applyForJob(
+      {
         firstname,
         lastname,
         email,
@@ -47,13 +47,9 @@ const FormComponent = () => {
         address,
         resume,
         jobId,
-      });
-
-      toast.success("Application Submitted!!");
-      navigate("/");
-    } catch (error) {
-      toast.error("Application not submit");
-    }
+      },
+      navigate
+    );
   };
 
   return (
