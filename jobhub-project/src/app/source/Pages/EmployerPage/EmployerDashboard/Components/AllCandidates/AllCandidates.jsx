@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar, GridToolbarContainer } from '@mui/x-data-grid';
-import { Typography, IconButton } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
+import { Typography, IconButton } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import axios from "axios";
+import { myStudents } from "../../../../../../service/operations/employeeApi";
 
 export default function AllCandidates() {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const [studentsData, setStudentsData] = useState([]);
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
 
@@ -122,48 +125,55 @@ export default function AllCandidates() {
       profile: "Biologist",
       resume: "resume10.pdf",
     },
-  ];  
+  ];
 
+  const fetchStudents = async () => {
+    const response = await myStudents(token);
+    setStudentsData(response.students);
+    // response.allStudents.map((data) => data.students.push(studentsData));
+  };
   // Fetch data from MongoDB
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/candidates'); // Replace with your API endpoint
-        const data = response.data.map((item) => ({
-          id: item._id, // Ensure each row has a unique 'id'
-          firstName: item.firstName,
-          lastName: item.lastName,
-          mobile: item.mobile,
-          dob: item.dob,
-          qualification: item.qualification,
-          gender: item.gender,
-          profile: item.profile,
-          resume: item.resume,
-        }));
-        // Combine mock data with backend data
-        setGridData([...mockData, ...data]);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        // If backend fetch fails, use only mock data
-        setGridData(mockData);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get('http://localhost:5000/api/candidates'); // Replace with your API endpoint
+    //     const data = response.data.map((item) => ({
+    //       id: item._id, // Ensure each row has a unique 'id'
+    //       firstName: item.firstName,
+    //       lastName: item.lastName,
+    //       mobile: item.mobile,
+    //       dob: item.dob,
+    //       qualification: item.qualification,
+    //       gender: item.gender,
+    //       profile: item.profile,
+    //       resume: item.resume,
+    //     }));
+    //     // Combine mock data with backend data
+    //     setGridData([...mockData, ...data]);
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //     // If backend fetch fails, use only mock data
+    //     setGridData(mockData);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+    // fetchData();
+    fetchStudents();
+    setGridData([...mockData, ...studentsData]);
+    console.log(studentsData);
   }, []);
 
   // Define columns
   const columns = [
-    { field: 'firstName', headerName: 'First Name', flex: 1 },
-    { field: 'lastName', headerName: 'Last Name', flex: 1 },
-    { field: 'mobile', headerName: 'Mobile', flex: 1 },
-    { field: 'dob', headerName: 'D.O.B', flex: 1 },
-    { field: 'qualification', headerName: 'Qualification', flex: 1 },
-    { field: 'gender', headerName: 'Gender', flex: 1 },
-    { field: 'profile', headerName: 'Profile', flex: 1 },
-    { field: 'resume', headerName: 'Resume', flex: 1 },
+    { field: "firstName", headerName: "First Name", flex: 1 },
+    { field: "lastName", headerName: "Last Name", flex: 1 },
+    { field: "mobile", headerName: "Mobile", flex: 1 },
+    { field: "dob", headerName: "D.O.B", flex: 1 },
+    { field: "qualification", headerName: "Qualification", flex: 1 },
+    { field: "gender", headerName: "Gender", flex: 1 },
+    { field: "profile", headerName: "Profile", flex: 1 },
+    { field: "resume", headerName: "Resume", flex: 1 },
   ];
 
   const handleFullScreenToggle = () => {
@@ -171,8 +181,8 @@ export default function AllCandidates() {
       document.documentElement.requestFullscreen();
       if (window.innerWidth < 768) {
         screen.orientation
-          .lock('landscape')
-          .catch((err) => console.error('Orientation lock failed:', err));
+          .lock("landscape")
+          .catch((err) => console.error("Orientation lock failed:", err));
       }
     } else {
       document.exitFullscreen();
@@ -200,12 +210,12 @@ export default function AllCandidates() {
   );
 
   return (
-    <Box sx={{ height: 520, width: '100%' }}>
+    <Box sx={{ height: 520, width: "100%" }}>
       <Typography
         variant="h3"
         component="h3"
         sx={{
-          textAlign: 'center',
+          textAlign: "center",
           mt: 3,
           mb: 3,
         }}
@@ -225,5 +235,3 @@ export default function AllCandidates() {
     </Box>
   );
 }
-
-
