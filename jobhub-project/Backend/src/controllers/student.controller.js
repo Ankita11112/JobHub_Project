@@ -5,7 +5,6 @@ import { thanksEmailTemplate } from "../templates/thanks.template.js";
 
 export const applyForJob = async (req, res) => {
   try {
-    console.log(req.body);
     const {
       firstname,
       lastname,
@@ -88,7 +87,6 @@ export const applyForJob = async (req, res) => {
       message: "Thanks for apply for this job",
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       message: "Something went wrong while applying job",
     });
