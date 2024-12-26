@@ -71,7 +71,7 @@ const MyJobs = () => {
         <Typography variant="h4" align="center" gutterBottom>
           Job Listings
         </Typography>
-        {jobPosts.length === 1 ? (
+        {jobPosts.length === 0 ? (
           <Box
             display="flex"
             flexDirection="column"

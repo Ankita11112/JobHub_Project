@@ -8,8 +8,6 @@ function App() {
     <>
       <AppRouter />
       {/* <ChatAi /> */}
-      
-
       <ToastContainer
         position='top-center'
         autoClose={5000}
