@@ -76,14 +76,18 @@ const jobSchema = new Schema({
     type: String,
     required: true,
   },
-  students: {
-    type: Schema.Types.ObjectId,
-    ref: "Student",
-  },
-  selectedStudents: {
-    type: Schema.Types.ObjectId,
-    ref: "Student",
-  },
+  students: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Student",
+    },
+  ],
+  selectedStudents: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Student",
+    },
+  ],
 });
 
 export const Job = mongoose.model("Job", jobSchema);
