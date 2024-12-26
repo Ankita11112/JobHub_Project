@@ -1,8 +1,9 @@
 import { Employee } from "../models/employee.model.js";
 import { Otp } from "../models/otp.model.js";
-import { otpSender } from "../utils/mobileVerification.utils.js";
 import { Job } from "../models/job.model.js";
 import { uploadOnCloudinary } from "../configs/cloudinary.js";
+import { mailSender } from "../utils/emailSender.utils.js";
+import { otpTemplate } from "../templates/otpSenderMail.js";
 
 const generateAccessToken = async (employeeId) => {
   try {
@@ -19,11 +20,11 @@ const generateAccessToken = async (employeeId) => {
 
 export const otpGenerateSystem = async (req, res) => {
   try {
-    const { mobileNumber } = req.body;
+    const { email } = req.body;
 
-    if (!mobileNumber) {
+    if (!email) {
       return res.status(400).json({
-        message: "Phone number is required",
+        message: "Email number is required",
       });
     }
 
@@ -36,12 +37,11 @@ export const otpGenerateSystem = async (req, res) => {
     }
 
     await Otp.create({
-      mobileNumber,
+      email,
       otp: otpGenerator,
     });
 
-    await otpSender(otpGenerator, { mobileNumber: "+91" + mobileNumber });
-    console.log(otpGenerator, "OTP Value")
+    await mailSender(email, "One Time Password", otpTemplate(otpGenerator));
 
     return res.status(200).json({
       message: "Otp successfully genrated!",
@@ -57,9 +57,9 @@ export const otpGenerateSystem = async (req, res) => {
 
 export const checkOtp = async (req, res) => {
   try {
-    const { otp, mobileNumber } = req.body;
+    const { otp, email } = req.body;
 
-    const isOtpPresent = await Otp.find({ mobileNumber })
+    const isOtpPresent = await Otp.find({ email })
       .sort({ createdAt: -1 })
       .limit(1);
 
@@ -74,7 +74,7 @@ export const checkOtp = async (req, res) => {
     }
 
     const alreadyExists = await Employee.findOne({
-      mobileNumber,
+      email,
     });
 
     if (alreadyExists) {
@@ -98,7 +98,6 @@ export const checkOtp = async (req, res) => {
       message: "Successfully Verified!",
     });
   } catch (error) {
-
     return res.status(500).json({
       message: "Something went wrong while checking otp",
     });
@@ -171,7 +170,7 @@ export const employeeAccount = async (req, res) => {
       accessToken,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json({
       message: "Someting went wrong while registeration",
     });
@@ -191,7 +190,7 @@ export const myJobs = async (req, res) => {
       employee: employeeData,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).json({
       message:
         "Something went wrong while fetching the data of Jobs in Employee",

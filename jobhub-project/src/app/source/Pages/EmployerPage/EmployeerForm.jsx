@@ -22,15 +22,15 @@ const EmployeeForm = () => {
   if (token) {
     return <EmployerDashboard />;
   }
-  const mobileNumber = localStorage.getItem("mobileNumber");
+  const email = localStorage.getItem("email");
   const navigate = useNavigate();
 
   const initialEmployerData = {
     avatar: "",
     companyName: "",
     fullName: "",
-    mobileNumber,
-    email: "",
+    mobileNumber: "",
+    email,
     gender: "",
     country: "",
     city: "",
@@ -67,14 +67,14 @@ const EmployeeForm = () => {
     event.preventDefault();
     try {
       await registerEmployee(employerData, navigate);
-      localStorage.removeItem("mobileNumber");
-      // navigate("/employerdashboard");
+      localStorage.removeItem("email");
+      navigate("/employerdashboard");
     } catch (error) {
       toast.error("Not Submit");
     }
   };
 
-  return !mobileNumber ? (
+  return !email ? (
     <ContactVerify />
   ) : (
     <Box
@@ -165,7 +165,6 @@ const EmployeeForm = () => {
               placeholder="Enter Mobile Number"
               required
               value={employerData.mobileNumber}
-              disabled
               onChange={(e) =>
                 updateEmployerData("mobileNumber", e.target.value)
               }
@@ -179,6 +178,7 @@ const EmployeeForm = () => {
               placeholder="Enter Your Email"
               required
               value={employerData.email}
+              disabled
               onChange={(e) => updateEmployerData("email", e.target.value)}
             />
             <FormControl fullWidth>

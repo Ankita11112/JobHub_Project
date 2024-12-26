@@ -4,10 +4,10 @@ import { toast } from "react-toastify";
 
 const { CHECK_OTP, EDIT_PROFILE, MYJOBS, SEND_OTP, SIGNUP_LOGIN } = employee;
 
-export const sendOtp = async (mobileNumber) => {
+export const sendOtp = async (email) => {
   try {
     const response = await apiConnector("POST", SEND_OTP, {
-      mobileNumber,
+      email,
     });
 
     if (!response) {
@@ -18,22 +18,21 @@ export const sendOtp = async (mobileNumber) => {
   }
 };
 
-export const checkOtp = async (otp, mobileNumber, navigate) => {
+export const checkOtp = async (otp, email, navigate) => {
   try {
     const response = await apiConnector("POST", CHECK_OTP, {
       otp,
-      mobileNumber,
+      email,
     });
 
     if (response.data.sucess) {
-      console.log("aagya");
       localStorage.setItem("token", JSON.stringify(response.data.accessToken));
       localStorage.setItem("employee", JSON.stringify(response.data.employee));
-      localStorage.removeItem("mobileNumber");
+      localStorage.removeItem("email");
       toast.success(response.data.message);
       navigate("/employerdashboard");
     } else {
-      localStorage.setItem("mobileNumber", mobileNumber);
+      localStorage.setItem("email", email);
       navigate("/employeregistration");
     }
   } catch (error) {

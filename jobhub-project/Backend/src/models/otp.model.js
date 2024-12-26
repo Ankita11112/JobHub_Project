@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const otpSchema = new Schema({
-  emailAddress: {
+  email: {
     type: String,
   },
   otp: {
@@ -14,20 +14,6 @@ const otpSchema = new Schema({
     expires: 30 * 60,
   },
 });
-
-async function sendVerificationEmail(email, otp) {
-  try {
-    const mailResponse = await mailSender(
-      email,
-      "Verification for Email",
-      emailTemplate(otp)
-    );
-    console.log("Otp send successfully", mailResponse.response);
-  } catch (err) {
-    console.error("Error in send verification function in otp model", err);
-    throw err;
-  }
-}
 
 otpSchema.pre("save", async function (next) {
   if (this.isnew) {
