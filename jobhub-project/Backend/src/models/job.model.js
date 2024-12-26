@@ -11,6 +11,11 @@ const jobSchema = new Schema({
     required: true,
     lowercase: true,
   },
+  jobRole: {
+    type: String,
+    required: true,
+    lowercase: true,
+  },
   numberOfPosition: {
     type: Number,
     required: true,
