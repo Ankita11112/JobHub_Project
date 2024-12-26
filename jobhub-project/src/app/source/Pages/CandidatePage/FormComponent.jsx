@@ -10,6 +10,9 @@ import {
   Input,
 } from "@mui/material";
 import { applyForJob } from "../../../service/operations/studentApi";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 const FormComponent = () => {
   const jobId = localStorage.getItem("jobId");
 
@@ -24,25 +27,33 @@ const FormComponent = () => {
   const [role, setRole] = useState("");
   const [address, setAddress] = useState("");
   const [resume, setResume] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   const handleSubmit = async () => {
-    await applyForJob({
-      firstname,
-      lastname,
-      email,
-      dob,
-      number,
-      qualification,
-      gender,
-      role,
-      address,
-      resume,
-      jobId,
-    });
+    try {
+      await applyForJob({
+        firstname,
+        lastname,
+        email,
+        dob,
+        number,
+        qualification,
+        gender,
+        role,
+        address,
+        resume,
+        jobId,
+      });
+
+      toast.success("Application Submitted!!");
+      navigate("/");
+    } catch (error) {
+      toast.error("Application not submit");
+    }
   };
 
   return (
