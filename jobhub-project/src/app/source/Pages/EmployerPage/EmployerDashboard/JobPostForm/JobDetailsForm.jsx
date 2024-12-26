@@ -39,7 +39,7 @@ const JobDetailsForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     jobDetails: {
-      company: "",
+      company: employeeCompanyName.companyName,
       jobTitle: "",
       jobRole: "",
       positions: "",
@@ -213,28 +213,28 @@ const JobDetailsForm = () => {
               {renderTextField("Job Title", "jobDetails", "jobTitle", true)}
               {renderSelectField("Job Role", "jobDetails", "jobRole", [
                 "TeleCaller",
-                "Document Verification",
-                "Data Entry",
-                "Web Designer",
-                "Graphic Designer",
-                "Web Developer",
+                "Document-Verification",
+                "Data-Entry",
+                "Web-Designer",
+                "Graphic-Designer",
+                "Web-Developer",
                 "Construction",
-                "Front Office",
-                "Back Office",
-                "House Keeping",
+                "Front-Office",
+                "Back-Office",
+                "House-Keeping",
                 "Delivery",
-                "Security Guard",
-                "Hotel Staff",
-                "Ware House Staff",
-                "Factory Workers",
+                "Security-Guard",
+                "Hotel-Staff",
+                "Ware-House-Staff",
+                "Factory-Workers",
               ])}
             </Box>
             {renderTextField(
-                "Number of Positions",
-                "jobDetails",
-                "positions",
-                true
-              )}
+              "Number of Positions",
+              "jobDetails",
+              "positions",
+              true
+            )}
             <Box sx={{ display: "flex", gap: "20px" }}>
               {renderSelectField("Job Type", "jobDetails", "jobType", [
                 "Part-Time",
