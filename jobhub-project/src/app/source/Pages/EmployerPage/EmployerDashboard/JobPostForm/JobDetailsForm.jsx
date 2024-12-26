@@ -41,6 +41,7 @@ const JobDetailsForm = () => {
     jobDetails: {
       company: "",
       jobTitle: "",
+      jobRole: "",
       positions: "",
       jobType: "",
       workType: "",
@@ -210,13 +211,30 @@ const JobDetailsForm = () => {
             {renderTextField("Company Name", "jobDetails", "company", true)}
             <Box sx={{ display: "flex", gap: "20px" }}>
               {renderTextField("Job Title", "jobDetails", "jobTitle", true)}
-              {renderTextField(
+              {renderSelectField("Job Role", "jobDetails", "jobRole", [
+                "TeleCaller",
+                "Document Verification",
+                "Data Entry",
+                "Web Designer",
+                "Graphic Designer",
+                "Web Developer",
+                "Construction",
+                "Front Office",
+                "Back Office",
+                "House Keeping",
+                "Delivery",
+                "Security Guard",
+                "Hotel Staff",
+                "Ware House Staff",
+                "Factory Workers",
+              ])}
+            </Box>
+            {renderTextField(
                 "Number of Positions",
                 "jobDetails",
                 "positions",
                 true
               )}
-            </Box>
             <Box sx={{ display: "flex", gap: "20px" }}>
               {renderSelectField("Job Type", "jobDetails", "jobType", [
                 "Part-Time",
