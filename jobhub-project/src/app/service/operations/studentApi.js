@@ -13,13 +13,14 @@ export const allJobs = async () => {
   }
 };
 
-export const applyForJob = async (data) => {
+export const applyForJob = async (data, navigate) => {
   try {
     const response = await apiConnector("POST", APPLY_JOB, data, {
       "Content-Type": "multipart/form-data",
     });
     localStorage.removeItem("jobId");
-    toast.success(response.data.message)
+    toast.success(response.data.message);
+    navigate("/");
   } catch (error) {
     toast.error(error.response.data.message);
   }
