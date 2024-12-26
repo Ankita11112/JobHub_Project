@@ -19,14 +19,14 @@ import EmployerDashboard from "../../EmployerPage/EmployerDashboard/EmployerDash
 const ContactVerify = () => {
   const token = JSON.parse(localStorage.getItem("token"));
   const [openOtp, setOpenOtp] = useState(false);
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
   const handleOpenOtp = async () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex to validate email address
-  if (emailRegex.test(emailAddress)) {
-    await sendOtp(emailAddress);
+  if (emailRegex.test(email)) {
+    await sendOtp(email);
     setOpenOtp(true);
     toast.success("Otp sent");
   } else {
@@ -39,7 +39,7 @@ const ContactVerify = () => {
   };
 
   const handleSubmit = async () => {
-    await checkOtp(otp, emailAddress, navigate);
+    await checkOtp(otp, email, navigate);
   };
 
   return token ? (
@@ -139,8 +139,8 @@ const ContactVerify = () => {
               <TextField
                 variant="outlined"
                 placeholder="Enter Correct Email Address"
-                value={emailAddress}
-                onChange={(e) => setEmailAddress(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 fullWidth
                 sx={{
                   maxWidth: "400px",
