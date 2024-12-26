@@ -4,6 +4,7 @@ import Loading from '../../components/Loading/Loading.jsx';
 import { RouteMaker } from '../../components/routes/routes';
 import Termsconditions from '../../components/PageComponent/TermsComponent/Terms&conditions.jsx';
 import Privacypolicy from '../../components/PageComponent/TermsComponent/Privacypolicy.jsx';
+import AllCandidates from '../Pages/EmployerPage/EmployerDashboard/Components/AllCandidates/AllCandidates.jsx';
 const Home = lazy(() => import('../Pages/Home/Home'));
 const About = lazy(() => import('../Pages/About/About.jsx'));
 const Contact = lazy(() => import('../Pages/Contact/Contact'));
@@ -97,6 +98,7 @@ const AppRouter = () => {
                   element: <FullJobDetails />
                 },
                 { path: "my-jobs", element: <MyJobs /> },
+                { path: "all-candidates", element: <AllCandidates /> },
                 { path: "selected-candidates", element: <SelectedCandidates /> },
               ],
             },

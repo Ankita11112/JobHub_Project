@@ -19,26 +19,27 @@ import EmployerDashboard from "../../EmployerPage/EmployerDashboard/EmployerDash
 const ContactVerify = () => {
   const token = JSON.parse(localStorage.getItem("token"));
   const [openOtp, setOpenOtp] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
   const handleOpenOtp = async () => {
-    if (phoneNumber.length === 10) {
-      await sendOtp(phoneNumber);
-      setOpenOtp(true);
-      toast.success("Otp send");
-    } else {
-      toast.error("Please enter a valid 10-digit phone number.");
-    }
-  };
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex to validate email address
+  if (emailRegex.test(emailAddress)) {
+    await sendOtp(emailAddress);
+    setOpenOtp(true);
+    toast.success("Otp sent");
+  } else {
+    toast.error("Please enter a valid email address.");
+  }
+};
 
   const handleCloseOtp = () => {
     setOpenOtp(false);
   };
 
   const handleSubmit = async () => {
-    await checkOtp(otp, phoneNumber, navigate);
+    await checkOtp(otp, emailAddress, navigate);
   };
 
   return token ? (
@@ -137,9 +138,9 @@ const ContactVerify = () => {
 
               <TextField
                 variant="outlined"
-                placeholder="Enter 10-Digit Mobile Number"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="Enter Correct Email Address"
+                value={emailAddress}
+                onChange={(e) => setEmailAddress(e.target.value)}
                 fullWidth
                 sx={{
                   maxWidth: "400px",

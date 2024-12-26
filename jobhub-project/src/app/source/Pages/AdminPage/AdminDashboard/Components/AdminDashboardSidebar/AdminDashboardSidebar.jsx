@@ -162,7 +162,7 @@ export const AdminDashboardSidebar = () => {
                   sx={{ marginRight: "10px" }}
                   onClick={handleExit}
                 >
-                  Exit
+                  Logout
                 </Button>
                 <Button variant="outlined" color="error" onClick={handleClose}>
                   Cancel

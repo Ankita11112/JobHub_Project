@@ -1,8 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
 const otpSchema = new Schema({
-  mobileNumber: {
-    type: Number,
+  emailAddress: {
+    type: String,
   },
   otp: {
     type: String,

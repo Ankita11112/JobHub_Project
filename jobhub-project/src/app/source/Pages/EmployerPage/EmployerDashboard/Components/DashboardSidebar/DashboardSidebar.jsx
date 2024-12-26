@@ -53,6 +53,11 @@ export const DashboardSidebar = () => {
     },
     { name: "My Jobs", icon: <WorkIcon />, path: "/employerdashboard/my-jobs" },
     {
+      name: "All Candidates",
+      icon: <ReduceCapacityRoundedIcon />,
+      path: "/employerdashboard/all-candidates",
+    },
+    {
       name: "Selected Candidates",
       icon: <ReduceCapacityRoundedIcon />,
       path: "/employerdashboard/selected-candidates",
@@ -119,9 +124,8 @@ export const DashboardSidebar = () => {
         </List>
         <Button
           variant="contained"
-          fullWidth
           color="error"
-          sx={{ px: 2 }}
+          sx={{ px: 2, mx: 8, my: 3 }}
           onClick={handleOpen}
         >
           <PowerSettingsNewRoundedIcon sx={{ mr: 1 }} /> Logout
@@ -133,7 +137,7 @@ export const DashboardSidebar = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: "100vh",
+              height: "100%",
               backgroundColor: "rgba(0, 0, 0, 0.5)", // Overlay effect
             }}
           >
@@ -158,7 +162,7 @@ export const DashboardSidebar = () => {
                   sx={{ marginRight: "10px" }}
                   onClick={handleExit}
                 >
-                  Exit
+                  Logout
                 </Button>
                 <Button variant="outlined" color="error" onClick={handleClose}>
                   Cancel

@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import axios from 'axios';
 
-export default function ShortlistedTalent() {
+export default function AllCandidates() {
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
 
@@ -210,7 +210,7 @@ export default function ShortlistedTalent() {
           mb: 3,
         }}
       >
-        ShortListed Talent
+        All Candidates
       </Typography>
       <DataGrid
         slots={{ toolbar: CustomToolbar }}
