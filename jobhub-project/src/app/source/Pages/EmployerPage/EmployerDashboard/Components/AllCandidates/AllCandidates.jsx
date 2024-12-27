@@ -130,6 +130,8 @@ export default function AllCandidates() {
   const fetchStudents = async () => {
     const response = await myStudents(token);
     setStudentsData(response.students);
+    debugger
+    console.log("token", token);
     // response.allStudents.map((data) => data.students.push(studentsData));
   };
   // Fetch data from MongoDB
@@ -160,11 +162,23 @@ export default function AllCandidates() {
     // };
     // fetchData();
     fetchStudents();
-    setGridData([...mockData, ...studentsData]);
-    console.log(studentsData);
+        //  const studyData = studentsData.map((item) => ({
+        //   id: item._id, // Ensure each row has a unique 'id'
+        //   firstName: item.firstName,
+        //   lastName: item.lastName,
+        //   mobile: item.mobile,
+        //   dob: item.dob,
+        //   qualification: item.qualification,
+        //   gender: item.gender,
+        //   profile: item.profile,
+        //   resume: item.resume,
+        // }));
+    setGridData([ ...studentsData]);
+    console.log("data fetching...",studentsData);
+    // fetchStudents();
   }, []);
 
-  // Define columns
+  // Define columns`
   const columns = [
     { field: "firstName", headerName: "First Name", flex: 1 },
     { field: "lastName", headerName: "Last Name", flex: 1 },
@@ -232,6 +246,12 @@ export default function AllCandidates() {
         pageSize={5}
         loading={loading} // Show loading spinner
       />
+
+{studentsData.map((data) => (
+<ListItemText>{data.firstName}</ListItemText>
+))}
     </Box>
   );
 }
+
+

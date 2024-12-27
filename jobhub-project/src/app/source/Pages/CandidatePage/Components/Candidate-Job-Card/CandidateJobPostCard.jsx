@@ -38,7 +38,6 @@ const CandidateJobPostCard = () => {
         py: 4,
       }}
     >
-      {jobsData.map((data) => (
         <Grid container spacing={2} sx={{ mx: 2 }}>
           <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
             <Card
@@ -61,6 +60,7 @@ const CandidateJobPostCard = () => {
                 Available Jobs
               </Typography>
               <Grid container>
+              {jobsData.map((data) => (
                 <Grid item size={12}>
                   <Card
                     sx={{
@@ -90,7 +90,7 @@ const CandidateJobPostCard = () => {
                           color: "#666",
                         }}
                       >
-                        VitalTech Solutions Pvt. Ltd. | Mohali, Punjab
+                      {data.companyName}
                       </Typography>
                       <Typography
                         variant="subtitle2"
@@ -100,7 +100,7 @@ const CandidateJobPostCard = () => {
                           color: "#000",
                         }}
                       >
-                        ₹30,000 - ₹35,000 a month | Full-time | Night shift
+                        {data.salary} a month | {data.jobType} | {data.workType}
                       </Typography>
                     </Box>
 
@@ -118,34 +118,7 @@ const CandidateJobPostCard = () => {
                           mb: 1,
                         }}
                       >
-                        ✔ Work Schedule – *5 Days working.
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#555",
-                          mb: 1,
-                        }}
-                      >
-                        ✔ Chat and Email coordination with customers.
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#555",
-                          mb: 1,
-                        }}
-                      >
-                        ✔ Effective communication via mail/chat.
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#555",
-                          mb: 1,
-                        }}
-                      >
-                        ✔ Assist digital team with online campaigns.
+                        {data.benefits}
                       </Typography>
                     </Box>
 
@@ -180,6 +153,7 @@ const CandidateJobPostCard = () => {
                     </Box>
                   </Card>
                 </Grid>
+              ))}
               </Grid>
             </Card>
           </Grid>
@@ -212,7 +186,6 @@ const CandidateJobPostCard = () => {
             </Card>
           </Grid>
         </Grid>
-      ))}
     </Box>
   );
 };
