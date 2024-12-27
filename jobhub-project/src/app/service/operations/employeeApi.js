@@ -2,7 +2,8 @@ import { employee } from "../apis";
 import { apiConnector } from "../apiConnector";
 import { toast } from "react-toastify";
 
-const { CHECK_OTP, EDIT_PROFILE, MYJOBS, SEND_OTP, SIGNUP_LOGIN } = employee;
+const { CHECK_OTP, EDIT_PROFILE, MYJOBS, SEND_OTP, SIGNUP_LOGIN, My_STUDENTS } =
+  employee;
 
 export const sendOtp = async (email) => {
   try {
@@ -83,6 +84,24 @@ export const updateProfile = async (token, data) => {
       Authorization: `Bearer ${token}`,
     });
     console.log(response.data);
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
+
+export const myStudents = async (token) => {
+  try {
+    const response = await apiConnector(
+      "GET",
+      My_STUDENTS,
+      {},
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+
+    toast.success(response.data.message);
+    return response.data;
   } catch (error) {
     toast.error(error.response.data.message);
   }

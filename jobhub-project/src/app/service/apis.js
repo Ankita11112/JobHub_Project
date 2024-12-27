@@ -6,6 +6,7 @@ export const employee = {
   SIGNUP_LOGIN: BASE_URL + "/employees/register",
   MYJOBS: BASE_URL + "/employees/my-jobs",
   EDIT_PROFILE: BASE_URL + "/employees/edit-jobs",
+  My_STUDENTS: BASE_URL + "/employees/my-students",
 };
 
 export const admin = {

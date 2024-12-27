@@ -13,6 +13,7 @@ export const createJob = async (req, res) => {
       benefits,
       jobLocation,
       postDate,
+      jobRole,
     } = req.body.jobDetails;
 
     const {
@@ -45,6 +46,7 @@ export const createJob = async (req, res) => {
         jobDescription,
         interviewMethod,
         communicationPreferences,
+        jobRole,
       ].some((data) => data?.trim() === "")
     ) {
       return res.status(400).json({
@@ -70,6 +72,7 @@ export const createJob = async (req, res) => {
       numberOfPosition: positions,
       salary,
       workType,
+      jobRole,
     });
 
     const addedEntryInEmployee = await Employee.findByIdAndUpdate(employeeId, {
@@ -85,12 +88,12 @@ export const createJob = async (req, res) => {
     }
 
     return res.status(200).json({
-      message: "Course is Create",
+      message: "Job is Create",
       job: newJob,
     });
   } catch (error) {
     return res.status(500).json({
-      message: "Something went wrong while creating course",
+      message: "Something went wrong while creating Job",
     });
   }
 };
@@ -116,6 +119,7 @@ export const updateJob = async (req, res) => {
       interviewMode,
       communication,
       jobId,
+      jobRole,
     } = req.body;
 
     const updatedJob = await Job.findByIdAndUpdate(
@@ -138,6 +142,7 @@ export const updateJob = async (req, res) => {
         description,
         interviewMode,
         communication,
+        jobRole,
       },
       { new: true }
     );

@@ -227,25 +227,48 @@ export const editProfile = async (req, res) => {
 
 export const selectingStudentSystem = async (req, res) => {
   try {
-    const { studentId, jobId } = req.body;
+    const employeeId = req.user._id;
 
-    const jobDetail = await Job.findByIdAndUpdate(
-      jobId,
-      {
-        selectedStudents: {
-          $push: studentId,
-        },
-      },
-      { new: true }
-    );
+    const employeeData = await Employee.findById(employeeId);
+
+    const selectedMyStudents = await Job.find({
+      _id: { $in: employeeData.jobs },
+    })
+      .populate("students")
+      .exec();
 
     return res.status(200).json({
       message: "Student is Selected",
-      jobs: jobDetail,
+      selectedMyStudents,
     });
   } catch (error) {
     return res.status(500).json({
       message: "Something went wrong while selecting students",
+    });
+  }
+};
+
+export const myJobApplyStudents = async (req, res) => {
+  try {
+    const employeeId = req.user._id;
+
+    const employeeData = await Employee.findById(employeeId);
+
+    const allStudents = await Job.find({
+      _id: { $in: employeeData.jobs },
+    })
+      .populate("students")
+      .exec();
+
+      const response = allStudents.map((data) => data.students)
+
+    return res.status(200).json({
+      message: "Students application fetched!",
+      students: response,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong while getting my students",
     });
   }
 };
