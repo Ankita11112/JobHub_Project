@@ -34,6 +34,7 @@ const MyJobs = () => {
   // TODO: style the data in your frontend
   const fetchData = async () => {
     const response = await myJobs(token);
+    console.log(response);
     setJobPosts(response || []);
   };
 
