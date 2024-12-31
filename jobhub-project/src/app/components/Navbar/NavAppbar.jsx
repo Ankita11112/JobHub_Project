@@ -220,7 +220,7 @@ function NavAppBar() {
 
   const handleNavigate = (path, isExternal = false) => {
     if (isExternal) {
-      window.open('https://resume-creator.jobhub.world/', '_blank');
+      window.location.href = 'https://resume-creator.jobhub.world/';
     } else {
       navigate(path);
     }

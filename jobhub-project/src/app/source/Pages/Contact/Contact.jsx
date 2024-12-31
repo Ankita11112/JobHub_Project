@@ -9,11 +9,17 @@ import JobDetails from "../../../components/PageComponent/JobDetails/JobDetails"
 import GlobalFaq from "../../../components/GlobalComponents/faq/GlobalFaq";
 import CompanyAddress from "../../../components/PageComponent/ComapnyAddress";
 import MapSection from "../../../components/PageComponent/CompanyMapAddres";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Contact = () => {
+
+  const targetSectionRef = useRef(null);
+
+  const scrollToSection = () => {
+    targetSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
 
   useEffect(() => {
     AOS.init({ duration: 1000 }); 
@@ -71,6 +77,7 @@ const Contact = () => {
             height: "auto",
           }}
           data-aos="fade-up"
+          buttonAction={scrollToSection}
         />
 
         {/* Form Section */}
@@ -94,7 +101,9 @@ const Contact = () => {
         </Box>
 
      
-          <ContactForm />
+        <div ref={targetSectionRef}>
+           <ContactForm />
+         </div>
     
    
           <JobDetails />
