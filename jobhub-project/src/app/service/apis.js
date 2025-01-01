@@ -1,3 +1,4 @@
+// const BASE_URL = "https://jobhub-project-backend.onrender.com/api/v1";
 const BASE_URL = "http://localhost:3000/api/v1";
 
 export const employee = {
@@ -7,10 +8,10 @@ export const employee = {
   MYJOBS: BASE_URL + "/employees/my-jobs",
   EDIT_PROFILE: BASE_URL + "/employees/edit-jobs",
   My_STUDENTS: BASE_URL + "/employees/my-students",
-};
+};   
 
 export const admin = {
-  SIGNUP_LOGIN: BASE_URL + "/admins/entry",
+  SIGNUP_LOGIN: BASE_URL + "/admins/entry",  
   ENTIRE_DATA: BASE_URL + "/admins/alldata",
   ALL_JOBS: BASE_URL + "/admins/alljobs",
   SELECTED_STUDENTS: BASE_URL + "/admins/selected-students",

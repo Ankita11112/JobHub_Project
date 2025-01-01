@@ -40,7 +40,7 @@ const FormComponent = () => {
         lastname,
         email,
         dob,
-        number,
+        mobileNumber,
         qualification,
         gender,
         role,
@@ -120,22 +120,22 @@ const FormComponent = () => {
             <Box sx={{ mb: 3 }}>
               <TextField
                 fullWidth
-                label="Mobile"
-                variant="outlined"
-                placeholder="Enter Mobile Number"
-                required
-                onChange={(e) => setNumber(e.target.value)}
-              />
-            </Box>
-            <Box sx={{ mb: 3 }}>
-              <TextField
-                fullWidth
                 label="Email"
                 type="email"
                 variant="outlined"
                 placeholder="Enter Email Address"
                 required
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </Box>
+            <Box sx={{ mb: 3 }}>
+              <TextField
+                fullWidth
+                label="Mobile"
+                variant="outlined"
+                placeholder="Enter Mobile Number"
+                required
+                onChange={(e) => setNumber(e.target.value)}
               />
             </Box>
             <Box sx={{ mb: 3 }}>

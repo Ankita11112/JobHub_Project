@@ -90,6 +90,7 @@ export const updateProfile = async (token, data) => {
 };
 
 export const myStudents = async (token) => {
+  console.log("ANKITA TOKEN", token)
   try {
     const response = await apiConnector(
       "GET",

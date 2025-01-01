@@ -172,7 +172,7 @@ export const employeeAccount = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Someting went wrong while registeration",
+      message: "Something went wrong while registeration",
     });
   }
 };
@@ -266,7 +266,7 @@ export const myJobApplyStudents = async (req, res) => {
       message: "Students application fetched!",
       students: response,
     });
-  } catch (error) {
+  } catch (error){
     return res.status(500).json({
       message: "Something went wrong while getting my students",
     });
