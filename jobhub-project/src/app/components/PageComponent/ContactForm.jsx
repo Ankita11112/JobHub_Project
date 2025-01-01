@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; 
-import { Grid, TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 const ContactForm = () => {
   useEffect(() => {
@@ -26,9 +27,10 @@ const ContactForm = () => {
           <Grid container spacing={5}>
             {/* First Name */}
             <Grid
-              item
-              xs={12}
-              sm={6}
+              
+              size={{xs:12
+              ,sm:6}}
+             
               data-aos="fade-right" 
             >
               <TextField
@@ -40,9 +42,8 @@ const ContactForm = () => {
             </Grid>
             {/* Last Name */}
             <Grid
-              item
-              xs={12}
-              sm={6}
+              size={{xs:12
+                ,sm:6}}
               data-aos="fade-left" 
             >
               <TextField
@@ -54,9 +55,8 @@ const ContactForm = () => {
             </Grid>
             {/* Email Address */}
             <Grid
-              item
-              xs={12}
-              sm={6}
+              size={{xs:12
+                ,sm:6}}
               data-aos="fade-right" 
               data-aos-delay="200" 
             >
@@ -69,9 +69,8 @@ const ContactForm = () => {
             </Grid>
             {/* Phone Number */}
             <Grid
-              item
-              xs={12}
-              sm={6}
+              size={{xs:12
+                ,sm:6}}
               data-aos="fade-left" 
               data-aos-delay="200" 
             >
@@ -84,8 +83,7 @@ const ContactForm = () => {
             </Grid>
             {/* Message */}
             <Grid
-              item
-              xs={12}
+              size={12}
               data-aos="fade-up" 
               data-aos-delay="400" 
             >
@@ -100,8 +98,7 @@ const ContactForm = () => {
             </Grid>
             {/* Submit Button */}
             <Grid
-              item
-              xs={12}
+              size={12}
               sx={{ justifyContent: "center", display: "flex" }}
               data-aos="zoom-in" 
               data-aos-delay="600" 
