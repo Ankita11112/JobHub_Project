@@ -32,7 +32,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
   const randomRotateY = () => Math.floor(Math.random() * 21) - 10;
 
   return (
-    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg: px-2 py-2  lg:mb-[7%]">
+    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-2 py-2  lg:mb-[7%]">
       <div className="relative grid grid-cols-1 md:grid-cols-2 xs:gap-30 md:gap-20 lg:gap-[23%]">
         {/* Left: Testimonial Image Section */}
         <div>
