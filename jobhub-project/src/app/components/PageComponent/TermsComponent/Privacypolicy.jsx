@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
   return (
     <PageComponent>
       <Container maxWidth="md">
-        <Box sx={{ py: 5 }}>
+        <Box sx={{  py:"100px" }}>
 
              <Typography variant="h2" sx={{
                       mb:3,
