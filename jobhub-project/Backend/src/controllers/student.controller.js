@@ -68,7 +68,7 @@ export const applyForJob = async (req, res) => {
 
     if (!findJob) {
       return res.status(500).json({
-        message: "Refenence not added in Jobs",
+        message: "Reference not added in Jobs",
       });
     }
 
