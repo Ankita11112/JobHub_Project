@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Grid, Box, Typography } from "@mui/material";
+import {Box, Typography } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PlaceIcon from "@mui/icons-material/Place";
 import EmailIcon from "@mui/icons-material/Email";
+import Grid from "@mui/material/Grid2";
 
 const CompanyAddress = () => {
   useEffect(() => {
@@ -97,10 +98,10 @@ const CompanyAddress = () => {
       <Grid container spacing={5} justifyContent="center">
         {contactDetails.map((detail, index) => (
           <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
+            size={{
+            xs:12,
+            sm:6,
+            md:4}}
             key={index}
             data-aos="fade-up"
             data-aos-delay={index * 200}
