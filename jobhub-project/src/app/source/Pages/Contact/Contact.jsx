@@ -22,7 +22,7 @@ const Contact = () => {
   }
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); 
+    AOS.init({ duration: 1000 });
   }, []);
 
   const FaqItems = [
@@ -71,13 +71,14 @@ const Contact = () => {
           }
           subText="Let’s Get in Touch – We’re Committed to Providing You with the Best Support Possible."
           buttonTitle1="Scroll Down"
+          onButtonClick1={scrollToSection}
           imgSrc={ContactHeaderImage}
           style={{
             width: "95%",
             height: "auto",
           }}
           data-aos="fade-up"
-          buttonAction={scrollToSection}
+
         />
 
         {/* Form Section */}
@@ -100,17 +101,17 @@ const Contact = () => {
           </Typography>
         </Box>
 
-     
+
         <div ref={targetSectionRef}>
-           <ContactForm />
-         </div>
-    
-   
-          <JobDetails />
-     
-          <GlobalFaq faqItems={FaqItems} />
- 
-          <CompanyAddress />
+          <ContactForm />
+        </div>
+
+
+        <JobDetails />
+
+        <GlobalFaq faqItems={FaqItems} />
+
+        <CompanyAddress />
 
         <div data-aos="fade-up">
           <MapSection />

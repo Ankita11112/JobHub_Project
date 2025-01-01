@@ -9,11 +9,14 @@ import JobProcess from '../../../components/PageComponent/AboutComponent/JobProc
 import PartnerSection from '../../../components/PageComponent/PartnerSection';
 
 const About = () => {
-   
     const targetSectionRef = useRef(null);
 
     const scrollToSection = () => {
-        targetSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (targetSectionRef.current) {
+            targetSectionRef.current.scrollIntoView({ behavior: "smooth" });
+        } else {
+            console.error("Target section not found");
+        }
     };
 
     return (
@@ -28,16 +31,15 @@ const About = () => {
                     }
                     subText="Your trusted partner in job search and recruitment. We help job seekers find their dream jobs and assist employers in discovering top talent across industries."
                     buttonTitle1="Scroll Down"
-                    onButtonClick1={() => handleScrollToSection('/ourmissionvission')}
+                    onButtonClick1={scrollToSection} 
                     imgSrc={AboutHeaderImage}
                     style={{
                         width: '75%',
                         height: 'auto',
                     }}
-                    buttonAction={scrollToSection}
                 />
                 <div ref={targetSectionRef}>
-                    <OurVissionMission id="ourmissionvission" />
+                    <OurVissionMission />
                 </div>
                 <JobDetails />
                 <JobProcess />
