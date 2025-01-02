@@ -67,6 +67,7 @@ const ChatAi = () => {
           sx={{
             position: 'absolute',
             bottom: 80,
+            marginRight:'30px',
             right: 0,
             width: 300,
             boxShadow: 3,
