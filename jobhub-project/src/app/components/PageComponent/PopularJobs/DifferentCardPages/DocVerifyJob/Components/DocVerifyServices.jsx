@@ -19,34 +19,34 @@ const DocVerifyServices = () => {
             background: "rgba(50, 205, 50, 0.3)",
         }
     ]
-    const resumeItems = [
+    const resumeItems1 = [
         {
-            imagee: DocS1,
+            image: DocS1,
             title: "Pan Card",
             alt: "Pan Card"
         },
         {
-            imagee: DocS2,
+            image: DocS2,
             title: "Aadhaar Card",
             alt: "Aadhaar Card"
         },
         {
-            imagee: DocS3,
+            image: DocS3,
             title: "Marriage Certificate",
             alt: "Marriage Certificate"
         },
         {
-            imagee: DocS4,
+            image: DocS4,
             title: "Driving License",
             alt: "Driving license"
         },
         {
-            imagee: DocS5,
+            image: DocS5,
             title: "Passport",
             alt: "Passport"
         },
         {
-            imagee: DocS6,
+            image: DocS6,
             title: "Birth Certificate",
             alt: "Birth Certificate"
         },
@@ -89,12 +89,13 @@ const DocVerifyServices = () => {
                     </Grid2>
 
                     <GlobalSwiper
-                        content={resumeItems}
+                        content={resumeItems1}
                         sx={{
                             width: { xs: "230px", sm: "260px", md: "230px" },
                             height: { xs: "170px", sm: "170px", md: "170px" },
                         }}
-                        Box
+                        addImg
+                        
                     />
                 </Container>
             </Box>
