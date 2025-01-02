@@ -38,28 +38,36 @@ const CandidateJobPostCard = () => {
         py: 4,
       }}
     >
-        <Grid container spacing={2} sx={{ mx: 2 }}>
-          <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
-            <Card
+      <Grid container spacing={2} sx={{ mx: 2 }}>
+        <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
+          <Card
+            sx={{
+              background: "white",
+              boxShadow:
+                "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
+              px: 2,
+            }}
+          >
+            <Typography
+              variant="h4"
               sx={{
-                background: "white",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
-                px: 2,
+                textAlign: "center",
+                my: 3,
+                fontWeight: "bold",
+                color: "#333",
               }}
             >
-              <Typography
-                variant="h4"
-                sx={{
-                  textAlign: "center",
-                  my: 3,
-                  fontWeight: "bold",
-                  color: "#333",
-                }}
-              >
-                Available Jobs
-              </Typography>
-              <Grid container>
+              Available Jobs
+            </Typography>
+            <Grid container sx={{
+              height: "calc(100vh - 64px)",
+              overflowY: "auto",
+              scrollbarWidth: "none",
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
+              mb: 2,
+            }}>
               {jobsData.map((data) => (
                 <Grid item size={12}>
                   <Card
@@ -69,6 +77,8 @@ const CandidateJobPostCard = () => {
                       boxShadow: 3,
                       backgroundColor: "#fff",
                       mt: 2,
+                      mb: 2,
+
                       border: "0.1px solid gray",
                     }}
                   >
@@ -90,7 +100,7 @@ const CandidateJobPostCard = () => {
                           color: "#666",
                         }}
                       >
-                      {data.companyName}
+                        {data.companyName}
                       </Typography>
                       <Typography
                         variant="subtitle2"
@@ -104,23 +114,34 @@ const CandidateJobPostCard = () => {
                       </Typography>
                     </Box>
 
+
+
                     <Box
                       sx={{
-                        backgroundColor: "#f1f1f1",
-                        padding: 2,
+
+
                         borderRadius: 1,
+                        display: "flex",
+                        gap: 2,
+                        flexWrap: "wrap",
                       }}
                     >
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#555",
-                          mb: 1,
-                        }}
-                      >
-                        {data.benefits}
-                      </Typography>
+                      {data.benefits.map((benefit, index) => (
+                        <Typography
+                          key={index}
+                          variant="body2"
+                          sx={{
+                            color: "#555",
+                            padding: "4px ",
+                            backgroundColor: "#f1f1f1",
+                            borderRadius: 1,
+                          }}
+                        >
+                          {benefit}
+                        </Typography>
+                      ))}
                     </Box>
+
 
                     <Box display="flex" justifyContent="space-between" mt={2}>
                       <Button
@@ -154,40 +175,41 @@ const CandidateJobPostCard = () => {
                   </Card>
                 </Grid>
               ))}
-              </Grid>
-            </Card>
-          </Grid>
-          {/* Right Grid: Dynamic Content */}
-          <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
-            <Card
-              sx={{
-                background: "white",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
-              }}
-            >
-              <Box>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    textAlign: "center",
-                    my: 3,
-                    fontWeight: "bold",
-                    color: "#333",
-                  }}
-                >
-                  Job Details
-                </Typography>
-              </Box>
-              {isViewJobDetails !== "" && (
-                <CandidateFullJobDetails jobId={isViewJobDetails} />
-              )}
-              {/* <Outlet /> */}
-            </Card>
-          </Grid>
+            </Grid>
+          </Card>
         </Grid>
+        {/* Right Grid: Dynamic Content */}
+        <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
+          <Card
+            sx={{
+              background: "white",
+              boxShadow:
+                "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
+            }}
+          >
+            <Box>
+              <Typography
+                variant="h4"
+                sx={{
+                  textAlign: "center",
+                  my: 3,
+                  fontWeight: "bold",
+                  color: "#333",
+                }}
+              >
+                Job Details
+              </Typography>
+            </Box>
+            {isViewJobDetails !== "" && (
+              <CandidateFullJobDetails jobId={isViewJobDetails} />
+            )}
+            {/* <Outlet /> */}
+          </Card>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
 
 export default CandidateJobPostCard;
+

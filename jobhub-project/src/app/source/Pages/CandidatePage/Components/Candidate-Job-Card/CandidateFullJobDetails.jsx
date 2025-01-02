@@ -3,7 +3,7 @@ import { Box, Typography, Divider, Card, CardContent } from "@mui/material";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import GroupIcon from "@mui/icons-material/Group";
 
-const CandidateFullJobDetails = ({jobId}) => {
+const CandidateFullJobDetails = ({ jobId }) => {
   const [jobData, setJobData] = useState(null);
 
   useEffect(() => {
@@ -115,3 +115,5 @@ const CandidateFullJobDetails = ({jobId}) => {
 };
 
 export default CandidateFullJobDetails;
+
+
