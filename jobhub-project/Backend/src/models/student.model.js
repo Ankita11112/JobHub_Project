@@ -17,13 +17,11 @@ const studentSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     mobileNumber: {
       type: Number,
       required: true,
-      unique: true,
     },
     dob: {
       type: String,
