@@ -28,7 +28,6 @@ const AdminLandingPage = () => {
     <Box
       sx={{
         background: "linear-gradient(to bottom, #4caf50, #a5d6a7)",
-        minHeight: "100%",
         p: 4,
         color: "white",
       }}
@@ -54,7 +53,7 @@ const AdminLandingPage = () => {
       {/* Content Grid */}
       <Grid container spacing={4}>
         {/* Employer Insights */}
-        <Grid item size={{xs: 12, sm: 6, md: 4}}>
+        <Grid item size={{ xs: 12, sm: 6, md: 4 }}>
           <motion.div
             variants={cardVariants}
             initial="initial"
@@ -80,7 +79,7 @@ const AdminLandingPage = () => {
         </Grid>
 
         {/* Job Listings */}
-        <Grid item size={{xs: 12, sm: 6, md: 4}}>
+        <Grid item size={{ xs: 12, sm: 6, md: 4 }}>
           <motion.div
             variants={cardVariants}
             initial="initial"
@@ -105,7 +104,7 @@ const AdminLandingPage = () => {
         </Grid>
 
         {/* Shortlisted Candidates */}
-        <Grid item size={{xs: 12, sm: 6, md: 4}}>
+        <Grid item size={{ xs: 12, sm: 6, md: 4 }}>
           <motion.div
             variants={cardVariants}
             initial="initial"

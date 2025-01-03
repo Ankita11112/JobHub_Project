@@ -200,14 +200,13 @@ const CandidateDashboardNav = () => {
 
   // Common styles
   const navStyles = {
-    width: '100%',
-    border: '2px solid transparent',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    background:
-      'linear-gradient(90deg, rgba(240, 244, 247, 1) 0%, rgba(144, 238, 144, 1) 100%)',
-    padding: '10px 20px',
+    //  width: '100%',
+    //  border: '2px solid transparent',
+    // display: 'flex',
+    // alignItems: 'center',
+    //justifyContent: 'space-between',
+    //  background:'linear-gradient(90deg, rgba(240, 244, 247, 1) 0%, rgba(144, 238, 144, 1) 100%)',
+    background: ''
   };
 
   return (
@@ -217,7 +216,7 @@ const CandidateDashboardNav = () => {
 
 
         {/* Search Bar */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, margin: '20px' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, margin: '0px 10px 10px 20px' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <TextField
               variant="outlined"
@@ -267,15 +266,20 @@ const CandidateDashboardNav = () => {
             />
           </Box>
 
+
           {/* Job Filters */}
-          {/* Job Filters */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+          <Box sx={{ display: 'flex', gap: '10px' }}>
             <TextField
               select
+              backgroundColor="#f1f1f1"
               label="Work Mode"
               variant="outlined"
               size="small"
-              sx={{ width: '23%' }}
+              sx={{
+                width: '10%',
+                backgroundColor: "#f1f1f1"
+              }}
+
             >
               <MenuItem value="Remote">Remote</MenuItem>
               <MenuItem value="Onsite">Onsite</MenuItem>
@@ -286,11 +290,15 @@ const CandidateDashboardNav = () => {
               label="Location"
               variant="outlined"
               size="small"
-              sx={{ width: '23%' }}
+              sx={{
+                width: '10%',
+                backgroundColor: "#f1f1f1"
+              }}
             >
-              <MenuItem value="New York">New York</MenuItem>
-              <MenuItem value="San Francisco">San Francisco</MenuItem>
-              <MenuItem value="Chicago">Chicago</MenuItem>
+              <MenuItem value="Chicago">Chandigarh</MenuItem>
+              <MenuItem value="New York">Zirkpur</MenuItem>
+              <MenuItem value="San Francisco">Mohali</MenuItem>
+              <MenuItem value="San Francisco">Panchkula</MenuItem>
               <MenuItem value="Remote">Remote</MenuItem>
             </TextField>
             <TextField
@@ -298,19 +306,26 @@ const CandidateDashboardNav = () => {
               label="Salary"
               variant="outlined"
               size="small"
-              sx={{ width: '23%' }}
+              sx={{
+                width: '10%',
+                backgroundColor: "#f1f1f1"
+              }}
             >
-              <MenuItem value="0-50k">0-50k</MenuItem>
-              <MenuItem value="50k-100k">50k-100k</MenuItem>
-              <MenuItem value="100k-150k">100k-150k</MenuItem>
-              <MenuItem value="150k+">150k+</MenuItem>
+              <MenuItem value="0-10k">0-10k</MenuItem>
+              <MenuItem value="30k-70k">30k-70k</MenuItem>
+              <MenuItem value="30k-70k">30k-70k</MenuItem>
+              <MenuItem value="70+">70k-100K</MenuItem>
+              <MenuItem value="70+">100K+</MenuItem>
             </TextField>
             <TextField
               select
               label="Experience"
               variant="outlined"
               size="small"
-              sx={{ width: '23%' }}
+              sx={{
+                width: '10%',
+                backgroundColor: "#f1f1f1"
+              }}
             >
               <MenuItem value="Fresher">Fresher</MenuItem>
               <MenuItem value="1-2 years">1-2 years</MenuItem>

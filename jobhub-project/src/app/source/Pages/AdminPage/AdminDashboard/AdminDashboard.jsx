@@ -38,12 +38,12 @@ const AdminDashboard = () => {
                 transition: "width 0.3s ease",
               }}
             >
-              `{" "}
+
               <AdminDashboardSidebar
                 isSidebarOpen={isSidebarOpen}
                 toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
               />
-              `
+
             </Grid>
           )}
 
@@ -57,7 +57,13 @@ const AdminDashboard = () => {
             }}
           >
             <AdminDashboardNav />
-            <Outlet />
+            <Box sx={{
+              height: "calc(86.5vh - 64px)",
+              overflowY: "auto",
+              scrollbarWidth: "none",
+            }}>
+              <Outlet />
+            </Box>
           </Grid>
         </Grid>
 

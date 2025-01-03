@@ -55,7 +55,14 @@ const EmployerDashboard = () => {
             }}
           >
             <DashboardNav />
-            <Outlet />
+            <Box sx={{
+              height: "calc(86.5vh - 64px)",
+              overflowY: "auto",
+              scrollbarWidth: "none",
+
+            }}>
+              <Outlet />
+            </Box>
           </Grid>
         </Grid>
 
