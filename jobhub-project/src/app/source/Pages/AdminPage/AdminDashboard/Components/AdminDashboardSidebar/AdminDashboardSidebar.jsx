@@ -70,7 +70,7 @@ export const AdminDashboardSidebar = () => {
         maxWidth: { xs: 240, sm: 240, md: 250 },
         miniWidth: { xs: 240, sm: 240, md: 250 },
         backgroundColor: "#f0f4f7",
-        height: "100vh",
+        height: "100%",
         boxShadow: 3,
         display: "flex",
         flexDirection: "column",
