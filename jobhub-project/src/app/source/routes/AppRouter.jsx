@@ -5,6 +5,8 @@ import { RouteMaker } from '../../components/routes/routes';
 import Termsconditions from '../../components/PageComponent/TermsComponent/Terms&conditions.jsx';
 import Privacypolicy from '../../components/PageComponent/TermsComponent/Privacypolicy.jsx';
 import AllCandidates from '../Pages/EmployerPage/EmployerDashboard/Components/AllCandidates/AllCandidates.jsx';
+import InterviewTips from '../../components/PageComponent/FooterKnowledge/Interview.jsx';
+import Event from '../../components/PageComponent/FooterKnowledge/Events.jsx';
 const Home = lazy(() => import('../Pages/Home/Home'));
 const About = lazy(() => import('../Pages/About/About.jsx'));
 const Contact = lazy(() => import('../Pages/Contact/Contact'));
@@ -83,6 +85,8 @@ const AppRouter = () => {
             "/factory": <FactoryJob />,
             "/Termsandconditions": <Termsconditions />,
             "/Privacypolicy": <Privacypolicy />,
+            "/interviewtips": <InterviewTips />,
+            "/events": <Event/>,
             // Employer Dashboard with nested routes
             "/employerdashboard": {
               element: <EmployerDashboard />,

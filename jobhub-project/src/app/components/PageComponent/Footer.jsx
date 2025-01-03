@@ -104,9 +104,9 @@ export default function Footer() {
             >
               Knowledge
             </Typography>
-            <InteractiveLink text="Interview Tips" to="#"
+            <InteractiveLink text="Interview Tips" to="/interviewtips"
             />
-            <InteractiveLink text="Events" to="#"
+            <InteractiveLink text="Events" to="/events"
             />
           </Stack>
         </Box>
