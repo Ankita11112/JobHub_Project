@@ -1,169 +1,79 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar, GridToolbarContainer } from '@mui/x-data-grid';
-import { Typography, IconButton } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
+import { Typography, IconButton } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import { myStudents } from "../../../../../../service/operations/employeeApi";
 
 export default function SelectedCandidates() {
+  const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
 
-  // Mock data
-  const mockData = [
-    {
-      id: "mock-1",
-      firstName: "John",
-      lastName: "Doe",
-      mobile: "1234567890",
-      dob: "1990-01-01",
-      qualification: "B.Sc Computer Science",
-      gender: "Male",
-      profile: "Software Engineer",
-      resume: "resume1.pdf",
-    },
-    {
-      id: "mock-2",
-      firstName: "Jane",
-      lastName: "Smith",
-      mobile: "1234567891",
-      dob: "1991-02-02",
-      qualification: "M.Sc Physics",
-      gender: "Female",
-      profile: "Data Scientist",
-      resume: "resume2.pdf",
-    },
-    {
-      id: "mock-3",
-      firstName: "Michael",
-      lastName: "Johnson",
-      mobile: "1234567892",
-      dob: "1992-03-03",
-      qualification: "B.A. Economics",
-      gender: "Male",
-      profile: "Financial Analyst",
-      resume: "resume3.pdf",
-    },
-    {
-      id: "mock-4",
-      firstName: "Emily",
-      lastName: "Davis",
-      mobile: "1234567893",
-      dob: "1993-04-04",
-      qualification: "MBA",
-      gender: "Female",
-      profile: "Marketing Manager",
-      resume: "resume4.pdf",
-    },
-    {
-      id: "mock-5",
-      firstName: "Daniel",
-      lastName: "Brown",
-      mobile: "1234567894",
-      dob: "1994-05-05",
-      qualification: "B.Tech Mechanical",
-      gender: "Male",
-      profile: "Mechanical Engineer",
-      resume: "resume5.pdf",
-    },
-    {
-      id: "mock-6",
-      firstName: "Sophia",
-      lastName: "Wilson",
-      mobile: "1234567895",
-      dob: "1995-06-06",
-      qualification: "B.A. English Literature",
-      gender: "Female",
-      profile: "Content Writer",
-      resume: "resume6.pdf",
-    },
-    {
-      id: "mock-7",
-      firstName: "David",
-      lastName: "Taylor",
-      mobile: "1234567896",
-      dob: "1996-07-07",
-      qualification: "B.Sc Mathematics",
-      gender: "Male",
-      profile: "Statistician",
-      resume: "resume7.pdf",
-    },
-    {
-      id: "mock-8",
-      firstName: "Olivia",
-      lastName: "Anderson",
-      mobile: "1234567897",
-      dob: "1997-08-08",
-      qualification: "M.Sc Chemistry",
-      gender: "Female",
-      profile: "Research Scientist",
-      resume: "resume8.pdf",
-    },
-    {
-      id: "mock-9",
-      firstName: "James",
-      lastName: "Thomas",
-      mobile: "1234567898",
-      dob: "1998-09-09",
-      qualification: "BBA",
-      gender: "Male",
-      profile: "Business Analyst",
-      resume: "resume9.pdf",
-    },
-    {
-      id: "mock-10",
-      firstName: "Isabella",
-      lastName: "Martinez",
-      mobile: "1234567899",
-      dob: "1999-10-10",
-      qualification: "B.Sc Biology",
-      gender: "Female",
-      profile: "Biologist",
-      resume: "resume10.pdf",
-    },
-  ];  
-
   // Fetch data from MongoDB
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/candidates'); // Replace with your API endpoint
-        const data = response.data.map((item) => ({
-          id: item._id, // Ensure each row has a unique 'id'
-          firstName: item.firstName,
-          lastName: item.lastName,
-          mobile: item.mobile,
-          dob: item.dob,
-          qualification: item.qualification,
-          gender: item.gender,
-          profile: item.profile,
-          resume: item.resume,
-        }));
-        // Combine mock data with backend data
-        setGridData([...mockData, ...data]);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        // If backend fetch fails, use only mock data
-        setGridData(mockData);
-      } finally {
-        setLoading(false);
+  const fetchStudents = async () => {
+    try {
+      const response = await myStudents(token);
+      if (response.students && response.students.length > 0) {
+        response.students.map((data, index) => {
+          const formattedData = data.map((item) => ({
+            id: item._id,
+            firstName: item.firstName,
+            lastName: item.lastName,
+            email: item.email,
+            mobileNumber: item.mobileNumber,
+            dob: item.dob,
+            gender: item.gender,
+            qualification: item.qualification,
+            role: item.role,
+            address: item.address,
+            file: item.file,
+            jobs: item.jobs,
+          }));
+          setGridData((data) => {
+            const uniqueData = formattedData.filter(
+              (newItem) => !data.some((prevItem) => prevItem.id === newItem.id)
+            );
+            return [...data, ...uniqueData];
+          });
+        });
+      } else {
+        return (
+          <div>
+            <p>No Data is here</p>
+          </div>
+        );
       }
-    };
+    } catch (error) {
+      console.error("Error fetching student data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchStudents();
   }, []);
 
   // Define columns
   const columns = [
-    { field: 'firstName', headerName: 'First Name', flex: 1 },
-    { field: 'lastName', headerName: 'Last Name', flex: 1 },
-    { field: 'mobile', headerName: 'Mobile', flex: 1 },
-    { field: 'dob', headerName: 'D.O.B', flex: 1 },
-    { field: 'qualification', headerName: 'Qualification', flex: 1 },
-    { field: 'gender', headerName: 'Gender', flex: 1 },
-    { field: 'profile', headerName: 'Profile', flex: 1 },
-    { field: 'resume', headerName: 'Resume', flex: 1 },
+    { field: "firstName", headerName: "First Name", flex: 1, width: "250px" },
+    { field: "lastName", headerName: "Last Name", flex: 1, width: "250px" },
+    { field: "email", headerName: "Email Address", flex: 1, width: "250px" },
+    { field: "mobileNumber", headerName: "Mobile", flex: 1, width: "250px" },
+    { field: "dob", headerName: "D.O.B", flex: 1, width: "250px" },
+    { field: "gender", headerName: "Gender", flex: 1, width: "250px" },
+    {
+      field: "qualification",
+      headerName: "Qualification",
+      flex: 1,
+      width: "250px",
+    },
+    { field: "role", headerName: "Role", flex: 1, width: "250px" },
+    { field: "address", headerName: "Address", flex: 1, width: "250px" },
+    { field: "file", headerName: "File", flex: 1, width: "250px" },
+    { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
   const handleFullScreenToggle = () => {
@@ -171,8 +81,8 @@ export default function SelectedCandidates() {
       document.documentElement.requestFullscreen();
       if (window.innerWidth < 768) {
         screen.orientation
-          .lock('landscape')
-          .catch((err) => console.error('Orientation lock failed:', err));
+          .lock("landscape")
+          .catch((err) => console.error("Orientation lock failed:", err));
       }
     } else {
       document.exitFullscreen();
@@ -198,19 +108,18 @@ export default function SelectedCandidates() {
       </div>
     </GridToolbarContainer>
   );
-
   return (
-    <Box sx={{ height: 520, width: '100%' }}>
+    <Box sx={{ height: 520, width: "100%" }}>
       <Typography
         variant="h3"
         component="h3"
         sx={{
-          textAlign: 'center',
+          textAlign: "center",
           mt: 3,
           mb: 3,
         }}
       >
-        Selected Candidates
+        All Candidates
       </Typography>
       <DataGrid
         slots={{ toolbar: CustomToolbar }}
@@ -225,5 +134,3 @@ export default function SelectedCandidates() {
     </Box>
   );
 }
-
-
