@@ -77,8 +77,6 @@ const AdminDashboard = () => {
             zIndex: 10,
             color: "green",
             borderRadius: "5%",
-            // width: "10px",
-            // height: "30px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

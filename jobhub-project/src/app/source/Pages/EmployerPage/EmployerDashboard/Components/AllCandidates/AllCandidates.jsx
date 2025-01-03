@@ -1,6 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
+// import Button from '@mui/material/Button';
+// import AddIcon from '@mui/icons-material/Add';
+// import EditIcon from '@mui/icons-material/Edit';
+// import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+// import SaveIcon from '@mui/icons-material/Save';
+// import CancelIcon from '@mui/icons-material/Close';
+import { 
+  DataGrid, 
+  GridToolbar, 
+  GridToolbarContainer,
+  // GridRowsProp,
+  // GridRowModesModel,
+  // GridRowModes,
+  // GridColDef,
+  // GridToolbarContainer,
+  // GridActionsCellItem,
+  // GridEventListener,
+  // GridRowId,
+  // GridRowModel,
+  // GridRowEditStopReasons,
+  // GridSlotProps,
+ } from "@mui/x-data-grid";
+
 import { Typography, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
@@ -130,6 +152,7 @@ export default function AllCandidates() {
         columns={columns} // Pass defined columns
         pageSize={5}
         loading={loading} // Show loading spinner
+        headerFilters
       />
     </Box>
   );
