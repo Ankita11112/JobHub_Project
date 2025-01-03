@@ -31,18 +31,11 @@ export const applyForJob = async (req, res) => {
         qualification,
         role,
         address,
+        jobId
       ].some((data) => data?.trim === "")
     ) {
       return res.status(400).json({
         message: "All fields required",
-      });
-    }
-
-    const isStudentApply = await Student.findOne({ jobs: jobId });
-
-    if (isStudentApply) {
-      return res.status(202).json({
-        message: "Job already applied",
       });
     }
 
