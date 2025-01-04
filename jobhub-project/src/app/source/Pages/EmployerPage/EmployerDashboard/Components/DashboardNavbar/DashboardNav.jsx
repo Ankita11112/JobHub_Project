@@ -32,7 +32,8 @@ const DashboardNav = () => {
     justifyContent: 'space-between',
     background:
       'linear-gradient(90deg, rgba(240, 244, 247, 1) 0%, rgba(144, 238, 144, 1) 100%)',
-    padding: '10px 20px',
+    //background: "white",
+    padding: '1px 9px',
   };
 
   const iconMenuStyles = {
@@ -51,7 +52,7 @@ const DashboardNav = () => {
           component="img"
           src={jobhublogo}
           alt="Logo"
-          sx={{ width: 120, height: 'auto', cursor: 'pointer' }}
+          sx={{ width: 100, height: 'auto', cursor: 'pointer' }}
           onClick={() => navigate('/')}
         />
 
@@ -67,16 +68,19 @@ const DashboardNav = () => {
               flexGrow: 1,
               marginRight: '10px',
               borderRadius: "10%",
+              
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  borderColor: '#ccc', // No border initially
+                  borderColor: '#34A853',
+
                 },
                 '&:hover fieldset': {
-                  borderColor: '#34A853', // Add hover styling if needed
+                  borderColor: '#34A853',
+                  
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: '#34A853', // No border when focused
-                  boxShadow: 'none', // Remove shadow
+                  borderColor: '#34A853',
+                  boxShadow: 'none',
                 },
               },
             }}
@@ -107,17 +111,31 @@ const DashboardNav = () => {
 
         {/* Icons */}
         <Box sx={iconMenuStyles}>
+
           <MenuItem>
-            <IconButton size="large" aria-label="show notifications" color="inherit">
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </MenuItem>
-          <MenuItem>
-            <IconButton size="large" aria-label="account options" color="inherit" onClick={() => navigate("/employerdashboard/employerprofile")}>
+            {/* <IconButton size="large" aria-label="account options" color="inherit" onClick={() => navigate("/employerdashboard/employerprofile")}>
               <AccountCircle />
+            </IconButton> */}
+
+            <IconButton
+              size="large"
+              aria-label="account options"
+              color="inherit"
+              onClick={() => navigate("/employerdashboard/employerprofile")}
+              sx={{
+                '&:hover': {
+                  color: '#34A853', // Change color on hover
+                  transform: 'scale(1.1)', // Slight zoom effect on hover
+                },
+                transition: 'transform 0.3s ease, color 0.3s ease',
+              }}
+            >
+              <AccountCircle sx={{ fontSize: 50 }} /> {/* Custom icon size */}
             </IconButton>
+
+
+
+
           </MenuItem>
         </Box>
       </Box>
@@ -159,11 +177,11 @@ const DashboardNav = () => {
             </MenuItem>
             <MenuItem>
               <IconButton size="large" aria-label="account options" color="inherit" onClick={() => navigate("/employerdashboard/employerprofile")}>
-                <AccountCircle/>
+                <AccountCircle />
               </IconButton>
             </MenuItem>
           </Card>
-       )}
+        )}
       </Box>
       {/* <PostCard/> */}
     </>
@@ -171,3 +189,7 @@ const DashboardNav = () => {
 };
 
 export default DashboardNav;
+
+
+
+

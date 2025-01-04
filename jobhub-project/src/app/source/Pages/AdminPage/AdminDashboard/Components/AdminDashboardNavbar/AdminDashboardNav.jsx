@@ -70,7 +70,7 @@ const AdminDashboardNav = () => {
     justifyContent: 'space-between',
     background:
       'linear-gradient(90deg, rgba(240, 244, 247, 1) 0%, rgba(144, 238, 144, 1) 100%)',
-    padding: '10px 20px',
+    padding: '1px 9px',
   };
 
   const iconMenuStyles = {
@@ -101,12 +101,20 @@ const AdminDashboardNav = () => {
             sx={{
               flexGrow: 1,
               marginRight: '10px',
+              
+
               '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: '#34A853',
+
+                },
                 '&:hover fieldset': {
                   borderColor: '#34A853',
+                  
                 },
                 '&.Mui-focused fieldset': {
                   borderColor: '#34A853',
+               
                 },
               },
             }}
@@ -125,19 +133,25 @@ const AdminDashboardNav = () => {
         </Box>
 
         <Box sx={iconMenuStyles}>
-          <IconButton size="large" aria-label="show notifications" color="inherit">
-            <Badge badgeContent={17} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+
           <IconButton
             size="large"
             aria-label="account options"
             color="inherit"
             onClick={handleMenuOpen}
+            sx={{
+              '&:hover': {
+                color: '#34A853', // Change color on hover
+                transform: 'scale(1.1)', // Slight zoom effect on hover
+              },
+              transition: 'transform 0.3s ease, color 0.3s ease',
+            }}
           >
-            <AccountCircle />
+            <AccountCircle sx={{ fontSize: 50 }} /> {/* Custom icon size */}
           </IconButton>
+
+
+
         </Box>
       </Box>
 
