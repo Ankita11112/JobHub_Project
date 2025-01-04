@@ -32,7 +32,8 @@ export default function AllCandidates() {
   const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
-
+  const [selectedIds, setSelectedIds] = useState([]); // State for selected rows
+  
   // Fetch data from MongoDB
   const fetchStudents = async () => {
     try {
@@ -98,6 +99,16 @@ export default function AllCandidates() {
     { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
+  const handleShortlistedTalents = () => {
+    alert("Shortlisted Talents");
+    console.log("Selected IDs:", selectedIds);
+  };
+
+  var dataa = myStudents(token);
+  const handleSelectionChange = (dataa) => {
+    setSelectedIds(dataa[0]._id);
+  };
+
   const handleFullScreenToggle = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -121,7 +132,7 @@ export default function AllCandidates() {
       </IconButton>
       <GridToolbar />
       <div>
-        <button className="text-[#1976d2] font-medium text-[14px] h-12 w-24 rounded-md text-md">
+        <button className="text-[#1976d2] font-medium text-[14px] h-12 w-24 rounded-md text-md" onClick={handleShortlistedTalents}>
           ADD DATA
         </button>
         <IconButton onClick={handleFullScreenToggle}>
@@ -147,12 +158,12 @@ export default function AllCandidates() {
         slots={{ toolbar: CustomToolbar }}
         rowHeight={40}
         checkboxSelection
-        disableRowSelectionOnClick
+        RowSelectionOnClick
         rows={gridData} // Pass fetched rows
         columns={columns} // Pass defined columns
         pageSize={5}
         loading={loading} // Show loading spinner
-        headerFilters
+        onSelectionModelChange={handleSelectionChange}
       />
     </Box>
   );
