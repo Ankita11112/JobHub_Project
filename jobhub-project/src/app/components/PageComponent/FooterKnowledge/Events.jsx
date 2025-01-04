@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import PageComponent from "../PageComponent";
 import HeaderPage from "../../GlobalComponents/HeaderPage/HeaderPage";
 import EventBannerImage from "../../../assets/Images/bgImages/bgImage.png";
@@ -10,6 +10,13 @@ import EventImage3 from "../../../assets/Images/eventsImages/eventImage3.png";
 import { Box, Typography, Grid2 } from "@mui/material";
 
 const Event = () => {
+
+  const targetSectionRef = useRef(null);
+
+  const scrollToSection = () => {
+    targetSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <PageComponent>
       <HeaderPage
@@ -24,11 +31,24 @@ const Event = () => {
         }
         subText="Find job fairs, webinars, and networking opportunities tailored for you"
         buttonTitle1="Scroll Down"
+        onButtonClick1={scrollToSection}
         imgSrc={EventsHeaderImage}
       />
       <Box py={8}>
         <Grid2 container spacing={4} justifyContent="center">
           <Grid2 xs={12} md={8}>
+            <Typography
+              variant="h4"
+              textAlign="center"
+              mt={3}
+              sx={{
+                fontWeight: "bold",
+                padding: '10px',
+                fontSize: { xs: "24px", md: "32px" },
+              }}
+            >
+              CORPORATE <span style={{ color: "green" }}>EVENT</span>
+            </Typography>
             <Box
               component="img"
               src={EventImage1}
@@ -40,20 +60,10 @@ const Event = () => {
                 boxShadow: 3,
               }}
             />
-            <Typography
-              variant="h4"
-              textAlign="center"
-              mt={3}
-              sx={{
-                fontWeight: "bold",
-                fontSize: { xs: "24px", md: "32px" },
-              }}
-            >
-              CORPORATE <span style={{ color: "green" }}>EVENT</span>
-            </Typography>
+           
           </Grid2>
           <Grid2 xs={12} md={8}>
-            <Box
+            <Box ref={targetSectionRef}
               component="img"
               src={EventImage2}
               alt="Workshop"
