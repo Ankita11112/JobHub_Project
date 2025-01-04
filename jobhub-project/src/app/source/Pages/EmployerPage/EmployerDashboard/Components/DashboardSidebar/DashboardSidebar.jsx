@@ -310,7 +310,7 @@ export const DashboardSidebar = () => {
                   primary={item.name}
                   primaryTypographyProps={{
                     fontSize: "0.95rem",
-                    fontWeight: active === item.name ? "bold" : "normal",
+                    fontWeight: active === item.name ? 900 : "bold",
                   }}
                 />
               </ListItemButton>

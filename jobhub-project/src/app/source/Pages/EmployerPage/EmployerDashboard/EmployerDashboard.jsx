@@ -56,7 +56,7 @@ const EmployerDashboard = () => {
           >
             <DashboardNav />
             <Box sx={{
-              height: "calc(93vh - 64px)",
+              height: "calc(94.5vh - 64px)",
               overflowY: "auto",
               scrollbarWidth: "none",
 

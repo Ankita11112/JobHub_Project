@@ -58,7 +58,7 @@ const AdminDashboard = () => {
           >
             <AdminDashboardNav />
             <Box sx={{
-              height: "calc(86.5vh - 64px)",
+              height: "calc(91.5vh - 64px)",
               overflowY: "auto",
               scrollbarWidth: "none",
             }}>

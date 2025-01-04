@@ -4,7 +4,8 @@ import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
 import { Typography, IconButton, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import { allJobs } from "../../../../../../service/operations/studentApi";
+// import { allJobs } from "../../../../../../service/operations/studentApi";
+import { myStudents } from "../../../../../../service/operations/employeeApi";
 
 export default function JobListings() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -15,7 +16,7 @@ export default function JobListings() {
   // Fetch data from MongoDB
   const fetchStudents = async () => {
     try {
-      const response = await allJobs(token);
+      const response = await myStudents(token);
       if (response.students && response.students.length > 0) {
         response.students.map((data, index) => {
           const formattedData = data.map((item) => ({

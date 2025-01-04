@@ -69,7 +69,7 @@ const EmployerProfile = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "linear-gradient(to bottom, #4caf50, #ffffff)",   
+        // background: "linear-gradient(to bottom, #4caf50, #ffffff)",   
         padding: "10px",
        
       }}
