@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
-import { Typography, IconButton } from "@mui/material";
+import { Typography, IconButton, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import { allJobs } from "../../../../../../service/operations/studentApi";
@@ -9,7 +9,8 @@ import { allJobs } from "../../../../../../service/operations/studentApi";
 export default function JobListings() {
   const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
-  const [loading, setLoading] = useState(true); // State for loading
+  const [loading, setLoading] = useState(true);
+  const [selectedStudentsId, setSelectedStudentsId] = useState([]);
 
   // Fetch data from MongoDB
   const fetchStudents = async () => {
@@ -76,6 +77,14 @@ export default function JobListings() {
     { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
+    const selectedStudentsHandler = () => {
+      if (selectedStudentsId.length === 0) {
+        toast.error("Please select at least one student");
+      } else {
+        console.log(selectedStudentsId);
+      }
+    };
+
   const handleFullScreenToggle = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -99,9 +108,10 @@ export default function JobListings() {
       </IconButton>
       <GridToolbar />
       <div>
-        <button className="text-[#1976d2] font-medium text-[14px] h-12 w-24 rounded-md text-md">
-          ADD DATA
-        </button>
+      <Button variant= "text" color="success" onClick={selectedStudentsHandler}
+        >
+          Select Students
+        </Button>
         <IconButton onClick={handleFullScreenToggle}>
           <FullscreenIcon />
         </IconButton>
@@ -125,7 +135,8 @@ export default function JobListings() {
         slots={{ toolbar: CustomToolbar }}
         rowHeight={40}
         checkboxSelection
-        disableRowSelectionOnClick
+        RowSelectionOnClick
+        onRowSelectionModelChange={(e) => setSelectedStudentsId(e)}
         rows={gridData} // Pass fetched rows
         columns={columns} // Pass defined columns
         pageSize={5}

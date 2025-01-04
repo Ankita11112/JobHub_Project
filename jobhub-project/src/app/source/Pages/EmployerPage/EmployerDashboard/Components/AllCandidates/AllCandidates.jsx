@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
+import { toast } from "react-toastify";
 // import Button from '@mui/material/Button';
 // import AddIcon from '@mui/icons-material/Add';
 // import EditIcon from '@mui/icons-material/Edit';
 // import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 // import SaveIcon from '@mui/icons-material/Save';
 // import CancelIcon from '@mui/icons-material/Close';
-import { 
-  DataGrid, 
-  GridToolbar, 
+import {
+  DataGrid,
+  GridToolbar,
   GridToolbarContainer,
   // GridRowsProp,
   // GridRowModesModel,
@@ -21,9 +22,9 @@ import {
   // GridRowModel,
   // GridRowEditStopReasons,
   // GridSlotProps,
- } from "@mui/x-data-grid";
+} from "@mui/x-data-grid";
 
-import { Typography, IconButton } from "@mui/material";
+import { Typography, IconButton, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import { myStudents } from "../../../../../../service/operations/employeeApi";
@@ -32,8 +33,8 @@ export default function AllCandidates() {
   const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
-  const [selectedIds, setSelectedIds] = useState([]); // State for selected rows
-  
+  const [selectedStudentsId, setSelectedStudentsId] = useState([]);
+
   // Fetch data from MongoDB
   const fetchStudents = async () => {
     try {
@@ -99,14 +100,12 @@ export default function AllCandidates() {
     { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
-  const handleShortlistedTalents = () => {
-    alert("Shortlisted Talents");
-    console.log("Selected IDs:", selectedIds);
-  };
-
-  var dataa = myStudents(token);
-  const handleSelectionChange = (dataa) => {
-    setSelectedIds(dataa[0]._id);
+  const selectedStudentsHandler = () => {
+    if (selectedStudentsId.length === 0) {
+      toast.error("Please select at least one student");
+    } else {
+      console.log(selectedStudentsId);
+    }
   };
 
   const handleFullScreenToggle = () => {
@@ -132,9 +131,10 @@ export default function AllCandidates() {
       </IconButton>
       <GridToolbar />
       <div>
-        <button className="text-[#1976d2] font-medium text-[14px] h-12 w-24 rounded-md text-md" onClick={handleShortlistedTalents}>
-          ADD DATA
-        </button>
+      <Button variant= "text" color="success" onClick={selectedStudentsHandler}
+        >
+          Select Students
+        </Button>
         <IconButton onClick={handleFullScreenToggle}>
           <FullscreenIcon />
         </IconButton>
@@ -159,11 +159,11 @@ export default function AllCandidates() {
         rowHeight={40}
         checkboxSelection
         RowSelectionOnClick
+        onRowSelectionModelChange={(e) => setSelectedStudentsId(e)}
         rows={gridData} // Pass fetched rows
         columns={columns} // Pass defined columns
         pageSize={5}
-        loading={loading} // Show loading spinner
-        onSelectionModelChange={handleSelectionChange}
+        loading={loading} 
       />
     </Box>
   );
