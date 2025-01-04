@@ -42,7 +42,9 @@ const EmployerProfile = () => {
   // Save data on blur
   const handleBlur = () => {
     setEditingField(null);
+
     localStorage.setItem("employerFormData", JSON.stringify(profileData));
+
   };
 
   // Handle image upload
@@ -63,13 +65,13 @@ const EmployerProfile = () => {
   return (
     <Box
       sx={{
-        p: 4,
+  
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "linear-gradient(to bottom, #4caf50, #ffffff)",
-        minHeight: "80vh",
-        overflowY: "hidden",
+        background: "linear-gradient(to bottom, #4caf50, #ffffff)",   
+        padding: "10px",
+       
       }}
     >
       <Card
@@ -79,9 +81,11 @@ const EmployerProfile = () => {
           p: 3,
           boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
           borderRadius: 3,
-          maxHeight: "71vh",
+         maxHeight: "79vh",
           overflowY: "auto", // Interactive Scroll
-          scrollbarWidth: "thin",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
         }}
       >
         {/* Avatar Section */}
@@ -129,57 +133,66 @@ const EmployerProfile = () => {
         </Box>
 
         {/* Profile Fields */}
-        {Object.entries(profileData).map(
+
+        {/* {Object.entries(profileData).map(
           ([key, value]) =>
-            key !== "profileImg" && (
-              <Box
-                key={key}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  mb: 2,
-                  p: 1,
-                  borderBottom: "1px solid #ddd",
-                }}
+            key !== "profileImg" && ( */}
+
+        {Object.entries(profileData).map(([key, value]) => {
+          const excludedKeys = ["_id","jobs", "avatar", "updatedAt", "createdAt", "__v","otp"];
+
+          if (excludedKeys.includes(key)) return null;
+          return (
+
+            <Box
+              key={key}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                mb: 2,
+                p: 1,
+                borderBottom: "1px solid #ddd",
+              }}
+            >
+              <Typography
+                sx={{ fontWeight: "bold", textTransform: "capitalize" }}
               >
-                <Typography
-                  sx={{ fontWeight: "bold", textTransform: "capitalize" }}
+                {key.replace(/([A-Z])/g, " $1").trim()}
+              </Typography>
+              {editingField === key ? (
+                <InputBase
+                  value={value}
+                  onChange={(e) => handleChange(key, e.target.value)}
+                  onBlur={handleBlur}
+                  autoFocus
+                  sx={{
+                    ml: 2,
+                    border: "1px solid #ccc",
+                    px: 1,
+                    borderRadius: "4px",
+                  }}
+                />
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setEditingField(key)}
                 >
-                  {key.replace(/([A-Z])/g, " $1").trim()}
-                </Typography>
-                {editingField === key ? (
-                  <InputBase
-                    value={value}
-                    onChange={(e) => handleChange(key, e.target.value)}
-                    onBlur={handleBlur}
-                    autoFocus
-                    sx={{
-                      ml: 2,
-                      border: "1px solid #ccc",
-                      px: 1,
-                      borderRadius: "4px",
-                    }}
-                  />
-                ) : (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setEditingField(key)}
-                  >
-                    <Typography>{value}</Typography>
-                    {showEdit && (
-                      <IconButton size="small">
-                        <EditIcon fontSize="small" />
-                      </IconButton>
-                    )}
-                  </Box>
-                )}
-              </Box>
-            )
+                  <Typography>{value}</Typography>
+                  {showEdit && (
+                    <IconButton size="small">
+                      <EditIcon fontSize="small" />
+                    </IconButton>
+                  )}
+                </Box>
+              )}
+            </Box>
+          )
+        }
         )}
       </Card>
     </Box>

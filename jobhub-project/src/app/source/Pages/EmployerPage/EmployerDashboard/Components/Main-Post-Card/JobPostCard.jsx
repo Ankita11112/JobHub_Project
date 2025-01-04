@@ -90,6 +90,7 @@ const JobPostCard = () => {
             p={3}
           >
             {/* Adding an animated GIF */}
+
             <img
               src={Gif2}
               alt="Waving Girl"
@@ -122,6 +123,8 @@ const JobPostCard = () => {
                       p: 3,
                       position: "relative",
                       backgroundColor: "#fff",
+
+
                     }}
                   >
                     {toggleMode && (
@@ -204,3 +207,6 @@ const JobPostCard = () => {
 };
 
 export default JobPostCard;
+
+
+

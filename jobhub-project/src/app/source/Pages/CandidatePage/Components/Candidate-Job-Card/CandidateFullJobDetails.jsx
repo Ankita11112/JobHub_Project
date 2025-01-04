@@ -116,7 +116,6 @@
 
 // export default CandidateFullJobDetails;
 
-
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Divider, Card, CardContent } from "@mui/material";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
@@ -126,22 +125,33 @@ const CandidateFullJobDetails = ({ jobId }) => {
   const [jobData, setJobData] = useState(null);
 
   useEffect(() => {
-    // Retrieve the data from localStorage
-    const storedData = localStorage.getItem("formData");
-    console.log("Stored Data:", storedData); // Debugging log
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      console.log("Parsed Data:", parsedData); // Debugging log
-      setJobData(parsedData[0]); // Assuming the data is an array
+    try {
+      // Retrieve the data from localStorage
+      const storedData = localStorage.getItem("formData");
+      console.log("Stored Data:", storedData); // Debugging log
+
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        console.log("Parsed Data:", parsedData); // Debugging log
+
+        // Find the job data by jobId if provided
+        const job = jobId
+          ? parsedData.find((job) => job.id === jobId)
+          : parsedData[0];
+
+        setJobData(job || null); // Set jobData or null if not found
+      }
+    } catch (error) {
+      console.error("Error parsing localStorage data:", error);
     }
-  }, []);
+  }, [jobId]);
 
   if (!jobData) {
     return (
       <Typography
         variant="h6"
         align="center"
-        sx={{ marginTop: "20px", color: "gray" }}
+        sx={{ mt: 3, color: "gray" }}
       >
         No Job Details Available. Please fill out the form first.
       </Typography>
@@ -149,21 +159,19 @@ const CandidateFullJobDetails = ({ jobId }) => {
   }
 
   return (
-    <Card>
+    <Card sx={{ mt: 3, p: 2 }}>
       <CardContent>
-        <Typography variant="h4">{jobData.title}</Typography>
-        <Divider />
+        <Typography variant="h4" gutterBottom>
+          {jobData.title}
+        </Typography>
+        <Divider sx={{ mb: 2 }} />
         <Box display="flex" alignItems="center" mt={2}>
-          <WorkOutlineIcon />
-          <Typography variant="body1" ml={1}>
-            {jobData.company}
-          </Typography>
+          <WorkOutlineIcon sx={{ mr: 1 }} />
+          <Typography variant="body1">{jobData.company}</Typography>
         </Box>
         <Box display="flex" alignItems="center" mt={2}>
-          <GroupIcon />
-          <Typography variant="body1" ml={1}>
-            {jobData.location}
-          </Typography>
+          <GroupIcon sx={{ mr: 1 }} />
+          <Typography variant="body1">{jobData.location}</Typography>
         </Box>
         {/* Add more job details here */}
       </CardContent>

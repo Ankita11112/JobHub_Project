@@ -20,7 +20,7 @@ const EmployerDashboard = () => {
         sx={{
           height: "100vh",
           width: "100%",
-          overflowY: "scroll",
+         
           background:
             "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
           overflowX: "hidden",
@@ -56,7 +56,7 @@ const EmployerDashboard = () => {
           >
             <DashboardNav />
             <Box sx={{
-              height: "calc(86.5vh - 64px)",
+              height: "calc(93vh - 64px)",
               overflowY: "auto",
               scrollbarWidth: "none",
 
