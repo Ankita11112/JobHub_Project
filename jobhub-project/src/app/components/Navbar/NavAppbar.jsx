@@ -357,13 +357,13 @@ function NavAppBar() {
                   onClick={() => handleNavigate(page.path, page.external)}
                   sx={{
                     my: 2,
-                    color: isActiveRoute(page.path) ? '#34a853' : 'black',
+                    color: isActiveRoute(page.path) ? 'green' : 'black',
                     display: 'block',
                     position: 'relative',
                     padding: '10px 15px',
                     fontWeight: 600,
                     '&:hover': {
-                      color: '#34a853',
+                      color: 'green',
                     },
                     '&::after': {
                       content: isActiveRoute(page.path) ? '""' : 'none',
@@ -394,10 +394,10 @@ function NavAppBar() {
                 sx={{
                   px: 4,
                   py: 1.5,
-                  backgroundColor: '#34a853',
+                  backgroundColor: 'green',
                   color: 'white',
                   fontWeight: 'bold',
-                  border: '1px solid #34a853',
+                  border: '1px solidrgb(24, 150, 57)',
                 }}
               />
             </Box>

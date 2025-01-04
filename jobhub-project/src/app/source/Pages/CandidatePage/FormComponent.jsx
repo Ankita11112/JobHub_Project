@@ -253,7 +253,7 @@ import {
   TextField,
   Button,
   Typography,
-  Select,      
+  Select,
   MenuItem,
   Input,
 } from "@mui/material";
@@ -269,7 +269,7 @@ const FormComponent = () => {
     lastname: "",
     email: "",
     dob: "",
-    number : "",
+    number: "",
     qualification: "",
     gender: "",
     role: "",
@@ -293,10 +293,10 @@ const FormComponent = () => {
   // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {number, jobId, ...restFormData} =  formData;
+    const { number, jobId, ...restFormData } = formData;
     await applyForJob(
-      { ...restFormData, mobileNumber: number , jobId },
-      navigate
+      { ...restFormData, mobileNumber: number, jobId },
+      navigate('/candidatedashboard')
     );
   };
 
