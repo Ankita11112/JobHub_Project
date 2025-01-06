@@ -113,9 +113,9 @@ const Contact = () => {
 
         <CompanyAddress />
 
-        <div data-aos="fade-up">
+        
           <MapSection />
-        </div>
+        
       </PageComponent>
     </>
   );
