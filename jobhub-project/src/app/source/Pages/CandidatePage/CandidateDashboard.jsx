@@ -10,19 +10,12 @@ const CandidateDashboard = () => {
 
   const handleFormSubmit = () => {
     setIsFormSubmitted(true);
-    toast.success("Form submitted successfully!", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    
   };
   return (
     <>
       {/* Modal for the Registration Page */}
+
       <Modal
         open={!isFormSubmitted}
         aria-labelledby="form-popup"
@@ -38,13 +31,14 @@ const CandidateDashboard = () => {
             // boxShadow: 24,
             scrollbarWidth: 'none',
             p: 4,
-            overflowY: 'auto', 
+            overflowY: 'auto',
             maxHeight: '80vh',
             borderRadius: 2,
           }}
         >
           {/* Registration Form with Submit Handler */}
           <RegistrationPage onSubmit={handleFormSubmit} />
+
         </Box>
       </Modal>
 
