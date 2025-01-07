@@ -131,12 +131,11 @@ const RegistrationPage = () => {
         >
           Candidate Registration Form
         </Typography>
-        <Typography variant="body2" textAlign="center" sx={{ color: "red" ,fontSize: "12px", mb: 3 }}>
-         
+        <Typography variant="body2" textAlign="center" sx={{ color: "red", fontSize: "12px", mb: 3 }}>
+
           Kindly complete the registration form below to apply. Your opportunity
           awaits!
         </Typography>
-      
 
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           {formFields.map((field) => (
