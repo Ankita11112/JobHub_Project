@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { toast, ToastContainer } from 'react-toastify';
 
-const RegistrationPage = () => {
+const RegistrationPage = ({ onSubmit }) => {
   const jobId = localStorage.getItem("jobId");
 
   // State variables
@@ -59,7 +59,7 @@ const RegistrationPage = () => {
 
     // Basic validation for form fields
     if (!/^\d{10}$/.test(formData.number)) {
-      alert("Please enter a valid numeric Whatsapp Number.");
+      alert("Please enter a valid numeric WhatsApp Number.");
       return;
     }
 
@@ -69,157 +69,155 @@ const RegistrationPage = () => {
     }
 
     console.log("Form data:", formData);
-    toast.success("Form submitted successfully!", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+
+
+    // Call the onSubmit function passed as a prop
+    onSubmit();
   };
 
-  const formFields = [
-    { label: "Full Name", name: "fullname", type: "text", required: true },
-    { label: "Email", name: "email", type: "email", required: true },
-    {
-      label: "Whatsapp Number", name: "number", type: "text", required: true, inputProps: {
-        inputMode: "numeric",
-        pattern: "[0-9]*",
-        maxLength: 10,
-      },
-    },
-    { label: "Position", name: "position", type: "text", required: true }, // Added Position
-    {
-      label: "D.O.B",
-      name: "dob",
-      type: "date",
-      required: true,
-      InputLabelProps: { shrink: true },
-      placeholder: "dd/mm/yyyy",
-    },
-    { label: "Qualification", name: "qualification", type: "text", required: true },
-    { label: "Address", name: "address", type: "text", multiline: true, required: true },
-  ];
+ 
 
-  return (
-    <Box>
-      <ToastContainer />
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          boxShadow:
-            "0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)",
-          borderRadius: "10px",
-          backgroundColor: "white",
-          padding: "30px",
-          width: "100%",
-          maxWidth: "600px",
-        }}
+const formFields = [
+  { label: "Full Name", name: "fullname", type: "text", required: true },
+  { label: "Email", name: "email", type: "email", required: true },
+  {
+    label: "Whatsapp Number", name: "number", type: "text", required: true, inputProps: {
+      inputMode: "numeric",
+      pattern: "[0-9]*",
+      maxLength: 10,
+    },
+  },
+  { label: "Position", name: "position", type: "text", required: true }, // Added Position
+  {
+    label: "D.O.B",
+    name: "dob",
+    type: "date",
+    required: true,
+    InputLabelProps: { shrink: true },
+    placeholder: "dd/mm/yyyy",
+  },
+  { label: "Qualification", name: "qualification", type: "text", required: true },
+  { label: "Address", name: "address", type: "text", multiline: true, required: true },
+];
+
+return (
+  <Box>
+    <ToastContainer />
+
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        boxShadow:
+          "0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)",
+        borderRadius: "10px",
+        backgroundColor: "white",
+        padding: "30px",
+        width: "100%",
+        maxWidth: "600px",
+      }}
+    >
+      <Typography
+        variant="h5"
+        component="h1"
+        gutterBottom
+        fontWeight="bold"
+        textAlign="center"
       >
-        <Typography
-          variant="h5"
-          component="h1"
-          gutterBottom
-          fontWeight="bold"
-          textAlign="center"
-        >
-          Candidate Registration Form
-        </Typography>
-        <Typography variant="body2" textAlign="center" sx={{ color: "red", fontSize: "12px", mb: 3 }}>
+        Candidate Registration Form
+      </Typography>
+      <Typography variant="body2" textAlign="center" sx={{ color: "red", fontSize: "12px", mb: 3 }}>
 
-          Kindly complete the registration form below to apply. Your opportunity
-          awaits!
-        </Typography>
+        Kindly complete the registration form below to apply. Your opportunity
+        awaits!
+      </Typography>
 
-        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-          {formFields.map((field) => (
-            <Box sx={{ mb: 3 }} key={field.name}>
-              <TextField
-                fullWidth
-                label={field.label}
-                name={field.name}
-                type={field.type}
-                variant="outlined"
-                placeholder={field.placeholder || `Enter ${field.label}`}
-                value={formData[field.name]}
-                onChange={handleInputChange}
-                required={field.required}
-                multiline={field.multiline}
-                rows={field.rows}
-                InputLabelProps={field.InputLabelProps}
-              />
-            </Box>
-          ))}
-          <Box sx={{ mb: 3 }}>
-            <Select
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+        {formFields.map((field) => (
+          <Box sx={{ mb: 3 }} key={field.name}>
+            <TextField
               fullWidth
-              displayEmpty
+              label={field.label}
+              name={field.name}
+              type={field.type}
               variant="outlined"
-              value={formData.gender}
+              placeholder={field.placeholder || `Enter ${field.label}`}
+              value={formData[field.name]}
               onChange={handleInputChange}
-              name="gender"
-              required
-            >
-              <MenuItem value="" disabled>
-                Select Gender
-              </MenuItem>
-              <MenuItem value="Male">Male</MenuItem>
-              <MenuItem value="Female">Female</MenuItem>
-              <MenuItem value="Other">Other</MenuItem>
-            </Select>
-          </Box>
-
-          <Box sx={{ mb: 3 }}>
-            <Typography variant="body2" gutterBottom>
-              Upload Resume
-            </Typography>
-            <Input
-              type="file"
-              fullWidth
-              inputProps={{ accept: ".pdf,.doc,.docx" }}
-              onChange={handleFileChange}
-              required
-              sx={{
-                display: "block",
-                backgroundColor: "#f1f1f1",
-                padding: "10px",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
+              required={field.required}
+              multiline={field.multiline}
+              rows={field.rows}
+              InputLabelProps={field.InputLabelProps}
             />
-            <a href="https://resume-creator.jobhub.world/">
-              <Typography component="span">
-                Need a resume?
-                <span style={{ color: "blue" }}>Create one now!</span>
-              </Typography>
-            </a>
           </Box>
-
-          <Button
-            type="submit"
-            variant="contained"
-            color="success"
-            sx={{
-              width: "100%",
-              mt: 2,
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              padding: "15px 60px",
-              alignSelf: "center",
-            }}
+        ))}
+        <Box sx={{ mb: 3 }}>
+          <Select
+            fullWidth
+            displayEmpty
+            variant="outlined"
+            value={formData.gender}
+            onChange={handleInputChange}
+            name="gender"
+            required
           >
-            Submit
-          </Button>
-        </form>
-      </Box>
+            <MenuItem value="" disabled>
+              Select Gender
+            </MenuItem>
+            <MenuItem value="Male">Male</MenuItem>
+            <MenuItem value="Female">Female</MenuItem>
+            <MenuItem value="Other">Other</MenuItem>
+          </Select>
+        </Box>
+
+        <Box sx={{ mb: 3 }}>
+          <Typography variant="body2" gutterBottom>
+            Upload Resume
+          </Typography>
+          <Input
+            type="file"
+            fullWidth
+            inputProps={{ accept: ".pdf,.doc,.docx" }}
+            onChange={handleFileChange}
+            required
+            sx={{
+              display: "block",
+              backgroundColor: "#f1f1f1",
+              padding: "10px",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          />
+          <a href="https://resume-creator.jobhub.world/">
+            <Typography component="span">
+              Need a resume?
+              <span style={{ color: "blue" }}>Create one now!</span>
+            </Typography>
+          </a>
+        </Box>
+
+        <Button
+          type="submit"
+          variant="contained"
+          color="success"
+          sx={{
+            width: "100%",
+            mt: 2,
+            fontWeight: "bold",
+            fontSize: "1.1rem",
+            padding: "15px 60px",
+            alignSelf: "center",
+          }}
+        >
+          Submit
+        </Button>
+      </form>
     </Box>
-  );
+  </Box>
+);
 };
 
 export default RegistrationPage;
