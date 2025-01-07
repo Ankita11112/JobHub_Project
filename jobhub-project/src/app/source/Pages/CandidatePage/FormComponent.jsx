@@ -298,7 +298,7 @@ const FormComponent = () => {
       { ...restFormData, mobileNumber: number, jobId },
       navigate('/candidatedashboard')
     );
-  };
+  };   
 
   const formFields = [
     { label: "First Name", name: "firstname", type: "text", required: true },
