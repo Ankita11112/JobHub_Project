@@ -226,17 +226,19 @@ export const editProfile = async (req, res) => {
 };
 
 export const selectingStudentSystem = async (req, res) => {
+  const studentsData = req.body;
   try {
-    const employeeId = req.user._id;
-
-    const employeeData = await Employee.findById(employeeId);
-
-    const selectedMyStudents = await Job.find({
-      _id: { $in: employeeData.jobs },
-    })
-      .populate("students")
-      .exec();
-
+    const selectedMyStudents = await Promise.all(
+      studentsData.map(async ({ studentId, jobId }) => {
+        return Job.updateOne(
+          { _id: jobId },
+          {
+            $pull: { students: studentId },
+            $addToSet: { selectedStudents: studentId },
+          }
+        );
+      })
+    );
     return res.status(200).json({
       message: "Student is Selected",
       selectedMyStudents,
@@ -244,6 +246,58 @@ export const selectingStudentSystem = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       message: "Something went wrong while selecting students",
+    });
+  }
+};
+
+export const selectingStudentsData = async (req, res) => {
+  try {
+    const employeeId = req.user._id;
+
+    const employeeData = await Employee.findById(employeeId);
+
+    const allSelectedStudents = await Job.find({
+      _id: { $in: employeeData.jobs },
+    })
+      .populate("selectedStudents")
+      .exec();
+
+    const response = allSelectedStudents.map((data) => data.selectedStudents);
+
+    return res.status(200).json({
+      message: "Selected Students application fetched!",
+      students: response,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong while getting selected students",
+    });
+  }
+};
+
+export const deSelectingStudents = async (req, res) => {
+  const deSelectStudentsData = req.body;
+  try {
+    const deSelectedMyStudents = await Promise.all(
+      deSelectStudentsData.map(({ studentId, jobId }) => {
+        return Job.updateOne(
+          { _id: jobId },
+          {
+            $pull: { selectedStudents: studentId },
+            $addToSet: { students: studentId },
+          }
+        );
+      })
+    );
+
+    return res.status(200).json({
+      message: "Student is De-Selected",
+      deSelectedMyStudents,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "Something went wrong while De-Selecting students",
     });
   }
 };
@@ -260,13 +314,13 @@ export const myJobApplyStudents = async (req, res) => {
       .populate("students")
       .exec();
 
-      const response = allStudents.map((data) => data.students)
+    const response = allStudents.map((data) => data.students);
 
     return res.status(200).json({
       message: "Students application fetched!",
       students: response,
     });
-  } catch (error){
+  } catch (error) {
     return res.status(500).json({
       message: "Something went wrong while getting my students",
     });

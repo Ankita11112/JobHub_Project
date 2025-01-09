@@ -2,8 +2,17 @@ import { employee } from "../apis";
 import { apiConnector } from "../apiConnector";
 import { toast } from "react-toastify";
 
-const { CHECK_OTP, EDIT_PROFILE, MYJOBS, SEND_OTP, SIGNUP_LOGIN, My_STUDENTS } =
-  employee;
+const {
+  CHECK_OTP,
+  EDIT_PROFILE,
+  MYJOBS,
+  SEND_OTP,
+  SIGNUP_LOGIN,
+  My_STUDENTS,
+  SELECT_STUDENTS,
+  MY_SELECTED_STUDENTS,
+  DE_SELECT_STUDENTS,
+} = employee;
 
 export const sendOtp = async (email) => {
   try {
@@ -100,6 +109,47 @@ export const myStudents = async (token) => {
       }
     );
 
+    toast.success(response.data.message);
+    return response.data;
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
+
+export const selectingStudents = async (token, data, navigate) => {
+  try {
+    const response = await apiConnector("POST", SELECT_STUDENTS, data, {
+      Authorization: `Bearer ${token}`,
+    });
+    toast.success(response.data.message);
+    navigate("/employerdashboard/selected-candidates");
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
+
+export const deSelectingStudents = async (token, data, navigate) => {
+  try {
+    const response = await apiConnector("POST", DE_SELECT_STUDENTS, data, {
+      Authorization: `Bearer ${token}`,
+    });
+    toast.success(response.data.message);
+    navigate("/employerdashboard/all-candidates");
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
+
+export const fetchSelectingStudentsData = async (token) => {
+  try {
+    const response = await apiConnector(
+      "GET",
+      MY_SELECTED_STUDENTS,
+      {},
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
     toast.success(response.data.message);
     return response.data;
   } catch (error) {
