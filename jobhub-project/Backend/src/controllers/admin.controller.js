@@ -6,14 +6,9 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Student } from "../models/student.model.js";
 
-export const allDataAboutEverything = async (req, res) => {
+export const allEmployees = async (req, res) => {
   try {
-    const employeesData = await Employee.find()
-      .populate({
-        path: "jobs",
-        populate: { path: "students" },
-      })
-      .exec();
+    const employeesData = await Employee.find();
 
     return res.status(200).json({
       message: "All data fetched successfully",
@@ -125,23 +120,6 @@ export const allJobs = async (req, res) => {
   }
 };
 
-export const selectedStudentsInAllJobs = async (req, res) => {
-  try {
-    const selectedStudent = await Job.find({})
-      .populate("selectedStudents")
-      .exec();
-
-    return res.status(200).json({
-      message: "All selected student data fetched successfully",
-      students: selectedStudent,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      message: "Something went wrong while getting selected student data",
-    });
-  }
-};
-
 export const jobFilterAccordingRole = async (req, res) => {
   try {
     const { role } = req.body;
@@ -176,6 +154,42 @@ export const filterStudentAccordingRole = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       message: "Something went wrong while filtering Students",
+    });
+  }
+};
+
+export const allStudentsData = async (req, res) => {
+  try {
+    const allStudents = await Job.find().populate("students").exec();
+
+    const response = allStudents.map((data) => data.students);
+
+    return res.status(200).json({
+      message: "Students data fetched",
+      students: response,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Something went wrong while fetch all students data",
+    });
+  }
+};
+
+export const allSelectedStudentsData = async (req, res) => {
+  try {
+    const allSelectedStudents = await Job.find()
+      .populate("selectedStudents")
+      .exec();
+
+    const response = allSelectedStudents.map((data) => data.selectedStudents);
+
+    return res.status(200).json({
+      message: "Selected Students data fetched",
+      students: response,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Something went wrong while fetch selected students data",
     });
   }
 };
