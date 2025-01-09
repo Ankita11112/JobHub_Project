@@ -16,7 +16,7 @@ export const admin = {
   ALL_JOBS: BASE_URL + "/admins/alljobs",
   SELECTED_STUDENTS: BASE_URL + "/admins/selected-students",
 };
-
+78
 export const jobs = {
   CREATE_JOB: BASE_URL + "/jobs/create-job",
   UPDATE_JOB: BASE_URL + "/jobs/update-job",
