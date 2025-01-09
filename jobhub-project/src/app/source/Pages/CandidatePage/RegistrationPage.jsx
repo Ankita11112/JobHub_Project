@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { toast, ToastContainer } from 'react-toastify';
 
-const RegistrationPage = () => {
+const RegistrationPage = ({onSubmit}) => {
   const jobId = localStorage.getItem("jobId");
 
   // State variables
@@ -78,6 +78,8 @@ const RegistrationPage = () => {
       draggable: true,
       progress: undefined,
     });
+    
+    onSubmit();
   };
 
   const formFields = [
