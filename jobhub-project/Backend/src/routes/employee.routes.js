@@ -10,7 +10,10 @@ import {
   deSelectingStudents,
   selectingStudentsData,
 } from "../controllers/employee.controller.js";
-import { verifyJWT, isEmployee } from "../middleware/auth.middleware.js";
+import {
+  verifyJWT,
+  isEmployee,
+} from "../middleware/auth.middleware.js";
 import { upload } from "../middleware/mutler.middleware.js";
 const router = Router();
 
@@ -26,11 +29,7 @@ router.route("/my-students").get(verifyJWT, isEmployee, myJobApplyStudents);
 router
   .route("/my-selecting-students")
   .get(verifyJWT, isEmployee, selectingStudentsData);
-router
-  .route("/select-students")
-  .post(verifyJWT, isEmployee, selectingStudentSystem);
-router
-  .route("/deselect-students")
-  .post(verifyJWT, isEmployee, deSelectingStudents);
+router.route("/select-students").post(verifyJWT, selectingStudentSystem);
+router.route("/deselect-students").post(verifyJWT, deSelectingStudents);
 
 export default router;
