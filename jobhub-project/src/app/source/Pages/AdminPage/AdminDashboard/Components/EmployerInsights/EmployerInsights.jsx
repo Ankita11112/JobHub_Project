@@ -1,104 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar, GridToolbarContainer } from '@mui/x-data-grid';
-import { Typography, IconButton, Button } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
+import { Typography, IconButton, Button } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import axios from "axios";
+import { fetchingEmployee } from "../../../../../../service/operations/adminApi";
 
 export default function EmployerInsights() {
+  const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
   const [selectedEmployersId, setSelectedEmployersId] = useState([]);
-
-  // Mock data
-  const mockData = [
-    {
-      id: "mock-1",
-      companyName: "Tech Solutions Ltd.",
-      fullName: "John Doe",
-      mobile: "1234567890",
-      email: "john.doe@example.com",
-      gender: "Male",
-      country: "USA",
-      city: "New York",
-      gstNumber: "GST12345",
-      source: "LinkedIn",
-    },
-    {
-      id: "mock-2",
-      companyName: "Innovatech Pvt. Ltd.",
-      fullName: "Jane Smith",
-      mobile: "1234567891",
-      email: "jane.smith@example.com",
-      gender: "Female",
-      country: "India",
-      city: "Mumbai",
-      gstNumber: "GST54321",
-      source: "Referral",
-    },
-    {
-      id: "mock-3",
-      companyName: "FinanceCorp LLC",
-      fullName: "Michael Johnson",
-      mobile: "1234567892",
-      email: "michael.johnson@example.com",
-      gender: "Male",
-      country: "UK",
-      city: "London",
-      gstNumber: "GST67890",
-      source: "Website",
-    },
-    {
-      id: "mock-4",
-      companyName: "Market Experts Inc.",
-      fullName: "Emily Davis",
-      mobile: "1234567893",
-      email: "emily.davis@example.com",
-      gender: "Female",
-      country: "Australia",
-      city: "Sydney",
-      gstNumber: "GST09876",
-      source: "Job Portal",
-    },
-    {
-      id: "mock-5",
-      companyName: "Mechanical Innovators",
-      fullName: "Daniel Brown",
-      mobile: "1234567894",
-      email: "daniel.brown@example.com",
-      gender: "Male",
-      country: "Canada",
-      city: "Toronto",
-      gstNumber: "GST34567",
-      source: "Career Fair",
-    },
-  ];
-   
 
   // Fetch data from MongoDB
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/employer'); // Replace with your API endpoint
-        const data = response.data.map((item) => ({
+        const response = await fetchingEmployee(token);
+        const data = response.map((item) => ({
           id: item._id, // Ensure each row has a unique 'id'
           companyName: item.companyName,
           fullName: item.fullName,
-          mobile: item.mobile,
+          mobile: item.mobileNumber,
           email: item.email,
           gender: item.gender,
           country: item.country,
           city: item.city,
           gstNumber: item.gstNumber,
-          source: item.source,
+          source: item.fromWhere,
         }));
         // Combine mock data with backend data
-        setGridData([...mockData, ...data]);
+        setGridData([...data]);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         // If backend fetch fails, use only mock data
-        setGridData(mockData);
       } finally {
         setLoading(false);
       }
@@ -109,32 +45,32 @@ export default function EmployerInsights() {
 
   // Define columns
   const columns = [
-    { field: 'companyName', headerName: 'Company Name', flex: 1 },
-    { field: 'fullName', headerName: 'Full Name', flex: 1 },
-    { field: 'mobile', headerName: 'Mobile', flex: 1 },
-    { field: 'email', headerName: 'Email', flex: 1 },
-    { field: 'gender', headerName: 'Gender', flex: 1 },
-    { field: 'country', headerName: 'Country', flex: 1 },
-    { field: 'city', headerName: 'City', flex: 1 },
-    { field: 'gstNumber', headerName: 'GST Number', flex: 1 },
-    { field: 'source', headerName: 'Source', flex: 1 },
+    { field: "companyName", headerName: "Company Name", flex: 1 },
+    { field: "fullName", headerName: "Full Name", flex: 1 },
+    { field: "mobile", headerName: "Mobile", flex: 1 },
+    { field: "email", headerName: "Email", flex: 1 },
+    { field: "gender", headerName: "Gender", flex: 1 },
+    { field: "country", headerName: "Country", flex: 1 },
+    { field: "city", headerName: "City", flex: 1 },
+    { field: "gstNumber", headerName: "GST Number", flex: 1 },
+    { field: "source", headerName: "Source", flex: 1 },
   ];
 
-    const selectedEmployersHandler = () => {
-      if (selectedEmployersId.length === 0) {
-        toast.error("Please select at least one student");
-      } else {
-        console.log(selectedEmployersId);
-      }
-    };
+  const selectedEmployersHandler = () => {
+    if (selectedEmployersId.length === 0) {
+      toast.error("Please select at least one student");
+    } else {
+      console.log(selectedEmployersId);
+    }
+  };
 
   const handleFullScreenToggle = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
       if (window.innerWidth < 768) {
         screen.orientation
-          .lock('landscape')
-          .catch((err) => console.error('Orientation lock failed:', err));
+          .lock("landscape")
+          .catch((err) => console.error("Orientation lock failed:", err));
       }
     } else {
       document.exitFullscreen();
@@ -151,7 +87,10 @@ export default function EmployerInsights() {
       </IconButton>
       <GridToolbar />
       <div>
-      <Button variant= "text" color="success" onClick={selectedEmployersHandler}
+        <Button
+          variant="text"
+          color="success"
+          onClick={selectedEmployersHandler}
         >
           Select Employers
         </Button>
@@ -163,12 +102,12 @@ export default function EmployerInsights() {
   );
 
   return (
-    <Box sx={{ height: 520, width: '100%' }}>
+    <Box sx={{ height: 520, width: "100%" }}>
       <Typography
         variant="h3"
         component="h3"
         sx={{
-          textAlign: 'center',
+          textAlign: "center",
           mt: 3,
           mb: 3,
         }}
@@ -189,5 +128,3 @@ export default function EmployerInsights() {
     </Box>
   );
 }
-
-
