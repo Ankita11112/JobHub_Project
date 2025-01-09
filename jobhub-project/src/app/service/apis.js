@@ -15,9 +15,10 @@ export const employee = {
 
 export const admin = {
   SIGNUP_LOGIN: BASE_URL + "/admins/entry",
-  ENTIRE_DATA: BASE_URL + "/admins/alldata",
+  EMPLOYEE_DATA: BASE_URL + "/admins/employees-data",
   ALL_JOBS: BASE_URL + "/admins/alljobs",
-  SELECTED_STUDENTS: BASE_URL + "/admins/selected-students",
+  STUDENTS_DATA: BASE_URL + "/admins/students-data",
+  SELECTED_STUDENTS_DATA: BASE_URL + "/admins/selected-students-data",
 };
 
 export const jobs = {
