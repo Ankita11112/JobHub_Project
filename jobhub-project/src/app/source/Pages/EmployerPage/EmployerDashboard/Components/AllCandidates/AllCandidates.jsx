@@ -27,13 +27,18 @@ import {
 import { Typography, IconButton, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import { myStudents } from "../../../../../../service/operations/employeeApi";
+import {
+  myStudents,
+  selectingStudents,
+} from "../../../../../../service/operations/employeeApi";
+import { useNavigate } from "react-router-dom";
 
 export default function AllCandidates() {
   const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
   const [selectedStudentsId, setSelectedStudentsId] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch data from MongoDB
   const fetchStudents = async () => {
@@ -100,11 +105,14 @@ export default function AllCandidates() {
     { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
-  const selectedStudentsHandler = () => {
+  const selectedStudentsHandler = async () => {
     if (selectedStudentsId.length === 0) {
       toast.error("Please select at least one student");
     } else {
-      console.log(selectedStudentsId);
+      const selected = gridData
+        .filter((student) => selectedStudentsId.includes(student.id))
+        .map((student) => ({ studentId: student.id, jobId: student.jobs[0] }));
+      await selectingStudents(token, selected, navigate);
     }
   };
 
@@ -131,7 +139,10 @@ export default function AllCandidates() {
       </IconButton>
       <GridToolbar />
       <div>
-      <Button variant= "text" color="success" onClick={selectedStudentsHandler}
+        <Button
+          variant="text"
+          color="success"
+          onClick={selectedStudentsHandler}
         >
           Select Students
         </Button>
@@ -163,7 +174,7 @@ export default function AllCandidates() {
         rows={gridData} // Pass fetched rows
         columns={columns} // Pass defined columns
         pageSize={5}
-        loading={loading} 
+        loading={loading}
       />
     </Box>
   );

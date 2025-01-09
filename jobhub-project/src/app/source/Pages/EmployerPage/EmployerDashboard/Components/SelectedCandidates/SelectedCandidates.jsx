@@ -4,18 +4,25 @@ import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
 import { Typography, IconButton, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import { myStudents } from "../../../../../../service/operations/employeeApi";
+import {
+  deSelectingStudents,
+  fetchSelectingStudentsData,
+  myStudents,
+} from "../../../../../../service/operations/employeeApi";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function SelectedCandidates() {
   const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const [selectedStudentsId, setSelectedStudentsId] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch data from MongoDB
   const fetchStudents = async () => {
     try {
-      const response = await myStudents(token);
+      const response = await fetchSelectingStudentsData(token);
       if (response.students && response.students.length > 0) {
         response.students.map((data, index) => {
           const formattedData = data.map((item) => ({
@@ -77,13 +84,16 @@ export default function SelectedCandidates() {
     { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
-    const selectedStudentsHandler = () => {
-      if (selectedStudentsId.length === 0) {
-        toast.error("Please select at least one student");
-      } else {
-        console.log(selectedStudentsId);
-      }
-    };
+  const deSelectedStudentsHandler = async () => {
+    if (selectedStudentsId.length === 0) {
+      toast.error("Please select at least one student");
+    } else {
+      const selected = gridData
+        .filter((student) => selectedStudentsId.includes(student.id))
+        .map((student) => ({ studentId: student.id, jobId: student.jobs[0] }));
+      await deSelectingStudents(token, selected, navigate);
+    }
+  };
 
   const handleFullScreenToggle = () => {
     if (!document.fullscreenElement) {
@@ -108,9 +118,12 @@ export default function SelectedCandidates() {
       </IconButton>
       <GridToolbar />
       <div>
-      <Button variant= "text" color="success" onClick={selectedStudentsHandler}
+        <Button
+          variant="text"
+          color="success"
+          onClick={deSelectedStudentsHandler}
         >
-          Select Students
+          Un-Select Students
         </Button>
         <IconButton onClick={handleFullScreenToggle}>
           <FullscreenIcon />
@@ -129,7 +142,7 @@ export default function SelectedCandidates() {
           mb: 3,
         }}
       >
-        All Candidates
+        Selected Candidates
       </Typography>
       <DataGrid
         slots={{ toolbar: CustomToolbar }}

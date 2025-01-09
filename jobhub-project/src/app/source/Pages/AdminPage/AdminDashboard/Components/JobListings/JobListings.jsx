@@ -5,18 +5,23 @@ import { Typography, IconButton, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 // import { allJobs } from "../../../../../../service/operations/studentApi";
-import { myStudents } from "../../../../../../service/operations/employeeApi";
+import {
+  fetchingAllStudents,
+  selectingStudents,
+} from "../../../../../../service/operations/adminApi";
+import { useNavigate } from "react-router-dom";
 
 export default function JobListings() {
   const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true);
   const [selectedStudentsId, setSelectedStudentsId] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch data from MongoDB
   const fetchStudents = async () => {
     try {
-      const response = await myStudents(token);
+      const response = await fetchingAllStudents(token);
       if (response.students && response.students.length > 0) {
         response.students.map((data, index) => {
           const formattedData = data.map((item) => ({
@@ -39,7 +44,7 @@ export default function JobListings() {
             );
             return [...data, ...uniqueData];
           });
-        });    
+        });
       } else {
         return (
           <div>
@@ -78,13 +83,16 @@ export default function JobListings() {
     { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
-    const selectedStudentsHandler = () => {
-      if (selectedStudentsId.length === 0) {
-        toast.error("Please select at least one student");
-      } else {
-        console.log(selectedStudentsId);
-      }
-    };
+  const selectedStudentsHandler = async () => {
+    if (selectedStudentsId.length === 0) {
+      toast.error("Please select at least one student");
+    } else {
+      const selected = gridData
+        .filter((student) => selectedStudentsId.includes(student.id))
+        .map((student) => ({ studentId: student.id, jobId: student.jobs[0] }));
+      await selectingStudents(token, selected, navigate);
+    }
+  };
 
   const handleFullScreenToggle = () => {
     if (!document.fullscreenElement) {
@@ -109,7 +117,10 @@ export default function JobListings() {
       </IconButton>
       <GridToolbar />
       <div>
-      <Button variant= "text" color="success" onClick={selectedStudentsHandler}
+        <Button
+          variant="text"
+          color="success"
+          onClick={selectedStudentsHandler}
         >
           Select Students
         </Button>

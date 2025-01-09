@@ -8,13 +8,17 @@ export const employee = {
   MYJOBS: BASE_URL + "/employees/my-jobs",
   EDIT_PROFILE: BASE_URL + "/employees/edit-jobs",
   My_STUDENTS: BASE_URL + "/employees/my-students",
-};   
+  SELECT_STUDENTS: BASE_URL + "/employees/select-students",
+  DE_SELECT_STUDENTS: BASE_URL + "/employees/deselect-students",
+  MY_SELECTED_STUDENTS: BASE_URL + "/employees/my-selecting-students",
+};
 
 export const admin = {
-  SIGNUP_LOGIN: BASE_URL + "/admins/entry",  
-  ENTIRE_DATA: BASE_URL + "/admins/alldata",
+  SIGNUP_LOGIN: BASE_URL + "/admins/entry",
+  EMPLOYEE_DATA: BASE_URL + "/admins/employees-data",
   ALL_JOBS: BASE_URL + "/admins/alljobs",
-  SELECTED_STUDENTS: BASE_URL + "/admins/selected-students",
+  STUDENTS_DATA: BASE_URL + "/admins/students-data",
+  SELECTED_STUDENTS_DATA: BASE_URL + "/admins/selected-students-data",
 };
 78
 export const jobs = {
