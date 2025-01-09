@@ -77,7 +77,7 @@ const Contact = () => {
             width: "95%",
             height: "auto",
           }}
-          data-aos="fade-up"
+          data-aos="fade-up"    
 
         />
 
