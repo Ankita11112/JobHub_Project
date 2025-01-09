@@ -14,7 +14,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";   
 import CompanyMap from "../../../components/PageComponent/CompanyMap";
  
-const Contact = () => {
+const Contact = () => {   
 
   const targetSectionRef = useRef(null);
 
