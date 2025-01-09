@@ -11,7 +11,7 @@ import CompanyAddress from "../../../components/PageComponent/ComapnyAddress";
 // import MapSection from "../../../components/PageComponent/CompanyMapAddres";
 import { useEffect, useRef } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";
+import "aos/dist/aos.css";   
 import CompanyMap from "../../../components/PageComponent/CompanyMap";
  
 const Contact = () => {
