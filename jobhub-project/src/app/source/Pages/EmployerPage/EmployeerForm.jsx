@@ -34,8 +34,8 @@ const EmployeeForm = () => {
     gender: "",
     country: "",
     city: "",
-    fromWhere: "",
     gstNumber: "",
+    fromWhere: "",
   };
 
   const [employerData, setEmployerData] = useState(initialEmployerData);
@@ -176,7 +176,7 @@ const EmployeeForm = () => {
               label="Email"
               variant="outlined"
               placeholder="Enter Your Email"
-              required
+              // required
               value={employerData.email}
               disabled
               onChange={(e) => updateEmployerData("email", e.target.value)}

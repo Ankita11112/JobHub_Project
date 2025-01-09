@@ -15,7 +15,7 @@ const CandidateDashboard = () => {
   return (
     <>
       {/* Modal for the Registration Page */}
-
+      {!isFormSubmitted && (
       <Modal
         open={!isFormSubmitted}
         aria-labelledby="form-popup"
@@ -41,6 +41,7 @@ const CandidateDashboard = () => {
 
         </Box>
       </Modal>
+      )}
 
       {/* Main Dashboard Content */}
       <PageComponent>
