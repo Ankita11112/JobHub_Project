@@ -8,11 +8,10 @@ import ContactForm from "../../../components/PageComponent/ContactForm";
 import JobDetails from "../../../components/PageComponent/JobDetails/JobDetails";
 import GlobalFaq from "../../../components/GlobalComponents/faq/GlobalFaq";
 import CompanyAddress from "../../../components/PageComponent/ComapnyAddress";
-// import MapSection from "../../../components/PageComponent/CompanyMapAddres";
 import { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";   
-import CompanyMap from "../../../components/PageComponent/CompanyMap";
+import MapSection from "../../../components/PageComponent/CompanyMapAddres";
  
 const Contact = () => {   
 
@@ -115,7 +114,7 @@ const Contact = () => {
         <CompanyAddress />
 
         <Box data-aos="fade-up" sx={{ my: 9 }}>
-          <CompanyMap />
+          <MapSection />
         </Box>
       </PageComponent>
     </>
