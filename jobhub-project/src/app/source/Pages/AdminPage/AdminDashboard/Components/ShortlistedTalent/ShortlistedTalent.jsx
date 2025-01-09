@@ -4,17 +4,23 @@ import { DataGrid, GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
 import { Typography, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import { myStudents } from "../../../../../../service/operations/employeeApi";
+import {
+  fetchingAllSelectedStudents,
+  deSelectingStudents,
+} from "../../../../../../service/operations/adminApi";
+import { useNavigate } from "react-router-dom";
 
 export default function ShortlistedTalent() {
   const token = JSON.parse(localStorage.getItem("token"));
   const [gridData, setGridData] = useState([]); // State for rows
   const [loading, setLoading] = useState(true); // State for loading
+  const [selectedStudentsId, setSelectedStudentsId] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch data from MongoDB
   const fetchStudents = async () => {
     try {
-      const response = await myStudents(token);
+      const response = await fetchingAllSelectedStudents(token);
       if (response.students && response.students.length > 0) {
         response.students.map((data, index) => {
           const formattedData = data.map((item) => ({
@@ -76,6 +82,17 @@ export default function ShortlistedTalent() {
     { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
   ];
 
+  const deSelectedStudentsHandler = async () => {
+    if (selectedStudentsId.length === 0) {
+      toast.error("Please select at least one student");
+    } else {
+      const selected = gridData
+        .filter((student) => selectedStudentsId.includes(student.id))
+        .map((student) => ({ studentId: student.id, jobId: student.jobs[0] }));
+      await deSelectingStudents(token, selected, navigate);
+    }
+  };
+
   const handleFullScreenToggle = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -99,8 +116,11 @@ export default function ShortlistedTalent() {
       </IconButton>
       <GridToolbar />
       <div>
-        <button className="text-[#1976d2] font-medium text-[14px] h-12 w-24 rounded-md text-md">
-          ADD DATA
+        <button
+          className="text-[#1976d2] font-medium text-[14px] h-12 w-24 rounded-md text-md"
+          onClick={deSelectedStudentsHandler}
+        >
+          Un-Select Students
         </button>
         <IconButton onClick={handleFullScreenToggle}>
           <FullscreenIcon />
@@ -126,6 +146,7 @@ export default function ShortlistedTalent() {
         rowHeight={40}
         checkboxSelection
         disableRowSelectionOnClick
+        onRowSelectionModelChange={(e) => setSelectedStudentsId(e)}
         rows={gridData} // Pass fetched rows
         columns={columns} // Pass defined columns
         pageSize={5}
