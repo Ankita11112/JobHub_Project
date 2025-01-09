@@ -8,12 +8,12 @@ import ContactForm from "../../../components/PageComponent/ContactForm";
 import JobDetails from "../../../components/PageComponent/JobDetails/JobDetails";
 import GlobalFaq from "../../../components/GlobalComponents/faq/GlobalFaq";
 import CompanyAddress from "../../../components/PageComponent/ComapnyAddress";
-import MapSection from "../../../components/PageComponent/CompanyMapAddres";
+// import MapSection from "../../../components/PageComponent/CompanyMapAddres";
 import { useEffect, useRef } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";
-// import MapLocation from "../../../components/PageComponent/MapLocation";
-
+import "aos/dist/aos.css";   
+import CompanyMap from "../../../components/PageComponent/CompanyMap";
+ 
 const Contact = () => {
 
   const targetSectionRef = useRef(null);
@@ -70,7 +70,7 @@ const Contact = () => {
               Contact Us <span style={{ color: "green" }}>Page</span>
             </>
           }
-          subText="Let’s Get in Touch – We’re Committed to Providing You with the Best Support Possible."
+          subText="Let's Get in Touch - We're Committed to Providing You with the Best Support Possible."
           buttonTitle1="Scroll Down"
           onButtonClick1={scrollToSection}
           imgSrc={ContactHeaderImage}
@@ -114,9 +114,9 @@ const Contact = () => {
 
         <CompanyAddress />
 
-        <div data-aos="fade-up">
-          <MapSection />
-        </div>
+        <Box data-aos="fade-up" sx={{ my: 9 }}>
+          <CompanyMap />
+        </Box>
       </PageComponent>
     </>
   );

@@ -1,45 +1,50 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import { Box } from '@mui/material';
 
-const MapSection = () => {
+// Import Leaflet icons using ES6 import
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// Fix default marker icon issue in Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+
+const CompanyMap = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '8px',
-        overflow: 'hidden',  
-         padding: "80px 0 10px 0"
+        width: '100%',
+        height: '500px',
       }}
     >
-      {/* Heading */}
-      {/* <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold', textAlign: 'center' }}>
-        Our Location
-      </Typography> */}
-
-      {/* Embedded Google Map */}
-      <Box
-        sx={{
-          width: '100%',
-          height: '400px',
-          borderRadius: '8px',
-                  overflow: 'hidden',
-           
-        }}
+      <MapContainer
+        center={[30.6387, 76.8233]}
+        zoom={13}
+        scrollWheelZoom={false}
+        style={{ height: '100%', width: '100%', borderRadius: '20px' }}
       >
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3432.831582833055!2d76.82077097636974!3d30.63870367462981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feb2b486ba04d%3A0x2555b85046f24e48!2sSushma%20Infinium!5e0!3m2!1sen!2sin!4v1735706809605!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </Box>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[30.6387, 76.8233]}>
+          <Popup>
+            <span style={{ color: 'brown', fontWeight: 'bold' }}>
+              V Recruiter, Sushma Infinium, <br /> Zirakpur, Tri City Chandigarh.
+            </span>
+          </Popup>
+        </Marker>
+      </MapContainer>
     </Box>
   );
 };
 
-export default MapSection;
+export default CompanyMap;
