@@ -12,6 +12,7 @@ import MapSection from "../../../components/PageComponent/CompanyMapAddres";
 import { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+// import MapLocation from "../../../components/PageComponent/MapLocation";
 
 const Contact = () => {
 
